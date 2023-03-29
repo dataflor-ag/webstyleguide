@@ -1,0 +1,20 @@
+html {
+    font-family: "Neo Sans", sans-serif;
+    font-style: normal;
+    font-size: 100%;
+}
+pre {
+    background-color: black;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+    color: white;
+    font-weight: bold;
+}
+h3 {
+    padding-top: 1em;
+}
+
+#content {
+    padding-left: 30%;
+}
