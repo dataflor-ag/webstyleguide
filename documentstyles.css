@@ -10,6 +10,7 @@ pre {
     padding-left: 1em;
     color: white;
     font-weight: bold;
+    max-width: 700px;
 }
 h3 {
     padding-top: 1em;
@@ -17,4 +18,9 @@ h3 {
 
 #content {
     padding-left: 30%;
+}
+
+#styleguidelabel {
+    display: block;
+    max-width: 500px;
 }
