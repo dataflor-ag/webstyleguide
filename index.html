@@ -13,6 +13,7 @@
             <li><a href="#elements">Elements - Basic elements to create composed components</a></li>
             <li><a href="#layoutgrid">Layout Grid - Arrange components</a></li>
             <li><a href="#typography">Typography</a></li>
+            <li><a href="#colors">Colors - Color System, Scheme, Theme, Palates</a></li>
 
         </ul>
 
@@ -56,7 +57,7 @@
         <h4>Font Size - Baseline</h4>
         <div>
             <div>
-                <h4>Breakpoint "Desktop" - more than 768px</h4>
+                <h5>Breakpoint "Desktop" - more than 768px</h5>
                 <p>Baseline: 140%</p>
                 <pre>
                 html {
@@ -65,7 +66,7 @@
                 </pre>
             </div>
             <div>
-                <h4>Breakpoint "Tablet" - more than 480px screen width, but less than 768px</h4>
+                <h5>Breakpoint "Tablet" - more than 480px screen width, but less than 768px</h5>
                 <p>Baseline: 120%</p>
                 <pre>
                 html {
@@ -74,7 +75,7 @@
                 </pre>
             </div>
             <div>
-                <h4>Breakpoint "Mobile" - less than 480px screen width</h4>
+                <h5>Breakpoint "Mobile" - less than 480px screen width</h5>
                 <p>Baseline: 100%</p>
                 <pre>
                 html {
@@ -87,6 +88,8 @@
         <p>In print media designers are used to have full control about about screensize and font size. In online media we need support a wide range of screen sizes and ratios. And also allow users to zoom in/out.</p>
         <p>Register font-size at document root element (DOM). Define all other text-based elements relative to this "default size". This allows your WebApp texts to respond to user needs (user defined zoom in/out).</p>
         <p>In most browsers a baseline of 100% equals to 16px. </p>
+
+        <p class="hint">We are not using fluid typography. We do not use the CSS calc-function. Each MediaQuery section can contain different screen sizes and ratios. Within each MediaQuery section there is no need to reflect the actual screen size of that device. No dynamic find-size scaling required.</p>
 
         <h4>Headline (single-line headlines)</h4>
         <pre>
@@ -135,6 +138,12 @@
 
         <a href="#toc">&#9650;</a>
     </div>
+
+    <a id="colors"><h3>Colors - Color System, Scheme, Theme, Palates</h3></a>
+    <p>DATAflor follows the Google Material Design 3 principles.</p>
+    <p>This means that we use high-contrast foreground color (so called "on-colors") on each background color.</p>
+
+    <a href="#toc">&#9650;</a>
 
     </body>
 </html>

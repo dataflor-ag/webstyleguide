@@ -18,3 +18,12 @@ h3 {
 #content {
     padding-left: 30%;
 }
+
+p.hint {
+    background-color: lightsalmon;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border-color: brown;
+    border-style: solid;
+    border-width: 2px;
+}
