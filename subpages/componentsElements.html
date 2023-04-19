@@ -11,7 +11,8 @@
             <li><a href="#components">Components - WebApp building blocks</a></li>
                 <ul>
                     <li><a href="#appbar">AppBar</a></li>
-                    <li><a href="#drawer">Drawer</a></li>
+                    <li><a href="#navigationdrawer">Navigation-Drawer</a></li>
+                    <li><a href="#detaildrawer">Detail-Drawer</a></li>
                 </ul>
             <li><a href="#elements">Elements - Basic elements to create composed components</a></li>
         </ul>
@@ -41,24 +42,46 @@
                 <li>Is attached to the top of the screen</li>
             </ul>
         
-            <h3 id="drawer">Drawer</h3>
+            <h3 id="navigationdrawer">Navigation-Drawer</h3>
             <img 
             style="height: 500px; width: auto"
-            src='../assets/img/Drawer.jpg'
-            alt='Picture of an Drawer'
+            src='../assets/img/NavigationDrawer.jpg'
+            alt='Picture of an Navigation-Drawer'
             />
             <p id='styleguidelabel'>
-                A Drawer is a menu which stretches over the left side of the screen.
+                A navigation drawer is a menu which stretches over the left side of the screen.
                 It's content depends on the page you are on. This means that you have 
                 certain options on certain pages.
             </p>
             <h4>Rules</h4>
             <ul>
-                <li>The drawer can be folded in and out via the hamburger button</li>
+                <li>The navigation drawer can be folded in and out via the hamburger button</li>
                 <li>It has a DATAflor logo at the top</li>
                 <li>Has multiple buttons which navigate to different pages (depending on the current page)</li>
                 <li>Has a separator between option and navigation button</li>
                 <li>Has a button at the bottom which navigates to the options</li>
+            </ul>
+
+            <h3 id="detaildrawer">Detail-Drawer</h3>
+            <img 
+            style="height: 500px; width: auto"
+            src='../assets/img/DetailDrawer.jpg'
+            alt='Picture of an Detail-Drawer'
+            />
+            <p id='styleguidelabel'>
+                Detail drawers are used in a lot of different situations.
+                First and foremost, these drawers are used to display details to certain data.
+                E.g. we are on our contact page and want to see more information to a specific contact, 
+                so we click on a contact and the detail drawer opens on the right side of the screen.
+                But we also use it to create or manipulate data. In this case the drawer will get a button to save the data.
+
+            </p>
+            <h4>Rules</h4>
+            <ul>
+                <li>The detail drawer can be folded in and out. Click on a table row and it opens. by clicking a random spot on the screen you can close it</li>
+                <li>The drawer overlaps components underneath it</li>
+                <li>The content of the drawer is a single component. All <a href="./glossary.html/#element">elements</a> are wrapped in a "Card" element</li>
+                <li>In case of creating data, the drawer will get a save-button and functions as a input mask</li>
             </ul>
         <a href="#toc">&#9650;</a>
 
