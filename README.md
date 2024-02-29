@@ -84,3 +84,6 @@ add your personal access token (classic) to your local npm config
 ### Install a UI component 
 To install a UI component to your project, e.g. the fictional component `ui_component_sample`:
 1. install it `npm install @dataflor-ag/ui_component_sample@1.0.0`
+
+## Maintainer
+Details on how to create new components, update existing components and releasing packages are written in the [maintainer manual](./MAINTAINER.md).

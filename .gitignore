@@ -1,0 +1,4 @@
+node_modules/
+
+# ignore Jetbrains IntelliJ IEAD stuff
+/.idea
