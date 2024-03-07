@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/blocks"
+import Box from "@mui/material/Box"
+
+import theme from "../../theme"
+
+<Meta title="Foundations/Sizes" />
+
+export const spaces = [
+  0, 0.5, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64, 80, 96,
+  120, 140, 160, 180, 192, 256,
+]
+export const SpaceItem = ({ value }) => (
+  <Box my={3} display="flex" alignItems="center" gap={2}>
+    <Box
+      display="inline-flex"
+      sx={{ p: 0.5, border: "1px solid grey", borderRadius: 1 }}
+    >
+      {value}
+    </Box>
+    <Box display="inline-flex">{theme.spacing(value)}</Box>
+  </Box>
+)
+
+# Spacings
+
+Just like color scale, working from a defined spacing system allows to work faster and more consistently. Consistent and scalable spacing helps to eliminate guesswork whilst designing and developing because you're designing with a limited set of options.
+
+# Spacing
+
+Numeric primitives spacing scale with proportional values where one spacing unit is equal to 0.25rem or 4px. As an example, 16px is twice as much spacing as 8, so they’re named 4 and 2 respectively.
+
+{spaces.map((value) => (
+
+<SpaceItem value={value} />
+))}
