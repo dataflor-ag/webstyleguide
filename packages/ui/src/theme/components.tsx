@@ -13,6 +13,15 @@ const components: Components<Omit<Theme, "components">> = {
       variant: "contained",
       disableElevation: true,
     },
+    styleOverrides: {
+      root: () => ({
+        fontWeight: "500",
+        borderRadius: 8,
+      }),
+      containedPrimary: {
+        color: "white",
+      },
+    },
   },
 }
 
