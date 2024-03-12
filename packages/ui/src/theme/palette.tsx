@@ -1,4 +1,4 @@
-import { PaletteOptions } from "@mui/material"
+import type { PaletteOptions } from "@mui/material"
 
 const palette: PaletteOptions = {
   primary: {
@@ -12,7 +12,24 @@ const palette: PaletteOptions = {
     "700": "#437318",
     "800": "#375b19",
     "900": "#314e19",
-    // "950": "#162b08"
+    // "950": "#162b08",
+    contrastText: "#ffffff",
+  },
+  secondary: {
+    "50": "#f9fafb",
+    "100": "#f2f4f7",
+    "200": "#EAECF0",
+    "300": "#E1E5EA",
+    "400": "#98A2B3",
+    "500": "#667085",
+    "600": "#475467",
+    "700": "#344054",
+    "800": "#182230",
+    "900": "#0C111D",
+    A100: "#0C111D",
+    A200: "#0C111D",
+    A400: "#0C111D",
+    A700: "#0C111D",
   },
   grey: {
     "50": "#f9fafb",
@@ -25,7 +42,10 @@ const palette: PaletteOptions = {
     "700": "#344054",
     "800": "#182230",
     "900": "#0C111D",
-    // "950": "#162b08"
+    A100: "#0C111D",
+    A200: "#0C111D",
+    A400: "#0C111D",
+    A700: "#0C111D",
   },
   info: {
     "50": "#eef5ff",
