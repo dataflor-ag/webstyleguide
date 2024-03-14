@@ -3,7 +3,6 @@ import { TypographyOptions } from "@mui/material/styles/createTypography"
 const typography: TypographyOptions = {
   fontFamily: [
     "Geist",
-    "serif",
     '"Helvetica Neue"',
     "Arial",
     "sans-serif",
