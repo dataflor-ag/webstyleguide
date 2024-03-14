@@ -1,6 +1,16 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography"
 
 const typography: TypographyOptions = {
+  fontFamily: [
+    "Geist",
+    "serif",
+    '"Helvetica Neue"',
+    "Arial",
+    "sans-serif",
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(","),
   button: {
     textTransform: "none",
   },
