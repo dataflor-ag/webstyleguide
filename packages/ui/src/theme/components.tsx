@@ -1,6 +1,12 @@
 import { Components, Theme } from "@mui/material"
 
 const components: Components<Omit<Theme, "components">> = {
+  MuiGrid: {
+    defaultProps: {
+      spacing: 6,
+    },
+  },
+
   // Button
   MuiButtonBase: {
     defaultProps: {
