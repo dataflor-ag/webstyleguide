@@ -25,80 +25,79 @@ type Story = StoryObj<typeof Button>
 
 export const Default: Story = {
   args: {
-    label: "Hey",
+    label: "Default",
   },
-  render: (args) => <Button {...args} />,
 }
 
 export const Primary: Story = {
-  ...Default,
   args: {
+    label: "Primary",
     color: "primary",
   },
 }
 
 export const Secondary: Story = {
-  ...Default,
   args: {
+    label: "Secondary",
     color: "secondary",
   },
 }
 
 export const SecondaryOutline: Story = {
-  ...Default,
   args: {
+    label: "Secondary (Outlined)",
     color: "secondary",
     variant: "outlined",
   },
 }
 
 export const Ghost: Story = {
-  ...Default,
   args: {
+    label: "Secondary (Text)",
     color: "secondary",
     variant: "text",
   },
 }
 
 export const Error: Story = {
-  ...Default,
   args: {
+    label: "Error",
     color: "error",
   },
 }
 
 export const ErrorOutline: Story = {
-  ...Default,
   args: {
+    label: "Error (Outlined)",
     color: "error",
     variant: "outlined",
   },
 }
 
 export const Disabled: Story = {
-  ...Primary,
   args: {
+    label: "Disabled",
     disabled: true,
   },
 }
 
 export const Small: Story = {
-  ...Primary,
   args: {
+    label: "Small",
     size: "small",
   },
 }
 
 export const Medium: Story = {
-  ...Primary,
   args: {
+    label: "Medium",
     size: "medium",
   },
 }
 
 export const Large: Story = {
-  ...Primary,
   args: {
+    label: "Large",
     size: "large",
   },
 }
