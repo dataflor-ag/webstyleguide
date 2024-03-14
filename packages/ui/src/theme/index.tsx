@@ -12,7 +12,7 @@ const theme = createTheme({
   components,
   spacing,
   shape,
-  // breakpoints:
+  // breakpoints
 })
 
 export default theme
