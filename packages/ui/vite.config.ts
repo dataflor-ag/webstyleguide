@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      fileName: "index",
+      fileName: "theme",
       formats: ["es"],
       name: "df-ui-theme",
     },
