@@ -4,6 +4,7 @@
   "description": "DATAflor Web Application UI Theme",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "type": "module",
+  "license": "ISC",
   "main": "dist/theme.js",
   "types": "dist/theme.d.ts",
   "directories": {
