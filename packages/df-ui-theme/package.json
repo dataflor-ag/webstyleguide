@@ -1,13 +1,21 @@
 {
-  "name": "@webstyleguide/ui",
-  "private": true,
+  "name": "df-ui-theme",
   "version": "0.0.0",
+  "description": "DATAflor Web Application UI Theme",
+  "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "type": "module",
   "main": "dist/theme.js",
   "types": "dist/theme.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dataflor-ag/webstyleguide.git"
+  },
   "scripts": {
     "dev": "vite & npm run storybook",
     "build": "tsc && vite build",
@@ -50,5 +58,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.6",
     "vite-plugin-dts": "^3.7.3"
+  },
+  "bugs": {
+    "url": "https://github.com/dataflor-ag/webstyleguide/issues"
   }
 }

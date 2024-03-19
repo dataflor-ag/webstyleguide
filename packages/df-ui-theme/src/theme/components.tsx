@@ -51,6 +51,56 @@ const components: Components<Omit<Theme, "components">> = {
       },
     },
   },
+  // Input
+  MuiFormControl: {
+    defaultProps: {},
+    styleOverrides: {
+      root: () => ({
+        // padding: theme.spacing(3, 0),
+      }),
+    },
+  },
+  MuiInputLabel: {
+    defaultProps: {
+      // shrink: false,
+      shrink: true,
+    },
+  },
+  MuiInputBase: {
+    styleOverrides: {
+      root: () => ({
+        "label + &": {
+          // marginTop: theme.spacing(11),
+        },
+      }),
+    },
+  },
+  MuiFormLabel: {
+    styleOverrides: {
+      root: {},
+    },
+  },
+  MuiTextField: {
+    defaultProps: {
+      InputLabelProps: { shrink: true },
+    },
+
+    styleOverrides: {
+      root: () => ({
+        // padding: theme.spacing(0, 4),
+      }),
+    },
+  },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: () => ({
+        // fontWeight: "500",
+        borderRadius: 8,
+        // padding: theme.spacing(0, 3),
+        // height: "2.5rem",
+      }),
+    },
+  },
 }
 
 export default components

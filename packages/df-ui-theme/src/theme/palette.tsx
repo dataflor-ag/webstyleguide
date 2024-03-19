@@ -1,5 +1,15 @@
 import type { PaletteOptions } from "@mui/material"
 
+declare module "@mui/material/styles" {
+  interface PaletteColor {
+    primary: true
+  }
+
+  interface SimplePaletteColorOptions {
+    500: string
+  }
+}
+
 const palette: PaletteOptions = {
   primary: {
     "50": "#f4fce9",
