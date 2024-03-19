@@ -1,0 +1,89 @@
+import { Meta, Canvas } from "@storybook/blocks"
+import Box from "@mui/material/Box"
+
+import theme from "../../theme"
+
+<Meta title="Foundations/Sizes/Radius" />
+
+# Radius
+
+Border radius values are useful for rounding edges of images, buttons, or any other element. Just like pre-defined spacing values, working from a defined border radius system allows you to work faster and more consistently.
+
+export const items = [
+  {
+    name: "radius-none",
+    value: 0,
+  },
+  {
+    name: "radius-xxs",
+    value: 0.5,
+  },
+  {
+    name: "radius-sm",
+    value: 1,
+  },
+  {
+    name: "radius-md",
+    value: 2,
+  },
+  {
+    name: "radius-lg",
+    value: 2.5,
+  },
+  {
+    name: "radius-xl",
+    value: 3,
+  },
+  {
+    name: "radius-2xl",
+    value: 4,
+  },
+  {
+    name: "radius-3xl",
+    value: 5,
+  },
+  {
+    name: "radius-4xl",
+    value: 6,
+  },
+]
+
+## Radius
+
+Working from a pre-defined and limited radius system for adding border radiuses (or radii) to elements allows you to work faster and consistently.
+
+{/* <pre>{JSON.stringify(theme)}</pre> */}
+
+{items.map((item) => (
+
+<Box
+  my={3}
+  display="flex"
+  alignItems="center"
+  textAlign={"center"}
+  justifyContent={"space-between"}
+  gap={4}
+>
+  <Box
+    display="inline-flex"
+    sx={{ p: 0.5, border: "1px solid grey", borderRadius: 1 }}
+  >
+    {item.name}
+  </Box>
+  <Box display="inline-flex">{item.value}</Box>
+  <Box display="inline-flex">{theme.spacing(item.value)}</Box>
+  <Box display="inline-flex">{item.value * 0.25 * 16}px</Box>
+  <Box
+    sx={{
+      width: 120,
+      height: 36,
+      borderRadius: item.value,
+      bgcolor: theme.palette.primary["50"],
+      border: 1,
+      borderColor: theme.palette.primary["500"],
+      // borderTop: 1,
+      // borderRight: 1,
+    }}
+  />
+</Box>
+))}
