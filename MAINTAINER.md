@@ -3,9 +3,9 @@
 ## Create a new package
 Run:
 ```
-npx lerna create df-ui-componentnamehere1
+npx lerna create @dataflor-ag/df-ui-componentnamehere1
 ```
-`df-ui-` is the prefix that should be used for  all User Interface components (react components).
+`@dataflor-ag/df-ui-` is the prefix that should be used for  all User Interface components (react components).
 `componentnamehere1` should be replaced with a meaning full component name (semantic!). Multi-word with dashes is ok.
 
 ## Manage dependencies
@@ -13,7 +13,7 @@ Your UI component package can have dependencies as normal packages do. To link t
 
 ```
 dependencies: {
-    "df-ui-componentnamehere2": "file:../df-ui-componentnamehere2"
+    "@dataflor-ag/df-ui-componentnamehere2": "file:../df-ui-componentnamehere2"
 }
 ```
 

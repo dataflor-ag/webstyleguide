@@ -1,5 +1,5 @@
 {
-  "name": "df-ui-theme",
+  "name": "@dataflor-ag/df-ui-theme",
   "version": "0.0.3-alpha.0",
   "description": "DATAflor Web Application UI Theme",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
@@ -13,7 +13,6 @@
   "files": [
     "dist"
   ],
-  "private": true,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@dataflor-ag"
   },
