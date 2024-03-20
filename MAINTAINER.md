@@ -8,6 +8,19 @@ npx lerna create @dataflor-ag/df-ui-componentnamehere1
 `@dataflor-ag/df-ui-` is the prefix that should be used for  all User Interface components (react components).
 `componentnamehere1` should be replaced with a meaning full component name (semantic!). Multi-word with dashes is ok.
 
+Update package.json (of your new package)
+Set license:
+```
+  "license": "UNLICENSED",
+```
+
+Set config for publishing:
+```
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@dataflor-ag"
+  },
+```
+
 ## Manage dependencies
 Your UI component package can have dependencies as normal packages do. To link to another local package use: 
 
