@@ -48,3 +48,7 @@ The lerna tool is taking care that the git commit message follows the git commit
 
 Versioning schema is set to "independent", so that the lifecycle of each package is independent from each other package.
 
+## Versionbump
+
+Please avoid versionbumps for unstable releases! Please use lernas feature "custom prerelease" for experiments or technical tests (...-alpha.0, ...-alpha.1, usw). Use normal releases for "stable" releases only.
+
