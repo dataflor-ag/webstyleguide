@@ -9,7 +9,8 @@
     "packages/*"
   ],
   "engines": {
-    "npm": ">=7.0.0"
+    "npm": ">=7.0.0",
+    "node": ">=18.18"
   },
   "dependencies": {},
   "devDependencies": {
