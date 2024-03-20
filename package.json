@@ -8,6 +8,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "npm": ">=7.0.0"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.1.2"
