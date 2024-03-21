@@ -10,12 +10,17 @@ type CustomShadow = {
 
 type CustomShadowNames = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl"
 
+const customShadowBase = `0 0 0 1px ${palette.grey?.[200]}`
+const customShadowFocus = `0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`
+const customShadowError = `0 0 0 1px ${palette.error?.[500]}`
+const customShadowErrorFocus = `0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`
+
 export const customShadows: Record<CustomShadowNames, CustomShadow> = {
   xs: {
-    base: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,
-    focus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`,
-    error: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.error?.[500]}`,
-    errorFocus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`,
+    base: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowBase}`,
+    focus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowFocus}`,
+    error: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowError}`,
+    errorFocus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowErrorFocus}`,
   },
   sm: {
     base: "",
