@@ -131,7 +131,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiCardActionArea: {
     styleOverrides:{
       root: () => ({
-        padding: theme.spacing(5, 6),
+        padding: theme.spacing(0),
       })
     }
   }
