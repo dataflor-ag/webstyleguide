@@ -4,6 +4,7 @@ import typography from "./typography"
 import components from "./components"
 import spacing from "./spacing"
 import shape from "./shape"
+import shadows from "./shadows"
 // import breakpoints from "./breakpoints"
 
 const theme = createTheme({
@@ -12,6 +13,7 @@ const theme = createTheme({
   components,
   spacing,
   shape,
+  shadows,
   // breakpoints
 })
 

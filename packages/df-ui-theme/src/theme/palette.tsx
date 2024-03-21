@@ -44,7 +44,7 @@ const palette: PaletteOptions = {
   grey: {
     "50": "#fafafa",
     "100": "#f4f4f5",
-    "200": "#e4e4e7",
+    "200": "#E9E9EC",
     "300": "#c9c9cf",
     "400": "#a0a0ab",
     "500": "#70707b",
