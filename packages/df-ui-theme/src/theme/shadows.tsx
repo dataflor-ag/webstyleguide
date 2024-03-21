@@ -1,7 +1,61 @@
 import { Shadows } from "@mui/material"
 import palette from "./palette"
 
-const shadows: Shadows = [
+type CustomShadow = {
+  base: string
+  focus: string
+  error: string
+  errorFocus: string
+}
+
+type CustomShadowNames = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl"
+
+export const customShadows: Record<CustomShadowNames, CustomShadow> = {
+  xs: {
+    base: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,
+    focus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`,
+    error: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.error?.[500]}`,
+    errorFocus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`,
+  },
+  sm: {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+  md: {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+  lg: {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+  xl: {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+  "2xl": {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+  "3xl": {
+    base: "",
+    focus: "",
+    error: "",
+    errorFocus: "",
+  },
+}
+
+export const shadows: Shadows = [
   "none",
   `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,
   `0 2px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,

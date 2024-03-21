@@ -6,7 +6,17 @@ declare module "@mui/material/styles" {
   }
 
   interface SimplePaletteColorOptions {
+    50: string
+    100: string
+    200: string
+    300: string
+    400: string
     500: string
+    600: string
+    700: string
+    800: string
+    900: string
+    950: string
   }
 }
 
@@ -22,7 +32,7 @@ const palette: PaletteOptions = {
     "700": "#437318",
     "800": "#375b19",
     "900": "#314e19",
-    // "950": "#162b08",
+    "950": "#162b08",
     contrastText: "#ffffff",
   },
   secondary: {
@@ -68,7 +78,7 @@ const palette: PaletteOptions = {
     "700": "#1440e1",
     "800": "#1734b6",
     "900": "#19318f",
-    // '950': '#142057',
+    "950": "#142057",
   },
   success: {
     "50": "#edfcf3",
@@ -81,7 +91,7 @@ const palette: PaletteOptions = {
     "700": "#097347",
     "800": "#0a5b39",
     "900": "#094b31",
-    // "950": "#042a1c",
+    "950": "#042a1c",
   },
   warning: {
     "50": "#fefbe8",
@@ -94,7 +104,7 @@ const palette: PaletteOptions = {
     "700": "#a15c07",
     "800": "#85480e",
     "900": "#713b12",
-    // "950": "#421e06",
+    "950": "#421e06",
   },
   error: {
     "50": "#fff1f2",
@@ -107,7 +117,7 @@ const palette: PaletteOptions = {
     "700": "#bf1137",
     "800": "#9f1235",
     "900": "#881334",
-    // "950": "#4c0517",
+    "950": "#4c0517",
   },
 }
 

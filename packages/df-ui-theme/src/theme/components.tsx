@@ -1,7 +1,7 @@
 import { Components, Theme } from "@mui/material"
 import palette from "./palette"
 import theme from "./index"
-import shadows from "./shadows"
+import shadows, { customShadows } from "./shadows"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -61,8 +61,8 @@ const components: Components<Omit<Theme, "components">> = {
       }),
     },
   },
-  MuiTextField:{
-    defaultProps:{
+  MuiTextField: {
+    defaultProps: {
       variant: "standard",
     },
   },
@@ -117,10 +117,7 @@ const components: Components<Omit<Theme, "components">> = {
         transition: "all 0.1s ease-in-out",
         boxShadow: shadows[1],
         "&.Mui-focused": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 
-                      0 1px 2px -1px rgba(0,0,0,0.08), 
-                      0 0 0 1px ${palette.grey?.[300]}, 
-                      0 0 0 1px #C9C9CF, 0 0 0 4px ${palette.grey?.[200]}`,
+          boxShadow: customShadows.xs.focus,
         },
         "&.Mui-disabled": {
           backgroundColor: `${palette.grey?.[50]}`,
@@ -149,30 +146,30 @@ const components: Components<Omit<Theme, "components">> = {
       // elevation: () => ({
       //   boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey![200]}`,
       // }),
-    }
+    },
   },
   MuiCardMedia: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         marginBottom: theme.spacing(5),
         borderRadius: 8,
-      })
-    }
+      }),
+    },
   },
   MuiCardContent: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         padding: theme.spacing(6),
-      })
-    }
+      }),
+    },
   },
   MuiCardActionArea: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         padding: theme.spacing(0),
-      })
-    }
-  }
+      }),
+    },
+  },
 }
 
 export default components
