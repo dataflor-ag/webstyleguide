@@ -27,6 +27,21 @@ const components: Components<Omit<Theme, "components">> = {
         fontWeight: "600",
         borderRadius: 8,
         transition: "all 0.2s ease-in-out",
+        "::after": {
+          content: '""',
+          position: "absolute",
+          borderRadius: "inherit",
+          opacity: "1",
+          inset: "0px",
+          transition: "all 0.2s ease-in-out",
+          background: "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
+          PointerEvent: "none",
+        },
+        ":hover":{
+          "::after":{
+            opacity: "0",
+          }
+        }
       }),
       sizeSmall: () => ({
         height: theme.spacing(8),
@@ -45,7 +60,6 @@ const components: Components<Omit<Theme, "components">> = {
       }),
       containedPrimary: {
         color: "white",
-        backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 100%)",
         boxShadow: customShadows.xs.primary,
         ":hover": {
           backgroundImage: "none",
@@ -56,7 +70,6 @@ const components: Components<Omit<Theme, "components">> = {
           boxShadow: customShadows.xs.primaryFocus,
         },
         ":disabled": {
-          backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 100%)",
           boxShadow: customShadows.xs.primary,
           color: "white",
           backgroundColor: `${palette.primary?.[500]}`,
@@ -65,7 +78,6 @@ const components: Components<Omit<Theme, "components">> = {
       },
       containedSecondary: {
         color: "white",
-        backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 100%)",
         boxShadow: customShadows.xs.secondary,
         ":hover": {
           backgroundImage: "none",
@@ -75,7 +87,7 @@ const components: Components<Omit<Theme, "components">> = {
           boxShadow: customShadows.xs.secondaryFocus,
         },
         ":disabled": {
-          backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 100%)",
+
           boxShadow: customShadows.xs.secondary,
           color: "white",
           backgroundColor: `${palette.secondary?.[900]}`,
@@ -102,9 +114,22 @@ const components: Components<Omit<Theme, "components">> = {
           opacity: "0.4",
         },
       },
+      textSecondary: {
+        color: `${palette.grey?.[700]}`,
+        ":hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          color: `${palette.grey?.[900]}`,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.focus,
+        },
+        ":disabled": {
+          color: `${palette.grey?.[700]}`,
+          opacity: "0.4",
+        },
+      },
       containedError: {
         color: "white",
-        backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.00) 100%)",
         backgroundColor: `${palette.error?.[600]}`,
         boxShadow: customShadows.xs.error,
         ":hover": {
