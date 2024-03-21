@@ -101,6 +101,40 @@ const components: Components<Omit<Theme, "components">> = {
       }),
     },
   },
+
+  // Cards
+  MuiPaper: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: 12,
+      }),
+      // elevation: () => ({
+      //   boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey![200]}`,
+      // }),
+    }
+  },
+  MuiCardMedia: {
+    styleOverrides:{
+      root: () => ({
+        marginBottom: theme.spacing(5),
+        borderRadius: 8,
+      })
+    }
+  },
+  MuiCardContent: {
+    styleOverrides:{
+      root: () => ({
+        padding: theme.spacing(6),
+      })
+    }
+  },
+  MuiCardActionArea: {
+    styleOverrides:{
+      root: () => ({
+        padding: theme.spacing(0),
+      })
+    }
+  }
 }
 
 export default components
