@@ -46,7 +46,7 @@ const components: Components<Omit<Theme, "components">> = {
         color: "white",
         ":disabled": {
           color: "white",
-          backgroundColor: `${palette.primary![500]}`,
+          backgroundColor: `${palette.primary?.[500]}`,
           opacity: 0.4,
         },
       },
