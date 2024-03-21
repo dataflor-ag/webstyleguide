@@ -1,6 +1,7 @@
 import { Components, Theme } from "@mui/material"
 import palette from "./palette"
 import theme from "./index"
+import shadows, { customShadows } from "./shadows"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -51,53 +52,82 @@ const components: Components<Omit<Theme, "components">> = {
       },
     },
   },
+
   // Input
   MuiFormControl: {
-    defaultProps: {},
     styleOverrides: {
       root: () => ({
-        // padding: theme.spacing(3, 0),
+        marginBottom: theme.spacing(5) + "!important",
       }),
     },
   },
-  MuiInputLabel: {
+  MuiTextField: {
     defaultProps: {
-      // shrink: false,
-      shrink: true,
+      variant: "standard",
+    },
+  },
+  MuiInputLabel: {
+    styleOverrides: {
+      root: () => ({
+        "&.Mui-focused": {
+          color: `${palette.grey?.[900]}`,
+        },
+        ".MuiFormLabel-asterisk": {
+          display: "none",
+        },
+        marginBottom: "0.375rem",
+        fontSize: "0.875rem",
+        fontWeight: "500",
+        position: "relative",
+        transform: "none",
+        color: `${palette.grey?.[700]}`,
+      }),
     },
   },
   MuiInputBase: {
     styleOverrides: {
       root: () => ({
         "label + &": {
-          // marginTop: theme.spacing(11),
+          marginTop: "0 !important",
+        },
+        "& .MuiInputBase-input": {
+          padding: 0,
+          border: 0,
+        },
+        "&:after": {
+          display: "none",
+        },
+        "&:before": {
+          display: "none",
         },
       }),
     },
   },
-  MuiFormLabel: {
-    styleOverrides: {
-      root: {},
-    },
-  },
-  MuiTextField: {
-    defaultProps: {
-      InputLabelProps: { shrink: true },
-    },
-
+  MuiInput: {
     styleOverrides: {
       root: () => ({
-        // padding: theme.spacing(0, 4),
-      }),
-    },
-  },
-  MuiOutlinedInput: {
-    styleOverrides: {
-      root: () => ({
-        // fontWeight: "500",
+        fontSize: "1rem",
+        fontWeight: "400",
         borderRadius: 8,
-        // padding: theme.spacing(0, 3),
-        // height: "2.5rem",
+        padding: theme.spacing(0, 3),
+        height: "2.5rem",
+        width: "auto",
+        border: 0,
+        marginTop: 0,
+        transition: "all 0.1s ease-in-out",
+        boxShadow: shadows[1],
+        "&.Mui-focused": {
+          boxShadow: customShadows.xs.focus,
+        },
+        "&.Mui-disabled": {
+          backgroundColor: `${palette.grey?.[50]}`,
+        },
+        "&.Mui-error": {
+          boxShadow: customShadows.xs.error,
+        },
+        "&.Mui-error.Mui-focused": {
+          boxShadow: customShadows.xs.errorFocus,
+        },
       }),
     },
   },
@@ -108,33 +138,30 @@ const components: Components<Omit<Theme, "components">> = {
       root: () => ({
         borderRadius: 12,
       }),
-      // elevation: () => ({
-      //   boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey![200]}`,
-      // }),
-    }
+    },
   },
   MuiCardMedia: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         marginBottom: theme.spacing(5),
         borderRadius: 8,
-      })
-    }
+      }),
+    },
   },
   MuiCardContent: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         padding: theme.spacing(6),
-      })
-    }
+      }),
+    },
   },
   MuiCardActionArea: {
-    styleOverrides:{
+    styleOverrides: {
       root: () => ({
         padding: theme.spacing(0),
-      })
-    }
-  }
+      }),
+    },
+  },
 }
 
 export default components
