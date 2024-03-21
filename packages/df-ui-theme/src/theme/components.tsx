@@ -13,12 +13,12 @@ const components: Components<Omit<Theme, "components">> = {
   // Button
   MuiButtonBase: {
     defaultProps: {
-      color: "primary",
       disableRipple: true,
     },
   },
   MuiButton: {
     defaultProps: {
+      color: "secondary",
       variant: "contained",
       disableElevation: true,
     },
