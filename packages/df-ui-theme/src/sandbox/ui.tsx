@@ -36,15 +36,11 @@ function App() {
         <Avatar>PP</Avatar>
       </Stack>
       <Typography variant="h2" mb={4} mt={8}>Input Fields</Typography>
-      <Stack direction="row" spacing={2}>
-        <TextField label="Vorname" />
-        <TextField id="outlined-basic" label="Search" autoFocus />
-      </Stack>
-      <Stack direction="column" spacing={2}>
+      <Stack direction="column">
         <TextField
           required
           id="filled-required"
-          label="Required"
+          label="Email"
           defaultValue="Hello World"
         />
         <TextField
@@ -70,6 +66,7 @@ function App() {
         <TextField id="filled-number" label="Number" type="number" />
         <TextField id="filled-search" label="Search field" type="search" />
         <TextField
+          error
           id="filled-helperText"
           label="Helper text"
           defaultValue="Default Value"
