@@ -123,15 +123,10 @@ const components: Components<Omit<Theme, "components">> = {
           backgroundColor: `${palette.grey?.[50]}`,
         },
         "&.Mui-error": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 
-                      0 1px 2px -1px rgba(0,0,0,0.08), 
-                      0 0 0 1px ${palette.error?.[500]}`,
+          boxShadow: customShadows.xs.error,
         },
         "&.Mui-error.Mui-focused": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 
-                      0 1px 2px -1px rgba(0,0,0,0.08), 
-                      0 0 0 1px ${palette.error?.[500]},
-                      0 0 0 1px #C9C9CF, 0 0 0 4px ${palette.error?.[200]}`,
+          boxShadow: customShadows.xs.errorFocus,
         },
       }),
     },
@@ -143,9 +138,6 @@ const components: Components<Omit<Theme, "components">> = {
       root: () => ({
         borderRadius: 12,
       }),
-      // elevation: () => ({
-      //   boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey![200]}`,
-      // }),
     },
   },
   MuiCardMedia: {

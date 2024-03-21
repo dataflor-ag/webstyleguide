@@ -15,60 +15,68 @@ const customShadowFocus = `0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette
 const customShadowError = `0 0 0 1px ${palette.error?.[500]}`
 const customShadowErrorFocus = `0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`
 
+const customShadowXs = `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08)`
+const customShadowSm = `0 2px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08)`
+const customShadowMd = `0 4px 8px -2px rgba(0,0,0,0.10), 0 2px 4px 0 rgba(0,0,0,0.05)`
+const customShadowLg = `0 12px 16px -4px rgba(0,0,0,0.10), 0 4px 6px -2px rgba(0,0,0,0.05)`
+const customShadowXl = `0 8px 24px 0 rgba(0,0,0,0.08), 0 24px 48px -12px rgba(0,0,0,0.15)`
+const customShadow2xl = `0 24px 48px -12px rgba(0,0,0,0.15)`
+const customShadow3xl = `0 24px 48px -12px rgba(0,0,0,0.15)`
+
 export const customShadows: Record<CustomShadowNames, CustomShadow> = {
   xs: {
-    base: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowBase}`,
-    focus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowFocus}`,
-    error: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowError}`,
-    errorFocus: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), ${customShadowErrorFocus}`,
+    base: `${customShadowXs}, ${customShadowBase}`,
+    focus: `${customShadowXs}, ${customShadowFocus}`,
+    error: `${customShadowXs}, ${customShadowError}`,
+    errorFocus: `${customShadowXs}, ${customShadowErrorFocus}`,
   },
   sm: {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadowSm}, ${customShadowBase}`,
+    focus: `${customShadowSm}, ${customShadowFocus}`,
+    error: `${customShadowSm}, ${customShadowError}`,
+    errorFocus: `${customShadowSm}, ${customShadowErrorFocus}`,
   },
   md: {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadowMd}, ${customShadowBase}`,
+    focus: `${customShadowMd}, ${customShadowFocus}`,
+    error: `${customShadowMd}, ${customShadowError}`,
+    errorFocus: `${customShadowMd}, ${customShadowErrorFocus}`,
   },
   lg: {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadowLg}, ${customShadowBase}`,
+    focus: `${customShadowLg}, ${customShadowFocus}`,
+    error: `${customShadowLg}, ${customShadowError}`,
+    errorFocus: `${customShadowLg}, ${customShadowErrorFocus}`,
   },
   xl: {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadowXl}, ${customShadowBase}`,
+    focus: `${customShadowXl}, ${customShadowFocus}`,
+    error: `${customShadowXl}, ${customShadowError}`,
+    errorFocus: `${customShadowXl}, ${customShadowErrorFocus}`,
   },
   "2xl": {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadow2xl}, ${customShadowBase}`,
+    focus: `${customShadow2xl}, ${customShadowFocus}`,
+    error: `${customShadow2xl}, ${customShadowError}`,
+    errorFocus: `${customShadow2xl}, ${customShadowErrorFocus}`,
   },
   "3xl": {
-    base: "",
-    focus: "",
-    error: "",
-    errorFocus: "",
+    base: `${customShadow3xl}, ${customShadowBase}`,
+    focus: `${customShadow3xl}, ${customShadowFocus}`,
+    error: `${customShadow3xl}, ${customShadowError}`,
+    errorFocus: `${customShadow3xl}, ${customShadowErrorFocus}`,
   },
 }
 
 export const shadows: Shadows = [
   "none",
-  `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 2px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 4px 8px -2px rgba(0,0,0,0.10), 0 2px 4px 0 rgba(0,0,0,0.05), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 12px 16px -4px rgba(0,0,0,0.10), 0 4px 6px -2px rgba(0,0,0,0.05), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 8px 24px 0 rgba(0,0,0,0.08), 0 24px 48px -12px rgba(0,0,0,0.15), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 24px 48px -12px rgba(0,0,0,0.15), 0 0 0 1px ${palette.grey?.[200]}`,
-  `0 24px 48px -12px rgba(0,0,0,0.15), 0 0 0 1px ${palette.grey?.[200]}`,
+  customShadows.xs.base,
+  customShadows.sm.base,
+  customShadows.md.base,
+  customShadows.lg.base,
+  customShadows.xl.base,
+  customShadows["2xl"].base,
+  customShadows["3xl"].base,
   "none",
   "none",
   "none",
