@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "dev": "lerna run dev",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "workspaces": [
     "packages/*"
@@ -12,8 +14,19 @@
     "npm": ">=7.0.0",
     "node": ">=18.18"
   },
-  "dependencies": {},
   "devDependencies": {
-    "lerna": "^8.1.2"
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
+    "@storybook/test": "^7.6.17",
+    "lerna": "^8.1.2",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.6.17"
   }
 }
