@@ -1,6 +1,7 @@
 # DATAflor Style Guide
 
 This Monorepo contains all DATAflor UI react components. 
+The storybook-powered [web style guide](https://dataflor-ag.github.io/webstyleguide/) is available via Github Pages.
 
 ## Raw UI components
 All react components are raw UI components consisting of just user interface styles, micro animations and display logic.
