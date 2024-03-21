@@ -108,6 +108,7 @@ function App() {
           id="filled-read-only-input"
           label="Read Only"
           defaultValue="Hello World"
+          helperText="Some important text"
           InputProps={{
             readOnly: true,
           }}

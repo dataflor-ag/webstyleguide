@@ -187,6 +187,9 @@ const components: Components<Omit<Theme, "components">> = {
         "&.Mui-focused": {
           color: `${palette.grey?.[900]}`,
         },
+        "&.Mui-error": {
+          color: `${palette.error?.[600]}`,
+        },
         ".MuiFormLabel-asterisk": {
           display: "none",
         },
@@ -198,6 +201,17 @@ const components: Components<Omit<Theme, "components">> = {
         color: `${palette.grey?.[700]}`,
       }),
     },
+  },
+  MuiFormHelperText:{
+    styleOverrides: {
+      root: () => ({
+        marginTop: "0.25rem",
+        color: `${palette.grey?.[600]}`,
+        "&.Mui-error": {
+          color: `${palette.error?.[600]}`,
+        },
+      })
+    }
   },
   MuiInputBase: {
     styleOverrides: {
