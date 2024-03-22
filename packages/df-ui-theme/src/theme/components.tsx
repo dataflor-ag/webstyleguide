@@ -13,19 +13,35 @@ const components: Components<Omit<Theme, "components">> = {
   // Button
   MuiButtonBase: {
     defaultProps: {
-      color: "primary",
       disableRipple: true,
     },
   },
   MuiButton: {
     defaultProps: {
+      color: "secondary",
       variant: "contained",
       disableElevation: true,
     },
     styleOverrides: {
       root: () => ({
-        fontWeight: "500",
+        fontWeight: "600",
         borderRadius: 8,
+        transition: "all 0.2s ease-in-out",
+        "::after": {
+          content: '""',
+          position: "absolute",
+          borderRadius: "inherit",
+          opacity: "1",
+          inset: "0px",
+          transition: "all 0.2s ease-in-out",
+          background: "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
+          PointerEvent: "none",
+        },
+        ":hover":{
+          "::after":{
+            opacity: "0",
+          }
+        }
       }),
       sizeSmall: () => ({
         height: theme.spacing(8),
@@ -44,10 +60,109 @@ const components: Components<Omit<Theme, "components">> = {
       }),
       containedPrimary: {
         color: "white",
+        boxShadow: customShadows.xs.primary,
+        ":hover": {
+          backgroundImage: "none",
+          backgroundColor: `${palette.primary?.[600]}`,
+          boxShadow: customShadows.md.primary,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.primaryFocus,
+        },
         ":disabled": {
+          boxShadow: customShadows.xs.primary,
           color: "white",
-          backgroundColor: `${palette.primary![500]}`,
+          backgroundColor: `${palette.primary?.[500]}`,
           opacity: 0.4,
+        },
+      },
+      containedSecondary: {
+        color: "white",
+        boxShadow: customShadows.xs.secondary,
+        ":hover": {
+          backgroundImage: "none",
+          boxShadow: customShadows.md.secondary,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.secondaryFocus,
+        },
+        ":disabled": {
+
+          boxShadow: customShadows.xs.secondary,
+          color: "white",
+          backgroundColor: `${palette.secondary?.[900]}`,
+          opacity: 0.4,
+        },
+      },
+      outlinedSecondary: {
+        boxShadow: customShadows.xs.base,
+        border: "none",
+        color: `${palette.grey?.[700]}`,
+        ":hover": {
+          backgroundColor: `${palette.grey?.[50]}`,
+          boxShadow: customShadows.md.base,
+          color: `${palette.grey?.[900]}`,
+          border: "none",
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.focus,
+        },
+        ":disabled": {
+          color: `${palette.grey?.[700]}`,
+          boxShadow: customShadows.xs.base,
+          border: "none",
+          opacity: "0.4",
+        },
+      },
+      textSecondary: {
+        color: `${palette.grey?.[700]}`,
+        ":hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          color: `${palette.grey?.[900]}`,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.focus,
+        },
+        ":disabled": {
+          color: `${palette.grey?.[700]}`,
+          opacity: "0.4",
+        },
+      },
+      containedError: {
+        color: "white",
+        backgroundColor: `${palette.error?.[600]}`,
+        boxShadow: customShadows.xs.error,
+        ":hover": {
+          backgroundImage: "none",
+          boxShadow: customShadows.md.error,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.errorFocus,
+        },
+        ":disabled": {
+          boxShadow: customShadows.xs.error,
+          color: "white",
+          backgroundColor: `${palette.error?.[600]}`,
+          opacity: 0.4,
+        },
+      },
+      outlinedError: {
+        boxShadow: customShadows.xs.error,
+        border: "none",
+        color: `${palette.error?.[600]}`,
+        ":hover": {
+          backgroundColor: `${palette.error?.[50]}`,
+          boxShadow: customShadows.md.error,
+          border: "none",
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.errorFocus,
+        },
+        ":disabled": {
+          color: `${palette.error?.[600]}`,
+          boxShadow: customShadows.xs.error,
+          border: "none",
+          opacity: "0.4",
         },
       },
     },
@@ -72,6 +187,9 @@ const components: Components<Omit<Theme, "components">> = {
         "&.Mui-focused": {
           color: `${palette.grey?.[900]}`,
         },
+        "&.Mui-error": {
+          color: `${palette.error?.[600]}`,
+        },
         ".MuiFormLabel-asterisk": {
           display: "none",
         },
@@ -83,6 +201,17 @@ const components: Components<Omit<Theme, "components">> = {
         color: `${palette.grey?.[700]}`,
       }),
     },
+  },
+  MuiFormHelperText:{
+    styleOverrides: {
+      root: () => ({
+        marginTop: "0.25rem",
+        color: `${palette.grey?.[600]}`,
+        "&.Mui-error": {
+          color: `${palette.error?.[600]}`,
+        },
+      })
+    }
   },
   MuiInputBase: {
     styleOverrides: {

@@ -1,4 +1,13 @@
-import { Button, Avatar, TextField, Card, CardContent, CardMedia, Typography, CardActionArea } from "@mui/material"
+import {
+  Button,
+  Avatar,
+  TextField,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+} from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
 import Image from "../assets/contemplative-reptile.jpg"
@@ -6,36 +15,76 @@ import Image from "../assets/contemplative-reptile.jpg"
 function App() {
   return (
     <Box padding={6}>
-      <Typography variant="h2" mb={4} mt={8}>Buttons</Typography>
-      <Stack direction="row" spacing={2}>
-        <Button>Button text</Button>
-        <Button disabled>Button text</Button>
-        <Button size="small">Button text</Button>
-        <Button size="medium">Button text</Button>
-        <Button size="large">Button text</Button>
-      </Stack>
-      <Stack direction="row" spacing={2}>
-        <Button variant="outlined" startIcon="A">
-          Delete
-        </Button>
-        <Button variant="contained" endIcon="B">
-          Send
+      <Typography variant="h2" mb={4} mt={8}>
+        Buttons
+      </Typography>
+      <Typography variant="h3" mb={4} mt={8}>
+        Primary
+      </Typography>
+      <Stack direction="row" spacing={2} mb={4}>
+        <Button color="primary">Primary</Button>
+        <Button color="primary" disabled>
+          Primary
         </Button>
       </Stack>
-      <Stack direction="row" spacing={2}>
-        <Button color="secondary" startIcon="A">
-          Delete
-        </Button>
-        <Button color="secondary" endIcon="B">
-          Send
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Secondary
+      </Typography>
+      <Stack direction="row" spacing={2} mb={4}>
+        <Button>Secondary</Button>
+        <Button disabled>Secondary</Button>
+        <Button variant="outlined">Secondary</Button>
+        <Button variant="outlined" disabled>
+          Secondary
         </Button>
       </Stack>
-      <Typography variant="h2" mb={4} mt={8}>Avatar</Typography>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Danger
+      </Typography>
+      <Stack direction="row" spacing={2} mb={4}>
+        <Button color="error">Danger</Button>
+        <Button color="error" disabled>
+          Danger
+        </Button>
+        <Button color="error" variant="outlined">
+          Danger
+        </Button>
+        <Button color="error" variant="outlined" disabled>
+          Danger
+        </Button>
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Ghost
+      </Typography>
+      <Stack direction="row" spacing={2} mb={4}>
+        <Button variant="text">Ghost</Button>
+        <Button variant="text" disabled>
+          Ghost
+        </Button>
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Button Sizes
+      </Typography>
+      <Stack direction="row" spacing={2}>
+        <Button size="small">Small</Button>
+        <Button size="medium">Medium</Button>
+        <Button size="large">Large</Button>
+      </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Avatar
+      </Typography>
       <Stack direction="row" spacing={2}>
         <Avatar />
         <Avatar>PP</Avatar>
       </Stack>
-      <Typography variant="h2" mb={4} mt={8}>Input Fields</Typography>
+      <Typography variant="h2" mb={4} mt={8}>
+        Input Fields
+      </Typography>
       <Stack direction="column">
         <TextField
           required
@@ -59,6 +108,7 @@ function App() {
           id="filled-read-only-input"
           label="Read Only"
           defaultValue="Hello World"
+          helperText="Some important text"
           InputProps={{
             readOnly: true,
           }}
@@ -73,7 +123,9 @@ function App() {
           helperText="Some important text"
         />
       </Stack>
-      <Typography variant="h2" mb={4} mt={8}>Cards</Typography>
+      <Typography variant="h2" mb={4} mt={8}>
+        Cards
+      </Typography>
       <Stack direction="row" spacing={4}>
         <Card sx={{ maxWidth: 345 }}>
           <CardContent>
@@ -87,8 +139,8 @@ function App() {
               Lizard · Card
             </Typography>
             <Typography variant="body2" color="secondary.600">
-              Lizards are a widespread group of squamate reptiles, with over 6,000
-              species, ranging across all continents except Antarctica
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
             </Typography>
           </CardContent>
         </Card>
@@ -105,8 +157,8 @@ function App() {
                 Lizard · Card with action area
               </Typography>
               <Typography variant="body2" color="secondary.600">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
               </Typography>
             </CardContent>
           </CardActionArea>
