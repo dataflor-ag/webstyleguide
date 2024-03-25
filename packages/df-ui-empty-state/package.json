@@ -4,7 +4,7 @@
   "description": "The EmptyState component in React serves as a placeholder when there's no data to display. It enhances user experience by providing clear feedback. Developers can customize its appearance and behavior using props, making it adaptable for various applications.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "type": "module",
   "files": [
     "dist"
@@ -46,14 +46,13 @@
     "vite-plugin-lib-inject-css": "^2.0.1"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@dataflor-ag"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dataflor-ag/webstyleguide.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@dataflor-ag/df-ui-empty-state.test.js",
     "build": "tsc && vite build"
   },
   "bugs": {
