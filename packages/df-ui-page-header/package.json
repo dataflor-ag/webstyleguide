@@ -50,7 +50,8 @@
     "url": "git+https://github.com/dataflor-ag/webstyleguide.git"
   },
   "scripts": {
-    "test": "node ./__tests__/df-ui-page-header.test.js"
+    "build": "tsc && vite build",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/dataflor-ag/webstyleguide/issues"
