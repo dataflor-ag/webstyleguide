@@ -2,6 +2,7 @@ import { Components, Theme } from "@mui/material"
 import palette from "./palette"
 import theme from "./index"
 import shadows, { customShadows } from "./shadows"
+import { radius } from "./shape"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -25,7 +26,7 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         fontWeight: "600",
-        borderRadius: 8,
+        borderRadius: radius.md,
         transition: "all 0.2s ease-in-out",
         "::after": {
           content: '""',
@@ -45,17 +46,17 @@ const components: Components<Omit<Theme, "components">> = {
       }),
       sizeSmall: () => ({
         height: theme.spacing(8),
-        borderRadius: "0.375rem",
+        borderRadius: radius.sm,
         padding: theme.spacing(0, 4),
       }),
       sizeMedium: () => ({
         height: theme.spacing(10),
-        borderRadius: "0.5rem",
+        borderRadius: radius.md,
         padding: theme.spacing(0, 5),
       }),
       sizeLarge: () => ({
         height: theme.spacing(12),
-        borderRadius: "0.625rem",
+        borderRadius: radius.lg,
         padding: theme.spacing(0, 6),
       }),
       containedPrimary: {
@@ -237,7 +238,7 @@ const components: Components<Omit<Theme, "components">> = {
       root: () => ({
         fontSize: "1rem",
         fontWeight: "400",
-        borderRadius: 8,
+        borderRadius: radius.md,
         padding: theme.spacing(0, 3),
         height: "2.5rem",
         width: "auto",
@@ -265,7 +266,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiPaper: {
     styleOverrides: {
       root: () => ({
-        borderRadius: 12,
+        borderRadius: radius.xl,
       }),
     },
   },
@@ -273,7 +274,7 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         marginBottom: theme.spacing(5),
-        borderRadius: 8,
+        borderRadius: radius.md,
       }),
     },
   },
@@ -324,6 +325,9 @@ const components: Components<Omit<Theme, "components">> = {
         ".MuiBackdrop": {
           backgroundColor: "rgba(63, 63, 70, 0.6)",
         },
+        ".MuiDialog-paper": {
+          borderRadius: radius["2xl"],
+        },
       })
     },
   },
@@ -371,7 +375,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiAppBar: {
     styleOverrides: {
       root: () => ({
-        borderRadius: 0,
+        borderRadius: radius.none,
         boxShadow: "none",
         backgroundColor: `${palette.grey?.[100]}`,
         color: `${palette.grey?.[700]}`,
