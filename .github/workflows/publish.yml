@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Publish to GitHub Packages
+    - name: lerna publish
       run: npx lerna publish from-package --yes
       env:
         NODE_AUTH_TOKEN: ${{ secrets.PRIVATE_NPM_PUBLISH }}
