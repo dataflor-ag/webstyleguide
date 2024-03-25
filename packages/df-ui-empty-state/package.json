@@ -54,7 +54,8 @@
   },
   "scripts": {
     "test": "node ./__tests__/@dataflor-ag/df-ui-empty-state.test.js",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/dataflor-ag/webstyleguide/issues"
