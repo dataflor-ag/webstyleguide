@@ -53,7 +53,8 @@
     "url": "git+https://github.com/dataflor-ag/webstyleguide.git"
   },
   "scripts": {
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/dataflor-ag/webstyleguide/issues"
