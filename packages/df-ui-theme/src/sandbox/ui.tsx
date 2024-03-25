@@ -8,6 +8,7 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
+  Checkbox
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -200,6 +201,16 @@ function App() {
             <Avatar alt="Agnes Walker" src={AvatarImage} />
             <Avatar alt="Trevor Henderson" src={AvatarImage} />
           </AvatarGroup>
+      </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Checkbox
+      </Typography>
+      <Stack direction="row" spacing={2}>
+        <Checkbox defaultChecked />
+        <Checkbox />
+        <Checkbox disabled />
+        <Checkbox disabled checked />
       </Stack>
     </Box>
   )

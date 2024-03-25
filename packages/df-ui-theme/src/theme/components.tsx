@@ -310,6 +310,13 @@ const components: Components<Omit<Theme, "components">> = {
     defaultProps:{
       spacing: 12,
     }
+  },
+
+  // Checkbox
+  MuiCheckbox: {
+    defaultProps: {
+      disableRipple: true,
+    }
   }
 }
 
