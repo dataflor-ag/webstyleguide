@@ -1,3 +1,5 @@
+name: Publish Storybook To Github Pages
+
 on:
   push:
     branches:
