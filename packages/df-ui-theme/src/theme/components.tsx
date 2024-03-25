@@ -64,7 +64,7 @@ const components: Components<Omit<Theme, "components">> = {
         ":hover": {
           backgroundImage: "none",
           backgroundColor: `${palette.primary?.[600]}`,
-          boxShadow: customShadows.md.primary,
+          boxShadow: customShadows.xs.primary,
         },
         ":focus": {
           boxShadow: customShadows.xs.primaryFocus,
@@ -81,7 +81,7 @@ const components: Components<Omit<Theme, "components">> = {
         boxShadow: customShadows.xs.secondary,
         ":hover": {
           backgroundImage: "none",
-          boxShadow: customShadows.md.secondary,
+          boxShadow: customShadows.xs.secondary,
         },
         ":focus": {
           boxShadow: customShadows.xs.secondaryFocus,
@@ -99,8 +99,8 @@ const components: Components<Omit<Theme, "components">> = {
         border: "none",
         color: `${palette.grey?.[700]}`,
         ":hover": {
-          backgroundColor: `${palette.grey?.[50]}`,
-          boxShadow: customShadows.md.base,
+          backgroundColor: `${palette.grey?.[100]}`,
+          boxShadow: customShadows.xs.base,
           color: `${palette.grey?.[900]}`,
           border: "none",
         },
@@ -134,7 +134,7 @@ const components: Components<Omit<Theme, "components">> = {
         boxShadow: customShadows.xs.error,
         ":hover": {
           backgroundImage: "none",
-          boxShadow: customShadows.md.error,
+          boxShadow: customShadows.xs.error,
         },
         ":focus": {
           boxShadow: customShadows.xs.errorFocus,
@@ -152,7 +152,7 @@ const components: Components<Omit<Theme, "components">> = {
         color: `${palette.error?.[600]}`,
         ":hover": {
           backgroundColor: `${palette.error?.[50]}`,
-          boxShadow: customShadows.md.error,
+          boxShadow: customShadows.xs.error,
           border: "none",
         },
         ":focus": {
@@ -310,7 +310,49 @@ const components: Components<Omit<Theme, "components">> = {
     defaultProps:{
       spacing: 12,
     }
-  }
+  },
+
+  // Dialog
+  MuiDialog:{
+    defaultProps: {
+      PaperProps: {
+        elevation: 6,
+      }
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiBackdrop": {
+          backgroundColor: "rgba(63, 63, 70, 0.6)",
+        },
+      })
+    },
+  },
+  MuiDialogTitle:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1.25rem",
+        fontSize: "1rem",
+      })
+    },
+  },
+  MuiDialogContent:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1.25rem",
+      })
+    },
+  },
+  MuiDialogActions:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1rem 1.25rem",
+        gap: "0.75rem",
+        ">*": {
+          margin: "0 !important",
+        }
+      })
+    },
+  },
 }
 
 export default components
