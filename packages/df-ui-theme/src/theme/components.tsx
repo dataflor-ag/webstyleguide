@@ -353,6 +353,39 @@ const components: Components<Omit<Theme, "components">> = {
       })
     },
   },
+
+  // Container
+  MuiContainer: {
+    defaultProps: {
+      maxWidth: "lg",
+    },
+    styleOverrides: {
+      root: () => ({
+        paddingLeft: "1.5rem !important",
+        paddingRight: "1.5rem !important",
+      })
+    }
+  },
+
+  // AppBar (HeaderNavigation)
+  MuiAppBar: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: 0,
+        boxShadow: "none",
+        backgroundColor: `${palette.grey?.[100]}`,
+        color: `${palette.grey?.[700]}`,
+      })
+    }
+  },
+  MuiToolbar: {
+    styleOverrides: {
+      root: () => ({
+        minHeight: "4.5rem !important",
+        justifyContent: "space-between",
+      })
+    }
+  },
 }
 
 export default components

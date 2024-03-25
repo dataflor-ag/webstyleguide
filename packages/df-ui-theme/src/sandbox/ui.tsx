@@ -13,7 +13,9 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton
+  AppBar,
+  Container,
+  Toolbar
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -270,6 +272,32 @@ function App() {
           </DialogActions>
         </Dialog>
       </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        App bar (Header navigation)
+      </Typography>
+      <AppBar position="static">
+        <Container>
+          <Toolbar disableGutters>
+            <Typography
+              variant="h4"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontWeight: 600,
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              Dataflor
+            </Typography>
+            <Box>
+              <Avatar alt="Remy Sharp" src={AvatarImage} />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
     </Box>
   )
 }
