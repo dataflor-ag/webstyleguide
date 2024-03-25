@@ -2,7 +2,7 @@ import { Components, Theme } from "@mui/material"
 import palette from "./palette"
 import theme from "./index"
 import shadows, { customShadows } from "./shadows"
-import shape, { radius } from "./shape"
+import { radius } from "./shape"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
