@@ -14,7 +14,7 @@ const PageHeaderRoot = styled.div`
   border-bottom: 1px solid ${palette.grey?.[200]};
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `
 
 export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
