@@ -1,3 +1,8 @@
+import { withThemeFromJSXProvider } from "@storybook/addon-themes"
+import { CssBaseline, ThemeProvider } from "@mui/material"
+
+import theme from "../packages/df-ui-theme/src/theme"
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
@@ -9,6 +14,13 @@ const preview = {
       },
     },
   },
-};
+  decorators: [
+    withThemeFromJSXProvider({
+      themes: { theme },
+      Provider: ThemeProvider,
+      GlobalStyles: CssBaseline,
+    }),
+  ],
+}
 
-export default preview;
+export default preview
