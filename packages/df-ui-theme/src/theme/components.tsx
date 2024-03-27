@@ -387,6 +387,40 @@ const components: Components<Omit<Theme, "components">> = {
       })
     }
   },
+
+  // Pagination
+  MuiPagination: {
+    defaultProps: {
+      shape: "rounded",
+      size: "large"
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPagination-ul": {
+          gap: "0.125rem",
+          "li:first-child": {
+            marginRight: "auto"
+          },
+          "li:last-child": {
+            marginLeft: "auto"
+          },
+        },
+      })
+    },
+  },
+  MuiPaginationItem: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.md,
+        margin: 0,
+        fontWeight: "600",
+        fontSize: "0.875rem",
+        "&.Mui-selected, &:hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+        }
+      })
+    }
+  }
 }
 
 export default components

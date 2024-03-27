@@ -16,7 +16,8 @@ import {
   AppBar,
   Container,
   Toolbar,
-  Link
+  Link,
+  Pagination
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -340,6 +341,12 @@ function App() {
         Don’t have an account? <Link fontWeight={"600"} href="#" underline="none">Sign up</Link>
       </Typography>
 
+      <Typography variant="h2" mb={4} mt={8}>
+        Pagination
+      </Typography>
+      <Stack spacing={2}>
+        <Pagination count={10} />
+      </Stack>
     </Box>
   )
 }
