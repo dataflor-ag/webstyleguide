@@ -22,7 +22,6 @@ import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
 import Image from "../assets/contemplative-reptile.jpg"
 import AvatarImage from "../assets/avatar.jpg"
-import { grey } from '@mui/material/colors';
 
 
 function App() {
