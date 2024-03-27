@@ -19,7 +19,7 @@ const customShadowFocus = `0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette
 const customShadowError = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[600]}`
 const customShadowErrorFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`
 const customShadowPrimary = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[600]}`
-const customShadowPrimaryFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[600]}, 0 0 0 4px ${palette.primary?.[100]}`
+const customShadowPrimaryFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[600]}, 0 0 0 4px ${palette.primary?.[200]}`
 const customShadowSecondary = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[900]}`
 const customShadowSecondaryFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[900]}, 0 0 0 4px ${palette.grey?.[300]}`
 

@@ -21,6 +21,14 @@ Set config for publishing:
   },
 ```
 
+Set build command:
+```
+"scripts": {
+  [...]
+  "prepublishOnly": "npm run build"
+},
+```
+
 ## Manage dependencies
 Your UI component package can have dependencies as normal packages do. To link to another local package use: 
 

@@ -2,6 +2,7 @@ import { Components, Theme } from "@mui/material"
 import palette from "./palette"
 import theme from "./index"
 import shadows, { customShadows } from "./shadows"
+import { radius } from "./shape"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -25,7 +26,7 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         fontWeight: "600",
-        borderRadius: 8,
+        borderRadius: radius.md,
         transition: "all 0.2s ease-in-out",
         "::after": {
           content: '""',
@@ -45,17 +46,17 @@ const components: Components<Omit<Theme, "components">> = {
       }),
       sizeSmall: () => ({
         height: theme.spacing(8),
-        borderRadius: "0.375rem",
+        borderRadius: radius.sm,
         padding: theme.spacing(0, 4),
       }),
       sizeMedium: () => ({
         height: theme.spacing(10),
-        borderRadius: "0.5rem",
+        borderRadius: radius.md,
         padding: theme.spacing(0, 5),
       }),
       sizeLarge: () => ({
         height: theme.spacing(12),
-        borderRadius: "0.625rem",
+        borderRadius: radius.lg,
         padding: theme.spacing(0, 6),
       }),
       containedPrimary: {
@@ -64,7 +65,7 @@ const components: Components<Omit<Theme, "components">> = {
         ":hover": {
           backgroundImage: "none",
           backgroundColor: `${palette.primary?.[600]}`,
-          boxShadow: customShadows.md.primary,
+          boxShadow: customShadows.xs.primary,
         },
         ":focus": {
           boxShadow: customShadows.xs.primaryFocus,
@@ -81,13 +82,12 @@ const components: Components<Omit<Theme, "components">> = {
         boxShadow: customShadows.xs.secondary,
         ":hover": {
           backgroundImage: "none",
-          boxShadow: customShadows.md.secondary,
+          boxShadow: customShadows.xs.secondary,
         },
         ":focus": {
           boxShadow: customShadows.xs.secondaryFocus,
         },
         ":disabled": {
-
           boxShadow: customShadows.xs.secondary,
           color: "white",
           backgroundColor: `${palette.secondary?.[900]}`,
@@ -97,18 +97,16 @@ const components: Components<Omit<Theme, "components">> = {
       outlinedSecondary: {
         boxShadow: customShadows.xs.base,
         border: "none",
-        color: `${palette.grey?.[700]}`,
+        color: `${palette.grey?.[900]}`,
         ":hover": {
-          backgroundColor: `${palette.grey?.[50]}`,
-          boxShadow: customShadows.md.base,
-          color: `${palette.grey?.[900]}`,
+          backgroundColor: `${palette.grey?.[100]}`,
+          boxShadow: customShadows.xs.base,
           border: "none",
         },
         ":focus": {
           boxShadow: customShadows.xs.focus,
         },
         ":disabled": {
-          color: `${palette.grey?.[700]}`,
           boxShadow: customShadows.xs.base,
           border: "none",
           opacity: "0.4",
@@ -134,7 +132,7 @@ const components: Components<Omit<Theme, "components">> = {
         boxShadow: customShadows.xs.error,
         ":hover": {
           backgroundImage: "none",
-          boxShadow: customShadows.md.error,
+          boxShadow: customShadows.xs.error,
         },
         ":focus": {
           boxShadow: customShadows.xs.errorFocus,
@@ -152,7 +150,7 @@ const components: Components<Omit<Theme, "components">> = {
         color: `${palette.error?.[600]}`,
         ":hover": {
           backgroundColor: `${palette.error?.[50]}`,
-          boxShadow: customShadows.md.error,
+          boxShadow: customShadows.xs.error,
           border: "none",
         },
         ":focus": {
@@ -237,7 +235,7 @@ const components: Components<Omit<Theme, "components">> = {
       root: () => ({
         fontSize: "1rem",
         fontWeight: "400",
-        borderRadius: 8,
+        borderRadius: radius.md,
         padding: theme.spacing(0, 3),
         height: "2.5rem",
         width: "auto",
@@ -265,7 +263,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiPaper: {
     styleOverrides: {
       root: () => ({
-        borderRadius: 12,
+        borderRadius: radius.xl,
       }),
     },
   },
@@ -273,7 +271,7 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         marginBottom: theme.spacing(5),
-        borderRadius: 8,
+        borderRadius: radius.md,
       }),
     },
   },
@@ -312,10 +310,192 @@ const components: Components<Omit<Theme, "components">> = {
     }
   },
 
-  // Checkbox
-  MuiCheckbox: {
+  // Dialog
+  MuiDialog:{
     defaultProps: {
-      disableRipple: true,
+      PaperProps: {
+        elevation: 6,
+      }
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiBackdrop-root": {
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+        },
+        ".MuiDialog-paper": {
+          borderRadius: radius["2xl"],
+        },
+      })
+    },
+  },
+  MuiDialogTitle:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1.25rem",
+        fontSize: "1rem",
+      })
+    },
+  },
+  MuiDialogContent:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1.25rem",
+      })
+    },
+  },
+  MuiDialogActions:{
+    styleOverrides: {
+      root: () => ({
+        padding: "1rem 1.25rem",
+        gap: "0.75rem",
+        ">*": {
+          margin: "0 !important",
+        }
+      })
+    },
+  },
+
+  // Container
+  MuiContainer: {
+    defaultProps: {
+      maxWidth: "lg",
+    },
+    styleOverrides: {
+      root: () => ({
+        paddingLeft: "1.5rem !important",
+        paddingRight: "1.5rem !important",
+      })
+    }
+  },
+
+  // AppBar (HeaderNavigation)
+  MuiAppBar: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.none,
+        boxShadow: "none",
+        backgroundColor: `${palette.grey?.[100]}`,
+        color: `${palette.grey?.[700]}`,
+      })
+    }
+  },
+  MuiToolbar: {
+    styleOverrides: {
+      root: () => ({
+        minHeight: "4.5rem !important",
+        justifyContent: "space-between",
+      })
+    }
+  },
+
+  // Pagination
+  MuiPagination: {
+    defaultProps: {
+      shape: "rounded",
+      size: "large"
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPagination-ul": {
+          gap: "0.125rem",
+          "li:first-child": {
+            marginRight: "auto"
+          },
+          "li:last-child": {
+            marginLeft: "auto"
+          },
+        },
+      })
+    },
+  },
+  MuiPaginationItem: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.md,
+        margin: 0,
+        fontWeight: "600",
+        fontSize: "0.875rem",
+        "&.Mui-selected": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          "&:hover": {
+            backgroundColor: `${palette.grey?.[100]}`,
+          },
+        },
+        "&:hover": {
+          backgroundColor: `${palette.grey?.[50]}`,
+        },
+      })
+    }
+  },
+
+  // Select / Input dropdown
+  MuiMenu: {
+    defaultProps: {
+      autoFocus: false,
+      elevation: 4,
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPaper-root": {
+          borderRadius: radius.md,
+          marginTop: theme.spacing(1),
+        },
+        ".MuiList-root": {
+          padding: theme.spacing(1),
+          display: "flex",
+          flexDirection: "column",
+          gap: "1px",
+        },
+      })
+    }
+  },
+  MuiMenuItem: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.sm,
+        fontSize: "1rem",
+        fontWeight: "500",
+        color: `${palette.grey?.[900]}`,
+        transition: "all 0.2s ease-in-out",
+        padding: theme.spacing(0, 2),
+        height: "2.5rem",
+        "&:hover": {
+          backgroundColor: `${palette.grey?.[50]}`,
+        },
+        "&.Mui-selected": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          "&:hover": {
+            backgroundColor: `${palette.grey?.[100]}`,
+          }
+        }
+      })
+    }
+  },
+  MuiSelect: {
+    defaultProps: {
+      variant: "standard",
+    },
+    styleOverrides: {
+      root: () => ({
+        padding: "0",
+        ".MuiSelect-select" : {
+          padding: theme.spacing(0, 3),
+          height: "inherit !important",
+          display: "flex",
+          alignItems: "center",
+          paddingRight: theme.spacing(10) + "!important",
+        },
+        ".MuiSelect-select:focus" :{
+          backgroundColor: "transparent",
+        },
+        ".MuiSelect-icon" :{
+          width: "1.25rem",
+          height: "1.25rem",
+          top: "calc(50% - 0.625rem)",
+          right: theme.spacing(3),
+          color: `${palette.grey?.[400]}`,
+        }
+      })
     }
   }
 }

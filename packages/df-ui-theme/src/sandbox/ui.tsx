@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Button,
   Avatar,
@@ -8,16 +9,49 @@ import {
   CardMedia,
   Typography,
   CardActionArea,
-  Checkbox
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  AppBar,
+  Container,
+  Toolbar,
+  Link,
+  Pagination,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  SelectChangeEvent
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
 import Image from "../assets/contemplative-reptile.jpg"
 import AvatarImage from "../assets/avatar.jpg"
 
+
 function App() {
+
+  // Modal
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+  // Select
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
   return (
-    <Box padding={6}>
+    <Box padding={12} mb={40}>
       <Typography variant="h2" mb={4} mt={8}>
         Buttons
       </Typography>
@@ -204,14 +238,147 @@ function App() {
       </Stack>
 
       <Typography variant="h2" mb={4} mt={8}>
-        Checkbox
+        Dialog
       </Typography>
-      <Stack direction="row" spacing={2}>
-        <Checkbox defaultChecked />
-        <Checkbox />
-        <Checkbox disabled />
-        <Checkbox disabled checked />
+      <Stack direction="row">
+        <Button onClick={handleClickOpen}>Open dialog</Button>
+        <Dialog
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          open={open}
+        >
+          <DialogTitle id="customized-dialog-title">
+            Modal title
+          </DialogTitle>
+          {/* <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            CLOSE ICON
+          </IconButton> */}
+          <DialogContent dividers>
+            <Typography gutterBottom>
+              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+              consectetur ac, vestibulum at eros.
+            </Typography>
+            <Typography gutterBottom>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+            </Typography>
+            <Typography gutterBottom>
+              Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+              magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
+              ullamcorper nulla non metus auctor fringilla.
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button variant='outlined' onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button color='primary' autoFocus onClick={handleClose}>
+              Save changes
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        App bar (Header navigation)
+      </Typography>
+      <AppBar position="static">
+        <Container>
+          <Toolbar disableGutters>
+            <Typography
+              variant="h4"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontWeight: 600,
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              Dataflor
+            </Typography>
+            <Box>
+              <Avatar alt="Remy Sharp" src={AvatarImage} />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Links
+      </Typography>
+      <Typography variant="h3" mb={4} mt={8}>
+        Basic
+      </Typography>
+      <Stack direction="row" spacing={4}>
+        <Link href="#" underline="none">
+          {'underline="none"'}
+        </Link>
+        <Link href="#" underline="hover">
+          {'underline="hover"'}
+        </Link>
+        <Link href="#" underline="always">
+          {'underline="always"'}
+        </Link>
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Color inherited
+      </Typography>
+      <Stack direction="row" spacing={4}>
+        <Link href="#" color="inherit" underline="none">
+          {'underline="none"'}
+        </Link>
+        <Link href="#" color="inherit" underline="hover">
+          {'underline="hover"'}
+        </Link>
+        <Link href="#" color="inherit" underline="always">
+          {'underline="always"'}
+        </Link>
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        In text
+      </Typography>
+      <Typography variant="body2">
+        Don’t have an account? <Link fontWeight={"600"} href="#" underline="none">Sign up</Link>
+      </Typography>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Pagination
+      </Typography>
+      <Stack spacing={2}>
+        <Pagination count={10} />
+      </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Select / Input dropdown
+      </Typography>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
     </Box>
   )
 }

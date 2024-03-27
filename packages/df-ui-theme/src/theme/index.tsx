@@ -7,6 +7,16 @@ import shape from "./shape"
 import shadows from "./shadows"
 // import breakpoints from "./breakpoints"
 
+export {
+  palette,
+  typography,
+  components,
+  spacing,
+  shape,
+  shadows,
+  // breakpoints
+}
+
 const theme = createTheme({
   palette,
   typography,
