@@ -17,7 +17,12 @@ import {
   Container,
   Toolbar,
   Link,
-  Pagination
+  Pagination,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  SelectChangeEvent
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -27,6 +32,7 @@ import AvatarImage from "../assets/avatar.jpg"
 
 function App() {
 
+  // Modal
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -36,8 +42,16 @@ function App() {
     setOpen(false);
   };
 
+
+  // Select
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
   return (
-    <Box padding={6}>
+    <Box padding={12} mb={40}>
       <Typography variant="h2" mb={4} mt={8}>
         Buttons
       </Typography>
@@ -347,6 +361,24 @@ function App() {
       <Stack spacing={2}>
         <Pagination count={10} />
       </Stack>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Select / Input dropdown
+      </Typography>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
     </Box>
   )
 }
