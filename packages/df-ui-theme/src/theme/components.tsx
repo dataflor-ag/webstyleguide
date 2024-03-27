@@ -415,8 +415,85 @@ const components: Components<Omit<Theme, "components">> = {
         margin: 0,
         fontWeight: "600",
         fontSize: "0.875rem",
-        "&.Mui-selected, &:hover": {
+        "&.Mui-selected": {
           backgroundColor: `${palette.grey?.[100]}`,
+          "&:hover": {
+            backgroundColor: `${palette.grey?.[100]}`,
+          },
+        },
+        "&:hover": {
+          backgroundColor: `${palette.grey?.[50]}`,
+        },
+      })
+    }
+  },
+
+  // Select / Input dropdown
+  MuiMenu: {
+    defaultProps: {
+      autoFocus: false,
+      elevation: 4,
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPaper-root": {
+          borderRadius: radius.md,
+          marginTop: theme.spacing(1),
+        },
+        ".MuiList-root": {
+          padding: theme.spacing(1),
+          display: "flex",
+          flexDirection: "column",
+          gap: "1px",
+        },
+      })
+    }
+  },
+  MuiMenuItem: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.sm,
+        fontSize: "1rem",
+        fontWeight: "500",
+        color: `${palette.grey?.[900]}`,
+        transition: "all 0.2s ease-in-out",
+        padding: theme.spacing(0, 2),
+        height: "2.5rem",
+        "&:hover": {
+          backgroundColor: `${palette.grey?.[50]}`,
+        },
+        "&.Mui-selected": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          "&:hover": {
+            backgroundColor: `${palette.grey?.[100]}`,
+          }
+        }
+      })
+    }
+  },
+  MuiSelect: {
+    defaultProps: {
+      variant: "standard",
+    },
+    styleOverrides: {
+      root: () => ({
+        padding: "0",
+        ".MuiSelect-select" : {
+          padding: theme.spacing(0, 3),
+          height: "inherit !important",
+          display: "flex",
+          alignItems: "center",
+          paddingRight: theme.spacing(10) + "!important",
+        },
+        ".MuiSelect-select:focus" :{
+          backgroundColor: "transparent",
+        },
+        ".MuiSelect-icon" :{
+          width: "1.25rem",
+          height: "1.25rem",
+          top: "calc(50% - 0.625rem)",
+          right: theme.spacing(3),
+          color: `${palette.grey?.[400]}`,
         }
       })
     }
