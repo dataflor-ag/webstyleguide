@@ -88,7 +88,6 @@ const components: Components<Omit<Theme, "components">> = {
           boxShadow: customShadows.xs.secondaryFocus,
         },
         ":disabled": {
-
           boxShadow: customShadows.xs.secondary,
           color: "white",
           backgroundColor: `${palette.secondary?.[900]}`,
@@ -98,18 +97,16 @@ const components: Components<Omit<Theme, "components">> = {
       outlinedSecondary: {
         boxShadow: customShadows.xs.base,
         border: "none",
-        color: `${palette.grey?.[700]}`,
+        color: `${palette.grey?.[900]}`,
         ":hover": {
           backgroundColor: `${palette.grey?.[100]}`,
           boxShadow: customShadows.xs.base,
-          color: `${palette.grey?.[900]}`,
           border: "none",
         },
         ":focus": {
           boxShadow: customShadows.xs.focus,
         },
         ":disabled": {
-          color: `${palette.grey?.[700]}`,
           boxShadow: customShadows.xs.base,
           border: "none",
           opacity: "0.4",
@@ -322,8 +319,8 @@ const components: Components<Omit<Theme, "components">> = {
     },
     styleOverrides: {
       root: () => ({
-        ".MuiBackdrop": {
-          backgroundColor: "rgba(63, 63, 70, 0.6)",
+        ".MuiBackdrop-root": {
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
         },
         ".MuiDialog-paper": {
           borderRadius: radius["2xl"],
@@ -390,6 +387,40 @@ const components: Components<Omit<Theme, "components">> = {
       })
     }
   },
+
+  // Pagination
+  MuiPagination: {
+    defaultProps: {
+      shape: "rounded",
+      size: "large"
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPagination-ul": {
+          gap: "0.125rem",
+          "li:first-child": {
+            marginRight: "auto"
+          },
+          "li:last-child": {
+            marginLeft: "auto"
+          },
+        },
+      })
+    },
+  },
+  MuiPaginationItem: {
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.md,
+        margin: 0,
+        fontWeight: "600",
+        fontSize: "0.875rem",
+        "&.Mui-selected, &:hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+        }
+      })
+    }
+  }
 }
 
 export default components
