@@ -1,9 +1,9 @@
 import React from "react"
 import { Stack, Typography } from "@mui/material"
 import styled from "@emotion/styled"
-import ui from "@dataflor-ag/df-ui-theme"
+import { palette } from "@dataflor-ag/df-ui-theme"
 
-export interface PageHeaderProps {
+interface PageHeaderProps {
   title: string
   description?: string
   children?: React.ReactNode
@@ -11,7 +11,7 @@ export interface PageHeaderProps {
 
 const PageHeaderRoot = styled.div`
   padding: 2rem 0;
-  border-bottom: 1px solid ${ui.theme.palette.grey[200]};
+  border-bottom: 1px solid ${palette.grey?.[200]};
   display: flex;
   justify-content: space-between;
   align-items: center;

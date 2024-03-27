@@ -1,14 +1,13 @@
 import { join, resolve } from "node:path"
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react-swc"
-import { libInjectCss } from "vite-plugin-lib-inject-css"
 import dts from "vite-plugin-dts"
 
 import { peerDependencies } from "./package.json"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), libInjectCss(), dts({ rollupTypes: true })],
+  plugins: [react(), dts({ rollupTypes: true })],
   build: {
     target: "esnext",
     lib: {
@@ -17,7 +16,12 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react/jsx-runtime", ...Object.keys(peerDependencies)],
+      external: [
+        "react/jsx-runtime",
+        "@mui/material",
+        "@dataflor-ag/df-ui-theme",
+        ...Object.keys(peerDependencies),
+      ],
     },
   },
 })
