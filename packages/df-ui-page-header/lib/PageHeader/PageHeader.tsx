@@ -15,6 +15,10 @@ const PageHeaderRoot = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  & .MuiTypography-body1 {
+    color: ${palette.grey?.[600]};
+  }
 `
 
 export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
