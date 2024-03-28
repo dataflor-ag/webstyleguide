@@ -36,14 +36,15 @@ const components: Components<Omit<Theme, "components">> = {
           opacity: "1",
           inset: "0px",
           transition: "all 0.2s ease-in-out",
-          background: "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
           PointerEvent: "none",
         },
-        ":hover":{
-          "::after":{
+        ":hover": {
+          "::after": {
             opacity: "0",
-          }
-        }
+          },
+        },
       }),
       sizeSmall: () => ({
         height: theme.spacing(8),
@@ -201,7 +202,7 @@ const components: Components<Omit<Theme, "components">> = {
       }),
     },
   },
-  MuiFormHelperText:{
+  MuiFormHelperText: {
     styleOverrides: {
       root: () => ({
         marginTop: "0.25rem",
@@ -209,8 +210,8 @@ const components: Components<Omit<Theme, "components">> = {
         "&.Mui-error": {
           color: `${palette.error?.[600]}`,
         },
-      })
-    }
+      }),
+    },
   },
   MuiInputBase: {
     styleOverrides: {
@@ -302,21 +303,21 @@ const components: Components<Omit<Theme, "components">> = {
         fontSize: "1rem",
         width: "2.5rem",
         height: "2.5rem",
-      })
-    }
+      }),
+    },
   },
   MuiAvatarGroup: {
-    defaultProps:{
+    defaultProps: {
       spacing: 12,
-    }
+    },
   },
 
   // Dialog
-  MuiDialog:{
+  MuiDialog: {
     defaultProps: {
       PaperProps: {
         elevation: 6,
-      }
+      },
     },
     styleOverrides: {
       root: () => ({
@@ -326,33 +327,33 @@ const components: Components<Omit<Theme, "components">> = {
         ".MuiDialog-paper": {
           borderRadius: radius["2xl"],
         },
-      })
+      }),
     },
   },
-  MuiDialogTitle:{
+  MuiDialogTitle: {
     styleOverrides: {
       root: () => ({
         padding: "1.25rem",
         fontSize: "1rem",
-      })
+      }),
     },
   },
-  MuiDialogContent:{
+  MuiDialogContent: {
     styleOverrides: {
       root: () => ({
         padding: "1.25rem",
-      })
+      }),
     },
   },
-  MuiDialogActions:{
+  MuiDialogActions: {
     styleOverrides: {
       root: () => ({
         padding: "1rem 1.25rem",
         gap: "0.75rem",
         ">*": {
           margin: "0 !important",
-        }
-      })
+        },
+      }),
     },
   },
 
@@ -365,8 +366,8 @@ const components: Components<Omit<Theme, "components">> = {
       root: () => ({
         paddingLeft: "1.5rem !important",
         paddingRight: "1.5rem !important",
-      })
-    }
+      }),
+    },
   },
 
   // AppBar (HeaderNavigation)
@@ -377,36 +378,36 @@ const components: Components<Omit<Theme, "components">> = {
         boxShadow: "none",
         backgroundColor: `${palette.grey?.[100]}`,
         color: `${palette.grey?.[700]}`,
-      })
-    }
+      }),
+    },
   },
   MuiToolbar: {
     styleOverrides: {
       root: () => ({
         minHeight: "4.5rem !important",
         justifyContent: "space-between",
-      })
-    }
+      }),
+    },
   },
 
   // Pagination
   MuiPagination: {
     defaultProps: {
       shape: "rounded",
-      size: "large"
+      size: "large",
     },
     styleOverrides: {
       root: () => ({
         ".MuiPagination-ul": {
           gap: "0.125rem",
           "li:first-child": {
-            marginRight: "auto"
+            marginRight: "auto",
           },
           "li:last-child": {
-            marginLeft: "auto"
+            marginLeft: "auto",
           },
         },
-      })
+      }),
     },
   },
   MuiPaginationItem: {
@@ -425,8 +426,8 @@ const components: Components<Omit<Theme, "components">> = {
         "&:hover": {
           backgroundColor: `${palette.grey?.[50]}`,
         },
-      })
-    }
+      }),
+    },
   },
 
   // Select / Input dropdown
@@ -447,8 +448,8 @@ const components: Components<Omit<Theme, "components">> = {
           flexDirection: "column",
           gap: "1px",
         },
-      })
-    }
+      }),
+    },
   },
   MuiMenuItem: {
     styleOverrides: {
@@ -467,10 +468,10 @@ const components: Components<Omit<Theme, "components">> = {
           backgroundColor: `${palette.grey?.[100]}`,
           "&:hover": {
             backgroundColor: `${palette.grey?.[100]}`,
-          }
-        }
-      })
-    }
+          },
+        },
+      }),
+    },
   },
   MuiSelect: {
     defaultProps: {
@@ -479,25 +480,25 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         padding: "0",
-        ".MuiSelect-select" : {
+        ".MuiSelect-select": {
           padding: theme.spacing(0, 3),
           height: "inherit !important",
           display: "flex",
           alignItems: "center",
           paddingRight: theme.spacing(10) + "!important",
         },
-        ".MuiSelect-select:focus" :{
+        ".MuiSelect-select:focus": {
           backgroundColor: "transparent",
         },
-        ".MuiSelect-icon" :{
+        ".MuiSelect-icon": {
           width: "1.25rem",
           height: "1.25rem",
           top: "calc(50% - 0.625rem)",
           right: theme.spacing(3),
           color: `${palette.grey?.[400]}`,
-        }
-      })
-    }
+        },
+      }),
+    },
   },
 
   // Checkbox
@@ -522,7 +523,7 @@ const components: Components<Omit<Theme, "components">> = {
           borderRadius: radius.sm,
           boxShadow: customShadows.xs.base,
           transition: "all 0.2s ease-in-out",
-          "svg": {
+          svg: {
             transition: "all 0.2s ease-in-out",
             transform: "scale(0.5)",
             opacity: "0",
@@ -542,57 +543,58 @@ const components: Components<Omit<Theme, "components">> = {
               opacity: "1",
               inset: "0px",
               transition: "all 0.2s ease-in-out",
-              background: "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
               PointerEvent: "none",
             },
-            "svg": {
+            svg: {
               transform: "scale(1)",
               opacity: "1",
-            }
+            },
           },
           "&.Mui-focusVisible": {
             ".checkbox-icon": {
               boxShadow: customShadows.xs.secondaryFocus,
-            }
-          }
+            },
+          },
         },
         "&.Mui-focusVisible": {
           ".checkbox-icon": {
             boxShadow: customShadows.xs.focus,
-          }
+          },
         },
-        ":hover":{
+        ":hover": {
           ".checkbox-icon": {
-            "::after":{
+            "::after": {
               opacity: "0",
-            }
-          }
+            },
+          },
         },
         "&.Mui-disabled": {
           ".checkbox-icon": {
             backgroundColor: `${palette.secondary?.[50]}`,
             color: `${palette.secondary?.[300]}`,
             boxShadow: customShadows.xs.base,
-          }
+          },
         },
-        "+ .MuiTypography-root" :{
+        "+ .MuiTypography-root": {
           fontSize: "1rem",
         },
-        "&.Mui-checked + .MuiTypography-root" :{
+        "&.Mui-checked + .MuiTypography-root": {
           color: `${palette.secondary?.[900]}`,
         },
       }),
       sizeSmall: () => ({
-        "+ .MuiTypography-root" :{
+        "+ .MuiTypography-root": {
           fontSize: "0.875rem",
         },
         ".checkbox-icon": {
           width: "1rem",
           height: "1rem",
           borderRadius: radius.xs,
-        }
-      })
-    }
+        },
+      }),
+    },
   },
 
   // FormControlLabel
@@ -600,17 +602,19 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         marginLeft: "-0.5rem",
-        ".MuiTypography-root" :{
+        ".MuiTypography-root": {
+          fontWeight: "500",
+          color: `${palette.grey?.[600]}`,
+          transition: "all 0.2s ease-in-out",
+
           "&.Mui-disabled": {
             opacity: "0.4",
-            fontWeight: "500",
-            color: `${palette.secondary?.[600]}`,
-            transition: "all 0.2s ease-in-out",
-          }
-        }
-      })
-    }
-  }
+            color: `${palette.grey?.[600]}`,
+          },
+        },
+      }),
+    },
+  },
 }
 
 export default components
