@@ -25,7 +25,9 @@ import {
   SelectChangeEvent,
   Checkbox,
   FormGroup,
-  FormControlLabel
+  FormControlLabel,
+  Tabs,
+  Tab
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -51,6 +53,12 @@ function App() {
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
+  };
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChangeTabs = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
 
   return (
@@ -424,6 +432,17 @@ function App() {
         <FormControlLabel control={<Checkbox />} label="Unchecked" />
         <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
       </FormGroup>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Tabs
+      </Typography>
+      <Tabs value={value} onChange={handleChangeTabs}>
+        <Tab label="General" />
+        <Tab label="Password" />
+        <Tab label="Appearance" />
+        <Tab label="Billing" />
+        <Tab label="Notifications" />
+      </Tabs>
     </Box>
   )
 }
