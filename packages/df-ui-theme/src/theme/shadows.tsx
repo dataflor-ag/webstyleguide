@@ -14,8 +14,8 @@ type CustomShadow = {
 
 type CustomShadowNames = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl"
 
-const customShadowBase = `0 0 0 1px ${palette.grey?.[200]}`
-const customShadowFocus = `0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`
+const customShadowBase = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[200]}`
+const customShadowFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`
 const customShadowError = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[600]}`
 const customShadowErrorFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[600]}, 0 0 0 4px ${palette.error?.[200]}`
 const customShadowPrimary = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[600]}`

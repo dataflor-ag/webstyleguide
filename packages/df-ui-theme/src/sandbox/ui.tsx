@@ -22,7 +22,10 @@ import {
   MenuItem,
   FormControl,
   Select,
-  SelectChangeEvent
+  SelectChangeEvent,
+  Checkbox,
+  FormGroup,
+  FormControlLabel
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -379,6 +382,48 @@ function App() {
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
       </FormControl>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Checkbox
+      </Typography>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Small
+      </Typography>
+      <Stack direction={"row"}>
+        <Checkbox />
+        <Checkbox defaultChecked />
+        <Checkbox indeterminate defaultChecked />
+      </Stack>
+      <Stack direction={"row"}>
+        <Checkbox disabled />
+        <Checkbox disabled checked />
+        <Checkbox indeterminate checked disabled />
+      </Stack>
+
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Medium
+      </Typography>
+      <Stack direction={"row"}>
+        <Checkbox size="medium" />
+        <Checkbox size="medium" defaultChecked />
+        <Checkbox size="medium" indeterminate defaultChecked />
+      </Stack>
+      <Stack direction={"row"}>
+        <Checkbox size="medium" disabled />
+        <Checkbox size="medium" disabled checked />
+        <Checkbox size="medium" indeterminate checked disabled />
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Labeled
+      </Typography>
+      <FormGroup>
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Checked" />
+        <FormControlLabel control={<Checkbox />} label="Unchecked" />
+        <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+      </FormGroup>
     </Box>
   )
 }
