@@ -576,7 +576,7 @@ function App() {
             name="radio-buttons" 
             checked={selectedValue === 'b'} 
             onChange={handleRadioChange} value="b" />
-          } label="Checked" />
+          } label="Unchecked" />
         <FormControlLabel disabled control={<Radio name="radio-buttons" />} label="Disabled" />
       </FormGroup>
     </Box>
