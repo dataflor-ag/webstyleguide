@@ -29,7 +29,9 @@ import {
   Tabs,
   Tab,
   ToggleButton,
-  ToggleButtonGroup
+  ToggleButtonGroup,
+  Radio,
+  RadioGroup,
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -71,6 +73,13 @@ function App() {
     newStatus: string | null,
   ) => {
     setStatus(newStatus);
+  };
+
+  // Radio button
+  const [selectedValue, setSelectedValue] = React.useState('a');
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
   };
 
   return (
@@ -475,6 +484,102 @@ function App() {
           Ongoing
         </ToggleButton>
       </ToggleButtonGroup>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Radio buttons
+      </Typography>
+      <Typography variant="h3" mb={4} mt={8}>
+        Small
+      </Typography>
+      <Stack direction={"row"}>
+        <Radio
+          checked={selectedValue === 'a'}
+          onChange={handleRadioChange}
+          value="a"
+          name="radio-buttons"
+          inputProps={{ 'aria-label': 'A' }}
+        />
+        <Radio
+          checked={selectedValue === 'b'}
+          onChange={handleRadioChange}
+          value="b"
+          name="radio-buttons"
+          inputProps={{ 'aria-label': 'B' }}
+        />
+      </Stack>
+      <Stack direction={"row"}>
+        <Radio
+          value="c"
+          disabled
+          name="radio-buttons"
+          inputProps={{ 'aria-label': 'C' }}
+        />
+        <Radio
+          value="d"
+          disabled
+          defaultChecked
+          name="radio-buttons"
+          inputProps={{ 'aria-label': 'D' }}
+        />
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Medium
+      </Typography>
+      <Stack direction={"row"}>
+        <Radio
+          checked={selectedValue === 'a'}
+          onChange={handleRadioChange}
+          value="a"
+          name="radio-buttons"
+          size="medium"
+          inputProps={{ 'aria-label': 'A' }}
+        />
+        <Radio
+          checked={selectedValue === 'b'}
+          onChange={handleRadioChange}
+          value="b"
+          name="radio-buttons"
+          size="medium"
+          inputProps={{ 'aria-label': 'B' }}
+        />
+      </Stack>
+      <Stack direction={"row"}>
+        <Radio
+          value="c"
+          disabled
+          name="radio-buttons"
+          size="medium"
+          inputProps={{ 'aria-label': 'C' }}
+        />
+        <Radio
+          value="d"
+          disabled
+          defaultChecked
+          name="radio-buttons"
+          size="medium"
+          inputProps={{ 'aria-label': 'D' }}
+        />
+      </Stack>
+      <Typography variant="h3" mb={4} mt={8}>
+        Labeled
+      </Typography>
+      <FormGroup>
+        <FormControlLabel control={
+          <Radio 
+            defaultChecked 
+            name="radio-buttons" 
+            checked={selectedValue === 'a'} 
+            onChange={handleRadioChange} value="a" />
+          } label="Checked" />
+        <FormControlLabel control={
+          <Radio 
+            name="radio-buttons" 
+            checked={selectedValue === 'b'} 
+            onChange={handleRadioChange} value="b" />
+          } label="Checked" />
+        <FormControlLabel disabled control={<Radio name="radio-buttons" />} label="Disabled" />
+      </FormGroup>
     </Box>
   )
 }
