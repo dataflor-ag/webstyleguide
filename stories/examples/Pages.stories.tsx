@@ -59,7 +59,7 @@ export function Login() {
               required
               id="filled-required"
               label="Email"
-              defaultValue="Hello World"
+              placeholder="olivia@dataflor.de"
             />
 
             <TextField
@@ -67,6 +67,7 @@ export function Login() {
               label="Password"
               type="password"
               autoComplete="current-password"
+              placeholder="• • • • • • • • • •"
             />
 
             <Stack
