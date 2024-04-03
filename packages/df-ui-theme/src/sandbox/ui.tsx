@@ -30,7 +30,8 @@ import {
   Tab,
   ToggleButton,
   ToggleButtonGroup,
-  Radio
+  Radio,
+  Menu
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -79,6 +80,16 @@ function App() {
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
+  };
+
+  // Dropdown
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openDropdown = Boolean(anchorEl);
+  const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleDropdownClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -579,6 +590,35 @@ function App() {
           } label="Unchecked" />
         <FormControlLabel disabled control={<Radio name="radio-buttons" />} label="Disabled" />
       </FormGroup>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Dropdown
+      </Typography>
+      <div>
+        <Button
+          variant="outlined"
+          id="basic-button"
+          aria-controls={openDropdown ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={openDropdown ? 'true' : undefined}
+          onClick={handleDropdownClick}
+        >
+          Dashboard
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={openDropdown}
+          onClose={handleDropdownClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={handleDropdownClose}>Profile</MenuItem>
+          <MenuItem divider onClick={handleDropdownClose}>My account</MenuItem>
+          <MenuItem onClick={handleDropdownClose}>Logout</MenuItem>
+        </Menu>
+      </div>
     </Box>
   )
 }
