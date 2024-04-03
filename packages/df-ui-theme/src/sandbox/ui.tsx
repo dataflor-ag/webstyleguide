@@ -31,7 +31,8 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Radio,
-  Menu
+  Menu,
+  Switch
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -76,7 +77,7 @@ function App() {
   };
 
   // Radio button
-  const [selectedValue, setSelectedValue] = React.useState('a');
+  const [selectedValue, setSelectedValue] = React.useState('b');
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
@@ -91,6 +92,9 @@ function App() {
   const handleDropdownClose = () => {
     setAnchorEl(null);
   };
+
+  // Switch
+  const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
   return (
     <Box padding={12} mb={40}>
@@ -579,14 +583,14 @@ function App() {
           <Radio 
             defaultChecked 
             name="radio-buttons" 
-            checked={selectedValue === 'a'} 
-            onChange={handleRadioChange} value="a" />
+            checked={selectedValue === 'b'} 
+            onChange={handleRadioChange} value="b" />
           } label="Checked" />
         <FormControlLabel control={
           <Radio 
             name="radio-buttons" 
-            checked={selectedValue === 'b'} 
-            onChange={handleRadioChange} value="b" />
+            checked={selectedValue === 'a'} 
+            onChange={handleRadioChange} value="a" />
           } label="Unchecked" />
         <FormControlLabel disabled control={<Radio name="radio-buttons" />} label="Disabled" />
       </FormGroup>
@@ -619,6 +623,30 @@ function App() {
           <MenuItem onClick={handleDropdownClose}>Logout</MenuItem>
         </Menu>
       </div>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Switches / Toggles
+      </Typography>
+      <Typography variant="h3" mb={4} mt={8}>
+        Unlabeled
+      </Typography>
+      <Stack direction={"row"}>
+        <Switch {...label} />
+        <Switch {...label} defaultChecked />
+      </Stack>
+      <Stack direction={"row"}>
+        <Switch {...label} disabled />
+        <Switch {...label} disabled defaultChecked />
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
+        Labeled
+      </Typography>
+      <FormGroup>
+        <FormControlLabel control={<Switch defaultChecked />} label="Checked" />
+        <FormControlLabel required control={<Switch />} label="Unchecked" />
+        <FormControlLabel disabled control={<Switch />} label="Disabled" />
+      </FormGroup>
     </Box>
   )
 }
