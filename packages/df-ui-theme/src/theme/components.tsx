@@ -184,6 +184,9 @@ const components: Components<Omit<Theme, "components">> = {
     },
   },
   MuiInputLabel: {
+    defaultProps: {
+      shrink: true,
+    },
     styleOverrides: {
       root: () => ({
         "&.Mui-focused": {
@@ -247,6 +250,12 @@ const components: Components<Omit<Theme, "components">> = {
         marginTop: 0,
         transition: "all 0.1s ease-in-out",
         boxShadow: shadows[1],
+        "input": {
+          "&::placeholder": {
+            color: palette.grey?.[400],
+            opacity: "1"
+          },
+        },
         "&.Mui-focused": {
           boxShadow: customShadows.xs.focus,
         },
@@ -498,6 +507,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiSelect: {
     defaultProps: {
       variant: "standard",
+      displayEmpty: true,
       MenuProps: {
         PopoverClasses: {
           paper: "select-dropdown",
@@ -507,6 +517,9 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         padding: "0",
+        ".select-placeholder": {
+          color: palette.grey?.[400],
+        },
         ".MuiSelect-select": {
           padding: theme.spacing(0, 3),
           height: "inherit !important",
