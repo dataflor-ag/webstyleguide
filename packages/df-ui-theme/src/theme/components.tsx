@@ -955,6 +955,26 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
       }),
+      sizeSmall: () => ({
+        ".MuiSwitch-thumb": {
+          width: "0.75rem", 
+          height: "0.75rem",
+          "&:after": {
+            width: "0.25rem", 
+            height: "0.25rem",
+          },
+        },
+        ".MuiSwitch-track": {
+          width: "1.75rem", 
+          height: "1rem", 
+        },
+        ".Mui-checked": {
+          transform: "translateY(-50%) translateX(0.75rem) !important",
+        },
+        "+ .MuiTypography-root": {
+          fontSize: "0.875rem",
+        },
+      }),
     },
   },
 }
