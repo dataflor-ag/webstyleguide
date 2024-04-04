@@ -630,7 +630,7 @@ function App() {
         Switches / Toggles
       </Typography>
       <Typography variant="h3" mb={4} mt={8}>
-        Unlabeled
+        Small
       </Typography>
       <Stack direction={"row"}>
         <Switch {...label} />
@@ -642,11 +642,23 @@ function App() {
       </Stack>
 
       <Typography variant="h3" mb={4} mt={8}>
+        Medium
+      </Typography>
+      <Stack direction={"row"}>
+        <Switch size="medium" {...label} />
+        <Switch size="medium" {...label} defaultChecked />
+      </Stack>
+      <Stack direction={"row"}>
+        <Switch size="medium" {...label} disabled />
+        <Switch size="medium" {...label} disabled defaultChecked />
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
         Labeled
       </Typography>
       <FormGroup>
         <FormControlLabel control={<Switch defaultChecked />} label="Checked" />
-        <FormControlLabel required control={<Switch />} label="Unchecked" />
+        <FormControlLabel control={<Switch />} label="Unchecked" />
         <FormControlLabel disabled control={<Switch />} label="Disabled" />
       </FormGroup>
     </Box>
