@@ -5,6 +5,7 @@ import shadows, { customShadows } from "./shadows"
 import { radius } from "./shape"
 import { checkboxIcon, checkboxIconIndeterminate } from "./utils/checkbox"
 import { radioButtonIcon } from "./utils/radioButton"
+import { chipIconRemove } from "./utils/chips"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -667,8 +668,8 @@ const components: Components<Omit<Theme, "components">> = {
           left: "0",
           backgroundColor: `${palette.grey?.[200]}`,
           zIndex: "-1",
-        }
-      })
+        },
+      }),
     },
   },
   MuiTab: {
@@ -695,13 +696,13 @@ const components: Components<Omit<Theme, "components">> = {
           opacity: "0.4",
         },
       }),
-    }
+    },
   },
 
   // Toggle button
   MuiToggleButtonGroup: {
     defaultProps: {
-      size: "medium"
+      size: "medium",
     },
     styleOverrides: {
       root: () => ({
@@ -836,7 +837,7 @@ const components: Components<Omit<Theme, "components">> = {
           span: {
             width: "0.375rem",
             height: "0.375rem",
-          }
+          },
         },
       }),
     },
@@ -849,8 +850,8 @@ const components: Components<Omit<Theme, "components">> = {
     },
     styleOverrides: {
       root: () => ({
-        width: "auto", 
-        height: "auto", 
+        width: "auto",
+        height: "auto",
         padding: "0.5rem",
         ".MuiButtonBase-root": {
           top: "50%",
@@ -866,7 +867,7 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
         ".MuiSwitch-thumb": {
-          width: "1rem", 
+          width: "1rem",
           height: "1rem",
           backgroundColor: "white",
           boxShadow: "0 1px 2px 0 rgba(0,0,0,0.03)",
@@ -885,8 +886,8 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
         ".MuiSwitch-track": {
-          width: "2.25rem", 
-          height: "1.25rem", 
+          width: "2.25rem",
+          height: "1.25rem",
           backgroundColor: theme.palette.grey?.[200],
           position: "relative",
           borderRadius: "50rem",
@@ -911,7 +912,7 @@ const components: Components<Omit<Theme, "components">> = {
               backgroundColor: theme.palette.grey?.[200],
               "&:after": {
                 backgroundColor: theme.palette.grey?.[200],
-              }
+              },
             },
             "+ .MuiSwitch-track": {
               backgroundColor: "transparent !important",
@@ -942,6 +943,70 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
       }),
+    },
+  },
+  // Chips
+  MuiChip: {
+    defaultProps: {
+      variant: "outlined",
+      deleteIcon: chipIconRemove,
+    },
+    styleOverrides: {
+      root: () => ({
+        fontWeight: 500,
+        backgroundColor: "white",
+        borderColor: `${palette.grey?.[200]}`,
+        color: `${palette.grey?.[600]}`,
+        ".chip-icon-remove": {
+          width: "1rem",
+          height: "1rem",
+        },
+      }),
+      sizeMedium: () => ({
+        height: "28px",
+        fontSize: "0.875rem",
+      }),
+      sizeSmall: () => ({
+        height: "20px",
+        fontSize: "0.75rem",
+      }),
+      labelMedium: {
+        padding: "0.375rem 0.75rem",
+      },
+      labelSmall: {
+        padding: "0.375rem 0.75rem",
+      },
+
+      colorPrimary: {
+        backgroundColor: `${palette.primary?.[50]}`,
+        borderColor: `${palette.primary?.[200]}`,
+        color: `${palette.primary?.[600]}`,
+      },
+      colorSecondary: {
+        backgroundColor: `${palette.secondary?.[50]}`,
+        borderColor: `${palette.secondary?.[200]}`,
+        color: `${palette.secondary?.[600]}`,
+      },
+      colorSuccess: {
+        backgroundColor: `${palette.success?.[50]}`,
+        borderColor: `${palette.success?.[200]}`,
+        color: `${palette.success?.[600]}`,
+      },
+      colorWarning: {
+        backgroundColor: `${palette.warning?.[50]}`,
+        borderColor: `${palette.warning?.[200]}`,
+        color: `${palette.warning?.[600]}`,
+      },
+      colorError: {
+        backgroundColor: `${palette.error?.[50]}`,
+        borderColor: `${palette.error?.[200]}`,
+        color: `${palette.error?.[600]}`,
+      },
+      colorInfo: {
+        backgroundColor: `${palette.info?.[50]}`,
+        borderColor: `${palette.info?.[200]}`,
+        color: `${palette.info?.[600]}`,
+      },
     },
   },
 }
