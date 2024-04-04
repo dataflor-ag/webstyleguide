@@ -332,6 +332,9 @@ const components: Components<Omit<Theme, "components">> = {
     },
     styleOverrides: {
       root: () => ({
+        ".MuiBackdrop-root": {
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+        },
         ".MuiDialog-paper": {
           borderRadius: radius["2xl"],
         },
@@ -969,6 +972,9 @@ const components: Components<Omit<Theme, "components">> = {
           borderRadius: radius["2xl"],
           minWidth: "25rem",
         },
+        ".MuiBackdrop-root": {
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+        },
       }),
       paperAnchorRight: () => ({
         top: "0.5rem",
@@ -979,15 +985,6 @@ const components: Components<Omit<Theme, "components">> = {
         top: "0.5rem",
         left: "0.5rem",
         bottom: "0.5rem",
-      }),
-    },
-  },
-
-  // Backdrop
-  MuiBackdrop: {
-    styleOverrides:{
-      root: () => ({
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
       }),
     },
   },
