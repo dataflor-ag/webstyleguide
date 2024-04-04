@@ -166,7 +166,7 @@ function App() {
           required
           id="filled-required"
           label="Email"
-          defaultValue="Hello World"
+          placeholder="olivia@dataflor.de"
         />
         <TextField
           disabled
@@ -179,6 +179,7 @@ function App() {
           label="Password"
           type="password"
           autoComplete="current-password"
+          placeholder="• • • • • • • • • •"
         />
         <TextField
           id="filled-read-only-input"
@@ -189,7 +190,7 @@ function App() {
             readOnly: true,
           }}
         />
-        <TextField id="filled-number" label="Number" type="number" />
+        <TextField id="filled-number" label="Number" type="number" placeholder="0000 0000 0000 0000" />
         <TextField id="filled-search" label="Search field" type="search" />
         <TextField
           error
@@ -419,6 +420,7 @@ function App() {
           value={age}
           label="Age"
           onChange={handleChange}
+          placeholder="Select age"
         >
           <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
