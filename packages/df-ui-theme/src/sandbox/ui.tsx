@@ -32,7 +32,8 @@ import {
   ToggleButtonGroup,
   Radio,
   Menu,
-  Switch
+  Switch,
+  Drawer
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
@@ -95,6 +96,13 @@ function App() {
 
   // Switch
   const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+  // Drawer
+  const [openDrawer, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setDrawerOpen(newOpen);
+  };
 
   return (
     <Box padding={12} mb={40}>
@@ -649,6 +657,32 @@ function App() {
         <FormControlLabel required control={<Switch />} label="Unchecked" />
         <FormControlLabel disabled control={<Switch />} label="Disabled" />
       </FormGroup>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Drawer
+      </Typography>
+      <Button variant="outlined" onClick={toggleDrawer(true)}>Open drawer</Button>
+      <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer(false)}>
+        <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea>
+              <CardContent>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={Image}
+                  alt="green iguana"
+                />
+                <Typography gutterBottom variant="h5">
+                  Lizard · Card with action area
+                </Typography>
+                <Typography variant="body2" color="secondary.600">
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+      </Drawer>
     </Box>
   )
 }
