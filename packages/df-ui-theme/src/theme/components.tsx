@@ -185,6 +185,9 @@ const components: Components<Omit<Theme, "components">> = {
     },
   },
   MuiInputLabel: {
+    defaultProps: {
+      shrink: true,
+    },
     styleOverrides: {
       root: () => ({
         "&.Mui-focused": {
@@ -248,6 +251,12 @@ const components: Components<Omit<Theme, "components">> = {
         marginTop: 0,
         transition: "all 0.1s ease-in-out",
         boxShadow: shadows[1],
+        input: {
+          "&::placeholder": {
+            color: palette.grey?.[400],
+            opacity: "1",
+          },
+        },
         "&.Mui-focused": {
           boxShadow: customShadows.xs.focus,
         },
@@ -499,6 +508,7 @@ const components: Components<Omit<Theme, "components">> = {
   MuiSelect: {
     defaultProps: {
       variant: "standard",
+      displayEmpty: true,
       MenuProps: {
         PopoverClasses: {
           paper: "select-dropdown",
@@ -508,6 +518,9 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         padding: "0",
+        ".select-placeholder": {
+          color: palette.grey?.[400],
+        },
         ".MuiSelect-select": {
           padding: theme.spacing(0, 3),
           height: "inherit !important",
@@ -943,6 +956,26 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
       }),
+      sizeSmall: () => ({
+        ".MuiSwitch-thumb": {
+          width: "0.75rem",
+          height: "0.75rem",
+          "&:after": {
+            width: "0.25rem",
+            height: "0.25rem",
+          },
+        },
+        ".MuiSwitch-track": {
+          width: "1.75rem",
+          height: "1rem",
+        },
+        ".Mui-checked": {
+          transform: "translateY(-50%) translateX(0.75rem) !important",
+        },
+        "+ .MuiTypography-root": {
+          fontSize: "0.875rem",
+        },
+      }),
     },
   },
   // Chips
@@ -1031,6 +1064,23 @@ const components: Components<Omit<Theme, "components">> = {
           boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
         },
       },
+    },
+  },
+
+  // Divider
+  MuiDivider: {
+    styleOverrides: {
+      root: () => ({
+        borderColor: palette.grey?.[200],
+        borderBottomWidth: "1px",
+        "&:before, &:after": {
+          borderTop: `1px solid ${palette.grey?.[200]}`,
+        },
+        ".MuiDivider-wrapper": {
+          paddingLeft: "0.625rem",
+          paddingRight: "0.625rem",
+        },
+      }),
     },
   },
 }

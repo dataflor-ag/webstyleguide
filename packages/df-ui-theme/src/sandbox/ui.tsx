@@ -34,11 +34,13 @@ import {
   Menu,
   Switch,
   Chip,
+  Divider,
 } from "@mui/material"
 import Stack from "@mui/material/Stack"
 import Box from "@mui/material/Box"
 import Image from "../assets/contemplative-reptile.jpg"
 import AvatarImage from "../assets/avatar.jpg"
+import palette from "../theme/palette"
 
 function App() {
   // Modal
@@ -199,6 +201,12 @@ function App() {
           type="number"
           placeholder="0000 0000 0000 0000"
         />
+        <TextField
+          id="filled-number"
+          label="Number"
+          type="number"
+          placeholder="0000 0000 0000 0000"
+        />
         <TextField id="filled-search" label="Search field" type="search" />
         <TextField
           error
@@ -280,7 +288,9 @@ function App() {
         Dialog
       </Typography>
       <Stack direction="row">
-        <Button onClick={handleClickOpen}>Open dialog</Button>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Open dialog
+        </Button>
         <Dialog
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
@@ -793,6 +803,33 @@ function App() {
         <Chip label="Label" color="error" onDelete={handleChipDelete} />
         <Chip label="Label" color="info" onDelete={handleChipDelete} />
       </Stack>
+      <Typography>Content dividers</Typography>
+      <Typography variant="body2" my={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Typography>
+      <Divider />
+      <Typography variant="body2" my={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Typography>
+      <Divider>
+        <Typography
+          color={palette.grey?.[400]}
+          fontWeight={"600"}
+          variant="overline"
+          my={4}
+        >
+          Or
+        </Typography>
+      </Divider>
+      <Typography variant="body2" my={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Typography>
+      <Divider>
+        <Button variant="outlined">Add</Button>
+      </Divider>
+      <Typography variant="body2" my={4}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Typography>
     </Box>
   )
 }
