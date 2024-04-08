@@ -803,7 +803,10 @@ function App() {
         <Chip label="Label" color="error" onDelete={handleChipDelete} />
         <Chip label="Label" color="info" onDelete={handleChipDelete} />
       </Stack>
-      <Typography>Content dividers</Typography>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Content dividers
+      </Typography>
       <Typography variant="body2" my={4}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </Typography>
