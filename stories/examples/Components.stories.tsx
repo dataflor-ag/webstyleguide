@@ -5,6 +5,7 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  DrawerSidebar,
 } from "../../packages/df-ui-drawer/lib"
 import { Drawer, Button, Box, Stack, Typography } from "@mui/material"
 
@@ -28,6 +29,13 @@ export function DrawerExample() {
     <Box sx={{ width: "100%", height: "400px" }} role="presentation" p={4}>
       <Button onClick={toggleDrawer(true)}>Open Drawer</Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+        <DrawerSidebar>
+          <Stack gap={4} direction={"column"}>
+            <span>A</span>
+            <span>B</span>
+            <span>C</span>
+          </Stack>
+        </DrawerSidebar>
         <DrawerHeader content={<Typography variant="h4">Preview</Typography>}>
           <Stack gap={3} direction={"row"} justifyContent={"flex-end"}>
             <Button variant="outlined">Edit</Button>
