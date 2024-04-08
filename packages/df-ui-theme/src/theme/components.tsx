@@ -996,6 +996,7 @@ const components: Components<Omit<Theme, "components">> = {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          transition: "all 0.2s ease-in-out",
         },
         "&.MuiChip-clickable:active": {
           boxShadow: customShadows.xs.focus,
