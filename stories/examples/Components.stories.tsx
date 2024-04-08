@@ -27,17 +27,13 @@ export function DrawerExample() {
   return (
     <Box sx={{ width: "100%", height: "400px" }} role="presentation" p={4}>
       <Button onClick={toggleDrawer(true)}>Open Drawer</Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         <DrawerHeader content={<Typography variant="h4">Preview</Typography>}>
           <Stack gap={3} direction={"row"} justifyContent={"flex-end"}>
-            <Button variant="outlined">Import</Button>
-            <Button color="primary">Add</Button>
+            <Button variant="outlined">Edit</Button>
           </Stack>
         </DrawerHeader>
         <DrawerBody>
-          <Typography variant="h2" mb={1}>
-            Hello World
-          </Typography>
           <Typography variant="body1" mb={1}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
             eligendi odio assumenda fugit nisi. Repudiandae doloribus fuga saepe
@@ -56,7 +52,7 @@ export function DrawerExample() {
             width={"100%"}
           >
             <Button variant="outlined">Cancel</Button>
-            <Button color="primary">Done</Button>
+            <Button color="primary">Save changes</Button>
           </Stack>
         </DrawerFooter>
       </Drawer>

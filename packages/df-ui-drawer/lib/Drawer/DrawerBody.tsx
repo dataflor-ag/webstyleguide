@@ -7,6 +7,8 @@ interface DrawerBodyProps {
 
 const DrawerBodyRoot = styled.div`
   padding: 1.5rem;
+  flex: 1 auto;
+  overflow-y: auto;
 `
 
 export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(

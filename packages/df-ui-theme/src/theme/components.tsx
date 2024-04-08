@@ -971,6 +971,7 @@ const components: Components<Omit<Theme, "components">> = {
           height: "auto",
           borderRadius: radius["2xl"],
           minWidth: "25rem",
+          maxWidth: "33rem",
         },
         ".MuiBackdrop-root": {
           backgroundColor: "rgba(0, 0, 0, 0.6)",
