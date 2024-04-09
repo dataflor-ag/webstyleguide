@@ -1,16 +1,13 @@
 {
-  "name": "@dataflor-ag/df-ui-empty-state",
-  "version": "1.0.1",
-  "description": "The EmptyState component in React serves as a placeholder when there's no data to display. It enhances user experience by providing clear feedback. Developers can customize its appearance and behavior using props, making it adaptable for various applications.",
+  "name": "@dataflor-ag/df-ui-drawer",
+  "version": "1.0.0",
+  "description": "Skeleton components for the drawer component.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
   "type": "module",
   "files": [
     "dist"
-  ],
-  "sideEffects": [
-    "**/*.css"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -31,6 +28,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
+  "dependencies": {
+    "@dataflor-ag/df-ui-theme": "file:../df-ui-theme",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0"
+  },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
@@ -42,8 +44,7 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vite-plugin-dts": "^3.7.3",
-    "vite-plugin-lib-inject-css": "^2.0.1"
+    "vite-plugin-dts": "^3.7.3"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@dataflor-ag"

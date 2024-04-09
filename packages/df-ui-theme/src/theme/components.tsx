@@ -334,7 +334,7 @@ const components: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         ".MuiBackdrop-root": {
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
         },
         ".MuiDialog-paper": {
           borderRadius: radius["2xl"],
@@ -1081,6 +1081,40 @@ const components: Components<Omit<Theme, "components">> = {
           paddingLeft: "0.625rem",
           paddingRight: "0.625rem",
         },
+      }),
+    },
+  },
+
+  // Drawer
+  MuiDrawer: {
+    defaultProps: {
+      PaperProps: {
+        elevation: 6,
+      },
+    },
+    styleOverrides: {
+      root: () => ({
+        ".MuiPaper-root": {
+          height: "auto",
+          borderRadius: radius["2xl"],
+          minWidth: "25rem",
+          maxWidth: "33rem",
+          overflow: "visible",
+          transformStyle: "preserve-3d",
+        },
+        ".MuiBackdrop-root": {
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+        },
+      }),
+      paperAnchorRight: () => ({
+        top: "0.5rem",
+        right: "0.5rem",
+        bottom: "0.5rem",
+      }),
+      paperAnchorLeft: () => ({
+        top: "0.5rem",
+        left: "0.5rem",
+        bottom: "0.5rem",
       }),
     },
   },
