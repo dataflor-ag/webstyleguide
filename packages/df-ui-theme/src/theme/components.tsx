@@ -5,6 +5,7 @@ import shadows, { customShadows } from "./shadows"
 import { radius } from "./shape"
 import { checkboxIcon, checkboxIconIndeterminate } from "./utils/checkbox"
 import { radioButtonIcon } from "./utils/radioButton"
+import { chipIconRemove } from "./utils/chips"
 
 const components: Components<Omit<Theme, "components">> = {
   MuiGrid: {
@@ -250,10 +251,10 @@ const components: Components<Omit<Theme, "components">> = {
         marginTop: 0,
         transition: "all 0.1s ease-in-out",
         boxShadow: shadows[1],
-        "input": {
+        input: {
           "&::placeholder": {
             color: palette.grey?.[400],
-            opacity: "1"
+            opacity: "1",
           },
         },
         "&.Mui-focused": {
@@ -680,8 +681,8 @@ const components: Components<Omit<Theme, "components">> = {
           left: "0",
           backgroundColor: `${palette.grey?.[200]}`,
           zIndex: "-1",
-        }
-      })
+        },
+      }),
     },
   },
   MuiTab: {
@@ -708,13 +709,13 @@ const components: Components<Omit<Theme, "components">> = {
           opacity: "0.4",
         },
       }),
-    }
+    },
   },
 
   // Toggle button
   MuiToggleButtonGroup: {
     defaultProps: {
-      size: "medium"
+      size: "medium",
     },
     styleOverrides: {
       root: () => ({
@@ -849,7 +850,7 @@ const components: Components<Omit<Theme, "components">> = {
           span: {
             width: "0.375rem",
             height: "0.375rem",
-          }
+          },
         },
       }),
     },
@@ -862,8 +863,8 @@ const components: Components<Omit<Theme, "components">> = {
     },
     styleOverrides: {
       root: () => ({
-        width: "auto", 
-        height: "auto", 
+        width: "auto",
+        height: "auto",
         padding: "0.5rem",
         ".MuiButtonBase-root": {
           top: "50%",
@@ -879,7 +880,7 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
         ".MuiSwitch-thumb": {
-          width: "1rem", 
+          width: "1rem",
           height: "1rem",
           backgroundColor: "white",
           boxShadow: "0 1px 2px 0 rgba(0,0,0,0.03)",
@@ -898,8 +899,8 @@ const components: Components<Omit<Theme, "components">> = {
           },
         },
         ".MuiSwitch-track": {
-          width: "2.25rem", 
-          height: "1.25rem", 
+          width: "2.25rem",
+          height: "1.25rem",
           backgroundColor: theme.palette.grey?.[200],
           position: "relative",
           borderRadius: "50rem",
@@ -924,7 +925,7 @@ const components: Components<Omit<Theme, "components">> = {
               backgroundColor: theme.palette.grey?.[200],
               "&:after": {
                 backgroundColor: theme.palette.grey?.[200],
-              }
+              },
             },
             "+ .MuiSwitch-track": {
               backgroundColor: "transparent !important",
@@ -953,6 +954,132 @@ const components: Components<Omit<Theme, "components">> = {
               PointerEvent: "none",
             },
           },
+        },
+      }),
+      sizeSmall: () => ({
+        ".MuiSwitch-thumb": {
+          width: "0.75rem",
+          height: "0.75rem",
+          "&:after": {
+            width: "0.25rem",
+            height: "0.25rem",
+          },
+        },
+        ".MuiSwitch-track": {
+          width: "1.75rem",
+          height: "1rem",
+        },
+        ".Mui-checked": {
+          transform: "translateY(-50%) translateX(0.75rem) !important",
+        },
+        "+ .MuiTypography-root": {
+          fontSize: "0.875rem",
+        },
+      }),
+    },
+  },
+  // Chips
+  MuiChip: {
+    defaultProps: {
+      variant: "outlined",
+      deleteIcon: chipIconRemove,
+    },
+    styleOverrides: {
+      root: () => ({
+        fontWeight: "600",
+        backgroundColor: "white",
+        borderColor: `${palette.grey?.[200]}`,
+        color: `${palette.grey?.[600]}`,
+        ".chip-icon-remove": {
+          width: "1rem",
+          height: "1rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          transition: "all 0.2s ease-in-out",
+        },
+        "&.MuiChip-clickable:active": {
+          boxShadow: customShadows.xs.focus,
+        },
+      }),
+      sizeMedium: () => ({
+        height: "28px",
+        fontSize: "0.875rem",
+      }),
+      sizeSmall: () => ({
+        height: "20px",
+        fontSize: "0.75rem",
+      }),
+      labelMedium: {
+        padding: "0.375rem 0.75rem",
+      },
+      labelSmall: {
+        padding: "0.375rem 0.75rem",
+      },
+
+      colorPrimary: {
+        backgroundColor: `${palette.primary?.[50]}`,
+        borderColor: `${palette.primary?.[200]}`,
+        color: `${palette.primary?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: customShadows.xs.primaryFocus,
+        },
+      },
+      colorSecondary: {
+        backgroundColor: `${palette.secondary?.[50]}`,
+        borderColor: `${palette.secondary?.[200]}`,
+        color: `${palette.secondary?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: customShadows.xs.secondaryFocus,
+        },
+      },
+      colorSuccess: {
+        backgroundColor: `${palette.success?.[50]}`,
+        borderColor: `${palette.success?.[200]}`,
+        color: `${palette.success?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`,
+        },
+      },
+      colorWarning: {
+        backgroundColor: `${palette.warning?.[50]}`,
+        borderColor: `${palette.warning?.[200]}`,
+        color: `${palette.warning?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`,
+        },
+      },
+      colorError: {
+        backgroundColor: `${palette.error?.[50]}`,
+        borderColor: `${palette.error?.[200]}`,
+        color: `${palette.error?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: customShadows.xs.errorFocus,
+        },
+      },
+      colorInfo: {
+        backgroundColor: `${palette.info?.[50]}`,
+        borderColor: `${palette.info?.[200]}`,
+        color: `${palette.info?.[600]}`,
+        "&.MuiChip-clickable:active": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
+        },
+      },
+    },
+  },
+
+  // Divider
+  MuiDivider: {
+    styleOverrides: {
+      root: () => ({
+        borderColor: palette.grey?.[200],
+        borderBottomWidth: "1px",
+        "&:before, &:after": {
+          borderTop: `1px solid ${palette.grey?.[200]}`,
+        },
+        ".MuiDivider-wrapper": {
+          paddingLeft: "0.625rem",
+          paddingRight: "0.625rem",
         },
       }),
     },
