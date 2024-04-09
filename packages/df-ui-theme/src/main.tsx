@@ -5,15 +5,13 @@ import { ThemeProvider } from "@mui/material/styles"
 import { CssBaseline } from "@mui/material"
 import theme from "./theme"
 
-import Ui from "./sandbox/ui.tsx"
-// import Example from "./sandbox/example.tsx"
+import App from "./sandbox/App.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Ui />
-      {/* <Example /> */}
+      <App />
     </ThemeProvider>
   </React.StrictMode>
 )
