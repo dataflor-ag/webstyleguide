@@ -1,3 +1,11 @@
-export { default as home } from './home';
-export { default as close } from './close';
-export { default as mail } from './mail';
+import home from './home';
+import close from './close';
+import mail from './mail';
+
+const Icon = {
+    home,
+    close,
+    mail,
+};
+
+export default Icon;
