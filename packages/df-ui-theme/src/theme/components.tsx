@@ -1118,6 +1118,17 @@ const components: Components<Omit<Theme, "components">> = {
       }),
     },
   },
+
+  // SvgIcon
+  MuiSvgIcon: {
+    styleOverrides: {
+      root: () => ({
+        "path" : {
+          fill: "currentColor",
+        },
+      }),
+    },
+  },
 }
 
 export default components
