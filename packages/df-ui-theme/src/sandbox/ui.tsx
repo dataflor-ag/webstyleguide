@@ -42,6 +42,7 @@ import Box from "@mui/material/Box"
 import Image from "../assets/contemplative-reptile.jpg"
 import AvatarImage from "../assets/avatar.jpg"
 import palette from "../theme/palette"
+import { IconButtonExamples } from "./examples"
 
 function App() {
   // Modal
@@ -881,6 +882,8 @@ function App() {
             </CardActionArea>
           </Card>
         </Drawer>
+
+        <IconButtonExamples/>
       </Container>
     </Box>
   )
