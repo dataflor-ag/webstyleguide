@@ -1188,6 +1188,7 @@ const components: Components<Omit<Theme, "components">> = {
       },
 
       colorError: {
+        color: `${palette.error?.[600]}`,
         ":hover": {
           backgroundColor: `${palette.error?.[50]}`,
         },
