@@ -19,6 +19,7 @@ import tabs from "./components/tabs"
 import chip from "./components/chip"
 import divider from "./components/divider"
 import drawer from "./components/drawer"
+import icon from "./components/icon"
 
 const components: Components<Omit<Theme, "components">> = {
   ...grid,
@@ -40,6 +41,7 @@ const components: Components<Omit<Theme, "components">> = {
   ...chip,
   ...divider,
   ...drawer,
+  ...icon
 }
 
 export default components
