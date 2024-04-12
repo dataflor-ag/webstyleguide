@@ -41,7 +41,7 @@ const components: Components<Omit<Theme, "components">> = {
   ...chip,
   ...divider,
   ...drawer,
-  ...icon
+  ...icon,
 }
 
 export default components

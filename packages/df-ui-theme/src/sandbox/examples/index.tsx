@@ -14,6 +14,7 @@ import SwitchExamples from "./SwitchExamples"
 import ChipExamples from "./ChipExamplates"
 import DividerExamples from "./DividerExamples"
 import DrawerExamples from "./DrawerExamples"
+import ButtonGroupExamples from "./ButtonGroupExamples"
 
 export {
   ButtonExamples,
@@ -32,4 +33,5 @@ export {
   ChipExamples,
   DividerExamples,
   DrawerExamples,
+  ButtonGroupExamples,
 }
