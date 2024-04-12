@@ -18,6 +18,7 @@ import {
   ChipExamples,
   DividerExamples,
   DrawerExamples,
+  ButtonGroupExamples,
 } from "./examples"
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <ChipExamples />
         <DividerExamples />
         <DrawerExamples />
+        <ButtonGroupExamples />
       </Container>
     </Box>
   )

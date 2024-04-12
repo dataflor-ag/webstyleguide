@@ -159,6 +159,40 @@ const styles: Components<Omit<Theme, "components">> = {
       },
     },
   },
+  MuiButtonGroup: {
+    defaultProps: {
+      disableRipple: true,
+      color: "secondary",
+      variant: "contained",
+    },
+    styleOverrides: {
+      root: () => ({
+        borderRadius: radius.md,
+        button: {
+          backgroundColor: "transparent",
+          color: `${palette.grey?.[900]}`,
+          boxShadow: "none",
+          borderRadius: "0",
+          borderColor: `${palette.grey?.[200]}` + "!important",
+          "&:first-child": {
+            borderTopLeftRadius: radius.md,
+            borderBottomLeftRadius: radius.md,
+          },
+          "&:last-child": {
+            borderTopRightRadius: radius.md,
+            borderBottomRightRadius: radius.md,
+          },
+          "&:hover": {
+            backgroundColor: `${palette.grey?.[100]}`,
+          },
+          ":focus": {
+            zIndex: "1",
+            boxShadow: customShadows.xs.focus + "!important",
+          },
+        },
+      }),
+    },
+  },
 }
 
 export default styles
