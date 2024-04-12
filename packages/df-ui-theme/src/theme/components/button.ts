@@ -193,6 +193,134 @@ const styles: Components<Omit<Theme, "components">> = {
       }),
     },
   },
+  MuiIconButton: {
+    defaultProps: {
+      color: "inherit",
+    },
+    styleOverrides: {
+      root: () => ({
+        padding: "0",
+        transition: "all 0.2s ease-in-out",
+        ":disabled": {
+          opacity: "0.4",
+        },
+      }),
+
+      colorInherit: {
+        color: `${palette.grey?.[600]}`,
+        ":hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          color: `${palette.grey?.[900]}`,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.focus,
+        },
+        ":disabled": {
+          color: `${palette.grey?.[700]}`,
+        },
+      },
+
+      colorSecondary: {
+        boxShadow: customShadows.xs.base,
+        color: `${palette.grey?.[600]}`,
+        backgroundColor: "white",
+        ":hover": {
+          backgroundColor: `${palette.grey?.[100]}`,
+          color: `${palette.grey?.[900]}`,
+        },
+        ":focus": {
+          boxShadow: customShadows.xs.focus,
+        },
+        ":disabled": {
+          boxShadow: customShadows.xs.base,
+        },
+      },
+
+      colorPrimary: {
+        color: `${palette.primary?.[500]}`,
+        ":hover": {
+          backgroundColor: `${palette.primary?.[50]}`,
+        },
+        ":focus": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[300]}, 0 0 0 4px ${palette.primary?.[200]}`,
+        },
+        ":disabled": {
+          color: `${palette.primary?.[500]}`,
+        },
+      },
+
+      colorError: {
+        color: `${palette.error?.[600]}`,
+        ":hover": {
+          backgroundColor: `${palette.error?.[50]}`,
+        },
+        ":focus": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[300]}, 0 0 0 4px ${palette.error?.[200]}`,
+        },
+        ":disabled": {
+          color: `${palette.error?.[500]}`,
+        },
+      },
+
+      colorInfo: {
+        ":hover": {
+          backgroundColor: `${palette.info?.[50]}`,
+        },
+        ":focus": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
+        },
+        ":disabled": {
+          color: `${palette.info?.[500]}`,
+        },
+      },
+
+      colorSuccess: {
+        ":hover": {
+          backgroundColor: `${palette.success?.[50]}`,
+        },
+        ":focus": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`,
+        },
+        ":disabled": {
+          color: `${palette.success?.[500]}`,
+        },
+      },
+
+      colorWarning: {
+        ":hover": {
+          backgroundColor: `${palette.warning?.[50]}`,
+        },
+        ":focus": {
+          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`,
+        },
+        ":disabled": {
+          color: `${palette.warning?.[500]}`,
+        },
+      },
+
+      sizeSmall: () => ({
+        width: theme.spacing(8),
+        height: theme.spacing(8),
+        borderRadius: radius.sm,
+        svg: {
+          fontSize: "1rem",
+        },
+      }),
+      sizeMedium: () => ({
+        width: theme.spacing(10),
+        height: theme.spacing(10),
+        borderRadius: radius.md,
+        svg: {
+          fontSize: "1.25rem",
+        },
+      }),
+      sizeLarge: () => ({
+        width: theme.spacing(12),
+        height: theme.spacing(12),
+        borderRadius: radius.lg,
+      }),
+    },
+  },
 }
 
 export default styles

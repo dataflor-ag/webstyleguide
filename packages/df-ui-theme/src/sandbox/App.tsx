@@ -19,6 +19,7 @@ import {
   DividerExamples,
   DrawerExamples,
   ButtonGroupExamples,
+  IconButtonExamples,
 } from "./examples"
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         <DividerExamples />
         <DrawerExamples />
         <ButtonGroupExamples />
+        <IconButtonExamples />
       </Container>
     </Box>
   )
