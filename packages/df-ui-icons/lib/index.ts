@@ -1,11 +1,4 @@
-import home from "./icons/home"
-import close from "./icons/close"
-import mail from "./icons/mail"
+import icons from "./icons"
 
-const icon = {
-  home,
-  close,
-  mail,
-}
-
-export default icon
+const Icon = icons
+export default Icon

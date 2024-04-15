@@ -1,11 +1,12 @@
 import React from "react"
 import { Meta } from "@storybook/react"
-
+import { Stack } from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "Icons/Example",
   tags: ["autodocs"],
+  decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
   parameters: {
     layout: "fullscreen",
   },
@@ -13,11 +14,14 @@ const meta: Meta = {
 
 export default meta
 
-export function Login() {
+export function Default() {
   return (
     <div>
-      <h2>Lorem, ipsum dolor.</h2>
-      <Icon.home />
+      <Stack direction={"row"} gap={4} justifyContent={"center"}>
+        <Icon.home />
+        <Icon.mail />
+        <Icon.close />
+      </Stack>
     </div>
   )
 }
