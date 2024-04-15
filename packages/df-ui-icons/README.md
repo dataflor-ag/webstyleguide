@@ -4,8 +4,16 @@
 
 ## Usage
 
-```
-const dfUiIcons = require('df-ui-icons');
+```tsx
+import { Icon } from "@dataflor-ag/df-ui-icons"
 
-// TODO: DEMONSTRATE API
+const function example() {
+  return (
+    <div>
+      <Icon.close />
+      <Icon.home />
+      <Icon.mail />
+    </div>
+  )
+}
 ```
