@@ -77,6 +77,9 @@ const Styles: Components<Omit<Theme, "components">> = {
         "& .MuiInputBase-input": {
           padding: 0,
           border: 0,
+          "&[type=password]": {
+            letterSpacing: "2px",
+          },
         },
         "&:after": {
           display: "none",
