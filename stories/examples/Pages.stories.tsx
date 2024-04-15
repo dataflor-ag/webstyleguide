@@ -67,7 +67,7 @@ export function Login() {
               label="Password"
               type="password"
               autoComplete="current-password"
-              placeholder="• • • • • • • • • •"
+              placeholder="••••••••••"
             />
 
             <Stack

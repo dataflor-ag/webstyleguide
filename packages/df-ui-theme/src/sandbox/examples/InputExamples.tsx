@@ -24,7 +24,7 @@ function Examples() {
           label="Password"
           type="password"
           autoComplete="current-password"
-          placeholder="• • • • • • • • • •"
+          placeholder="••••••••••"
         />
         <TextField
           id="filled-read-only-input"
