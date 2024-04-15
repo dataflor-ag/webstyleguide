@@ -6,6 +6,7 @@ const Styles: Components<Omit<Theme, "components">> = {
     defaultProps: {
       variant: "standard",
       displayEmpty: true,
+      fullWidth: true,
       MenuProps: {
         PopoverClasses: {
           paper: "select-dropdown",
