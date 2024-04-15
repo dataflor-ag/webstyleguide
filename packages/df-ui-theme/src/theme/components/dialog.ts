@@ -24,6 +24,11 @@ const Styles: Components<Omit<Theme, "components">> = {
       root: () => ({
         padding: "1.25rem",
         fontSize: "1rem",
+        "+ .MuiIconButton-root": {
+          position: "absolute",
+          top: "0.75rem",
+          right: "0.75rem",
+        },
       }),
     },
   },
