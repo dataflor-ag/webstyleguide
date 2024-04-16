@@ -27,6 +27,13 @@ function Examples() {
           placeholder="••••••••••"
         />
         <TextField
+          id="filled-multiline-flexible"
+          label="Multiline"
+          multiline
+          maxRows={5}
+          placeholder="Enter a description..."
+        />
+        <TextField
           id="filled-read-only-input"
           label="Read Only"
           defaultValue="Hello World"
