@@ -17,6 +17,14 @@ const config = {
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
+    {
+      name: getAbsolutePath("@storybook/addon-storysource"),
+      options: {
+        loaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
     // getAbsolutePath("@storybook/addon-onboarding"),
     // getAbsolutePath("@storybook/addon-interactions"),
     // getAbsolutePath("@storybook/addon-themes"),
