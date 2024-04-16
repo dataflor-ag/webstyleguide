@@ -31,6 +31,7 @@ const Styles: Components<Omit<Theme, "components">> = {
   MuiTextField: {
     defaultProps: {
       variant: "standard",
+      fullWidth: true,
     },
   },
   MuiInputLabel: {
