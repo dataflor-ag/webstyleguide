@@ -7,7 +7,9 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  IconButton
 } from "@mui/material"
+import Icon from "../../theme/icons"
 
 function Examples() {
   const [open, setOpen] = React.useState(false)
@@ -33,18 +35,12 @@ function Examples() {
           open={open}
         >
           <DialogTitle id="customized-dialog-title">Modal title</DialogTitle>
-          {/* <IconButton
+          <IconButton
             aria-label="close"
             onClick={handleClose}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
           >
-            CLOSE ICON
-          </IconButton> */}
+            <Icon.close />
+          </IconButton>
           <DialogContent dividers>
             <Typography gutterBottom>
               Cras mattis consectetur purus sit amet fermentum. Cras justo odio,

@@ -31,6 +31,7 @@ const Styles: Components<Omit<Theme, "components">> = {
   MuiTextField: {
     defaultProps: {
       variant: "standard",
+      fullWidth: true,
     },
   },
   MuiInputLabel: {
@@ -121,6 +122,16 @@ const Styles: Components<Omit<Theme, "components">> = {
         "&.Mui-error.Mui-focused": {
           boxShadow: customShadows.xs.errorFocus,
         },
+        "&.MuiInputBase-multiline": {
+          padding: "0",
+          height: "auto",
+          minHeight: "5rem",
+          alignItems: "flex-start",
+          overflow: "hidden",
+          textarea: {
+            padding: theme.spacing(2, 3),
+          }
+        }
       }),
     },
   },
