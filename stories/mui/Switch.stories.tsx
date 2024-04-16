@@ -1,3 +1,5 @@
+import React from "react"
+import { Meta } from "@storybook/react"
 import {
   Typography,
   Stack,
@@ -6,7 +8,13 @@ import {
   FormControlLabel,
 } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Switch",
+}
+
+export default meta
+
+export function _Switch() {
   const label = { inputProps: { "aria-label": "Switch demo" } }
   return (
     <>
@@ -48,5 +56,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

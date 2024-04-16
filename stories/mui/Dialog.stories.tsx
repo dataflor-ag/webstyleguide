@@ -1,4 +1,5 @@
 import React from "react"
+import { Meta } from "@storybook/react"
 import {
   Typography,
   Stack,
@@ -7,11 +8,17 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton
+  IconButton,
 } from "@mui/material"
-import Icon from "../../theme/icons"
+import Icon from "../../packages/df-ui-icons/lib"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Dialog",
+}
+
+export default meta
+
+export function _Dialog() {
   const [open, setOpen] = React.useState(false)
 
   const handleClickOpen = () => {
@@ -35,10 +42,7 @@ function Examples() {
           open={open}
         >
           <DialogTitle id="customized-dialog-title">Modal title</DialogTitle>
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-          >
+          <IconButton aria-label="close" onClick={handleClose}>
             <Icon.close />
           </IconButton>
           <DialogContent dividers>
@@ -71,5 +75,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

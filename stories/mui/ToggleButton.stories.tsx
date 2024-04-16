@@ -1,7 +1,14 @@
 import React from "react"
+import { Meta } from "@storybook/react"
 import { Typography, ToggleButtonGroup, ToggleButton } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/ToggleButtons",
+}
+
+export default meta
+
+export function ToggleButtons() {
   const [status, setStatus] = React.useState<string | null>("all")
 
   const handleStatus = (
@@ -34,5 +41,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

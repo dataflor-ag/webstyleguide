@@ -1,6 +1,14 @@
+import React from "react"
+import { Meta } from "@storybook/react"
 import { Button, Typography, Stack } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Buttons",
+}
+
+export default meta
+
+export function Buttons() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -65,5 +73,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

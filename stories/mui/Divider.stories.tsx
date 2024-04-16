@@ -1,7 +1,15 @@
+import React from "react"
+import { Meta } from "@storybook/react"
 import { Typography, Divider, Button } from "@mui/material"
-import palette from "../../theme/palette"
+import { palette } from "../../packages/df-ui-theme/src/theme"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Dividers",
+}
+
+export default meta
+
+export function Dividers() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -36,5 +44,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

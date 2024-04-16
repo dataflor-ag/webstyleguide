@@ -1,7 +1,14 @@
 import React from "react"
+import { Meta } from "@storybook/react"
 import { Typography, Button, Menu, MenuItem } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Dropdown",
+}
+
+export default meta
+
+export function Dropdown() {
   // Dropdown
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const openDropdown = Boolean(anchorEl)
@@ -47,5 +54,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

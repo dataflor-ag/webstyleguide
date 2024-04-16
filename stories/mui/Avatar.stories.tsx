@@ -1,7 +1,14 @@
+import React from "react"
 import { Typography, Stack, Avatar, AvatarGroup } from "@mui/material"
-import AvatarImage from "../../assets/avatar.jpg"
+import { Meta } from "@storybook/react"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Avatar",
+}
+
+export default meta
+
+export function _Avatar() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -23,14 +30,12 @@ function Examples() {
       </Typography>
       <Stack direction="row">
         <AvatarGroup total={8}>
-          <Avatar alt="Remy Sharp" src={AvatarImage} />
-          <Avatar alt="Travis Howard" src={AvatarImage} />
-          <Avatar alt="Agnes Walker" src={AvatarImage} />
-          <Avatar alt="Trevor Henderson" src={AvatarImage} />
+          <Avatar alt="Remy Sharp" src={"/assets/img/avatar.jpg"} />
+          <Avatar alt="Travis Howard" src={"/assets/img/avatar.jpg"} />
+          <Avatar alt="Agnes Walker" src={"/assets/img/avatar.jpg"} />
+          <Avatar alt="Trevor Henderson" src={"/assets/img/avatar.jpg"} />
         </AvatarGroup>
       </Stack>
     </>
   )
 }
-
-export default Examples

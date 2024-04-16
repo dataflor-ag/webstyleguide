@@ -1,3 +1,4 @@
+import React from "react"
 import {
   Typography,
   Box,
@@ -6,9 +7,15 @@ import {
   AppBar,
   Avatar,
 } from "@mui/material"
-import AvatarImage from "../../assets/avatar.jpg"
+import { Meta } from "@storybook/react"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Appbar",
+}
+
+export default meta
+
+export function _Appbar() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -31,7 +38,7 @@ function Examples() {
               Dataflor
             </Typography>
             <Box>
-              <Avatar alt="Remy Sharp" src={AvatarImage} />
+              <Avatar alt="Remy Sharp" src={"/assets/img/avatar.jpg"} />
             </Box>
           </Toolbar>
         </Container>
@@ -39,5 +46,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

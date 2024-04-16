@@ -1,4 +1,5 @@
 import React from "react"
+import { Meta } from "@storybook/react"
 import {
   Typography,
   Stack,
@@ -13,7 +14,13 @@ import {
   Radio,
 } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Forms",
+}
+
+export default meta
+
+export function Forms() {
   // Select
   const [age, setAge] = React.useState("")
   const handleChange = (event: SelectChangeEvent) => {
@@ -203,5 +210,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

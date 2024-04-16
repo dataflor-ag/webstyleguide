@@ -1,6 +1,14 @@
+import React from "react"
 import { Typography, Stack, Chip } from "@mui/material"
+import { Meta } from "@storybook/react"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Chips",
+}
+
+export default meta
+
+export function Chips() {
   const handleChipDelete = () => {
     console.info("Clicked Chip delete")
   }
@@ -128,5 +136,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

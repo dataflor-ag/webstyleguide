@@ -1,0 +1,52 @@
+import { Meta, ColorItem, ColorPalette } from "@storybook/blocks"
+// import theme from "../../packages/df-ui-theme/src"
+import theme from "../../packages/df-ui-theme/src/theme"
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+
+## Brand colors
+
+Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+Nulla consequat massa quis enim.
+
+<ColorPalette>
+  <ColorItem
+    title="Primary"
+    subtitle="Christi"
+    colors={{ ...theme.palette.primary }}
+  />
+</ColorPalette>
+
+## Base colors
+
+<ColorPalette>
+  <ColorItem
+    title="Grey / Secondary"
+    subtitle="Mirage"
+    colors={{ ...theme.palette.secondary }}
+  />
+  <ColorItem
+    title="Info"
+    subtitle="Blue Ribbon"
+    colors={{ ...theme.palette.info }}
+  />
+  <ColorItem
+    title="Success"
+    subtitle="Jade"
+    colors={{ ...theme.palette.success }}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Buttercup"
+    colors={{ ...theme.palette.warning }}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="Crimson"
+    colors={{ ...theme.palette.error }}
+  />
+</ColorPalette>

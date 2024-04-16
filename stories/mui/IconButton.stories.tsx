@@ -1,7 +1,15 @@
+import React from "react"
+import { Meta } from "@storybook/react"
 import { IconButton, Typography, Stack } from "@mui/material"
-import Icon from "../../theme/icons"
+import Icon from "../../packages/df-ui-icons/lib"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/IconButtons",
+}
+
+export default meta
+
+export function IconButtons() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -72,5 +80,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

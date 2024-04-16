@@ -1,7 +1,14 @@
 import React from "react"
+import { Meta } from "@storybook/react"
 import { Typography, Tabs, Tab } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Tabs",
+}
+
+export default meta
+
+export function _Tabs() {
   const [value, setValue] = React.useState(0)
 
   const handleChangeTabs = (_event: React.SyntheticEvent, newValue: number) => {
@@ -23,5 +30,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples

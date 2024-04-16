@@ -1,6 +1,15 @@
+import React from "react"
+import { Meta } from "@storybook/react"
+
 import { Typography, Stack, Link } from "@mui/material"
 
-function Examples() {
+const meta: Meta = {
+  title: "MUI/Link",
+}
+
+export default meta
+
+export function _Link() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -48,5 +57,3 @@ function Examples() {
     </>
   )
 }
-
-export default Examples
