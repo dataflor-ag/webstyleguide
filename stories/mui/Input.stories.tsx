@@ -63,7 +63,6 @@ export function Inputs() {
           type="number"
           placeholder="0000 0000 0000 0000"
         />
-        <TextField id="filled-search" label="Search field" type="search" />
         <TextField
           error
           id="filled-helperText"
@@ -109,6 +108,19 @@ export function Inputs() {
               <IconButton aria-label="show password" size="small">
                 <Icon.eye />
               </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+      <TextField 
+        id="filled-search" 
+        label="Search field" 
+        type="search"
+        placeholder="Search"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Icon.search />
             </InputAdornment>
           ),
         }}
