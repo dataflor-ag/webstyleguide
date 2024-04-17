@@ -41,16 +41,55 @@ const styles: Components<Omit<Theme, "components">> = {
         height: theme.spacing(8),
         borderRadius: radius.sm,
         padding: theme.spacing(0, 4),
+        ".MuiButton-startIcon":{
+          marginRight: "0.375rem",
+          marginLeft: "-0.25rem",
+        },
+        ".MuiButton-endIcon":{
+          marginLeft: "0.375rem",
+          marginRight: "-0.25rem",
+        },
+        ".MuiButton-icon": {
+          svg: {
+            fontSize: "1rem",
+          },
+        },
       }),
       sizeMedium: () => ({
         height: theme.spacing(10),
         borderRadius: radius.md,
         padding: theme.spacing(0, 5),
+        ".MuiButton-startIcon":{
+          marginRight: "0.5rem",
+          marginLeft: "-0.25rem",
+        },
+        ".MuiButton-endIcon":{
+          marginLeft: "0.5rem",
+          marginRight: "-0.25rem",
+        },
+        ".MuiButton-icon": {
+          svg: {
+            fontSize: "1.25rem",
+          },
+        },
       }),
       sizeLarge: () => ({
         height: theme.spacing(12),
         borderRadius: radius.lg,
         padding: theme.spacing(0, 6),
+        ".MuiButton-startIcon":{
+          marginRight: "0.5rem",
+          marginLeft: "-0.25rem",
+        },
+        ".MuiButton-endIcon":{
+          marginLeft: "0.5rem",
+          marginRight: "-0.25rem",
+        },
+        ".MuiButton-icon": {
+          svg: {
+            fontSize: "1.5rem",
+          },
+        },
       }),
       containedPrimary: {
         color: "white",
@@ -102,9 +141,13 @@ const styles: Components<Omit<Theme, "components">> = {
         },
         ":disabled": {
           boxShadow: customShadows.xs.base,
+          color: `${palette.grey?.[900]}`,
           border: "none",
           opacity: "0.4",
         },
+        ".MuiButton-icon":{
+          color: `${palette.grey?.[600]}`,
+        }
       },
       textSecondary: {
         color: `${palette.grey?.[700]}`,
@@ -119,6 +162,9 @@ const styles: Components<Omit<Theme, "components">> = {
           color: `${palette.grey?.[700]}`,
           opacity: "0.4",
         },
+        ".MuiButton-icon":{
+          color: `${palette.grey?.[600]}`,
+        }
       },
       containedError: {
         color: "white",
