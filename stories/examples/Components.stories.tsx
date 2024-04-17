@@ -7,7 +7,8 @@ import {
   DrawerFooter,
   DrawerSidebar,
 } from "../../packages/df-ui-drawer/lib"
-import { Drawer, Button, Box, Stack, Typography } from "@mui/material"
+import { Drawer, Button, Box, Stack, Typography, IconButton } from "@mui/material"
+import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "Examples/Components",
@@ -37,9 +38,9 @@ export function DrawerExample() {
           </Stack>
         </DrawerSidebar>
         <DrawerHeader content={<Typography variant="h4">Preview</Typography>}>
-          <Stack gap={3} direction={"row"} justifyContent={"flex-end"}>
-            <Button variant="outlined">Edit</Button>
-          </Stack>
+          <IconButton aria-label="close" onClick={toggleDrawer(false)}>
+            <Icon.close />
+          </IconButton>
         </DrawerHeader>
         <DrawerBody>
           <Typography variant="body1" mb={1}>

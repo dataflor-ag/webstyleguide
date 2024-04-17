@@ -11,6 +11,7 @@ const DrawerHeaderRoot = styled.div`
   border-bottom: 1px solid ${palette.grey?.[200]};
   width: 100%;
   padding: 1rem 1.5rem;
+  padding-right: 0.75rem;
   height: 4rem;
 `
 
