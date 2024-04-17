@@ -109,6 +109,11 @@ const Styles: Components<Omit<Theme, "components">> = {
             color: palette.grey?.[400],
             opacity: "1",
           },
+          "&[type=search]": {
+            "&::-webkit-search-cancel-button": {
+              display: "none",
+            }
+          },
         },
         ".MuiInputAdornment-root": {
           color: palette.grey?.[600],
