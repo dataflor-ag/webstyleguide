@@ -110,6 +110,22 @@ const Styles: Components<Omit<Theme, "components">> = {
             opacity: "1",
           },
         },
+        ".MuiInputAdornment-root": {
+          color: palette.grey?.[600],
+          svg: {
+            fontSize: "1.25rem",
+          }
+        },
+        ".MuiInputAdornment-positionEnd": {
+          "> svg":{
+            color: palette.grey?.[400],
+          },
+          ".MuiButtonBase-root": {
+            marginRight: "-0.25rem",
+            backgroundColor: "transparent !important",
+            boxShadow: "none !important",
+          },
+        },
         "&.Mui-focused": {
           boxShadow: customShadows.xs.focus,
         },

@@ -1,6 +1,7 @@
 import React from "react"
 import { Meta } from "@storybook/react"
-import { Typography, Stack, TextField } from "@mui/material"
+import { Typography, Stack, TextField, FormControl, Divider, InputAdornment, IconButton } from "@mui/material"
+import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "MUI/Inputs",
@@ -12,7 +13,7 @@ export function Inputs() {
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
-        Input Fields
+        Input fields
       </Typography>
       <Stack direction="column">
         <TextField
@@ -71,6 +72,47 @@ export function Inputs() {
           helperText="Some important text"
         />
       </Stack>
+      
+      <Divider/>
+
+      <Typography variant="h2" mb={4} mt={8}>
+        Input fields with icon
+      </Typography>
+
+      <TextField
+        id="input-with-icon-textfield"
+        label="Email"
+        placeholder="olivia@dataflor.de"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Icon.mail />
+            </InputAdornment>
+          ),
+        }}
+      />
+
+      <TextField
+        id="input-with-icon-textfield"
+        label="Password"
+        type="password"
+        autoComplete="current-password"
+        placeholder="••••••••••"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Icon.lock />
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton aria-label="show password" size="small">
+                <Icon.eye />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
     </>
   )
 }
