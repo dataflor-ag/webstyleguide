@@ -34,10 +34,9 @@ import cloudDownload from "./cloudDownload"
 import cloudUpload from "./cloudUpload"
 import checkSmall from "./checkSmall"
 
-export type IconElement = (props: SvgIconProps) => JSX.Element
-type Icons = Record<string, IconElement>
+type IconElement = (props: SvgIconProps) => JSX.Element
 
-const icons: Icons = {
+const icons = {
   home,
   mail,
   close,
@@ -74,4 +73,7 @@ const icons: Icons = {
   checkSmall,
 }
 
-export default icons
+type IconKeys = keyof typeof icons
+type Icons = Record<IconKeys, IconElement>
+
+export default icons as Icons
