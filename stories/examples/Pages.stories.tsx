@@ -36,11 +36,11 @@ export function Login() {
   return (
     <Stack
       bgcolor={palette.grey?.[100]}
-      sx={{ height: "100vh" }}
+      sx={{ minHeight: "100vh" }}
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <Typography variant="h3" mb={12}>
+      <Typography variant="h3" mb={12} marginTop={"auto"}>
         Logo
       </Typography>
 
@@ -102,7 +102,7 @@ export function Login() {
         direction={"row"}
         gap={4}
         justifyContent={"space-between"}
-        position={"absolute"}
+        marginTop={"auto"}
         bottom={0}
         sx={{ width: "100%", paddingX: 8, paddingY: 6 }}
       >
