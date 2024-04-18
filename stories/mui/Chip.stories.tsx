@@ -1,17 +1,18 @@
-import React from "react"
-import { Typography, Stack, Chip } from "@mui/material"
-import { Meta } from "@storybook/react"
+import React from "react";
+import { Typography, Stack, Chip, Divider } from "@mui/material";
+import { Meta } from "@storybook/react";
+import Icon from "../../packages/df-ui-icons/lib";
 
 const meta: Meta = {
   title: "MUI/Chips",
-}
+};
 
-export default meta
+export default meta;
 
 export function Chips() {
   const handleChipDelete = () => {
-    console.info("Clicked Chip delete")
-  }
+    console.info("Clicked Chip delete");
+  };
   return (
     <>
       <Typography variant="h2" mb={4} mt={8}>
@@ -124,7 +125,7 @@ export function Chips() {
           color="info"
         />
       </Stack>
-      <Stack direction={"row"} gap={2}>
+      <Stack direction={"row"} gap={2} mb={8}>
         <Chip label="Label" color="default" onDelete={handleChipDelete} />
         <Chip label="Label" color="primary" onDelete={handleChipDelete} />
         <Chip label="Label" color="secondary" onDelete={handleChipDelete} />
@@ -133,6 +134,21 @@ export function Chips() {
         <Chip label="Label" color="error" onDelete={handleChipDelete} />
         <Chip label="Label" color="info" onDelete={handleChipDelete} />
       </Stack>
+
+      <Divider />
+
+      <Typography variant="h3" mb={4} mt={8}>
+        With icon
+      </Typography>
+      <Stack direction={"row"} gap={2} mb={8}>
+        <Chip icon={<Icon.checkSmall />} label="Label" color="default" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="primary" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="secondary" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="success" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="warning" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="error" />
+        <Chip icon={<Icon.checkSmall />} label="Label" color="info" />
+      </Stack>
     </>
-  )
+  );
 }
