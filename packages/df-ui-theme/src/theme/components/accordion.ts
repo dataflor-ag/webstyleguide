@@ -54,7 +54,7 @@ const Styles: Components<Omit<Theme, "components">> = {
         fontSize: "0.875rem",
         padding: `0 ${theme.spacing(4)}`,
         margin: 0,
-        fontWeight: 500,
+        fontWeight: 600,
 
         "&.Mui-expanded": {
           margin: 0,
@@ -76,7 +76,9 @@ const Styles: Components<Omit<Theme, "components">> = {
     styleOverrides: {
       root: () => ({
         padding: `0 ${theme.spacing(4)}`,
+        fontSize: "0.875rem",
         marginBottom: theme.spacing(4),
+        marginTop: theme.spacing(-2),
       }),
     },
   },
