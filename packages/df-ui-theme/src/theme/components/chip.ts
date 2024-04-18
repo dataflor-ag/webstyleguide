@@ -1,7 +1,7 @@
-import { Components, Theme } from "@mui/material"
-import { chipIconRemove } from "../utils/chips"
-import palette from "../palette"
-import { customShadows } from "../shadows"
+import { Components, Theme } from "@mui/material";
+import { chipIconRemove } from "../utils/chips";
+import palette from "../palette";
+import { customShadows } from "../shadows";
 
 const Styles: Components<Omit<Theme, "components">> = {
   MuiChip: {
@@ -15,20 +15,28 @@ const Styles: Components<Omit<Theme, "components">> = {
         backgroundColor: "white",
         borderColor: `${palette.grey?.[200]}`,
         color: `${palette.grey?.[600]}`,
+        "> .MuiSvgIcon-root": {
+          fontSize: "1rem",
+          margin: "0 -0.5rem 0 0.375rem",
+        },
         ".chip-icon-remove": {
           width: "1rem",
           height: "1rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          margin: "0 0.25rem 0 -0.5rem",
           transition: "all 0.2s ease-in-out",
+          ".MuiSvgIcon-root": {
+            fontSize: "1rem",
+          },
         },
         "&.MuiChip-clickable:active": {
           boxShadow: customShadows.xs.focus,
         },
       }),
       sizeMedium: () => ({
-        height: "28px",
+        height: "1.5rem",
         fontSize: "0.875rem",
       }),
       sizeSmall: () => ({
@@ -36,10 +44,10 @@ const Styles: Components<Omit<Theme, "components">> = {
         fontSize: "0.75rem",
       }),
       labelMedium: {
-        padding: "0.375rem 0.75rem",
+        padding: "0 0.625rem",
       },
       labelSmall: {
-        padding: "0.375rem 0.75rem",
+        padding: "0 0.5rem",
       },
 
       colorPrimary: {
@@ -92,6 +100,6 @@ const Styles: Components<Omit<Theme, "components">> = {
       },
     },
   },
-}
+};
 
-export default Styles
+export default Styles;
