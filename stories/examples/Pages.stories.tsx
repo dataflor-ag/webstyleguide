@@ -36,11 +36,11 @@ export function Login() {
   return (
     <Stack
       bgcolor={palette.grey?.[100]}
-      sx={{ height: "100vh" }}
+      sx={{ minHeight: "100vh" }}
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <Typography variant="h3" mb={12}>
+      <Typography variant="h3" mb={12} marginTop={"auto"}>
         Logo
       </Typography>
 
@@ -98,6 +98,34 @@ export function Login() {
           </Typography>
         </Stack>
       </Card>
+      <Stack
+        direction={"row"}
+        gap={4}
+        justifyContent={"space-between"}
+        marginTop={"auto"}
+        bottom={0}
+        sx={{ width: "100%", paddingX: 8, paddingY: 6 }}
+      >
+        <Stack>
+          <Typography color="gray" variant="body2">
+            ©{new Date().getFullYear()} DATAflor AG
+          </Typography>
+        </Stack>
+        <Stack direction={"row"} gap={4}>
+          <Link color="inherit" variant="body2">
+            Terms
+          </Link>
+          <Link color="inherit" variant="body2">
+            Privacy
+          </Link>
+          <Link color="inherit" variant="body2">
+            Cookies
+          </Link>
+          <Link color="inherit" variant="body2">
+            Contact us
+          </Link>
+        </Stack>
+      </Stack>
     </Stack>
   )
 }
