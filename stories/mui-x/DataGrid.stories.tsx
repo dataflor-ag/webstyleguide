@@ -1,5 +1,7 @@
 import React from "react";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { Typography, Chip } from "@mui/material";
+import Icon from "../../packages/df-ui-icons/lib";
 
 import { Meta } from "@storybook/react";
 
@@ -11,15 +13,69 @@ export default meta;
 
 export function _DataGrid() {
   const rows: GridRowsProp = [
-    { id: 3061, lastName: "Snow", firstName: "Jon", age: 14 },
-    { id: 3062, lastName: "Lannister", firstName: "Cersei", age: 31 },
-    { id: 3063, lastName: "Lannister", firstName: "Jaime", age: 31 },
-    { id: 3064, lastName: "Stark", firstName: "Arya", age: 11 },
-    { id: 3065, lastName: "Targaryen", firstName: "Daenerys", age: 16 },
-    { id: 3066, lastName: "Melisandre", firstName: null, age: 172 },
-    { id: 3067, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 3068, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 3069, lastName: "Roxie", firstName: "Harvey", age: 65 },
+    {
+      id: 3061,
+      lastName: "Snow",
+      firstName: "Jon",
+      age: 14,
+      status: "Paid",
+    },
+    {
+      id: 3062,
+      lastName: "Lannister",
+      firstName: "Cersei",
+      age: 31,
+      status: "Cancelled",
+    },
+    {
+      id: 3063,
+      lastName: "Lannister",
+      firstName: "Jaime",
+      age: 31,
+      status: "Paid",
+    },
+    {
+      id: 3064,
+      lastName: "Stark",
+      firstName: "Arya",
+      age: 11,
+      status: "Cancelled",
+    },
+    {
+      id: 3065,
+      lastName: "Targaryen",
+      firstName: "Daenerys",
+      age: 16,
+      status: "Paid",
+    },
+    {
+      id: 3066,
+      lastName: "Melisandre",
+      firstName: null,
+      age: 172,
+      status: "Cancelled",
+    },
+    {
+      id: 3067,
+      lastName: "Clifford",
+      firstName: "Ferrara",
+      age: 44,
+      status: "Paid",
+    },
+    {
+      id: 3068,
+      lastName: "Frances",
+      firstName: "Rossini",
+      age: 36,
+      status: "Cancelled",
+    },
+    {
+      id: 3069,
+      lastName: "Roxie",
+      firstName: "Harvey",
+      age: 65,
+      status: "Paid",
+    },
   ];
 
   const columns: GridColDef[] = [
@@ -41,6 +97,21 @@ export function _DataGrid() {
       width: 132,
     },
     {
+      field: "status",
+      headerName: "Status",
+      width: 172,
+      renderCell: (params) => {
+        const isRejected = params.value === "Cancelled";
+        return (
+          <Chip
+            icon={isRejected ? <Icon.closeSmall /> : <Icon.checkSmall />}
+            label={params.value}
+            color={isRejected ? "error" : "success"}
+          />
+        );
+      },
+    },
+    {
       field: "fullName",
       headerName: "Full name",
       description: "This column has a value getter and is not sortable.",
@@ -51,19 +122,24 @@ export function _DataGrid() {
     },
   ];
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      checkboxSelection
-      disableRowSelectionOnClick
-      initialState={{
-        pagination: {
-          paginationModel: {
-            pageSize: 5,
+    <div>
+      <Typography variant="h2" mb={4} mt={8}>
+        DataGrid (MUI X)
+      </Typography>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection
+        disableRowSelectionOnClick
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 6,
+            },
           },
-        },
-      }}
-      pageSizeOptions={[5]}
-    />
+        }}
+        pageSizeOptions={[6]}
+      />
+    </div>
   );
 }
