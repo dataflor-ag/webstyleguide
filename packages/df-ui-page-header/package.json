@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-page-header",
-  "version": "1.0.3-alpha.0",
+  "version": "1.0.3",
   "description": "Page headers provide content and actions related to the current screen.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",

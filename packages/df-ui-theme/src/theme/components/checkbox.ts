@@ -1,8 +1,8 @@
-import { Components, Theme } from "@mui/material"
-import { palette } from ".."
-import { radius } from "../shape"
-import { customShadows } from "../shadows"
-import { checkboxIcon, checkboxIconIndeterminate } from "../utils/checkbox"
+import { Components, Theme } from "@mui/material";
+import { palette } from "..";
+import { radius } from "../shape";
+import { customShadows } from "../shadows";
+import { checkboxIcon, checkboxIconIndeterminate } from "../utils/checkbox";
 
 const Styles: Components<Omit<Theme, "components">> = {
   MuiCheckbox: {
@@ -25,6 +25,7 @@ const Styles: Components<Omit<Theme, "components">> = {
           height: "1.25rem",
           borderRadius: radius.sm,
           boxShadow: customShadows.xs.base,
+          backgroundColor: "white",
           transition: "all 0.2s ease-in-out",
           svg: {
             transition: "all 0.2s ease-in-out",
@@ -99,6 +100,6 @@ const Styles: Components<Omit<Theme, "components">> = {
       }),
     },
   },
-}
+};
 
-export default Styles
+export default Styles;

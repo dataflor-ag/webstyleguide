@@ -1,4 +1,5 @@
 import { Components, Theme } from "@mui/material"
+import type {} from "@mui/x-data-grid/themeAugmentation"
 
 import grid from "./components/grid"
 import button from "./components/button"
@@ -21,9 +22,11 @@ import divider from "./components/divider"
 import drawer from "./components/drawer"
 import icon from "./components/icon"
 import tooltip from "./components/tooltip"
+import dataGrid from "./components/dataGrid"
 import accordion from "./components/accordion"
 
 const components: Components<Omit<Theme, "components">> = {
+  // MUI
   ...grid,
   ...button,
   ...form,
@@ -46,6 +49,9 @@ const components: Components<Omit<Theme, "components">> = {
   ...icon,
   ...tooltip,
   ...accordion,
+
+  // MUI X
+  ...dataGrid,
 }
 
 export default components
