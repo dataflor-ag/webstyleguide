@@ -1,13 +1,16 @@
 {
-  "name": "@dataflor-ag/df-ui-page-header",
-  "version": "1.0.3-alpha.0",
-  "description": "Page headers provide content and actions related to the current screen.",
+  "name": "@dataflor-ag/df-ui-icon-wrapper",
+  "version": "0.0.1-alpha.0",
+  "description": "Wrapper component offers fixed styling with various color variants. Encapsulate icons effortlessly within predefined boxes, each with its unique color scheme.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
   "type": "module",
   "files": [
     "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -31,8 +34,7 @@
   "dependencies": {
     "@dataflor-ag/df-ui-theme": "file:../df-ui-theme",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.14"
+    "@emotion/styled": "^11.11.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

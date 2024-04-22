@@ -23,6 +23,7 @@ import drawer from "./components/drawer"
 import icon from "./components/icon"
 import tooltip from "./components/tooltip"
 import dataGrid from "./components/dataGrid"
+import accordion from "./components/accordion"
 
 const components: Components<Omit<Theme, "components">> = {
   // MUI
@@ -47,6 +48,7 @@ const components: Components<Omit<Theme, "components">> = {
   ...drawer,
   ...icon,
   ...tooltip,
+  ...accordion,
 
   // MUI X
   ...dataGrid,

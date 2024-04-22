@@ -4,6 +4,7 @@ import { Meta } from "@storybook/react"
 import { palette } from "@dataflor-ag/df-ui-theme"
 import { PageHeader } from "../../packages/df-ui-page-header/lib"
 import { EmptyState } from "../../packages/df-ui-empty-state/lib"
+import { IconHero } from "../../packages/df-ui-icon-wrapper/lib"
 import {
   AppBar,
   Toolbar,
@@ -21,6 +22,7 @@ import {
   FormControlLabel,
   Link,
 } from "@mui/material"
+import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "Examples/Pages",
@@ -47,6 +49,9 @@ export function Login() {
       <Card sx={{ width: "100%", maxWidth: 456, padding: 12 }} elevation={4}>
         <Stack direction="column" gap={8}>
           <div>
+            <IconHero>
+              <Icon.user />
+            </IconHero>
             <Typography variant="h4" align="center" mb={1}>
               Log in to your account
             </Typography>
