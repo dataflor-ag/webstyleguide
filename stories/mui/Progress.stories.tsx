@@ -57,9 +57,9 @@ export function _Progress() {
         <CircularProgress variant="determinate" value={100} size={80} />
       </Stack>
 
-      <Typography variant="h3" mb={4} mt={8}>
+      {/* <Typography variant="h3" mb={4} mt={8}>
         Circular progress bar with label
-      </Typography>
+      </Typography> */}
       {/* <Stack direction={"row"} gap={6}>
         <CircularProgressWithLabel variant="determinate" value={25} />
         <CircularProgressWithLabel variant="determinate" value={50} />
