@@ -1,0 +1,94 @@
+import React from "react"
+import { Typography, Avatar } from "@mui/material"
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+} from "@mui/lab"
+
+import { Meta } from "@storybook/react"
+
+const meta: Meta = {
+  title: "MUI/Timeline",
+}
+
+export default meta
+
+export function _Timeline() {
+  return (
+    <>
+      <Typography variant="overline" mt={8}>
+        Lab Component
+      </Typography>
+      <Typography variant="h2" mb={4}>
+        Timeline
+      </Typography>
+
+      <h2>BASE</h2>
+      <Timeline>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>Eat</TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>Code</TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot />
+          </TimelineSeparator>
+          <TimelineContent>Sleep</TimelineContent>
+        </TimelineItem>
+      </Timeline>
+
+      <h2>Activity</h2>
+      <Timeline>
+        <TimelineItem>
+          <TimelineSeparator>
+            <Avatar>PB</Avatar>
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>Phoenix Baker</Typography>
+            <Typography>Just now</Typography>
+            <Typography>Added a file to Design</Typography>
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <Avatar>OR</Avatar>
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>Phoenix Baker</Typography>
+            <Typography>2 mins ago</Typography>
+            <Typography>Invited Alisa Hester to the team</Typography>
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <Avatar>OR</Avatar>
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>Kate Morrison</Typography>
+            <Typography>3 hours ago</Typography>
+            <Typography>
+              Added 3 labels to the project Dataflor design system
+            </Typography>
+          </TimelineContent>
+        </TimelineItem>
+      </Timeline>
+    </>
+  )
+}
