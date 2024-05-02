@@ -1,5 +1,5 @@
 import React from "react"
-import { Typography, Avatar } from "@mui/material"
+import { Typography, Avatar, Stack } from "@mui/material"
 import {
   Timeline,
   TimelineItem,
@@ -59,9 +59,11 @@ export function _Timeline() {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <Typography>Phoenix Baker</Typography>
-            <Typography>Just now</Typography>
-            <Typography>Added a file to Design</Typography>
+            <Stack direction={"row"} gap={2} alignItems={"center"}>
+              <Typography variant="h6">Phoenix Baker</Typography>
+              <Typography variant="caption">Just now</Typography>
+            </Stack>
+            <Typography variant="body2">Added a file to Design</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -70,9 +72,13 @@ export function _Timeline() {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <Typography>Phoenix Baker</Typography>
-            <Typography>2 mins ago</Typography>
-            <Typography>Invited Alisa Hester to the team</Typography>
+            <Stack direction={"row"} gap={2} alignItems={"center"}>
+              <Typography variant="h6">Olivia Rhye</Typography>
+              <Typography variant="caption">2 mins ago</Typography>
+            </Stack>
+            <Typography variant="body2">
+              Invited Alisa Hester to the team
+            </Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -81,9 +87,11 @@ export function _Timeline() {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>
-            <Typography>Kate Morrison</Typography>
-            <Typography>3 hours ago</Typography>
-            <Typography>
+            <Stack direction={"row"} gap={2} alignItems={"center"}>
+              <Typography variant="h6">Kate Morrison</Typography>
+              <Typography variant="caption">3 hours ago</Typography>
+            </Stack>
+            <Typography variant="body2">
               Added 3 labels to the project Dataflor design system
             </Typography>
           </TimelineContent>
