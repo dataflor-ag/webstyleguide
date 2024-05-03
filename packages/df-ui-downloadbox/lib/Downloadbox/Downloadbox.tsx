@@ -1,7 +1,13 @@
 import React from "react"
 import styled from "@emotion/styled"
-import mime from "mime"
+import { Mime } from "mime"
 import colorMapping from "./ColorMapping"
+
+import standardTypes from "mime/types/standard.js"
+import otherTypes from "mime/types/other.js"
+
+const mime = new Mime(standardTypes, otherTypes)
+mime.define({ "application/las": ["las"] })
 
 type DownloadboxIconTextProps = {
   mimeType: string
@@ -20,9 +26,10 @@ const DownloadboxRoot = styled.div`
   position: relative;
   display: inline-flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 `
 
 const DownloadboxIcon = styled.div`
@@ -42,7 +49,7 @@ const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
     textTransform: "uppercase",
     fontSize: "0.625rem",
     bottom: "6px",
-    borderRadius: "0.5rem",
+    borderRadius: "0.25rem",
     textAlign: "center",
     position: "absolute",
     letterSpacing: "-1px",
@@ -61,7 +68,7 @@ const DownloadboxTitle = styled.h4`
   font-weight: 500;
   font-size: 0.875rem;
   color: #3f3f46;
-  margin-bottom: 0;
+  margin: 0;
 `
 
 const DownloadboxFileSize = styled.div`
@@ -70,7 +77,17 @@ const DownloadboxFileSize = styled.div`
   line-height: 20px;
 `
 
-const DownloadboxLink = styled.a``
+const DownloadboxLink = styled.a`
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+  }
+`
 
 export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
   (props, ref) => {
@@ -95,11 +112,6 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
               />
             </g>
           </svg>
-          {/* {extType && (
-            <DownloadboxIconText mimeType="mimeType">
-              {extType}
-            </DownloadboxIconText>
-          )} */}
           {mimeType && extType && (
             <DownloadboxIconText mimeType={mimeType}>
               {extType}
@@ -110,11 +122,10 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
         <div>
           <DownloadboxTitle>{props.title}</DownloadboxTitle>
           <DownloadboxFileSize>{props.size}</DownloadboxFileSize>
-          {/* <div>
-            {props.mime} - {mimeType} - {extType}
-          </div> */}
         </div>
-        <DownloadboxLink href="#0">Test</DownloadboxLink>
+        {props.link && (
+          <DownloadboxLink href={props.link} download={props.download} />
+        )}
       </DownloadboxRoot>
     )
   }
