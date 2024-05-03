@@ -45,16 +45,6 @@ export default meta
 
 type Story = StoryObj<typeof Downloadbox>
 
-// ✅ Get mime type of file from filename or extension
-// console.log(mime.getType('txt')); // 'text/plain'
-// console.log(mime.getType('webp')); // 'image/webp'
-// console.log(mime.getType('cat.png')); // 'image/png'
-// console.log(mime.getType('nature.jpeg')); // 'image/jpeg'
-
-/**
- * # Primary Button
- * This is the primary button
- */
 export const Default: Story = {
   args: {
     mime: "dataflor-design-system.pdf",
