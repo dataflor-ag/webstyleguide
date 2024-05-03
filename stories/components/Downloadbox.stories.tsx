@@ -71,3 +71,33 @@ export const DownloadLink: Story = {
     download: true,
   },
 }
+
+export const LAS: Story = {
+  args: {
+    mime: "las",
+    title: "my-plan.pdf",
+    size: "960 KB",
+    link: "#0",
+    download: true,
+  },
+}
+
+export const DWG: Story = {
+  args: {
+    mime: "dwg",
+    title: "my-plan.pdf",
+    size: "960 KB",
+    link: "#0",
+    download: true,
+  },
+}
+
+export const DXF: Story = {
+  args: {
+    mime: "dxf",
+    title: "my-plan.pdf",
+    size: "960 KB",
+    link: "#0",
+    download: true,
+  },
+}
