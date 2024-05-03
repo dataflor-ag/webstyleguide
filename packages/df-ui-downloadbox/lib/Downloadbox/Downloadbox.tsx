@@ -35,29 +35,6 @@ const DownloadboxIcon = styled.div`
   align-items: center;
 `
 
-// const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
-//   {
-//     fontFamily: "inherit",
-//     fontWeight: "bold",
-//     textTransform: "uppercase",
-//     fontSize: "0.625rem",
-//     backgroundColor: "purple",
-//     color: "white",
-//     bottom: "6px",
-//     borderRadius: "0.5rem",
-//     textAlign: "center",
-//     position: "absolute",
-//     letterSpacing: "-1px",
-//     left: 0,
-//     height: "1rem",
-//     lineHeight: "1rem",
-//     padding: "0 0.5rem",
-//   },
-//   (props) => ({
-//     backgroundColor: colorMapping(props.mimeType),
-//   })
-// )
-
 const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
   {
     fontFamily: "inherit",
@@ -133,9 +110,9 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
         <div>
           <DownloadboxTitle>{props.title}</DownloadboxTitle>
           <DownloadboxFileSize>{props.size}</DownloadboxFileSize>
-          <div>
+          {/* <div>
             {props.mime} - {mimeType} - {extType}
-          </div>
+          </div> */}
         </div>
         <DownloadboxLink href="#0">Test</DownloadboxLink>
       </DownloadboxRoot>
