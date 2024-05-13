@@ -1,5 +1,5 @@
-import React from "react"
-import { Typography, Avatar, Stack } from "@mui/material"
+import React from "react";
+import { Typography, Avatar, Stack } from "@mui/material";
 import {
   Timeline,
   TimelineItem,
@@ -7,15 +7,15 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
-} from "@mui/lab"
+} from "@mui/lab";
 
-import { Meta } from "@storybook/react"
+import { Meta } from "@storybook/react";
 
 const meta: Meta = {
   title: "MUI/Timeline",
-}
+};
 
-export default meta
+export default meta;
 
 export function _Timeline() {
   return (
@@ -60,7 +60,9 @@ export function _Timeline() {
           </TimelineSeparator>
           <TimelineContent>
             <Stack direction={"row"} gap={2} alignItems={"center"}>
-              <Typography variant="h6">Phoenix Baker</Typography>
+              <Typography variant="body2" fontWeight={600}>
+                Phoenix Baker
+              </Typography>
               <Typography variant="caption">Just now</Typography>
             </Stack>
             <Typography variant="body2">Added a file to Design</Typography>
@@ -73,7 +75,9 @@ export function _Timeline() {
           </TimelineSeparator>
           <TimelineContent>
             <Stack direction={"row"} gap={2} alignItems={"center"}>
-              <Typography variant="h6">Olivia Rhye</Typography>
+              <Typography variant="body2" fontWeight={600}>
+                Olivia Rhye
+              </Typography>
               <Typography variant="caption">2 mins ago</Typography>
             </Stack>
             <Typography variant="body2">
@@ -88,7 +92,9 @@ export function _Timeline() {
           </TimelineSeparator>
           <TimelineContent>
             <Stack direction={"row"} gap={2} alignItems={"center"}>
-              <Typography variant="h6">Kate Morrison</Typography>
+              <Typography variant="body2" fontWeight={600}>
+                Kate Morrison
+              </Typography>
               <Typography variant="caption">3 hours ago</Typography>
             </Stack>
             <Typography variant="body2">
@@ -98,5 +104,5 @@ export function _Timeline() {
         </TimelineItem>
       </Timeline>
     </>
-  )
+  );
 }
