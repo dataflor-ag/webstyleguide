@@ -57,13 +57,15 @@ const Styles: Components<Omit<Theme, "components">> = {
         borderRadius: "50%",
         "&.Mui-active": {
           color: `${palette.grey?.[900]}`,
+          borderColor: "transparent",
 
           "& .MuiStepIcon-text": {
             fill: "white",
           },
         },
         "&.Mui-completed": {
-          color: `${palette.success?.[600]}`,
+          color: `${palette.success?.[500]}`,
+          borderColor: "transparent",
         },
       }),
       text: () => ({
