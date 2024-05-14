@@ -1,25 +1,25 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { Mime } from "mime";
-import colorMapping from "./ColorMapping";
+import React from "react"
+import styled from "@emotion/styled"
+import { Mime } from "mime"
+import colorMapping from "./ColorMapping"
 
-import standardTypes from "mime/types/standard.js";
-import otherTypes from "mime/types/other.js";
+import standardTypes from "mime/types/standard.js"
+import otherTypes from "mime/types/other.js"
 
-const mime = new Mime(standardTypes, otherTypes);
-mime.define({ "application/las": ["las"] });
+const mime = new Mime(standardTypes, otherTypes)
+mime.define({ "application/las": ["las"] })
 
 type DownloadboxIconTextProps = {
-  mimeType: string;
-};
+  mimeType: string
+}
 
 interface DrawerFooterProps {
-  title: string;
-  mime: string;
-  size: string;
+  title: string
+  mime: string
+  size: string
 
-  link: string;
-  download: boolean;
+  link?: string
+  download?: boolean
 }
 
 const DownloadboxRoot = styled.div`
@@ -30,7 +30,7 @@ const DownloadboxRoot = styled.div`
   justify-content: center;
   align-items: center;
   margin: 1rem 0;
-`;
+`
 
 const DownloadboxIcon = styled.div`
   position: relative;
@@ -40,7 +40,7 @@ const DownloadboxIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
   {
@@ -62,7 +62,7 @@ const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
     color: colorMapping(props.mimeType).color,
     backgroundColor: colorMapping(props.mimeType).backgroundColor,
   })
-);
+)
 
 const DownloadboxTitle = styled.h4`
   font-weight: 500;
@@ -70,13 +70,13 @@ const DownloadboxTitle = styled.h4`
   color: #3f3f46;
   margin: 0;
   line-height: 20px;
-`;
+`
 
 const DownloadboxFileSize = styled.div`
   font-size: 0.875rem;
   color: #51525c;
   line-height: 20px;
-`;
+`
 
 const DownloadboxLink = styled.a`
   &:after {
@@ -88,12 +88,12 @@ const DownloadboxLink = styled.a`
     z-index: 1;
     content: "";
   }
-`;
+`
 
 export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
   (props, ref) => {
-    const mimeType = mime.getType(props.mime);
-    const extType = mime.getExtension(mimeType!);
+    const mimeType = mime.getType(props.mime)
+    const extType = mime.getExtension(mimeType!)
 
     return (
       <DownloadboxRoot ref={ref}>
@@ -127,8 +127,8 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
           <DownloadboxLink href={props.link} download={props.download} />
         )}
       </DownloadboxRoot>
-    );
+    )
   }
-);
+)
 
-export default Downloadbox;
+export default Downloadbox
