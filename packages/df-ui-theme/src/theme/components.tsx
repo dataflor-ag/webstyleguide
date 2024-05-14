@@ -1,5 +1,6 @@
 import { Components, Theme } from "@mui/material"
 import type {} from "@mui/x-data-grid/themeAugmentation"
+import type {} from "@mui/lab/themeAugmentation"
 
 import grid from "./components/grid"
 import button from "./components/button"
@@ -24,6 +25,7 @@ import icon from "./components/icon"
 import tooltip from "./components/tooltip"
 import dataGrid from "./components/dataGrid"
 import accordion from "./components/accordion"
+import timeline from "./components/timeline"
 import progress from "./components/progress"
 import stepper from "./components/stepper"
 
@@ -51,6 +53,7 @@ const components: Components<Omit<Theme, "components">> = {
   ...icon,
   ...tooltip,
   ...accordion,
+  ...timeline,
   ...progress,
   ...stepper,
 
