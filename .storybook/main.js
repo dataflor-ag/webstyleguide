@@ -25,9 +25,9 @@ const config = {
         },
       },
     },
+    getAbsolutePath("@storybook/addon-themes"),
     // getAbsolutePath("@storybook/addon-onboarding"),
     // getAbsolutePath("@storybook/addon-interactions"),
-    // getAbsolutePath("@storybook/addon-themes"),
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),

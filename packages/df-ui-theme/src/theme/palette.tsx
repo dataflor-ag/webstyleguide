@@ -21,6 +21,7 @@ declare module "@mui/material/styles" {
 }
 
 const palette: PaletteOptions = {
+  mode: "light",
   primary: {
     "50": "#f4fce9",
     "100": "#e7f8cf",

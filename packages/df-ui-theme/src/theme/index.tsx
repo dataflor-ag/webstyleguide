@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles"
-import palette from "./palette"
+import paletteLight from "./palette"
+import paletteDark from "./paletteDark"
 import typography from "./typography"
 import components from "./components"
 import spacing from "./spacing"
@@ -7,18 +8,10 @@ import shape from "./shape"
 import shadows from "./shadows"
 // import breakpoints from "./breakpoints"
 
-export {
-  palette,
-  typography,
-  components,
-  spacing,
-  shape,
-  shadows,
-  // breakpoints
-}
+// import paletteTest from "./paletteTest"
 
-const theme = createTheme({
-  palette,
+const themeLight = createTheme({
+  palette: paletteLight,
   typography,
   components,
   spacing,
@@ -27,4 +20,28 @@ const theme = createTheme({
   // breakpoints
 })
 
-export default theme
+const themeDark = createTheme({
+  palette: paletteDark,
+  typography,
+  components,
+  spacing,
+  shape,
+  shadows,
+  // breakpoints
+})
+
+export {
+  paletteLight as palette,
+  typography,
+  components,
+  spacing,
+  shape,
+  shadows,
+  // breakpoints
+
+  // Themes
+  themeLight,
+  themeDark,
+}
+
+export default themeLight
