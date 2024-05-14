@@ -24,6 +24,7 @@ import icon from "./components/icon"
 import tooltip from "./components/tooltip"
 import dataGrid from "./components/dataGrid"
 import accordion from "./components/accordion"
+import stepper from "./components/stepper"
 
 const components: Components<Omit<Theme, "components">> = {
   // MUI
@@ -49,6 +50,7 @@ const components: Components<Omit<Theme, "components">> = {
   ...icon,
   ...tooltip,
   ...accordion,
+  ...stepper,
 
   // MUI X
   ...dataGrid,
