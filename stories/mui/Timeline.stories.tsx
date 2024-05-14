@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography, Avatar, Stack } from "@mui/material";
+import React from "react"
+import { Typography, Avatar, Stack, Chip } from "@mui/material"
 import {
   Timeline,
   TimelineItem,
@@ -7,15 +7,16 @@ import {
   TimelineConnector,
   TimelineContent,
   TimelineDot,
-} from "@mui/lab";
+} from "@mui/lab"
+import { Downloadbox } from "../../packages/df-ui-downloadbox/lib"
 
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react"
 
 const meta: Meta = {
   title: "MUI/Timeline",
-};
+}
 
-export default meta;
+export default meta
 
 export function _Timeline() {
   return (
@@ -66,6 +67,11 @@ export function _Timeline() {
               <Typography variant="caption">Just now</Typography>
             </Stack>
             <Typography variant="body2">Added a file to Design</Typography>
+            <Downloadbox
+              title="dataflor-design-system.pdf"
+              mime="png"
+              size="1.9 MB"
+            />
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -100,9 +106,33 @@ export function _Timeline() {
             <Typography variant="body2">
               Added 3 labels to the project Dataflor design system
             </Typography>
+            <Stack direction={"row"} gap={1} mt={2} mb={2}>
+              <Chip label="Design" size="small" />
+              <Chip label="Atomic" size="small" />
+              <Chip label="Product" size="small" />
+            </Stack>
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <Avatar>PB</Avatar>
+          </TimelineSeparator>
+          <TimelineContent>
+            <Stack direction={"row"} gap={2} alignItems={"center"}>
+              <Typography variant="body2" fontWeight={600}>
+                Drew Cano
+              </Typography>
+              <Typography variant="caption">6 hours ago</Typography>
+            </Stack>
+            <Typography variant="body2">Added a file to Design</Typography>
+            <Downloadbox
+              title="dataflor-design-system-notes.txt"
+              mime="txt"
+              size="1.2 MB"
+            />
           </TimelineContent>
         </TimelineItem>
       </Timeline>
     </>
-  );
+  )
 }
