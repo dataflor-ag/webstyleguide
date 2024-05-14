@@ -1,11 +1,13 @@
 # `@dataflor-ag/df-ui-downloadbox`
 
-> TODO: description
+> A versatile component for handling MIME content download, supporting various file types and formats.
 
 ## Usage
 
-```
-const dfUiDownloadbox = require('df-ui-downloadbox');
+```tsx
+import { Downloadbox } from "@dataflor-ag/df-ui-downloadbox"
 
-// TODO: DEMONSTRATE API
+<div>
+  <Downloadbox title="design.png" mime="png" size="1.9 MB">
+</div>
 ```
