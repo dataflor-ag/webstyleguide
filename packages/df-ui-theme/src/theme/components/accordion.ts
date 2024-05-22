@@ -1,87 +1,89 @@
-import { Components, Theme } from "@mui/material"
-import theme, { palette } from "../index"
-import { radius } from "../shape"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../shape";
 // import { accordionIcon } from "../utils/accordion"
-import { customShadows } from "../shadows"
+import { getShadow } from "../utils/getShadows";
 
-const Styles: Components<Omit<Theme, "components">> = {
-  MuiAccordion: {
-    defaultProps: {
-      variant: "elevation",
-    },
-    styleOverrides: {
-      root: () => ({
-        marginTop: 0,
-        marginBottom: theme.spacing(2),
-        border: "0 none",
-        padding: 0,
-        borderRadius: radius.md,
-        boxShadow: customShadows.xs.base,
-        transition: "all 0.2s ease-in-out",
+export const getAccordion = (theme: Theme): ComponentStyles => {
+  const { palette } = theme;
 
-        "&:first-of-type": {
-          borderRadius: radius.md,
-        },
-        "&:last-of-type": {
-          borderRadius: radius.md,
-        },
-
-        "&:before": {
-          display: "none",
-        },
-
-        "&.Mui-expanded": {
+  return {
+    MuiAccordion: {
+      defaultProps: {
+        variant: "elevation",
+      },
+      styleOverrides: {
+        root: () => ({
           marginTop: 0,
-          backgroundColor: `${palette.grey?.[100]}`,
-          boxShadow: "none",
-        },
-      }),
+          marginBottom: theme.spacing(2),
+          border: "0 none",
+          padding: 0,
+          borderRadius: radius.md,
+          boxShadow: getShadow(palette.mode).xs.base,
+          transition: "all 0.2s ease-in-out",
+
+          "&:first-of-type": {
+            borderRadius: radius.md,
+          },
+          "&:last-of-type": {
+            borderRadius: radius.md,
+          },
+
+          "&:before": {
+            display: "none",
+          },
+
+          "&.Mui-expanded": {
+            marginTop: 0,
+            backgroundColor: `${palette.grey?.[100]}`,
+            boxShadow: "none",
+          },
+        }),
+      },
     },
-  },
-  MuiAccordionSummary: {
-    defaultProps: {
-      // expandIcon: accordionIcon,
-    },
-    styleOverrides: {
-      root: () => ({
-        padding: 0,
-        minHeight: theme.spacing(12),
-        "&.Mui-expanded": {
+    MuiAccordionSummary: {
+      defaultProps: {
+        // expandIcon: accordionIcon,
+      },
+      styleOverrides: {
+        root: () => ({
+          padding: 0,
           minHeight: theme.spacing(12),
-        },
-      }),
-      content: () => ({
-        fontSize: "0.875rem",
-        padding: `0 ${theme.spacing(4)}`,
-        margin: 0,
-        fontWeight: 600,
-
-        "&.Mui-expanded": {
+          "&.Mui-expanded": {
+            minHeight: theme.spacing(12),
+          },
+        }),
+        content: () => ({
+          fontSize: "0.875rem",
+          padding: `0 ${theme.spacing(4)}`,
           margin: 0,
-        },
-      }),
-      expandIconWrapper: () => ({
-        padding: `0 ${theme.spacing(4)}`,
+          fontWeight: 600,
 
-        "&.Mui-expanded": {
-          transform: "none",
-        },
-        "&.Mui-expanded accordion-expaned-icon": {
-          transform: "none",
-        },
-      }),
-    },
-  },
-  MuiAccordionDetails: {
-    styleOverrides: {
-      root: () => ({
-        padding: `0 ${theme.spacing(4)}`,
-        fontSize: "0.875rem",
-        marginBottom: theme.spacing(4),
-        marginTop: theme.spacing(-2),
-      }),
-    },
-  },
-}
+          "&.Mui-expanded": {
+            margin: 0,
+          },
+        }),
+        expandIconWrapper: () => ({
+          padding: `0 ${theme.spacing(4)}`,
 
-export default Styles
+          "&.Mui-expanded": {
+            transform: "none",
+          },
+          "&.Mui-expanded accordion-expaned-icon": {
+            transform: "none",
+          },
+        }),
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: () => ({
+          padding: `0 ${theme.spacing(4)}`,
+          fontSize: "0.875rem",
+          marginBottom: theme.spacing(4),
+          marginTop: theme.spacing(-2),
+        }),
+      },
+    },
+  };
+};
