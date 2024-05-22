@@ -12,3 +12,5 @@ export * from "./form";
 export * from "./select";
 export * from "./checkbox";
 export * from "./radio";
+export * from "./switchToggle";
+export * from "./tabs";

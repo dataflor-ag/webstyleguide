@@ -14,6 +14,8 @@ import {
   getSelects,
   getCheckboxes,
   getRadios,
+  getSwitchToggle,
+  getTabs,
 } from "../components/index";
 
 export const getComponents = (theme: Theme) => {
@@ -33,6 +35,8 @@ export const getComponents = (theme: Theme) => {
       ...getSelects(theme),
       ...getCheckboxes(theme),
       ...getRadios(theme),
+      ...getSwitchToggle(theme),
+      ...getTabs(theme),
     },
   };
 };
