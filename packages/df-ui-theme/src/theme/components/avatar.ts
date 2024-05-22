@@ -1,13 +1,17 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
 
 export const getAvatars = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
+
   return {
     MuiAvatar: {
       styleOverrides: {
         root: () => ({
-          backgroundImage: `linear-gradient(180deg, ${palette.grey?.[100]} 0%, ${palette.grey?.[200]} 100%)`,
+          backgroundImage: isLightMode
+            ? `linear-gradient(180deg, ${palette.grey?.[100]} 0%, ${palette.grey?.[200]} 100%)`
+            : `linear-gradient(180deg, ${palette.grey?.[100]} 0%, ${palette.grey?.[50]} 100%)`,
           backgroundColor: `${palette.grey?.[100]}`,
           color: `${palette.grey?.[600]}`,
           fontWeight: "600",
@@ -22,5 +26,5 @@ export const getAvatars = (theme: Theme): ComponentStyles => {
         spacing: 12,
       },
     },
-  }
-}
+  };
+};
