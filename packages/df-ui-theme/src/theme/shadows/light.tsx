@@ -1,18 +1,5 @@
-import { Shadows } from "@mui/material"
-import palette from "./palette"
-
-type CustomShadow = {
-  base: string
-  focus: string
-  error: string
-  errorFocus: string
-  primary: string
-  primaryFocus: string
-  secondary: string
-  secondaryFocus: string
-}
-
-type CustomShadowNames = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl"
+import type { CustomShadows } from "../types/Shadow"
+import { light as palette } from "../palettes/light"
 
 const customShadowBase = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[200]}`
 const customShadowFocus = `inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.grey?.[300]}, 0 0 0 4px ${palette.grey?.[200]}`
@@ -31,7 +18,7 @@ const customShadowXl = `0 8px 24px 0 rgba(0,0,0,0.08), 0 24px 48px -12px rgba(0,
 const customShadow2xl = `0 24px 48px -12px rgba(0,0,0,0.15)`
 const customShadow3xl = `0 24px 48px -12px rgba(0,0,0,0.15)`
 
-export const customShadows: Record<CustomShadowNames, CustomShadow> = {
+export const light: CustomShadows = {
   xs: {
     base: `${customShadowXs}, ${customShadowBase}`,
     focus: `${customShadowXs}, ${customShadowFocus}`,
@@ -103,33 +90,3 @@ export const customShadows: Record<CustomShadowNames, CustomShadow> = {
     secondaryFocus: `${customShadow3xl}, ${customShadowSecondaryFocus}`,
   },
 }
-
-export const shadows: Shadows = [
-  "none",
-  customShadows.xs.error,
-  customShadows.sm.base,
-  customShadows.md.base,
-  customShadows.lg.base,
-  customShadows.xl.base,
-  customShadows["2xl"].base,
-  customShadows["3xl"].base,
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-  "none",
-]
-
-export default shadows

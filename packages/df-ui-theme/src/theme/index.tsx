@@ -6,6 +6,8 @@ import components from "./components"
 import spacing from "./spacing"
 import shape from "./shape"
 import shadows from "./shadows"
+
+export { getTheme } from "./prototyp/theme"
 // import breakpoints from "./breakpoints"
 
 // import paletteTest from "./paletteTest"

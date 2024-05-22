@@ -1,27 +1,21 @@
 import type { PaletteOptions } from "@mui/material"
 
-// declare module "@mui/material/styles" {
-//   interface PaletteColor {
-//     primary: true
-//   }
-
-//   interface SimplePaletteColorOptions {
-//     50: string
-//     100: string
-//     200: string
-//     300: string
-//     400: string
-//     500: string
-//     600: string
-//     700: string
-//     800: string
-//     900: string
-//     950: string
-//   }
-// }
-
-const palette: PaletteOptions = {
+export const dark: PaletteOptions = {
   mode: "dark",
+  surface: {
+    "0": "#131316",
+    "50": "#18181b",
+    "100": "#26272b",
+    "200": "#3f3f46",
+    "300": "#51525c",
+    "400": "#70707b",
+    "500": "#a0a0ab",
+    "600": "#c9c9cf",
+    "700": "#E9E9EC",
+    "800": "#f4f4f5",
+    "900": "#fafafa",
+    "950": "#ffffff",
+  },
   primary: {
     "50": "#162b08",
     "100": "#314e19",
@@ -34,7 +28,7 @@ const palette: PaletteOptions = {
     "800": "#cff1a5",
     "900": "#e7f8cf",
     "950": "#f4fce9",
-    contrastText: "#000000",
+    contrastText: "#ffffff",
   },
   secondary: {
     "50": "#18181b",
@@ -51,6 +45,7 @@ const palette: PaletteOptions = {
     A200: "#fafafa",
     A400: "#fafafa",
     A700: "#fafafa",
+    contrastText: "#18181b",
   },
   grey: {
     "50": "#18181b",
@@ -108,18 +103,16 @@ const palette: PaletteOptions = {
     "950": "#fefbe8",
   },
   error: {
-    "50": "#4c0517",
-    "100": "#881334",
-    "200": "#9f1235",
-    "300": "#bf1137",
-    "400": "#df1c41",
+    "50": "#fff1f2",
+    "100": "#ffe4e5",
+    "200": "#fecdd2",
+    "300": "#fda4ac",
+    "400": "#fb7181",
     "500": "#f53e59",
-    "600": "#fb7181",
-    "700": "#fda4ac",
-    "800": "#fecdd2",
-    "900": "#ffe4e5",
-    "950": "#fff1f2",
+    "600": "#df1c41",
+    "700": "#bf1137",
+    "800": "#9f1235",
+    "900": "#881334",
+    "950": "#4c0517",
   },
 }
-
-export default palette

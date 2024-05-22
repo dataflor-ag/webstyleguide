@@ -1,7 +1,7 @@
 import { Components, Theme } from "@mui/material"
 import { customShadows } from "../shadows"
 import { palette } from "../index"
-import { radioButtonIcon } from "../utils/radioButton"
+import { radioButtonIcon } from "../icons/radioButton"
 
 const Styles: Components<Omit<Theme, "components">> = {
   MuiRadio: {

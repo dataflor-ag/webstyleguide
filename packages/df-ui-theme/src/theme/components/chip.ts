@@ -1,7 +1,7 @@
-import { Components, Theme } from "@mui/material";
-import { chipIconRemove } from "../utils/chips";
-import palette from "../palette";
-import { customShadows } from "../shadows";
+import { Components, Theme } from "@mui/material"
+import { chipIconRemove } from "../icons/chips"
+import palette from "../palette"
+import { customShadows } from "../shadows"
 
 const Styles: Components<Omit<Theme, "components">> = {
   MuiChip: {
@@ -100,6 +100,6 @@ const Styles: Components<Omit<Theme, "components">> = {
       },
     },
   },
-};
+}
 
-export default Styles;
+export default Styles

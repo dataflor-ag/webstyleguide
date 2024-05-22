@@ -1,37 +1,40 @@
-import { Components, Theme } from "@mui/material"
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
 import { radius } from "../shape"
-import theme from "../index"
 
-const styles: Components<Omit<Theme, "components">> = {
-  MuiPaper: {
-    styleOverrides: {
-      root: () => ({
-        borderRadius: radius.xl,
-      }),
+export const getCards = (theme: Theme): ComponentStyles => {
+  const { palette } = theme
+  return {
+    MuiPaper: {
+      styleOverrides: {
+        root: () => ({
+          borderRadius: radius.xl,
+          backgroundColor: palette.surface[0],
+          backgroundImage: "none",
+        }),
+      },
     },
-  },
-  MuiCardMedia: {
-    styleOverrides: {
-      root: () => ({
-        marginBottom: theme.spacing(5),
-        borderRadius: radius.md,
-      }),
+    MuiCardMedia: {
+      styleOverrides: {
+        root: () => ({
+          marginBottom: theme.spacing(5),
+          borderRadius: radius.md,
+        }),
+      },
     },
-  },
-  MuiCardContent: {
-    styleOverrides: {
-      root: () => ({
-        padding: theme.spacing(6),
-      }),
+    MuiCardContent: {
+      styleOverrides: {
+        root: () => ({
+          padding: theme.spacing(6),
+        }),
+      },
     },
-  },
-  MuiCardActionArea: {
-    styleOverrides: {
-      root: () => ({
-        padding: theme.spacing(0),
-      }),
+    MuiCardActionArea: {
+      styleOverrides: {
+        root: () => ({
+          padding: theme.spacing(0),
+        }),
+      },
     },
-  },
+  }
 }
-
-export default styles
