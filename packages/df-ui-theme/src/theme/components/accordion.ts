@@ -35,7 +35,7 @@ export const getAccordion = (theme: Theme): ComponentStyles => {
 
           "&.Mui-expanded": {
             marginTop: 0,
-            backgroundColor: `${palette.grey?.[100]}`,
+            backgroundColor: palette.grey[100],
             boxShadow: "none",
           },
         }),
