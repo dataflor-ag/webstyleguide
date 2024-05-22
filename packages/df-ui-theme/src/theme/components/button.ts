@@ -100,7 +100,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           boxShadow: getShadow(palette.mode).xs.primary,
           ":hover": {
             backgroundImage: "none",
-            backgroundColor: `${palette.primary?.[600]}`,
+            backgroundColor: isLightMode
+              ? `${palette.primary?.[600]}`
+              : `${palette.primary?.[400]}`,
             boxShadow: getShadow(palette.mode).xs.primary,
           },
           ":focus": {
@@ -117,7 +119,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           color: palette.secondary.contrastText,
           boxShadow: getShadow(palette.mode).xs.secondary,
           ":hover": {
-            backgroundColor: palette.secondary[800],
+            backgroundColor: isLightMode
+              ? palette.secondary[800]
+              : palette.secondary[700],
             backgroundImage: "none",
             boxShadow: getShadow(palette.mode).xs.secondary,
           },
@@ -137,7 +141,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           color: palette.grey[900],
           backgroundColor: palette.secondary[0],
           ":hover": {
-            backgroundColor: `${palette.grey?.[100]}`,
+            backgroundColor: isLightMode
+              ? `${palette.grey?.[100]}`
+              : "rgba(255,255,255,0.04)",
             boxShadow: getShadow(palette.mode).xs.base,
             border: "none",
           },
