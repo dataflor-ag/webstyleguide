@@ -6,6 +6,14 @@ import {
   getCards,
   getChips,
   getAvatars,
+  getDialogs,
+  getDividers,
+  getDrawers,
+  getMenus,
+  getForms,
+  getSelects,
+  getCheckboxes,
+  getRadios,
 } from "../components/index";
 
 export const getComponents = (theme: Theme) => {
@@ -17,6 +25,14 @@ export const getComponents = (theme: Theme) => {
       ...getCards(theme),
       ...getChips(theme),
       ...getAvatars(theme),
+      ...getDialogs(theme),
+      ...getDividers(theme),
+      ...getDrawers(theme),
+      ...getMenus(theme),
+      ...getForms(theme),
+      ...getSelects(theme),
+      ...getCheckboxes(theme),
+      ...getRadios(theme),
     },
   };
 };

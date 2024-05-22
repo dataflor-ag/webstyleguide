@@ -1,7 +1,6 @@
 import type { Theme } from "@mui/material";
 import type { ComponentStyles } from "../types/Components";
 import { radius } from "../shape";
-import { customShadows } from "../shadows";
 import { getShadow } from "../utils/getShadows";
 
 export const getButtons = (theme: Theme): ComponentStyles => {
@@ -251,7 +250,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             },
             ":focus": {
               zIndex: "1",
-              boxShadow: customShadows.xs.focus + "!important",
+              boxShadow: getShadow(palette.mode).xs.focus + "!important",
             },
             "&:after": {
               background: "none",
@@ -274,94 +273,104 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         }),
 
         colorInherit: {
-          color: `${palette.grey?.[600]}`,
+          color: palette.grey[600],
           ":hover": {
-            backgroundColor: `${palette.grey?.[100]}`,
-            color: `${palette.grey?.[900]}`,
+            backgroundColor: palette.grey[100],
+            color: palette.grey[900],
           },
           ":focus": {
-            boxShadow: customShadows.xs.focus,
+            boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
-            color: `${palette.grey?.[700]}`,
+            color: palette.grey[700],
           },
         },
 
         colorSecondary: {
-          boxShadow: customShadows.xs.base,
-          color: `${palette.grey?.[600]}`,
-          backgroundColor: palette.secondary[400],
+          boxShadow: getShadow(palette.mode).xs.base,
+          color: palette.grey[600],
+          backgroundColor: palette.surface[0],
           ":hover": {
-            backgroundColor: `${palette.grey?.[100]}`,
-            color: `${palette.grey?.[900]}`,
+            backgroundColor: palette.grey[100],
+            color: palette.grey[900],
           },
           ":focus": {
-            boxShadow: customShadows.xs.focus,
+            boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
-            boxShadow: customShadows.xs.base,
+            boxShadow: getShadow(palette.mode).xs.base,
           },
         },
 
         colorPrimary: {
-          color: `${palette.primary?.[500]}`,
+          color: palette.primary[500],
           ":hover": {
-            backgroundColor: `${palette.primary?.[50]}`,
+            backgroundColor: palette.primary[50],
           },
           ":focus": {
-            boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.primary?.[300]}, 0 0 0 4px ${palette.primary?.[200]}`,
+            boxShadow: `0 0 0 1px ${palette.primary?.[300]}, 0 0 0 4px ${palette.primary?.[200]}`,
           },
           ":disabled": {
-            color: `${palette.primary?.[500]}`,
+            color: palette.primary[500],
           },
         },
 
         colorError: {
-          color: `${palette.error?.[600]}`,
+          color: palette.error[600],
           ":hover": {
-            backgroundColor: `${palette.error?.[50]}`,
+            backgroundColor: isLightMode
+              ? palette.error[50]
+              : palette.error[950],
           },
           ":focus": {
-            boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.error?.[300]}, 0 0 0 4px ${palette.error?.[200]}`,
+            boxShadow: isLightMode
+              ? `0 0 0 1px ${palette.error?.[300]}, 0 0 0 4px ${palette.error?.[200]}`
+              : `0 0 0 1px ${palette.error?.[800]}, 0 0 0 4px ${palette.error?.[900]}`,
           },
           ":disabled": {
-            color: `${palette.error?.[500]}`,
+            color: palette.error[500],
           },
         },
 
         colorInfo: {
           ":hover": {
-            backgroundColor: `${palette.info?.[50]}`,
+            backgroundColor: palette.info[50],
           },
           ":focus": {
-            boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
+            boxShadow: isLightMode
+              ? `0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`
+              : `0 0 0 1px ${palette.info?.[200]}, 0 0 0 4px ${palette.info?.[50]}`,
           },
           ":disabled": {
-            color: `${palette.info?.[500]}`,
+            color: palette.info[500],
           },
         },
 
         colorSuccess: {
           ":hover": {
-            backgroundColor: `${palette.success?.[50]}`,
+            backgroundColor: palette.success[50],
           },
           ":focus": {
-            boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`,
+            boxShadow: isLightMode
+              ? `0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`
+              : `0 0 0 1px ${palette.success?.[200]}, 0 0 0 4px ${palette.success?.[50]}`,
           },
           ":disabled": {
-            color: `${palette.success?.[500]}`,
+            color: palette.success[500],
           },
         },
 
         colorWarning: {
           ":hover": {
-            backgroundColor: `${palette.warning?.[50]}`,
+            backgroundColor: palette.warning[50],
           },
           ":focus": {
-            boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`,
+            boxShadow: isLightMode
+              ? `0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`
+              : `0 0 0 1px ${palette.warning?.[200]}, 0 0 0 4px ${palette.warning?.[50]}`,
           },
           ":disabled": {
-            color: `${palette.warning?.[500]}`,
+            color: palette.warning[500],
           },
         },
 

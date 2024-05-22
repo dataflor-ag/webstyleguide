@@ -4,12 +4,16 @@ import { radius } from "../shape";
 
 export const getCards = (theme: Theme): ComponentStyles => {
   const { palette } = theme;
+  const isLightMode = palette.mode === "light";
+
   return {
     MuiPaper: {
       styleOverrides: {
         root: () => ({
           borderRadius: radius.xl,
-          backgroundColor: palette.surface[0],
+          backgroundColor: isLightMode
+            ? palette.surface[0]
+            : palette.surface[50],
           backgroundImage: "none",
         }),
       },
