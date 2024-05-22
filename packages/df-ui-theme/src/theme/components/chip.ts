@@ -1,105 +1,110 @@
-import { Components, Theme } from "@mui/material"
-import { chipIconRemove } from "../icons/chips"
-import palette from "../palette"
-import { customShadows } from "../shadows"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { chipIconRemove } from "../icons/chips";
+import { getShadow } from "../utils/getShadows";
 
-const Styles: Components<Omit<Theme, "components">> = {
-  MuiChip: {
-    defaultProps: {
-      variant: "outlined",
-      deleteIcon: chipIconRemove,
-    },
-    styleOverrides: {
-      root: () => ({
-        fontWeight: "600",
-        backgroundColor: "white",
-        borderColor: `${palette.grey?.[200]}`,
-        color: `${palette.grey?.[600]}`,
-        "> .MuiSvgIcon-root": {
-          fontSize: "1rem",
-          margin: "0 -0.5rem 0 0.375rem",
-        },
-        ".chip-icon-remove": {
-          width: "1rem",
-          height: "1rem",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "0 0.25rem 0 -0.5rem",
-          transition: "all 0.2s ease-in-out",
-          ".MuiSvgIcon-root": {
+export const getChips = (theme: Theme): ComponentStyles => {
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
+
+  return {
+    MuiChip: {
+      defaultProps: {
+        variant: "outlined",
+        deleteIcon: chipIconRemove,
+      },
+      styleOverrides: {
+        root: () => ({
+          fontWeight: "600",
+          backgroundColor: palette.surface[0],
+          borderColor: palette.grey[200],
+          color: palette.grey[600],
+          "> .MuiSvgIcon-root": {
             fontSize: "1rem",
+            margin: "0 -0.5rem 0 0.375rem",
+          },
+          ".chip-icon-remove": {
+            width: "1rem",
+            height: "1rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "0 0.25rem 0 -0.5rem",
+            transition: "all 0.2s ease-in-out",
+            ".MuiSvgIcon-root": {
+              fontSize: "1rem",
+            },
+          },
+          "&.MuiChip-clickable:active": {
+            boxShadow: getShadow(palette.mode).xs.focus,
+          },
+        }),
+        sizeMedium: () => ({
+          height: "1.5rem",
+          fontSize: "0.875rem",
+        }),
+        sizeSmall: () => ({
+          height: "20px",
+          fontSize: "0.75rem",
+        }),
+        labelMedium: {
+          padding: "0 0.625rem",
+        },
+        labelSmall: {
+          padding: "0 0.5rem",
+        },
+
+        colorPrimary: {
+          backgroundColor: palette.primary[50],
+          borderColor: palette.primary[200],
+          color: palette.primary?.[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: getShadow(palette.mode).xs.primaryFocus,
           },
         },
-        "&.MuiChip-clickable:active": {
-          boxShadow: customShadows.xs.focus,
+        colorSecondary: {
+          backgroundColor: isLightMode
+            ? palette.secondary[50]
+            : palette.secondary[100],
+          borderColor: palette.secondary[200],
+          color: palette.secondary[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: getShadow(palette.mode).xs.secondaryFocus,
+          },
         },
-      }),
-      sizeMedium: () => ({
-        height: "1.5rem",
-        fontSize: "0.875rem",
-      }),
-      sizeSmall: () => ({
-        height: "20px",
-        fontSize: "0.75rem",
-      }),
-      labelMedium: {
-        padding: "0 0.625rem",
-      },
-      labelSmall: {
-        padding: "0 0.5rem",
-      },
-
-      colorPrimary: {
-        backgroundColor: `${palette.primary?.[50]}`,
-        borderColor: `${palette.primary?.[200]}`,
-        color: `${palette.primary?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: customShadows.xs.primaryFocus,
+        colorSuccess: {
+          backgroundColor: palette.success[50],
+          borderColor: palette.success[200],
+          color: palette.success[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: `0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`,
+          },
         },
-      },
-      colorSecondary: {
-        backgroundColor: `${palette.secondary?.[50]}`,
-        borderColor: `${palette.secondary?.[200]}`,
-        color: `${palette.secondary?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: customShadows.xs.secondaryFocus,
+        colorWarning: {
+          backgroundColor: palette.warning[50],
+          borderColor: palette.warning[200],
+          color: palette.warning[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: `0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`,
+          },
         },
-      },
-      colorSuccess: {
-        backgroundColor: `${palette.success?.[50]}`,
-        borderColor: `${palette.success?.[200]}`,
-        color: `${palette.success?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`,
+        colorError: {
+          backgroundColor: isLightMode ? palette.error[50] : palette.error[950],
+          borderColor: isLightMode ? palette.error[200] : palette.error[700],
+          color: palette.error[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: getShadow(palette.mode).xs.errorFocus,
+          },
         },
-      },
-      colorWarning: {
-        backgroundColor: `${palette.warning?.[50]}`,
-        borderColor: `${palette.warning?.[200]}`,
-        color: `${palette.warning?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`,
-        },
-      },
-      colorError: {
-        backgroundColor: `${palette.error?.[50]}`,
-        borderColor: `${palette.error?.[200]}`,
-        color: `${palette.error?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: customShadows.xs.errorFocus,
-        },
-      },
-      colorInfo: {
-        backgroundColor: `${palette.info?.[50]}`,
-        borderColor: `${palette.info?.[200]}`,
-        color: `${palette.info?.[600]}`,
-        "&.MuiChip-clickable:active": {
-          boxShadow: `0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.08), inset 0 1px 0 0 rgba(255,255,255, 0.12), 0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
+        colorInfo: {
+          backgroundColor: palette.info[50],
+          borderColor: palette.info[200],
+          color: palette.info[600],
+          "&.MuiChip-clickable:active": {
+            boxShadow: `0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`,
+          },
         },
       },
     },
-  },
-}
-
-export default Styles
+  };
+};

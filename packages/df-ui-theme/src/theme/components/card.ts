@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../shape"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../shape";
 
 export const getCards = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
+  const { palette } = theme;
   return {
     MuiPaper: {
       styleOverrides: {
@@ -33,8 +33,13 @@ export const getCards = (theme: Theme): ComponentStyles => {
       styleOverrides: {
         root: () => ({
           padding: theme.spacing(0),
+          "&:hover": {
+            ".MuiCardActionArea-focusHighlight": {
+              opacity: 0.04,
+            },
+          },
         }),
       },
     },
-  }
-}
+  };
+};

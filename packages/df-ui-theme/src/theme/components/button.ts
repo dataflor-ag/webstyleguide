@@ -1,12 +1,12 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../shape"
-import { customShadows } from "../shadows"
-import { getShadow } from "../utils/getShadows"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../shape";
+import { customShadows } from "../shadows";
+import { getShadow } from "../utils/getShadows";
 
 export const getButtons = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiButtonBase: {
@@ -118,6 +118,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           color: palette.secondary.contrastText,
           boxShadow: getShadow(palette.mode).xs.secondary,
           ":hover": {
+            backgroundColor: palette.secondary[800],
             backgroundImage: "none",
             boxShadow: getShadow(palette.mode).xs.secondary,
           },
@@ -160,8 +161,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         textSecondary: {
           color: `${palette.grey?.[700]}`,
           ":hover": {
-            backgroundColor: `${palette.grey?.[100]}`,
-            color: `${palette.grey?.[900]}`,
+            backgroundColor: palette.grey[100],
+            color: palette.grey[900],
           },
           ":focus": {
             boxShadow: getShadow(palette.mode).xs.focus,
@@ -384,5 +385,5 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  }
-}
+  };
+};

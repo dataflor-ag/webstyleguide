@@ -1,4 +1,4 @@
-import type { PaletteOptions } from "@mui/material"
+import type { PaletteOptions } from "@mui/material";
 
 export const dark: PaletteOptions = {
   mode: "dark",
@@ -33,7 +33,7 @@ export const dark: PaletteOptions = {
   secondary: {
     "50": "#18181b",
     "100": "#26272b",
-    "200": "#3f3f46",
+    "200": "#ffffff26",
     "300": "#51525c",
     "400": "#70707b",
     "500": "#a0a0ab",
@@ -50,7 +50,7 @@ export const dark: PaletteOptions = {
   grey: {
     "50": "#18181b",
     "100": "#26272b",
-    "200": "#3f3f46",
+    "200": "#ffffff26",
     "300": "#51525c",
     "400": "#70707b",
     "500": "#a0a0ab",
@@ -112,7 +112,7 @@ export const dark: PaletteOptions = {
     "600": "#df1c41",
     "700": "#bf1137",
     "800": "#9f1235",
-    "900": "#881334",
-    "950": "#4c0517",
+    "900": "#df1c414d",
+    "950": "#df1c411f",
   },
-}
+};
