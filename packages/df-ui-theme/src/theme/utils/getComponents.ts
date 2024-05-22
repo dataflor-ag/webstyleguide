@@ -1,5 +1,11 @@
-import type { Theme } from "@mui/material";
-import { getAppBar, getButtons, getCards, getChips } from "../components/index";
+import type { Theme } from "@mui/material"
+import {
+  getAppBar,
+  getAvatars,
+  getButtons,
+  getCards,
+  getChips,
+} from "../components/index"
 
 export const getComponents = (theme: Theme) => {
   return {
@@ -8,6 +14,7 @@ export const getComponents = (theme: Theme) => {
       ...getButtons(theme),
       ...getCards(theme),
       ...getChips(theme),
+      ...getAvatars(theme),
     },
-  };
-};
+  }
+}
