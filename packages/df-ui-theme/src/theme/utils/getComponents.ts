@@ -5,6 +5,7 @@ import {
   getButtons,
   getCards,
   getChips,
+  getAvatars,
 } from "../components/index";
 
 export const getComponents = (theme: Theme) => {
@@ -15,6 +16,7 @@ export const getComponents = (theme: Theme) => {
       ...getButtons(theme),
       ...getCards(theme),
       ...getChips(theme),
+      ...getAvatars(theme),
     },
   };
 };
