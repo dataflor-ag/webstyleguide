@@ -247,11 +247,14 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               borderBottomRightRadius: radius.md,
             },
             "&:hover": {
-              backgroundColor: `${palette.grey?.[100]}`,
+              backgroundColor: palette.grey[100],
             },
             ":focus": {
               zIndex: "1",
               boxShadow: customShadows.xs.focus + "!important",
+            },
+            "&:after": {
+              background: "none",
             },
           },
         }),
