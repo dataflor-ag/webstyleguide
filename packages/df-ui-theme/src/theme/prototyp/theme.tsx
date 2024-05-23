@@ -2,6 +2,9 @@ import type { PaletteMode, Theme } from "@mui/material"
 import { deepmerge } from "@mui/utils"
 import { createTheme } from "@mui/material"
 
+import type {} from "@mui/x-data-grid/themeAugmentation"
+import type {} from "@mui/lab/themeAugmentation"
+
 import { getComponents } from "../utils/getComponents"
 import { getPalette } from "../utils/getPalette"
 import { getShadows } from "../utils/getShadows"
