@@ -9,7 +9,7 @@ const IconHeroRoot = styled("div", {
   name: "MuiIconHero",
   slot: "root",
 })(() => ({
-  marginBlock: "0.5rem",
+  marginBottom: "0.5rem",
   width: "100%",
   display: "flex",
   justifyContent: "center",
@@ -57,15 +57,13 @@ const IconHeroItem = styled("div", {
 }))
 
 export const IconHero = React.forwardRef<HTMLDivElement, IconHeroProps>(
-  function Stat(props, ref) {
-    return (
-      <IconHeroRoot ref={ref}>
-        <IconHeroWrapper>
-          <IconHeroItem>{props.children}</IconHeroItem>
-        </IconHeroWrapper>
-      </IconHeroRoot>
-    )
-  }
+  (props, ref) => (
+    <IconHeroRoot ref={ref}>
+      <IconHeroWrapper>
+        <IconHeroItem>{props.children}</IconHeroItem>
+      </IconHeroWrapper>
+    </IconHeroRoot>
+  )
 )
 
 export default IconHero
