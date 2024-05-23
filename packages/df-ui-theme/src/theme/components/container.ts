@@ -1,17 +1,17 @@
-import { Components, Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components";
 
-const Styles: Components<Omit<Theme, "components">> = {
-  MuiContainer: {
-    defaultProps: {
-      maxWidth: "lg",
+export const getContainer = (): ComponentStyles => {
+  return {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: "lg",
+      },
+      styleOverrides: {
+        root: () => ({
+          paddingLeft: "1.5rem !important",
+          paddingRight: "1.5rem !important",
+        }),
+      },
     },
-    styleOverrides: {
-      root: () => ({
-        paddingLeft: "1.5rem !important",
-        paddingRight: "1.5rem !important",
-      }),
-    },
-  },
-}
-
-export default Styles
+  };
+};

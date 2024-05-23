@@ -1,45 +1,48 @@
-import { Components, Theme } from "@mui/material";
-import { palette } from "../index";
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
 
-const Styles: Components<Omit<Theme, "components">> = {
-  MuiTimelineSeparator: {
-    styleOverrides: {
-      root: () => ({
-        ".MuiAvatar-root": {
-          marginBottom: ".25rem",
-          marginTop: ".25rem",
-        },
-      }),
+export const getTimeline = (theme: Theme): ComponentStyles => {
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
+
+  return {
+    MuiTimelineSeparator: {
+      styleOverrides: {
+        root: () => ({
+          ".MuiAvatar-root": {
+            marginBottom: ".25rem",
+            marginTop: ".25rem",
+          },
+        }),
+      },
     },
-  },
-  MuiTimelineConnector: {
-    styleOverrides: {
-      root: () => ({
-        backgroundColor: `${palette.grey?.[200]}`,
-        borderRadius: "50rem",
-      }),
+    MuiTimelineConnector: {
+      styleOverrides: {
+        root: () => ({
+          backgroundColor: palette.grey[200],
+          borderRadius: "50rem",
+        }),
+      },
     },
-  },
-  MuiTimelineDot: {
-    styleOverrides: {
-      root: () => ({
-        boxShadow: "none",
-        backgroundColor: `${palette.grey?.[300]}`,
-      }),
+    MuiTimelineDot: {
+      styleOverrides: {
+        root: () => ({
+          boxShadow: "none",
+          backgroundColor: palette.grey[300],
+        }),
+      },
     },
-  },
-  MuiTimelineContent: {
-    styleOverrides: {
-      root: () => ({
-        ".MuiTypography-caption": {
-          color: `${palette.grey?.[600]}`,
-        },
-        ".MuiTypography-body2": {
-          color: `${palette.grey?.[700]}`,
-        },
-      }),
+    MuiTimelineContent: {
+      styleOverrides: {
+        root: () => ({
+          ".MuiTypography-caption": {
+            color: isLightMode ? palette.grey[600] : palette.grey[500],
+          },
+          ".MuiTypography-body2": {
+            color: palette.grey[700],
+          },
+        }),
+      },
     },
-  },
+  };
 };
-
-export default Styles;
