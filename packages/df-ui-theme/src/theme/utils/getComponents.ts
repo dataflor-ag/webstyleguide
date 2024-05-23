@@ -18,6 +18,14 @@ import {
   getTabs,
   getTooltips,
   getToggleButtons,
+  getTimeline,
+  getStepper,
+  getProgress,
+  getPagination,
+  getIcon,
+  getGrid,
+  getDataGrid,
+  getContainer,
 } from "../components/index";
 
 export const getComponents = (theme: Theme) => {
@@ -41,6 +49,14 @@ export const getComponents = (theme: Theme) => {
       ...getTabs(theme),
       ...getTooltips(theme),
       ...getToggleButtons(theme),
+      ...getTimeline(theme),
+      ...getStepper(theme),
+      ...getProgress(theme),
+      ...getPagination(theme),
+      ...getIcon(),
+      ...getGrid(),
+      ...getDataGrid(theme),
+      ...getContainer(),
     },
   };
 };

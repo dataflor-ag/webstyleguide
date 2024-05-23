@@ -1,15 +1,17 @@
-import { Components, Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components";
 
-const Styles: Components<Omit<Theme, "components">> = {
-  MuiSvgIcon: {
-    styleOverrides: {
-      root: () => ({
-        path: {
-          fill: "currentColor",
-        },
-      }),
+export const getIcon = (): ComponentStyles => {
+  // const isLightMode = palette.mode === "light";
+
+  return {
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: () => ({
+          path: {
+            fill: "currentColor",
+          },
+        }),
+      },
     },
-  },
-}
-
-export default Styles
+  };
+};
