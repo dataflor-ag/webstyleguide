@@ -29,12 +29,10 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "@dataflor-ag/df-ui-theme": "file:../df-ui-theme",
+    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.0"
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.15"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
