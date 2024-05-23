@@ -16,11 +16,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: [
-        "react/jsx-runtime",
-        "@mui/material",
-        ...Object.keys(peerDependencies),
-      ],
+      external: ["react/jsx-runtime", ...Object.keys(peerDependencies)],
     },
   },
 })
