@@ -17,11 +17,7 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: [
-        "react/jsx-runtime",
-        "@dataflor-ag/df-ui-theme",
-        ...Object.keys(peerDependencies),
-      ],
+      external: ["react/jsx-runtime", ...Object.keys(peerDependencies)],
     },
   },
 })
