@@ -7,6 +7,15 @@ export const getCards = (theme: Theme): ComponentStyles => {
   const isLightMode = palette.mode === "light";
 
   return {
+    MuiCard: {
+      styleOverrides: {
+        root: () => ({
+          backgroundColor: isLightMode
+            ? palette.surface[0] + "!important"
+            : "rgba(255,255,255,0.04) !important",
+        }),
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: () => ({

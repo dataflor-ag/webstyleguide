@@ -224,7 +224,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: "0.4",
           },
           ":after": {
-            background: `linear-gradient(180deg, ${palette.error?.[950]} 0%, rgba(255,255,255,0.00) 100%)`,
+            background: isLightMode
+              ? "none"
+              : `linear-gradient(180deg, ${palette.error?.[950]} 0%, rgba(255,255,255,0.00) 100%)`,
           },
         },
       },

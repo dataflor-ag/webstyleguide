@@ -1,8 +1,8 @@
-import React from "react"
-import { styled } from "@mui/material/styles"
+import React from "react";
+import { styled } from "@mui/material/styles";
 
 interface IconHeroProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const IconHeroRoot = styled("div", {
@@ -14,7 +14,7 @@ const IconHeroRoot = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-}))
+}));
 
 const IconHeroWrapper = styled("div", {
   name: "MuiIconHero",
@@ -28,12 +28,13 @@ const IconHeroWrapper = styled("div", {
 
   borderRadius: "9999px",
   boxShadow: `inset 0px 1px 0px 0px ${theme.palette.grey[200]}`,
-  backgroundColor: theme.palette.grey[50],
+  backgroundColor:
+    theme.palette.mode === "light" ? theme.palette.grey[50] : "transparent",
   backgroundImage: `linear-gradient(
     0deg,
     rgba(255, 255, 255, 0) 21%,
     ${theme.palette.grey[100]} 100%)`,
-}))
+}));
 
 const IconHeroItem = styled("div", {
   name: "MuiIconHero",
@@ -48,13 +49,13 @@ const IconHeroItem = styled("div", {
   boxShadow:
     theme.palette.mode === "light"
       ? `0 4px 8px -2px rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px #e9e9ec`
-      : "none",
+      : `0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255,255,255, 0.04)`,
   height: "3.5rem",
   width: "3.5rem",
   svg: {
     fontSize: "1.5rem",
   },
-}))
+}));
 
 export const IconHero = React.forwardRef<HTMLDivElement, IconHeroProps>(
   (props, ref) => (
@@ -64,6 +65,6 @@ export const IconHero = React.forwardRef<HTMLDivElement, IconHeroProps>(
       </IconHeroWrapper>
     </IconHeroRoot>
   )
-)
+);
 
-export default IconHero
+export default IconHero;
