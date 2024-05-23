@@ -10,10 +10,10 @@ const customShadowPrimaryFocus = `0 0 0 1px ${palette.primary?.[600]}, 0 0 0 4px
 const customShadowSecondary = `0 0 0 1px rgb(255,255,255)`;
 const customShadowSecondaryFocus = `0 0 0 1px rgb(255,255,255), 0 0 0 4px rgba(255,255,255, 0.2)`;
 
-const customShadowXs = `0 1px 3px 0 rgba(0,0,0,0.25), 0 1px 2px -1px rgba(0,0,0,0.50)`;
-const customShadowSm = `0 2px 3px 0 rgba(0,0,0,0.25), 0 1px 2px -1px rgba(0,0,0,0.50)`;
+const customShadowXs = `0 1px 3px 0 rgba(0,0,0,0.40), 0 1px 2px -1px rgba(0,0,0,0.50)`;
+const customShadowSm = `0 2px 3px 0 rgba(0,0,0,0.40), 0 1px 2px -1px rgba(0,0,0,0.50)`;
 const customShadowMd = `0 4px 8px -2px rgba(0,0,0,0.25), 0 2px 4px 0 rgba(0,0,0,0.50)`;
-const customShadowLg = `0 12px 16px -4px rgba(0,0,0,0.25), 0 4px 6px -2px rgba(0,0,0,0.30)`;
+const customShadowLg = `0 12px 16px -4px rgba(0,0,0,0.15), 0 4px 6px -2px rgba(0,0,0,0.50)`;
 const customShadowXl = `0 8px 24px 0 rgba(0,0,0,0.25), 0 24px 48px -12px rgba(0,0,0,0.50)`;
 const customShadow2xl = `0 24px 48px -12px rgba(0,0,0,0.40)`;
 const customShadow3xl = `0 24px 48px -12px rgba(0,0,0,0.40)`;
