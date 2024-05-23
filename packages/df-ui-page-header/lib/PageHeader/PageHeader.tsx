@@ -1,7 +1,6 @@
 import React from "react"
 import { Stack, Typography } from "@mui/material"
-import styled from "@emotion/styled"
-import { palette } from "@dataflor-ag/df-ui-theme"
+import { styled } from "@mui/material/styles"
 
 interface PageHeaderProps {
   title: string
@@ -9,17 +8,20 @@ interface PageHeaderProps {
   children?: React.ReactNode
 }
 
-const PageHeaderRoot = styled.div`
-  padding: 2rem 0;
-  border-bottom: 1px solid ${palette.grey?.[200]};
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+const PageHeaderRoot = styled("div", {
+  name: "MuiPageHeader",
+  slot: "root",
+})(({ theme }) => ({
+  padding: "2rem 0",
+  borderBottom: `1px solid ${theme.palette.grey[200]}`,
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "flex-start",
 
-  & .MuiTypography-body1 {
-    color: ${palette.grey?.[600]};
-  }
-`
+  "& .MuiTypography-body1": {
+    color: theme.palette.grey[600],
+  },
+}))
 
 export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
   (props, ref) => (
