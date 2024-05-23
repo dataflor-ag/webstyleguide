@@ -1,5 +1,6 @@
 import React from "react"
-import styled from "@emotion/styled"
+import { Stack, Typography } from "@mui/material"
+import { styled } from "@mui/material/styles"
 import { Mime } from "mime"
 import colorMapping from "./ColorMapping"
 
@@ -13,7 +14,7 @@ type DownloadboxIconTextProps = {
   mimeType: string
 }
 
-interface DrawerFooterProps {
+interface DownloadboxProps {
   title: string
   mime: string
   size: string
@@ -22,75 +23,68 @@ interface DrawerFooterProps {
   download?: boolean
 }
 
-const DownloadboxRoot = styled.div`
-  position: relative;
-  display: inline-flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-`
+const DownloadboxRoot = styled("div", {
+  name: "MuiDownloadbox",
+  slot: "root",
+})(() => ({
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  gap: "0.75rem",
+  margin: "1rem 0",
+}))
 
-const DownloadboxIcon = styled.div`
-  position: relative;
-  line-height: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+const DownloadboxIcon = styled("div", {
+  name: "MuiDownloadbox",
+  slot: "icon",
+})(() => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  lineHeight: 0,
+  width: "2.5rem",
+  height: "2.5rem",
+}))
 
-const DownloadboxIconText = styled("div")<DownloadboxIconTextProps>(
-  {
-    fontFamily: "inherit",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    fontSize: "0.625rem",
-    bottom: "6px",
-    borderRadius: "0.25rem",
-    textAlign: "center",
-    position: "absolute",
-    letterSpacing: "-1px",
-    left: 0,
-    height: "1rem",
-    lineHeight: "1rem",
-    padding: "0 0.25rem",
-  },
-  (props) => ({
-    color: colorMapping(props.mimeType).color,
-    backgroundColor: colorMapping(props.mimeType).backgroundColor,
-  })
-)
+const DownloadboxIconText = styled("div", {
+  name: "MuiDownloadbox",
+  slot: "iconText",
+})<DownloadboxIconTextProps>(({ mimeType }) => ({
+  fontFamily: "inherit",
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  fontSize: "0.625rem",
+  bottom: "6px",
+  borderRadius: "0.25rem",
+  textAlign: "center",
+  position: "absolute",
+  letterSpacing: "-1px",
+  left: 0,
+  height: "1rem",
+  lineHeight: "1rem",
+  padding: "0 0.25rem",
+  ...(!!mimeType && {
+    color: colorMapping(mimeType).color,
+    backgroundColor: colorMapping(mimeType).backgroundColor,
+  }),
+}))
 
-const DownloadboxTitle = styled.h4`
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: #3f3f46;
-  margin: 0;
-  line-height: 20px;
-`
+const DownloadboxLink = styled("a", {
+  name: "MuiDownloadbox",
+  slot: "link",
+})(() => ({
+  content: `""`,
+  position: "absolute",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  zIndex: 1,
+}))
 
-const DownloadboxFileSize = styled.div`
-  font-size: 0.875rem;
-  color: #51525c;
-  line-height: 20px;
-`
-
-const DownloadboxLink = styled.a`
-  &:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
-  }
-`
-
-export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
+export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
   (props, ref) => {
     const mimeType = mime.getType(props.mime)
     const extType = mime.getExtension(mimeType!)
@@ -118,11 +112,10 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
             </DownloadboxIconText>
           )}
         </DownloadboxIcon>
-
-        <div>
-          <DownloadboxTitle>{props.title}</DownloadboxTitle>
-          <DownloadboxFileSize>{props.size}</DownloadboxFileSize>
-        </div>
+        <Stack gap={0}>
+          <Typography variant="subtitle2">{props.title}</Typography>
+          <Typography variant="body2">{props.size}</Typography>
+        </Stack>
         {props.link && (
           <DownloadboxLink href={props.link} download={props.download} />
         )}
