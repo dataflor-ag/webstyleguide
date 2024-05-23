@@ -1,44 +1,50 @@
-import React from "react"
-import { Stack, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { Mime } from "mime"
-import colorMapping from "./ColorMapping"
+import React from "react";
+import { Stack, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Mime } from "mime";
+import colorMapping from "./ColorMapping";
 
-import standardTypes from "mime/types/standard.js"
-import otherTypes from "mime/types/other.js"
+import standardTypes from "mime/types/standard.js";
+import otherTypes from "mime/types/other.js";
 
-const mime = new Mime(standardTypes, otherTypes)
-mime.define({ "application/las": ["las"] })
+const mime = new Mime(standardTypes, otherTypes);
+mime.define({ "application/las": ["las"] });
 
 type DownloadboxIconTextProps = {
-  mimeType: string
-}
+  mimeType: string;
+};
 
 interface DownloadboxProps {
-  title: string
-  mime: string
-  size: string
+  title: string;
+  mime: string;
+  size: string;
 
-  link?: string
-  download?: boolean
+  link?: string;
+  download?: boolean;
 }
 
 const DownloadboxRoot = styled("div", {
   name: "MuiDownloadbox",
   slot: "root",
-})(() => ({
+})(({ theme }) => ({
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
   position: "relative",
   gap: "0.75rem",
   margin: "1rem 0",
-}))
+  ".MuiTypography-subtitle2": {
+    color: `${theme.palette.grey[800]}`,
+  },
+  ".MuiTypography-body2": {
+    color: `${theme.palette.grey[500]}`,
+  },
+}));
 
 const DownloadboxIcon = styled("div", {
   name: "MuiDownloadbox",
   slot: "icon",
-})(() => ({
+})(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -46,7 +52,8 @@ const DownloadboxIcon = styled("div", {
   lineHeight: 0,
   width: "2.5rem",
   height: "2.5rem",
-}))
+  stroke: `${theme.palette.grey[300]}`,
+}));
 
 const DownloadboxIconText = styled("div", {
   name: "MuiDownloadbox",
@@ -69,7 +76,7 @@ const DownloadboxIconText = styled("div", {
     color: colorMapping(mimeType).color,
     backgroundColor: colorMapping(mimeType).backgroundColor,
   }),
-}))
+}));
 
 const DownloadboxLink = styled("a", {
   name: "MuiDownloadbox",
@@ -82,12 +89,12 @@ const DownloadboxLink = styled("a", {
   bottom: 0,
   left: 0,
   zIndex: 1,
-}))
+}));
 
 export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
   (props, ref) => {
-    const mimeType = mime.getType(props.mime)
-    const extType = mime.getExtension(mimeType!)
+    const mimeType = mime.getType(props.mime);
+    const extType = mime.getExtension(mimeType!);
 
     return (
       <DownloadboxRoot ref={ref}>
@@ -95,15 +102,10 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="40">
             <g fill="none" fillRule="evenodd">
               <path
-                stroke="#E9E9EC"
                 strokeWidth="1.5"
                 d="M16.515.75a5.25 5.25 0 0 1 3.712 1.538l9.485 9.485a5.25 5.25 0 0 1 1.538 3.712V34c0 1.45-.588 2.762-1.538 3.712A5.234 5.234 0 0 1 26 39.25H6a5.234 5.234 0 0 1-3.712-1.538A5.234 5.234 0 0 1 .75 34V6c0-1.45.588-2.762 1.538-3.712A5.234 5.234 0 0 1 6 .75Z"
               />
-              <path
-                stroke="#E9E9EC"
-                strokeWidth="1.5"
-                d="M31 13h-8a4 4 0 0 1-4-4V1"
-              />
+              <path strokeWidth="1.5" d="M31 13h-8a4 4 0 0 1-4-4V1" />
             </g>
           </svg>
           {mimeType && extType && (
@@ -120,8 +122,8 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
           <DownloadboxLink href={props.link} download={props.download} />
         )}
       </DownloadboxRoot>
-    )
+    );
   }
-)
+);
 
-export default Downloadbox
+export default Downloadbox;
