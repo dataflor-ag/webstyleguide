@@ -1,8 +1,8 @@
-import React from "react"
-import { styled } from "@mui/material/styles"
+import React from "react";
+import { styled } from "@mui/material/styles";
 
 interface DrawerSidebarProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const DrawerSidebarRoot = styled("div", {
@@ -10,20 +10,28 @@ const DrawerSidebarRoot = styled("div", {
   slot: "root",
 })(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
-  backgroundColor: theme.palette.grey[100],
+  justifyContent: "flex-start",
+  backgroundColor: theme.palette.grey[50],
   position: "absolute",
   top: 0,
   bottom: 0,
   left: 0,
+  right: 0,
   padding: "1.25rem 1rem",
   paddingRight: "3rem",
-  width: "6.5rem",
-  transform: "translateX(-4.5rem) translateZ(-10px)",
+  // width: "6.5rem",
+  // transform: "translateX(-4.5rem) translateZ(-10px)",
+  transform: "translateX(0) translateZ(-10px)",
+  marginLeft: "-4.5rem",
   borderRadius: "inherit",
   zIndex: "-1",
   boxShadow: `0 0 0 1px ${theme.palette.grey[200]}`,
-}))
+  "> div": {
+    justifyContent: "center",
+    display: "flex",
+    width: "2.5rem",
+  },
+}));
 
 export const DrawerSidebar = React.forwardRef<
   HTMLDivElement,
@@ -32,6 +40,6 @@ export const DrawerSidebar = React.forwardRef<
   <DrawerSidebarRoot ref={ref}>
     {props.children && <div>{props.children}</div>}
   </DrawerSidebarRoot>
-))
+));
 
-export default DrawerSidebar
+export default DrawerSidebar;
