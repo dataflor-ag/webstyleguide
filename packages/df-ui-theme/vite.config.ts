@@ -7,11 +7,8 @@ import { peerDependencies } from "./package.json"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    dts({
-      rollupTypes: true,
-    }),
-  ],
+  // @ts-expect-error: Type mismatch due to different vite versions in monorepo
+  plugins: [dts({ rollupTypes: true })],
   build: {
     target: "esnext",
     lib: {
