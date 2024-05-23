@@ -1,26 +1,30 @@
 import React from "react"
-import styled from "@emotion/styled"
-import { palette } from "@dataflor-ag/df-ui-theme"
+import { styled } from "@mui/material/styles"
 
 interface DrawerFooterProps {
   children?: React.ReactNode
 }
 
-const DrawerFooterRoot = styled.div`
-  border-top: 1px solid ${palette.grey?.[200]};
-  width: 100%;
-  padding: 1rem 1.25rem;
-  height: 4.5rem;
-`
+const DrawerFooterRoot = styled("div", {
+  name: "MuiDrawerFooter",
+  slot: "root",
+})(({ theme }) => ({
+  borderTop: `1px solid ${theme.palette.grey[200]}`,
+  width: "100%",
+  padding: "1rem 1.25rem",
+  height: "4.5rem",
+}))
 
-const DrawerFooterContent = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-`
+const DrawerFooterContent = styled("div", {
+  name: "MuiDrawerFooter",
+  slot: "root",
+})(() => ({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+}))
 
 export const DrawerFooter = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
   (props, ref) => (
