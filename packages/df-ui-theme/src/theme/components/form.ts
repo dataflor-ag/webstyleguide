@@ -139,7 +139,8 @@ export const getForms = (theme: Theme): ComponentStyles => {
             boxShadow: getShadow(palette.mode).xs.focus,
           },
           "&.Mui-disabled": {
-            backgroundColor: `${palette.grey?.[50]}`,
+            backgroundColor: `${palette.grey?.[100]}`,
+            opacity: "0.75",
           },
           "&.Mui-error": {
             boxShadow: getShadow(palette.mode).xs.error,

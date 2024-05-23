@@ -157,7 +157,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: "0.4",
           },
           ":after": {
-            background: "none",
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%)",
           },
           ".MuiButton-icon": {
             color: `${palette.grey?.[600]}`,
@@ -223,7 +224,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: "0.4",
           },
           ":after": {
-            background: "none",
+            background: `linear-gradient(180deg, ${palette.error?.[950]} 0%, rgba(255,255,255,0.00) 100%)`,
           },
         },
       },
@@ -252,7 +253,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               borderBottomRightRadius: radius.md,
             },
             "&:hover": {
-              backgroundColor: palette.grey[100],
+              backgroundColor: isLightMode
+                ? `${palette.grey?.[100]}`
+                : "rgba(255,255,255,0.04)",
             },
             ":focus": {
               zIndex: "1",
