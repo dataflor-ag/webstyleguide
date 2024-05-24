@@ -1,5 +1,5 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
+import React from "react"
+import { styled } from "@mui/material/styles"
 
 interface IconWrapperProps {
   children?: React.ReactNode;
@@ -21,7 +21,7 @@ const IconWrapperRoot = styled("div", {
   svg: {
     fontSize: "1.25rem",
   },
-}));
+}))
 
 const IconWrapperPrimary = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
@@ -29,7 +29,7 @@ const IconWrapperPrimary = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
   color: theme.palette.primary[600],
   borderColor: "transparent",
-}));
+}))
 
 const IconWrapperSuccess = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
@@ -37,7 +37,7 @@ const IconWrapperSuccess = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
   color: theme.palette.success[600],
   borderColor: "transparent",
-}));
+}))
 
 const IconWrapperWarning = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
@@ -45,7 +45,7 @@ const IconWrapperWarning = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
   color: theme.palette.warning[600],
   borderColor: "transparent",
-}));
+}))
 
 const IconWrapperError = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
@@ -53,7 +53,7 @@ const IconWrapperError = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
   color: theme.palette.error[600],
   borderColor: "transparent",
-}));
+}))
 
 const IconWrapperInfo = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
@@ -61,35 +61,35 @@ const IconWrapperInfo = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme
   color: theme.palette.info[600],
   borderColor: "transparent",
-}));
+}))
 
 export const IconWrapper = React.forwardRef<HTMLDivElement, IconWrapperProps>(
   (props, ref) => {
-    let IconWrapperComponent;
+    let IconWrapperComponent
 
     switch (props.variant) {
       case "primary":
-        IconWrapperComponent = IconWrapperPrimary;
-        break;
+        IconWrapperComponent = IconWrapperPrimary
+        break
       case "success":
-        IconWrapperComponent = IconWrapperSuccess;
-        break;
+        IconWrapperComponent = IconWrapperSuccess
+        break
       case "warning":
-        IconWrapperComponent = IconWrapperWarning;
-        break;
+        IconWrapperComponent = IconWrapperWarning
+        break
       case "error":
-        IconWrapperComponent = IconWrapperError;
-        break;
+        IconWrapperComponent = IconWrapperError
+        break
       case "info":
-        IconWrapperComponent = IconWrapperInfo;
-        break;
+        IconWrapperComponent = IconWrapperInfo
+        break
       default:
-        IconWrapperComponent = IconWrapperRoot;
-        break;
+        IconWrapperComponent = IconWrapperRoot
+        break
     }
 
     return (
       <IconWrapperComponent ref={ref}>{props.children}</IconWrapperComponent>
-    );
+    )
   }
-);
+)

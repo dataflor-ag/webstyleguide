@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { getShadow } from "../utils/getShadows";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { getShadow } from "../utils/getShadows"
 
 export const getSwitchToggle = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiSwitch: {
@@ -128,5 +128,5 @@ export const getSwitchToggle = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

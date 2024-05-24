@@ -1,4 +1,4 @@
-import type { ComponentStyles } from "../types/Components";
+import type { ComponentStyles } from "../types/Components"
 
 export const getGrid = (): ComponentStyles => {
   return {
@@ -7,5 +7,5 @@ export const getGrid = (): ComponentStyles => {
         spacing: 6,
       },
     },
-  };
-};
+  }
+}

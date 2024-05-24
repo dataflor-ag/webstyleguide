@@ -1,4 +1,4 @@
-import type { ComponentStyles } from "../types/Components";
+import type { ComponentStyles } from "../types/Components"
 
 export const getIcon = (): ComponentStyles => {
   // const isLightMode = palette.mode === "light";
@@ -13,5 +13,5 @@ export const getIcon = (): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

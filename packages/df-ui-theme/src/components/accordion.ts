@@ -1,12 +1,12 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { radius } from "../tokens/shape";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { radius } from "../tokens/shape"
 // import { accordionIcon } from "../utils/accordion"
-import { getShadow } from "../utils/getShadows";
+import { getShadow } from "../utils/getShadows"
 
 export const getAccordion = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiAccordion: {
@@ -88,5 +88,5 @@ export const getAccordion = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

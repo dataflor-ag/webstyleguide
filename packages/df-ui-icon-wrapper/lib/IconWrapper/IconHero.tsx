@@ -1,5 +1,5 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
+import React from "react"
+import { styled } from "@mui/material/styles"
 
 interface IconHeroProps {
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ const IconHeroRoot = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-}));
+}))
 
 const IconHeroWrapper = styled("div", {
   name: "MuiIconHero",
@@ -34,7 +34,7 @@ const IconHeroWrapper = styled("div", {
     0deg,
     rgba(255, 255, 255, 0) 21%,
     ${theme.palette.grey[100]} 100%)`,
-}));
+}))
 
 const IconHeroItem = styled("div", {
   name: "MuiIconHero",
@@ -55,7 +55,7 @@ const IconHeroItem = styled("div", {
   svg: {
     fontSize: "1.5rem",
   },
-}));
+}))
 
 export const IconHero = React.forwardRef<HTMLDivElement, IconHeroProps>(
   (props, ref) => (
@@ -65,6 +65,6 @@ export const IconHero = React.forwardRef<HTMLDivElement, IconHeroProps>(
       </IconHeroWrapper>
     </IconHeroRoot>
   )
-);
+)
 
-export default IconHero;
+export default IconHero

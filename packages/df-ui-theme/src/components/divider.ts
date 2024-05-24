@@ -1,8 +1,8 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
 
 export const getDividers = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
+  const { palette } = theme
 
   return {
     MuiDivider: {
@@ -20,5 +20,5 @@ export const getDividers = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

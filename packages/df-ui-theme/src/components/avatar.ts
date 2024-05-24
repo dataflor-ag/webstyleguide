@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
 
 export const getAvatars = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiAvatar: {
@@ -26,5 +26,5 @@ export const getAvatars = (theme: Theme): ComponentStyles => {
         spacing: 12,
       },
     },
-  };
-};
+  }
+}

@@ -1,4 +1,4 @@
-import type { ComponentStyles } from "../types/Components";
+import type { ComponentStyles } from "../types/Components"
 
 export const getContainer = (): ComponentStyles => {
   return {
@@ -13,5 +13,5 @@ export const getContainer = (): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

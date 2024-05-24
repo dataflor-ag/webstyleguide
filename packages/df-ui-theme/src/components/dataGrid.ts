@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { getShadow } from "../utils/getShadows";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { getShadow } from "../utils/getShadows"
 
 export const getDataGrid = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
+  const { palette } = theme
   // const isLightMode = palette.mode === "light";
 
   return {
@@ -143,5 +143,5 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         },
       },
     },
-  };
-};
+  }
+}

@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
 
 export const getTimeline = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiTimelineSeparator: {
@@ -44,5 +44,5 @@ export const getTimeline = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}
