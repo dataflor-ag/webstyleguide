@@ -1,5 +1,4 @@
 import React from "react"
-
 import { styled } from "@mui/material/styles"
 import wrapperLight from "./wrapper.light.svg"
 import wrapperDark from "./wrapper.dark.svg"
