@@ -1,7 +1,7 @@
 import { withThemeFromJSXProvider } from "@storybook/addon-themes"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import { getTheme } from "../packages/df-ui-theme/src"
+import { getTheme } from "../packages/df-ui-theme/src/theme"
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
