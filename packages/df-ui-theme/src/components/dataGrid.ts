@@ -1,17 +1,17 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
 import { getShadow } from "../utils/getShadows"
+import { radius } from "../tokens/shape"
 
 export const getDataGrid = (theme: Theme): ComponentStyles => {
   const { palette } = theme
-  // const isLightMode = palette.mode === "light";
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiDataGrid: {
       defaultProps: {
         columnHeaderHeight: 40,
         rowHeight: 64,
-        disableColumnMenu: true,
       },
       styleOverrides: {
         root: {
@@ -57,24 +57,33 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
             },
           },
         },
-        // menu: {
-        //   ".MuiPaper-root": {
-        //     borderRadius: radius.md,
-        //     marginTop: "-0.125rem",
-        //     minWidth: "10rem",
-        //     "&.select-dropdown": {
-        //       ".MuiMenuItem-root": {
-        //         fontSize: "1rem",
-        //       },
-        //     },
-        //   },
-        //   ".MuiList-root": {
-        //     padding: "0.25rem",
-        //     display: "flex",
-        //     flexDirection: "column",
-        //     gap: "1px",
-        //   },
-        // },
+        // DataGrid-Menu
+        menu: {
+          ".MuiPaper-root": {
+            borderRadius: radius.md,
+            marginTop: "-0.125rem",
+            minWidth: "10rem !important",
+            boxShadow: getShadow(palette.mode).lg.base,
+            "&.select-dropdown": {
+              ".MuiMenuItem-root": {
+                fontSize: "1rem",
+              },
+            },
+          },
+          ".MuiDivider-root": {
+            margin: "0.25rem -0.25rem",
+          },
+          ".MuiList-root": {
+            padding: "0.25rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1px",
+            minWidth: "10rem",
+            ".MuiListItemIcon-root": {
+              minWidth: "0",
+            },
+          },
+        },
         cell: {
           padding: "0 1.5rem",
           color: palette.grey?.[700],
@@ -107,6 +116,7 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         },
         footerContainer: {
           borderColor: "var(--DataGrid-rowBorderColor) !important",
+          padding: "0 1rem",
         },
         panel: {
           marginTop: "-0.25rem !important",
@@ -127,7 +137,12 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         paper: {
           boxShadow: getShadow(palette.mode).lg.base,
           borderRadius: "0.5rem",
-          ".MuiDataGrid-columnsManagementHeader": {},
+          backgroundColor: isLightMode
+            ? palette.surface[0]
+            : palette.surface[50],
+          ".MuiDataGrid-columnsManagementHeader": {
+            display: "none",
+          },
           ".MuiDataGrid-columnsManagement": {
             padding: "1rem",
             ".MuiCheckbox-root": {
