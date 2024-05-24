@@ -1,11 +1,11 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
-import { getShadow } from "../utils/getShadows"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
+import { getShadow } from "../utils/getShadows";
 
 export const getButtons = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiButtonBase: {
@@ -139,10 +139,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           boxShadow: getShadow(palette.mode).xs.base,
           border: "none",
           color: palette.grey[900],
-          backgroundColor: palette.secondary[0],
+          backgroundColor: palette.surface[0],
           ":hover": {
             backgroundColor: isLightMode
-              ? `${palette.grey?.[100]}`
+              ? "rgba(0,0,0,0.03)"
               : "rgba(255,255,255,0.04)",
             boxShadow: getShadow(palette.mode).xs.base,
             border: "none",
@@ -167,7 +167,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         textSecondary: {
           color: `${palette.grey?.[700]}`,
           ":hover": {
-            backgroundColor: palette.grey[100],
+            backgroundColor: "rgba(0,0,0,0.03)",
             color: palette.grey[900],
           },
           ":focus": {
@@ -241,7 +241,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         root: () => ({
           borderRadius: radius.md,
           button: {
-            backgroundColor: "transparent",
+            backgroundColor: palette.surface[0],
             color: `${palette.grey?.[900]}`,
             boxShadow: "none",
             borderRadius: "0",
@@ -256,7 +256,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             },
             "&:hover": {
               backgroundColor: isLightMode
-                ? `${palette.grey?.[100]}`
+                ? "rgba(0,0,0,0.03)"
                 : "rgba(255,255,255,0.04)",
             },
             ":focus": {
@@ -286,7 +286,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         colorInherit: {
           color: palette.grey[600],
           ":hover": {
-            backgroundColor: palette.grey[100],
+            backgroundColor: isLightMode
+              ? "rgba(0,0,0,0.03)"
+              : "rgba(255,255,255,0.04)",
             color: palette.grey[900],
           },
           ":focus": {
@@ -408,5 +410,5 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  }
-}
+  };
+};

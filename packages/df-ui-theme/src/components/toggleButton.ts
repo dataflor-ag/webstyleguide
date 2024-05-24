@@ -1,11 +1,11 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
-import { getShadow } from "../utils/getShadows"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
+import { getShadow } from "../utils/getShadows";
 
 export const getToggleButtons = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiToggleButtonGroup: {
@@ -16,7 +16,9 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
         root: () => ({
           height: "2.5rem",
           borderRadius: radius.md,
-          backgroundColor: palette.grey?.[100],
+          backgroundColor: isLightMode
+            ? "rgba(0, 0, 0, 0.04)"
+            : "rgba(255, 255, 255, 0.04)",
           overflow: "hidden",
           alignItems: "center",
           gap: "0.25rem",
@@ -38,7 +40,7 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
           fontSize: "0.875rem",
           "&:hover": {
             backgroundColor: isLightMode
-              ? palette.grey?.[200]
+              ? "rgba(0, 0, 0, 0.03)"
               : "rgba(255, 255, 255, 0.04)",
             color: palette.grey?.[600],
           },
@@ -53,5 +55,5 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  }
-}
+  };
+};

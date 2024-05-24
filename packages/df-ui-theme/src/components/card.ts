@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
 
 export const getCards = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiCard: {
@@ -54,5 +54,5 @@ export const getCards = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  }
-}
+  };
+};
