@@ -23,6 +23,21 @@ export function _LoadingButton() {
       </Typography>
 
       <Typography variant="h3" mb={4} mt={8}>
+        Button Sizes
+      </Typography>
+      <Stack direction="row" spacing={2} mb={4}>
+        <LoadingButton loading size="small">
+          Secondary
+        </LoadingButton>
+        <LoadingButton loading>
+          Secondary
+        </LoadingButton>
+        <LoadingButton loading size="large">
+          Secondary
+        </LoadingButton>
+      </Stack>
+
+      <Typography variant="h3" mb={4} mt={8}>
         Primary
       </Typography>
       <LoadingButton color="primary" loading variant="outlined">

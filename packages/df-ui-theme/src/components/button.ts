@@ -60,6 +60,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               fontSize: "1rem",
             },
           },
+          ".MuiCircularProgress-root": {
+            width: "1rem !important",
+            height: "1rem !important",
+          },
         }),
         sizeMedium: () => ({
           height: theme.spacing(10),
@@ -78,6 +82,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               fontSize: "1.25rem",
             },
           },
+          ".MuiCircularProgress-root": {
+            width: "1.125rem !important",
+            height: "1.125rem !important",
+          },
         }),
         sizeLarge: () => ({
           height: theme.spacing(12),
@@ -95,6 +103,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             svg: {
               fontSize: "1.5rem",
             },
+          },
+          ".MuiCircularProgress-root": {
+            width: "1.5rem !important",
+            height: "1.5rem !important",
           },
         }),
         containedPrimary: () => ({
@@ -478,8 +490,6 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           },
           // CircularProgress
           ".MuiCircularProgress-root": {
-            width: "1.125rem !important",
-            height: "1.125rem !important",
             "&:before": {
               display: "none",
             }
