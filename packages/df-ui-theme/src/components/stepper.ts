@@ -14,9 +14,7 @@ export const getStepper = (theme: Theme): ComponentStyles => {
     MuiStepper: {
       defaultProps: {},
       styleOverrides: {
-        root: () => ({
-          // backgroundColor: "purple",
-        }),
+        root: () => ({}),
       },
     },
     MuiStepLabel: {
