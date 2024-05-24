@@ -1,7 +1,6 @@
 import React from "react"
 import { Meta } from "@storybook/react"
 
-import { palette } from "@dataflor-ag/df-ui-theme"
 import { PageHeader } from "../../packages/df-ui-page-header/lib"
 import { EmptyState } from "../../packages/df-ui-empty-state/lib"
 import { IconHero } from "../../packages/df-ui-icon-wrapper/lib"
@@ -37,7 +36,6 @@ export default meta
 export function Login() {
   return (
     <Stack
-      bgcolor={palette.grey?.[100]}
       sx={{ minHeight: "100vh" }}
       alignItems={"center"}
       justifyContent={"center"}
@@ -137,7 +135,7 @@ export function Login() {
 
 export function ProjectsEmpty() {
   return (
-    <Stack bgcolor={palette.grey?.[100]} sx={{ height: "100vh" }}>
+    <Stack sx={{ height: "100vh" }}>
       <AppBar position="static">
         <Container>
           <Toolbar disableGutters>
