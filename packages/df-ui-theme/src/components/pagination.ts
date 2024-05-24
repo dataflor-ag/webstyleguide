@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
 
 export const getPagination = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  // const isLightMode = palette.mode === "light";
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiPagination: {
@@ -34,16 +34,22 @@ export const getPagination = (theme: Theme): ComponentStyles => {
           fontWeight: "600",
           fontSize: "0.875rem",
           "&.Mui-selected": {
-            backgroundColor: `${palette.grey?.[100]}`,
+            backgroundColor: isLightMode
+              ? "rgba(0,0,0,0.05)"
+              : "rgba(255,255,255,00.05)",
             "&:hover": {
-              backgroundColor: `${palette.grey?.[100]}`,
+              backgroundColor: isLightMode
+                ? "rgba(0,0,0,0.05)"
+                : "rgba(255,255,255,0.05)",
             },
           },
           "&:hover": {
-            backgroundColor: `${palette.grey?.[50]}`,
+            backgroundColor: isLightMode
+              ? "rgba(0,0,0,0.03)"
+              : "rgba(255,255,255,0.03)",
           },
         }),
       },
     },
-  }
-}
+  };
+};

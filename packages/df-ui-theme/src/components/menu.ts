@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
 
 export const getMenus = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiMenu: {
@@ -46,6 +46,11 @@ export const getMenus = (theme: Theme): ComponentStyles => {
           transition: "all 0.2s ease-in-out",
           padding: theme.spacing(0, 2),
           height: "2.5rem",
+          ".MuiSvgIcon-root": {
+            fontSize: "1.25rem",
+            marginRight: "0.5rem",
+            color: palette.grey[400],
+          },
           "&:hover": {
             backgroundColor: isLightMode ? palette.grey[50] : palette.grey[100],
           },
@@ -57,7 +62,7 @@ export const getMenus = (theme: Theme): ComponentStyles => {
           },
           "&.MuiMenuItem-divider": {
             border: "0 none",
-            marginBottom: "0.5rem",
+            marginBottom: "0.625rem",
             "&:after": {
               content: '""',
               display: "block",
@@ -65,12 +70,12 @@ export const getMenus = (theme: Theme): ComponentStyles => {
               height: "1px",
               backgroundColor: palette.grey?.[200],
               position: "absolute",
-              bottom: "-0.25rem",
+              bottom: "-0.375rem",
               left: "-0.25rem",
             },
           },
         }),
       },
     },
-  }
-}
+  };
+};

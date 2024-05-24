@@ -1,23 +1,24 @@
-import React from "react"
-import { Meta } from "@storybook/react"
-import { Typography, Button, Menu, MenuItem } from "@mui/material"
+import React from "react";
+import { Meta } from "@storybook/react";
+import { Typography, Button, Menu, MenuItem } from "@mui/material";
+import Icon from "../../packages/df-ui-icons/lib";
 
 const meta: Meta = {
   title: "MUI/Dropdown",
-}
+};
 
-export default meta
+export default meta;
 
 export function Dropdown() {
   // Dropdown
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const openDropdown = Boolean(anchorEl)
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openDropdown = Boolean(anchorEl);
   const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const handleDropdownClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -44,13 +45,17 @@ export function Dropdown() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleDropdownClose}>Profile</MenuItem>
-          <MenuItem divider onClick={handleDropdownClose}>
-            My account
+          <MenuItem onClick={handleDropdownClose}>
+            <Icon.user /> Profile
           </MenuItem>
-          <MenuItem onClick={handleDropdownClose}>Logout</MenuItem>
+          <MenuItem divider onClick={handleDropdownClose}>
+            <Icon.settings /> Settings
+          </MenuItem>
+          <MenuItem onClick={handleDropdownClose}>
+            <Icon.logout /> Logout
+          </MenuItem>
         </Menu>
       </div>
     </>
-  )
+  );
 }

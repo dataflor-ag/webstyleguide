@@ -111,7 +111,7 @@ export const getForms = (theme: Theme): ComponentStyles => {
           boxShadow: getShadow(palette.mode).xs.base,
           backgroundColor: isLightMode
             ? palette.surface[0]
-            : palette.surface[50],
+            : palette.surface[0],
           input: {
             "&::placeholder": {
               color: palette.grey?.[400],
