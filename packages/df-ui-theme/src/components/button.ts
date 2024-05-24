@@ -13,6 +13,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         disableRipple: true,
       },
     },
+    //
+    // Button
     MuiButton: {
       defaultProps: {
         color: "secondary",
@@ -58,6 +60,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               fontSize: "1rem",
             },
           },
+          ".MuiCircularProgress-root": {
+            width: "1rem !important",
+            height: "1rem !important",
+          },
         }),
         sizeMedium: () => ({
           height: theme.spacing(10),
@@ -76,6 +82,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               fontSize: "1.25rem",
             },
           },
+          ".MuiCircularProgress-root": {
+            width: "1.125rem !important",
+            height: "1.125rem !important",
+          },
         }),
         sizeLarge: () => ({
           height: theme.spacing(12),
@@ -93,6 +103,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             svg: {
               fontSize: "1.5rem",
             },
+          },
+          ".MuiCircularProgress-root": {
+            width: "1.5rem !important",
+            height: "1.5rem !important",
           },
         }),
         containedPrimary: () => ({
@@ -204,7 +218,6 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         },
         outlinedError: {
           boxShadow: getShadow(palette.mode).xs.error,
-          // backgroundColor:
           border: "none",
           color: `${palette.error?.[600]}`,
           ":hover": {
@@ -231,6 +244,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         },
       },
     },
+    //
+    // ButtonGroup
     MuiButtonGroup: {
       defaultProps: {
         disableRipple: true,
@@ -270,6 +285,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         }),
       },
     },
+    //
+    // IconButton
     MuiIconButton: {
       defaultProps: {
         color: "inherit",
@@ -409,6 +426,76 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           borderRadius: radius.lg,
         }),
       },
+    },
+    //
+    // LoadingButton
+    MuiLoadingButton: {
+      defaultProps: {
+        color: "secondary",
+        variant: "contained",
+        disableElevation: true,
+      },
+      styleOverrides: {
+        root: () => ({
+          // Primary
+          "&.MuiButton-colorPrimary": {
+            backgroundColor: palette.primary[500] + "!important",
+            boxShadow: getShadow(palette.mode).xs.primary,
+            opacity: 0.4,
+            ".MuiLoadingButton-loadingIndicator": {
+              color: "white !important",
+            }
+          },
+          // Secondary
+          "&.MuiButton-colorSecondary": {
+            backgroundColor: palette.secondary[900] + "!important",
+            boxShadow: getShadow(palette.mode).xs.secondary,
+            opacity: 0.4,
+            ".MuiLoadingButton-loadingIndicator": {
+              color: palette.secondary.contrastText + "!important",
+            },
+            // Outlined
+            "&.MuiButton-outlinedSecondary": {
+              backgroundColor: palette.surface[0] + "!important",
+              boxShadow: getShadow(palette.mode).xs.base,
+              ".MuiLoadingButton-loadingIndicator": {
+                color: palette.grey[900] + "!important",
+              },
+            },
+            // Text
+            "&.MuiButton-textSecondary": {
+              backgroundColor: "transparent !important",
+              boxShadow: "none",
+              ".MuiLoadingButton-loadingIndicator": {
+                color: palette.grey[900] + "!important",
+              },
+            },
+          },
+          // Error
+          "&.MuiButton-colorError": {
+            backgroundColor: palette.error[600] + "!important",
+            boxShadow: getShadow(palette.mode).xs.error,
+            opacity: 0.4,
+            ".MuiLoadingButton-loadingIndicator": {
+              color: palette.error.contrastText + "!important",
+            },
+            // Outlined
+            "&.MuiButton-outlinedError": {
+              backgroundColor: "transparent !important",
+              boxShadow: getShadow(palette.mode).xs.error,
+              ".MuiLoadingButton-loadingIndicator": {
+                color: palette.error[600] + "!important",
+              },
+            },
+          },
+          // CircularProgress
+          ".MuiCircularProgress-root": {
+            "&:before": {
+              display: "none",
+            }
+          },
+        })
+      }
     },
   }
 }
