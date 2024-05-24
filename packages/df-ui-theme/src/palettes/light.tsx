@@ -2,6 +2,7 @@ import type { PaletteOptions } from "@mui/material"
 
 export const light: PaletteOptions = {
   mode: "light",
+  background: { default: "#fafafa" },
   surface: {
     "0": "#ffffff",
     "50": "#fafafa",

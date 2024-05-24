@@ -1,7 +1,8 @@
-import type { PaletteOptions } from "@mui/material";
+import type { PaletteOptions } from "@mui/material"
 
 export const dark: PaletteOptions = {
   mode: "dark",
+  background: { default: "#131316" },
   surface: {
     "0": "#131316",
     "50": "#18181b",
@@ -115,4 +116,4 @@ export const dark: PaletteOptions = {
     "900": "#df1c414d",
     "950": "#df1c411f",
   },
-};
+}
