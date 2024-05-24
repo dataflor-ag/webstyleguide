@@ -25,7 +25,7 @@ import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "Examples/Pages",
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
   },
