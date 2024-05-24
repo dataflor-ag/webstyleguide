@@ -1,7 +1,6 @@
 import React from "react"
 import { Meta } from "@storybook/react"
 import { Typography, Divider, Button } from "@mui/material"
-import { palette } from "../../packages/df-ui-theme/src/theme"
 
 const meta: Meta = {
   title: "MUI/Dividers",
@@ -23,12 +22,7 @@ export function Dividers() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </Typography>
       <Divider>
-        <Typography
-          color={palette.grey?.[400]}
-          fontWeight={"600"}
-          variant="overline"
-          my={4}
-        >
+        <Typography fontWeight={"600"} variant="overline" my={4}>
           Or
         </Typography>
       </Divider>

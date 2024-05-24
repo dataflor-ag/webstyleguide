@@ -32,7 +32,10 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.15"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -57,7 +60,8 @@
   },
   "scripts": {
     "build": "tsc && vite build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "lint": "tsc && eslint . --ext .js,.ts,.jsx,.tsx --fix"
   },
   "bugs": {
     "url": "https://github.com/dataflor-ag/webstyleguide/issues"

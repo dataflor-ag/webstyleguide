@@ -1,7 +1,7 @@
 import { withThemeFromJSXProvider } from "@storybook/addon-themes"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
-import theme from "../packages/df-ui-theme/src/theme"
+import { getTheme } from "../packages/df-ui-theme/src"
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
@@ -16,7 +16,11 @@ const preview = {
   },
   decorators: [
     withThemeFromJSXProvider({
-      themes: { theme },
+      themes: {
+        light: getTheme("light"),
+        dark: getTheme("dark"),
+      },
+      defaultTheme: "light",
       Provider: ThemeProvider,
       GlobalStyles: CssBaseline,
     }),

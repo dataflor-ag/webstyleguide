@@ -7,12 +7,19 @@ import {
   DrawerFooter,
   DrawerSidebar,
 } from "../../packages/df-ui-drawer/lib"
-import { Drawer, Button, Box, Stack, Typography, IconButton } from "@mui/material"
+import {
+  Drawer,
+  Button,
+  Box,
+  Stack,
+  Typography,
+  IconButton,
+} from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
   title: "Examples/Components",
-  tags: ["autodocs"],
+  tags: ["!autodocs"],
   parameters: {
     layout: "fullscreen",
   },
