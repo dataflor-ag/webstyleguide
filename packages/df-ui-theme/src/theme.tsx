@@ -5,13 +5,13 @@ import { createTheme } from "@mui/material"
 import type {} from "@mui/x-data-grid/themeAugmentation"
 import type {} from "@mui/lab/themeAugmentation"
 
-import { getComponents } from "../utils/getComponents"
-import { getPalette } from "../utils/getPalette"
-import { getShadows } from "../utils/getShadows"
+import { getComponents } from "./utils/getComponents"
+import { getPalette } from "./utils/getPalette"
+import { getShadows } from "./utils/getShadows"
 
-import typography from "../typography"
-import spacing from "../spacing"
-import shape from "../shape"
+import typography from "./tokens/typography"
+import spacing from "./tokens/spacing"
+import shape from "./tokens/shape"
 // import shadows from "../shadows"
 
 declare module "@mui/material/styles" {

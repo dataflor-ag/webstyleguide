@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { radius } from "../shape";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { radius } from "../tokens/shape"
 // import { getShadow } from "../utils/getShadows";
 
 export const getTooltips = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
+  const { palette } = theme
   // const isLightMode = palette.mode === "light";
 
   return {
@@ -34,5 +34,5 @@ export const getTooltips = (theme: Theme): ComponentStyles => {
         },
       },
     },
-  };
-};
+  }
+}

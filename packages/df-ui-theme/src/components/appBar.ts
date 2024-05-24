@@ -1,10 +1,10 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { radius } from "../shape";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { radius } from "../tokens/shape"
 
 export const getAppBar = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiAppBar: {
@@ -27,5 +27,5 @@ export const getAppBar = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { radius } from "../shape";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { radius } from "../tokens/shape"
 
 export const getTabs = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
+  const { palette } = theme
   // const isLightMode = palette.mode === "light";
 
   return {
@@ -60,5 +60,5 @@ export const getTabs = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}

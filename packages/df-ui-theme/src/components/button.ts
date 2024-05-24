@@ -1,11 +1,11 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
-import { radius } from "../shape";
-import { getShadow } from "../utils/getShadows";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
+import { radius } from "../tokens/shape"
+import { getShadow } from "../utils/getShadows"
 
 export const getButtons = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
-  const isLightMode = palette.mode === "light";
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiButtonBase: {
@@ -408,5 +408,5 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  };
-};
+  }
+}
