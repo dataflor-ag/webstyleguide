@@ -1,4 +1,4 @@
-import type { Theme } from "@mui/material";
+import type { Theme } from "@mui/material"
 import {
   getAccordion,
   getAppBar,
@@ -26,7 +26,7 @@ import {
   getGrid,
   getDataGrid,
   getContainer,
-} from "../components/index";
+} from "../components/index"
 
 export const getComponents = (theme: Theme) => {
   return {
@@ -58,5 +58,5 @@ export const getComponents = (theme: Theme) => {
       ...getDataGrid(theme),
       ...getContainer(),
     },
-  };
-};
+  }
+}
