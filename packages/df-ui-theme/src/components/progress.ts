@@ -1,8 +1,8 @@
-import type { Theme } from "@mui/material";
-import type { ComponentStyles } from "../types/Components";
+import type { Theme } from "@mui/material"
+import type { ComponentStyles } from "../types/Components"
 
 export const getProgress = (theme: Theme): ComponentStyles => {
-  const { palette } = theme;
+  const { palette } = theme
   // const isLightMode = palette.mode === "light";
 
   return {
@@ -24,7 +24,6 @@ export const getProgress = (theme: Theme): ComponentStyles => {
       },
       styleOverrides: {
         root: () => ({
-          // backgroundColor: "pink",
           position: "relative",
           ":before": {
             content: '""',
@@ -49,5 +48,5 @@ export const getProgress = (theme: Theme): ComponentStyles => {
         },
       },
     },
-  };
-};
+  }
+}
