@@ -20,7 +20,7 @@ export function _TreeView() {
       <Box sx={{ height: 220, flexGrow: 1, maxWidth: 320 }}>
         <SimpleTreeView>
           <TreeItem itemId="applications" label="Applications">
-            <TreeItem itemId="app-calendar" label="Calendar" />
+            <TreeItem disabled itemId="app-calendar" label="Calendar" />
             <TreeItem itemId="app-map" label="Maps" />
             <TreeItem itemId="app-mail" label="Mail" />
             <TreeItem itemId="app-more" label="More">

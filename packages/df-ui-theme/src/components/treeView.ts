@@ -52,6 +52,14 @@ export const getTreeView = (theme: Theme): ComponentStyles => {
                   fontSize: "1rem",
                 }
               },
+              "&.Mui-focused": {
+                backgroundColor: "rgba(255,255,255,0)",
+                boxShadow: getShadow(palette.mode).xs.focus,
+              },
+              "&.Mui-disabled": {
+                opacity: 0.4,
+                pointerEvents: "none",
+              },
               "&.Mui-selected": {
                 color: palette.grey[900],
                 backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
@@ -60,6 +68,9 @@ export const getTreeView = (theme: Theme): ComponentStyles => {
                   backgroundColor: isLightMode
                     ? palette.surface[0]
                     : "rgba(255,255,255,0.06)",
+                },
+                "&.Mui-focused": {
+                  boxShadow: getShadow(palette.mode).xs.focus,
                 },
               },
               "&:hover": {
