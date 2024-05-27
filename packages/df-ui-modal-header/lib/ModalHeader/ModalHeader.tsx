@@ -23,6 +23,9 @@ const ModalHeaderRoot = styled("div", {
   gap: theme.spacing(3),
   alignItems: "center",
 
+  "& .MuiTypography-body2": {
+    color: theme.palette.grey[600]
+  }
 }))
 
 const ModalHeaderClose = styled("button", {
@@ -42,9 +45,10 @@ const ModalHeaderClose = styled("button", {
   opacity: .6,
   color: "inherit",
   transition: theme.transitions.create(["opacity"]),
+
   "&:hover": {
     opacity: 1,
-  }
+  },
 }))
 
 
@@ -62,7 +66,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
         {icon && <IconWrapper variant={iconVariant}>{icon}</IconWrapper>}
         <div>
           <Typography variant="h6">{title}</Typography>
-          <Typography variant="subtitle2">{subtitle}</Typography>
+          <Typography variant="body2">{subtitle}</Typography>
         </div>
         {onClose && <ModalHeaderClose onClick={handleClose}><Icon.close /></ModalHeaderClose>}
       </ModalHeaderRoot>
