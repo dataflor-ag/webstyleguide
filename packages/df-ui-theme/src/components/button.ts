@@ -37,11 +37,6 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
             PointerEvent: "none",
           },
-          ":hover": {
-            "::after": {
-              opacity: "0",
-            },
-          },
         }),
         sizeSmall: () => ({
           height: theme.spacing(8),
@@ -153,11 +148,11 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           boxShadow: getShadow(palette.mode).xs.base,
           border: "none",
           color: palette.grey[900],
-          backgroundColor: palette.surface[0],
+          backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
           ":hover": {
             backgroundColor: isLightMode
               ? "rgba(0,0,0,0.03)"
-              : "rgba(255,255,255,0.04)",
+              : "rgba(255,255,255,0.06)",
             boxShadow: getShadow(palette.mode).xs.base,
             border: "none",
           },
@@ -181,7 +176,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         textSecondary: {
           color: `${palette.grey?.[700]}`,
           ":hover": {
-            backgroundColor: "rgba(0,0,0,0.03)",
+            backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
           ":focus": {
@@ -255,8 +250,10 @@ export const getButtons = (theme: Theme): ComponentStyles => {
       styleOverrides: {
         root: () => ({
           borderRadius: radius.md,
+          boxShadow: getShadow(palette.mode).xs.base,
           button: {
-            backgroundColor: palette.surface[0],
+            // backgroundColor: palette.surface[0],
+            backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
             color: `${palette.grey?.[900]}`,
             boxShadow: "none",
             borderRadius: "0",
@@ -272,7 +269,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             "&:hover": {
               backgroundColor: isLightMode
                 ? "rgba(0,0,0,0.03)"
-                : "rgba(255,255,255,0.04)",
+                : "rgba(255,255,255,0.06)",
             },
             ":focus": {
               zIndex: "1",
@@ -304,8 +301,8 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           color: palette.grey[600],
           ":hover": {
             backgroundColor: isLightMode
-              ? "rgba(0,0,0,0.03)"
-              : "rgba(255,255,255,0.04)",
+              ? "rgba(0,0,0,0.06)"
+              : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
           ":focus": {
@@ -319,9 +316,9 @@ export const getButtons = (theme: Theme): ComponentStyles => {
         colorSecondary: {
           boxShadow: getShadow(palette.mode).xs.base,
           color: palette.grey[600],
-          backgroundColor: palette.surface[0],
+          backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
           ":hover": {
-            backgroundColor: palette.grey[100],
+            backgroundColor: isLightMode ? "rgba(0,0,0,0.03)" : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
           ":focus": {
@@ -437,6 +434,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
       },
       styleOverrides: {
         root: () => ({
+          border: "0 none !important",
           // Primary
           "&.MuiButton-colorPrimary": {
             backgroundColor: palette.primary[500] + "!important",
@@ -456,7 +454,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             },
             // Outlined
             "&.MuiButton-outlinedSecondary": {
-              backgroundColor: palette.surface[0] + "!important",
+              backgroundColor: isLightMode ? palette.surface[0] + "!important" : "rgba(255,255,255,0.04) !important",
               boxShadow: getShadow(palette.mode).xs.base,
               ".MuiLoadingButton-loadingIndicator": {
                 color: palette.grey[900] + "!important",

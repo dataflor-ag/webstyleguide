@@ -45,11 +45,11 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
             color: palette.grey?.[600],
           },
           "&.Mui-selected": {
-            backgroundColor: palette.surface[0],
-            boxShadow: isLightMode ? getShadow(palette.mode).xs.base : "none",
-            color: palette.grey?.[900],
+            color: palette.grey[900],
+            backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
+            boxShadow: getShadow(palette.mode).xs.base,
             "&:hover": {
-              backgroundColor: palette.surface[0],
+              backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
             },
           },
         }),
