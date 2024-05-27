@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { Meta } from "@storybook/react"
 
 import { PageHeader } from "../../packages/df-ui-page-header/lib"
 import { EmptyState } from "../../packages/df-ui-empty-state/lib"
 import { IconHero } from "../../packages/df-ui-icon-wrapper/lib"
+import { ImageSelector } from "../../packages/df-ui-image-selector/lib"
 import {
   AppBar,
   Toolbar,
@@ -182,6 +183,75 @@ export function ProjectsEmpty() {
                   </Stack>
                 </Stack>
               </EmptyState>
+            </Stack>
+          </Container>
+        </Card>
+      </Box>
+    </Stack>
+  )
+}
+
+export function ThemeSwitch() {
+  const [selectedValue, setSelectedValue] = useState<string>("system");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const themeOptions = [
+    { value: "light", label: "Light", image: "https://via.placeholder.com/200x140" },
+    { value: "dark", label: "Dark", image: "https://via.placeholder.com/200x140" },
+    { value: "system", label: "System default", image: "https://via.placeholder.com/200x140" },
+  ];
+
+  return (
+    <Stack sx={{ height: "100vh" }}>
+      <AppBar position="static">
+        <Container>
+          <Toolbar disableGutters>
+            <Typography
+              variant="h4"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontWeight: 600,
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Dataflor
+            </Typography>
+            <Box>
+              <Avatar alt="Remy Sharp" src="https://via.placeholder.com/40" />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Box px={2} pb={2} sx={{ height: "100%" }}>
+        <Card sx={{ height: "100%" }}>
+          <Container sx={{ paddingTop: "1.5rem", height: "100%" }}>
+            <Stack sx={{ height: "100%"}}>
+              <PageHeader
+                title="Account"
+                description="Dolor enim eu tortor urna sed duis nulla."
+              />
+
+              <Typography variant="h6" sx={{ paddingTop: "2rem"}}>Interface theme</Typography>
+              <Typography variant="body2">Select your prefered interface theme.</Typography>
+
+              <Stack direction={"row"} sx={{ paddingTop: "2rem"}} >
+                {themeOptions.map(option => (
+                  <ImageSelector 
+                    key={option.value} 
+                    checked={selectedValue === option.value} 
+                    value={option.value} 
+                    label={option.label} 
+                    image={option.image} 
+                    onChange={handleChange}
+                  />
+                ))}
+              </Stack>
             </Stack>
           </Container>
         </Card>
