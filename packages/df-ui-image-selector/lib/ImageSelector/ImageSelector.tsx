@@ -75,10 +75,7 @@ export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps
 
     const {  image, label, onChange, value, checked = false } = props
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-      // Stop propagation to avoid double firing
       e.stopPropagation()
-
-      // Create a synthetic event to simulate the onChange event of the input
       const syntheticEvent = {
         target: {
           value: value,
