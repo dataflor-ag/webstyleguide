@@ -16,6 +16,7 @@ import bell from "./bell"
 import search from "./search"
 import calendar from "./calendar"
 import chevronDown from "./chevronDown"
+import chevronRight from "./chevronRight"
 import logout from "./logout"
 import dots from "./dots"
 import star from "./star"
@@ -55,6 +56,7 @@ const icons = {
   search,
   calendar,
   chevronDown,
+  chevronRight,
   logout,
   dots,
   star,

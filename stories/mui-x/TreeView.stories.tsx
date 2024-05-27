@@ -17,8 +17,18 @@ export function _TreeView() {
       <Typography variant="h2" mb={4} mt={8}>
         TreeView (MUI X)
       </Typography>
-      <Box sx={{ height: 220, flexGrow: 1, maxWidth: 400 }}>
+      <Box sx={{ height: 220, flexGrow: 1, maxWidth: 320 }}>
         <SimpleTreeView>
+          <TreeItem itemId="applications" label="Applications">
+            <TreeItem itemId="app-calendar" label="Calendar" />
+            <TreeItem itemId="app-map" label="Maps" />
+            <TreeItem itemId="app-mail" label="Mail" />
+            <TreeItem itemId="app-more" label="More">
+              <TreeItem itemId="app-notifications" label="Notifications" />
+              <TreeItem itemId="app-support" label="Support" />
+              <TreeItem itemId="app-settings" label="Settings" />
+            </TreeItem>
+          </TreeItem>
           <TreeItem itemId="grid" label="Data Grid">
             <TreeItem itemId="grid-community" label="@mui/x-data-grid" />
             <TreeItem itemId="grid-pro" label="@mui/x-data-grid-pro" />
