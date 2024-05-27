@@ -109,9 +109,7 @@ export const getForms = (theme: Theme): ComponentStyles => {
           transition: "all 0.1s ease-in-out",
           // boxShadow: shadows[1],
           boxShadow: getShadow(palette.mode).xs.base,
-          backgroundColor: isLightMode
-            ? palette.surface[0]
-            : palette.surface[0],
+          backgroundColor: palette.surface[0],
           input: {
             "&::placeholder": {
               color: palette.grey?.[400],
