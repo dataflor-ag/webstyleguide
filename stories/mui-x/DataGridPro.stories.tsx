@@ -128,6 +128,8 @@ const getTreeDataPath: DataGridProProps['getTreeDataPath'] = (row) => row.hierar
       </Typography>
       <DataGridPro
         treeData
+        checkboxSelection
+        disableRowSelectionOnClick
         rows={rows}
         columns={columns}
         getTreeDataPath={getTreeDataPath}

@@ -23,6 +23,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           "*:focus, *:focus-within": {
             outline: "none !important",
           },
+          ".MuiDataGrid-withBorderColor": {
+            borderColor: "var(--DataGrid-rowBorderColor)",
+          },
         },
         row: {
           transition: "background-color 0.2s ease-in-out",
@@ -35,9 +38,15 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
               backgroundColor: palette.grey?.[100],
             },
           },
+          "&:last-of-type": {
+            ".MuiDataGrid-cell": {
+              borderBottomColor: "transparent",
+            },
+          },
         },
         columnHeaders: {
           "--DataGrid-containerBackground": palette.grey?.[50],
+          backgroundColor: "var(--DataGrid-containerBackground)",
         },
         columnHeader: {
           padding: "0 1.5rem",
@@ -89,6 +98,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           color: palette.grey?.[700],
           display: "flex",
           alignItems: "center",
+          "&.MuiDataGrid-cell--withRenderer": {
+            overflow: "visible !important",
+          },
           "&[data-field='id']": {
             fontWeight: 500,
             color: palette.grey?.[900],
