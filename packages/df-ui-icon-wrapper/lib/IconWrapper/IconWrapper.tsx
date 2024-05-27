@@ -17,6 +17,7 @@ const IconWrapperRoot = styled("div", {
   borderRadius: "0.5rem",
   width: "2.5rem",
   height: "2.5rem",
+  flexShrink: 0,
 
   svg: {
     fontSize: "1.25rem",
