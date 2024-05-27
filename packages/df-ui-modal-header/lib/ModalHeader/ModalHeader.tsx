@@ -1,6 +1,6 @@
 import React from "react"
 import { styled } from "@mui/material/styles"
-import { Typography } from "@mui/material"
+import { Typography, IconButton } from "@mui/material"
 import { IconWrapper } from "@dataflor-ag/df-ui-icon-wrapper"
 import Icon from "@dataflor-ag/df-ui-icons"
 
@@ -28,30 +28,6 @@ const ModalHeaderRoot = styled("div", {
   }
 }))
 
-const ModalHeaderClose = styled("button", {
-  name: "MuiModalHeader",
-  slot: "close"
-})(({ theme }) => ({
-  backgroundColor: "transparent",
-  width: theme.spacing(8),
-  height: theme.spacing(8),
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
-  border: "0 none",
-  marginBottom: "auto",
-  marginLeft: "auto",
-  cursor: "pointer",
-  opacity: .6,
-  color: "inherit",
-  transition: theme.transitions.create(["opacity"]),
-
-  "&:hover": {
-    opacity: 1,
-  },
-}))
-
-
 export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
   (props, ref) => {
 
@@ -68,7 +44,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
           <Typography variant="h6">{title}</Typography>
           <Typography variant="body2">{subtitle}</Typography>
         </div>
-        {onClose && <ModalHeaderClose onClick={handleClose}><Icon.close /></ModalHeaderClose>}
+        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto"}} onClick={handleClose}><Icon.close /></IconButton>}
       </ModalHeaderRoot>
     )
   }
