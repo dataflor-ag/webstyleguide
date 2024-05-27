@@ -22,6 +22,7 @@ export const getAccordion = (theme: Theme): ComponentStyles => {
           borderRadius: radius.md,
           boxShadow: getShadow(palette.mode).xs.base,
           transition: "all 0.2s ease-in-out",
+          backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
 
           "&:first-of-type": {
             borderRadius: radius.md,
@@ -35,10 +36,11 @@ export const getAccordion = (theme: Theme): ComponentStyles => {
           },
 
           "&.Mui-expanded": {
-            margin: 0,
+            marginTop: 0,
+            marginBottom: theme.spacing(2),
             backgroundColor: isLightMode
               ? "rgba(0,0,0,0.05)"
-              : palette.grey[100],
+              : "rgba(255,255,255,0.08)",
             boxShadow: "none",
           },
         }),
