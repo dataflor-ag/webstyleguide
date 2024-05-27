@@ -11,6 +11,9 @@ const meta: Meta<typeof ImageSelector> = {
     label: {
       type: "string",
     },
+    value: {
+      type: "string",
+    },
     image: {
       type: "string"
     },
@@ -30,6 +33,7 @@ type Story = StoryObj<typeof ImageSelector>
 export const Checked: Story = {
   args: {
     label: "Light",
+    value: "light",
     image: "https://via.placeholder.com/200x140",
     checked: true
   },
@@ -38,6 +42,7 @@ export const Checked: Story = {
 export const Unchecked: Story = {
   args: {
     label: "Dark",
+    value: "dark",
     image: "https://via.placeholder.com/200x140",
   },
 }
