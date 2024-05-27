@@ -22,6 +22,8 @@ const ModalHeaderRoot = styled("div", {
   display: "flex",
   gap: theme.spacing(3),
   alignItems: "center",
+  padding: theme.spacing(5),
+  borderBottom: `1px solid ${theme.palette.grey[200]}`,
 
   "& .MuiTypography-body2": {
     color: theme.palette.grey[600]
@@ -44,7 +46,7 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
           <Typography variant="h6">{title}</Typography>
           <Typography variant="body2">{subtitle}</Typography>
         </div>
-        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto"}} onClick={handleClose}><Icon.close /></IconButton>}
+        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto", transform: "translate(8px, -8px)"}} onClick={handleClose}><Icon.close /></IconButton>}
       </ModalHeaderRoot>
     )
   }
