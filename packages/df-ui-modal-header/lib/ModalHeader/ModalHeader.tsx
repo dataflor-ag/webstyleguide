@@ -19,12 +19,9 @@ const ModalHeaderRoot = styled("div", {
   slot: "root",
 })(({ theme }) => ({
   width: "100%",
-  // height: "100%",
   display: "flex",
   gap: theme.spacing(3),
-  // justifyContent: "center",
   alignItems: "center",
-  // padding: "2rem 0",
 
 }))
 
