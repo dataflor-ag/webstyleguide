@@ -8,8 +8,9 @@ interface ImageSelectorRootProps {
 
 interface ImageSelectorProps extends ImageSelectorRootProps{
   label: string,
-  image: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  image: string,
+  value: string,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 
@@ -45,10 +46,8 @@ const ImageSelectorImageWrapper = styled("div", {
   position: "relative",
   padding: theme.spacing(1),
   border: `2px solid transparent`,
-  backgroundColor: theme.palette.grey[50],
   borderRadius: theme.spacing(4),
   transition: theme.transitions.create(["border-color"]),
-  maxWidth: "300px",
   ...(!!checked && {
     borderColor: theme.palette.secondary.main
   }),
@@ -65,7 +64,7 @@ const ImageSelectorImage = styled("img", {
   slot: "image",
 })(({ theme }) => ({
   display: "block",
-  width: "100%",
+  width: "auto",
   height: "auto",
   border: `1px solid ${theme.palette.grey[50]}`,
   borderRadius: theme.spacing(3),
@@ -74,10 +73,24 @@ const ImageSelectorImage = styled("img", {
 export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps>(
   (props, ref) => {
 
-    const {  image, label, onChange, checked = false } = props
+    const {  image, label, onChange, value, checked = false } = props
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      // Stop propagation to avoid double firing
+      e.stopPropagation()
+
+      // Create a synthetic event to simulate the onChange event of the input
+      const syntheticEvent = {
+        target: {
+          value: value,
+          checked: !checked
+        }
+      } as React.ChangeEvent<HTMLInputElement>
+
+      onChange(syntheticEvent)
+    }
 
     return (
-      <ImageSelectorRoot ref={ref} onClick={(e) => e.stopPropagation()} checked={checked}>
+      <ImageSelectorRoot ref={ref} onClick={handleClick} checked={checked}>
         <ImageSelectorImageWrapper checked={checked}>
           <ImageSelectorImage src={image} alt={label} />
           <Radio
