@@ -18,6 +18,17 @@ const meta: Meta<typeof ModalHeader> = {
     icon: {
       type: "function",
     },
+    iconVariant: {
+      options: [
+        "default",
+        "primary",
+        "success",
+        "warning",
+        "error" ,
+        "info"
+      ],
+      control: { type: 'radio' },
+    },
   },
 }
 
