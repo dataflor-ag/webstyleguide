@@ -149,6 +149,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           border: "none",
           color: palette.grey[900],
           backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
+          backdropFilter: isLightMode ? "none" : "blur(4px)",
           ":hover": {
             backgroundColor: isLightMode
               ? "rgba(0,0,0,0.03)"
