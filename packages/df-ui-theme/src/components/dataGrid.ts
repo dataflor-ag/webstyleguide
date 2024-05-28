@@ -1,7 +1,9 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
+import Icon from "@dataflor-ag/df-ui-icons"
 import { getShadow } from "../utils/getShadows"
 import { radius } from "../tokens/shape"
+
 
 export const getDataGrid = (theme: Theme): ComponentStyles => {
   const { palette } = theme
@@ -12,6 +14,10 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
       defaultProps: {
         columnHeaderHeight: 40,
         rowHeight: 64,
+        slots: {
+          treeDataExpandIcon: Icon.alertTriangle,
+          treeDataCollapseIcon: Icon.adjustments,
+        }
       },
       styleOverrides: {
         root: {
