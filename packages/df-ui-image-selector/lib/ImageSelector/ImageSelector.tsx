@@ -48,7 +48,6 @@ const ImageSelectorIcon = styled("div", {
     width: "1.25rem",
     height: "1.25rem",
     color: theme.palette.primary.contrastText,
-    boxShadow: `0 4px 8px -2px rgba(0,0,0,0.1), 0 2px 4px 0 rgba(0,0,0,0.05)`,
     svg: {
       fontSize: "1rem",
     },
