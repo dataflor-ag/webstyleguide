@@ -1,6 +1,7 @@
 import React from "react"
-import { Typography, Radio } from "@mui/material"
+import { Typography } from "@mui/material"
 import { styled } from "@mui/material/styles"
+import Icon from "@dataflor-ag/df-ui-icons"
 
 interface ImageSelectorRootProps {
   checked?: boolean;
@@ -18,25 +19,43 @@ interface ImageSelectorProps extends ImageSelectorRootProps{
 const ImageSelectorRoot = styled("div", {
   name: "MuiImageSelector",
   slot: "root",
-})<ImageSelectorRootProps>(({ theme, checked }) => ({
+})<ImageSelectorRootProps>(({ theme }) => ({
   display: "inline-flex",
   flexDirection: "column",
   cursor: "pointer",
-  padding: theme.spacing(1),
+  padding: "0",
   borderRadius: theme.shape.borderRadius,
-  "& .MuiRadio-root": {
-    visibility: "visible",
-    opacity: 1,
-    transition: theme.transitions.create(["visibility, opacity"]),
-      ...(!checked && {
-      visibility: "hidden",
-      opacity: 0,
-    }),
-  },
-
+  marginRight: "1.25rem",
   "& .MuiTypography-root": {
-    padding: theme.spacing(1)
+    padding: "0.25rem 0",
   }
+}))
+
+const ImageSelectorIcon = styled("div", {
+  name: "MuiImageSelectorIcon",
+})<ImageSelectorRootProps>(({ theme, checked }) => ({
+    position: "absolute",
+    bottom: theme.spacing(2),
+    left: theme.spacing(2),
+    backgroundColor: theme.palette.primary.main,
+    borderRadius: "50rem",
+    transition: "all 0.2s ease-in-out",
+    opacity: "0",
+    transform: "scale(0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "1.25rem",
+    height: "1.25rem",
+    color: theme.palette.primary.contrastText,
+    boxShadow: `0 4px 8px -2px rgba(0,0,0,0.1), 0 2px 4px 0 rgba(0,0,0,0.05)`,
+    svg: {
+      fontSize: "1rem",
+    },
+    ...(!!checked && {
+      opacity: "1",
+      transform: "scale(1)"
+    }),
 }))
 
 const ImageSelectorImageWrapper = styled("div", {
@@ -44,19 +63,19 @@ const ImageSelectorImageWrapper = styled("div", {
   slot: "imageWrapper",
 })<ImageSelectorRootProps>(({ theme, checked }) => ({
   position: "relative",
-  padding: theme.spacing(1),
-  border: `2px solid transparent`,
+  border: `1px solid ${theme.palette.grey[200]}`,
   borderRadius: theme.spacing(4),
   transition: theme.transitions.create(["border-color"]),
+  width: "15rem",
+  "&:before":{
+    content: "''",
+    paddingTop: "calc(2 / 3 * 100%)",
+    display: "block",
+  },
   ...(!!checked && {
-    borderColor: theme.palette.secondary.main
+    borderColor: theme.palette.primary.main,
+    boxShadow: `0 0 0 1px ${theme.palette.primary.main}`,
   }),
-
-  "& .MuiRadio-root": {
-    position: "absolute",
-    bottom: theme.spacing(1),
-    left: theme.spacing(1),
-  }
 }))
 
 const ImageSelectorImage = styled("img", {
@@ -64,10 +83,14 @@ const ImageSelectorImage = styled("img", {
   slot: "image",
 })(({ theme }) => ({
   display: "block",
-  width: "auto",
-  height: "auto",
-  border: `1px solid ${theme.palette.grey[50]}`,
-  borderRadius: theme.spacing(3),
+  borderRadius: theme.spacing(4),
+  position: "absolute",
+  width: "100%",
+  height: "100%",
+  top: 0,
+  left: 0,
+  padding: theme.spacing(1),
+  objectFit: "cover",
 }))
 
 export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps>(
@@ -90,11 +113,9 @@ export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps
       <ImageSelectorRoot ref={ref} onClick={handleClick} checked={checked}>
         <ImageSelectorImageWrapper checked={checked}>
           <ImageSelectorImage src={image} alt={label} />
-          <Radio
-            checked={checked}
-            onChange={onChange}
-            inputProps={{ "aria-label": label }}
-          />
+          <ImageSelectorIcon checked={checked}>
+            <Icon.checkSmall/>
+          </ImageSelectorIcon>
         </ImageSelectorImageWrapper>
         <Typography variant="button">{label}</Typography>
       </ImageSelectorRoot>
