@@ -15,8 +15,8 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         columnHeaderHeight: 40,
         rowHeight: 64,
         slots: {
-          treeDataExpandIcon: Icon.alertTriangle,
-          treeDataCollapseIcon: Icon.adjustments,
+          treeDataExpandIcon: Icon.chevronRight,
+          treeDataCollapseIcon: Icon.chevronDown,
         }
       },
       styleOverrides: {
@@ -131,6 +131,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           "+ *": {
             paddingLeft: 0,
           },
+          ".MuiDataGrid-columnSeparator": {
+            display: "none",
+          },
         },
         footerContainer: {
           borderColor: "var(--DataGrid-rowBorderColor) !important",
@@ -138,6 +141,28 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         },
         panel: {
           marginTop: "-0.25rem !important",
+          ".MuiDataGrid-panelContent": {
+            padding: "0 1.25rem",
+          },
+          ".MuiDataGrid-columnsPanel":{
+            padding: 0,
+          },
+          ".MuiDataGrid-panelHeader": {
+            borderBottom: `1px solid ${palette.grey[200]}`,
+            padding: "1.25rem",
+            marginBottom: "1.25rem",
+            ".MuiFormControl-root": {
+              marginBottom: "0 !important",
+              ".MuiFormLabel-root": {
+                display: "none",
+              },
+            },
+          },
+          ".MuiDataGrid-panelFooter": {
+            borderTop: `1px solid ${palette.grey[200]}`,
+            padding: "1.25rem",
+            marginTop: "1.25rem",
+          },
         },
         filterForm: {
           padding: "1rem",
