@@ -46,6 +46,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
+  "dependencies": {
+    "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
+  },
   "devDependencies": {
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
