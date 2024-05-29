@@ -19,7 +19,7 @@ interface ImageSelectorProps extends ImageSelectorRootProps{
 const ImageSelectorRoot = styled("div", {
   name: "MuiImageSelector",
   slot: "root",
-})<ImageSelectorRootProps>(({ theme }) => ({
+})<ImageSelectorRootProps>(({ theme, checked }) => ({
   display: "inline-flex",
   flexDirection: "column",
   cursor: "pointer",
@@ -28,6 +28,10 @@ const ImageSelectorRoot = styled("div", {
   marginRight: "1.25rem",
   "& .MuiTypography-root": {
     padding: "0.25rem 0",
+    color: theme.palette.grey[700],
+    ...(!!checked && {
+      color: theme.palette.grey[900],
+    }),
   }
 }))
 
@@ -41,7 +45,7 @@ const ImageSelectorIcon = styled("div", {
     borderRadius: "50rem",
     transition: "all 0.2s ease-in-out",
     opacity: "0",
-    transform: "scale(0.5)",
+    transform: "scale(0.75)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
