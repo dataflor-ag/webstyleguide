@@ -1,9 +1,10 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
+import Icon from "@dataflor-ag/df-ui-icons"
 import { radius } from "../tokens/shape"
 import { getShadow } from "../utils/getShadows"
-import chevronDown from "../../../df-ui-icons/lib/icons/chevronDown"
-import chevronRight from "../../../df-ui-icons/lib/icons/chevronRight"
+// import chevronDown from "../../../df-ui-icons/lib/icons/chevronDown"
+// import chevronRight from "../../../df-ui-icons/lib/icons/chevronRight"
 
 export const getTreeView = (theme: Theme): ComponentStyles => {
   const { palette } = theme
@@ -13,8 +14,8 @@ export const getTreeView = (theme: Theme): ComponentStyles => {
     MuiSimpleTreeView: {
       defaultProps: {
         slots: {
-          expandIcon: chevronRight,
-          collapseIcon: chevronDown,
+          expandIcon: Icon.chevronRight,
+          collapseIcon: Icon.chevronDown,
         },
       },
       styleOverrides: {

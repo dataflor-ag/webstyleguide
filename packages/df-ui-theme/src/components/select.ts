@@ -1,5 +1,6 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
+import Icon from "@dataflor-ag/df-ui-icons"
 
 export const getSelects = (theme: Theme): ComponentStyles => {
   const { palette } = theme
@@ -10,6 +11,7 @@ export const getSelects = (theme: Theme): ComponentStyles => {
         variant: "standard",
         displayEmpty: true,
         fullWidth: true,
+        IconComponent: Icon.chevronDown,
         MenuProps: {
           PopoverClasses: {
             paper: "select-dropdown",

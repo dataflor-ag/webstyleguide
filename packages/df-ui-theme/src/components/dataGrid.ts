@@ -1,7 +1,9 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
+import Icon from "@dataflor-ag/df-ui-icons"
 import { getShadow } from "../utils/getShadows"
 import { radius } from "../tokens/shape"
+
 
 export const getDataGrid = (theme: Theme): ComponentStyles => {
   const { palette } = theme
@@ -12,6 +14,10 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
       defaultProps: {
         columnHeaderHeight: 40,
         rowHeight: 64,
+        slots: {
+          treeDataExpandIcon: Icon.chevronRight,
+          treeDataCollapseIcon: Icon.chevronDown,
+        }
       },
       styleOverrides: {
         root: {
@@ -22,6 +28,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           backgroundColor: palette.surface[0],
           "*:focus, *:focus-within": {
             outline: "none !important",
+          },
+          ".MuiDataGrid-withBorderColor": {
+            borderColor: "var(--DataGrid-rowBorderColor)",
           },
         },
         row: {
@@ -35,9 +44,15 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
               backgroundColor: palette.grey?.[100],
             },
           },
+          "&:last-of-type": {
+            ".MuiDataGrid-cell": {
+              borderBottomColor: "transparent",
+            },
+          },
         },
         columnHeaders: {
           "--DataGrid-containerBackground": palette.grey?.[50],
+          backgroundColor: "var(--DataGrid-containerBackground)",
         },
         columnHeader: {
           padding: "0 1.5rem",
@@ -89,6 +104,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           color: palette.grey?.[700],
           display: "flex",
           alignItems: "center",
+          "&.MuiDataGrid-cell--withRenderer": {
+            overflow: "visible !important",
+          },
           "&[data-field='id']": {
             fontWeight: 500,
             color: palette.grey?.[900],
@@ -113,6 +131,9 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
           "+ *": {
             paddingLeft: 0,
           },
+          ".MuiDataGrid-columnSeparator": {
+            display: "none",
+          },
         },
         footerContainer: {
           borderColor: "var(--DataGrid-rowBorderColor) !important",
@@ -120,6 +141,28 @@ export const getDataGrid = (theme: Theme): ComponentStyles => {
         },
         panel: {
           marginTop: "-0.25rem !important",
+          ".MuiDataGrid-panelContent": {
+            padding: "0 1.25rem",
+          },
+          ".MuiDataGrid-columnsPanel":{
+            padding: 0,
+          },
+          ".MuiDataGrid-panelHeader": {
+            borderBottom: `1px solid ${palette.grey[200]}`,
+            padding: "1.25rem",
+            marginBottom: "1.25rem",
+            ".MuiFormControl-root": {
+              marginBottom: "0 !important",
+              ".MuiFormLabel-root": {
+                display: "none",
+              },
+            },
+          },
+          ".MuiDataGrid-panelFooter": {
+            borderTop: `1px solid ${palette.grey[200]}`,
+            padding: "1.25rem",
+            marginTop: "1.25rem",
+          },
         },
         filterForm: {
           padding: "1rem",
