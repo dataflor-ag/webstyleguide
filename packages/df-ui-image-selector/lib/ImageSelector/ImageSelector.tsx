@@ -35,8 +35,8 @@ const ImageSelectorIcon = styled("div", {
   name: "MuiImageSelectorIcon",
 })<ImageSelectorRootProps>(({ theme, checked }) => ({
     position: "absolute",
-    bottom: theme.spacing(2),
-    left: theme.spacing(2),
+    bottom: "0.625rem",
+    left: "0.625rem",
     backgroundColor: theme.palette.primary.main,
     borderRadius: "50rem",
     transition: "all 0.2s ease-in-out",
@@ -48,6 +48,7 @@ const ImageSelectorIcon = styled("div", {
     width: "1.25rem",
     height: "1.25rem",
     color: theme.palette.primary.contrastText,
+    zIndex: 10,
     svg: {
       fontSize: "1rem",
     },
@@ -71,6 +72,19 @@ const ImageSelectorImageWrapper = styled("div", {
     paddingTop: "calc(2 / 3 * 100%)",
     display: "block",
   },
+  "&:after":{
+    content: "''",
+    display: "block",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.grey[100],
+    borderRadius: "0.75rem",
+    margin: theme.spacing(1),
+    border: `1px solid ${theme.palette.grey[200]}`,
+  },
   ...(!!checked && {
     borderColor: theme.palette.primary.main,
     boxShadow: `0 0 0 1px ${theme.palette.primary.main}`,
@@ -82,7 +96,7 @@ const ImageSelectorImage = styled("img", {
   slot: "image",
 })(({ theme }) => ({
   display: "block",
-  borderRadius: theme.spacing(4),
+  borderRadius: "1rem",
   position: "absolute",
   width: "100%",
   height: "100%",
@@ -90,6 +104,7 @@ const ImageSelectorImage = styled("img", {
   left: 0,
   padding: theme.spacing(1),
   objectFit: "cover",
+  zIndex: 5,
 }))
 
 export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps>(
