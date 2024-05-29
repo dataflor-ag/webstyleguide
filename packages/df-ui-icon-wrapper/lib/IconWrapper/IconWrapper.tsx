@@ -48,13 +48,17 @@ const IconWrapperWarning = styled(IconWrapperRoot)(({ theme }) => ({
   borderColor: "transparent",
 }))
 
-const IconWrapperError = styled(IconWrapperRoot)(({ theme }) => ({
+const IconWrapperError = styled(IconWrapperRoot)(({ theme }) => {
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
+  return {
   // @ts-expect-error: types advance in theme
-  backgroundColor: theme.palette.error[50],
+  backgroundColor: isLightMode? theme.palette.error[50] : theme.palette.error[950],
   // @ts-expect-error: types advance in theme
   color: theme.palette.error[600],
   borderColor: "transparent",
-}))
+  }
+})
 
 const IconWrapperInfo = styled(IconWrapperRoot)(({ theme }) => ({
   // @ts-expect-error: types advance in theme

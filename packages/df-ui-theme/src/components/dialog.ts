@@ -9,6 +9,7 @@ export const getDialogs = (theme: Theme): ComponentStyles => {
   return {
     MuiDialog: {
       defaultProps: {
+        maxWidth: "sm",
         PaperProps: {
           elevation: 6,
         },

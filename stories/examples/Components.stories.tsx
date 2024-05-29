@@ -8,14 +8,22 @@ import {
   DrawerSidebar,
 } from "../../packages/df-ui-drawer/lib"
 import {
+  ModalHeader,
+} from "../../packages/df-ui-modal-header"
+import {
   Drawer,
   Button,
   Box,
   Stack,
   Typography,
   IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
+import { withIconVariant } from "../components/ModalHeader.stories"
 
 const meta: Meta = {
   title: "Examples/Components",
@@ -72,6 +80,49 @@ export function DrawerExample() {
           </Stack>
         </DrawerFooter>
       </Drawer>
+    </Box>
+  )
+}
+
+export function DialogExample() {
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+  return (
+    <Box sx={{ width: "100%", height: "400px" }} role="presentation" p={4}>
+      <Stack direction="row">
+        <Button onClick={handleClickOpen}>
+          Open dialog
+        </Button>
+        <Dialog
+          maxWidth="xs"
+          onClose={handleClose}
+          aria-labelledby="customized-dialog-title"
+          open={open}
+        >
+          <ModalHeader 
+            icon={<Icon.trash/>}
+            iconVariant="error"
+            title="Delete project" 
+            subtitle="Are you sure you want to delete this project? This action cannot be undone."
+            onClose={handleClose}
+            >
+          </ModalHeader>
+          <DialogActions>
+            <Button variant="outlined" onClick={handleClose}>
+              Cancel
+            </Button>
+            <Button color="error" autoFocus onClick={handleClose}>
+              Delete
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Stack>
     </Box>
   )
 }

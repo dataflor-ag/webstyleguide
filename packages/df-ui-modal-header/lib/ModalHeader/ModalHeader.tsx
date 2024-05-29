@@ -20,8 +20,8 @@ const ModalHeaderRoot = styled("div", {
 })(({ theme }) => ({
   width: "100%",
   display: "flex",
-  gap: theme.spacing(3),
-  alignItems: "center",
+  gap: theme.spacing(4),
+  alignItems: "flex-start",
   padding: theme.spacing(5),
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
 

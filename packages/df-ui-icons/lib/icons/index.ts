@@ -7,6 +7,7 @@ import lock from "./lock"
 import lockOpen from "./lockOpen"
 import key from "./key"
 import eye from "./eye"
+import eyeOff from "./eyeOff"
 import check from "./check"
 import arrowLeft from "./arrowLeft"
 import plus from "./plus"
@@ -47,6 +48,7 @@ const icons = {
   lockOpen,
   key,
   eye,
+  eyeOff,
   check,
   arrowLeft,
   plus,
