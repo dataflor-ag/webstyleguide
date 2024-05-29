@@ -30,17 +30,17 @@ const IconHeroWrapper = styled("div", {
   boxShadow: `inset 0px 1px 0px 0px ${theme.palette.grey[200]}`,
   backgroundColor:
     theme.palette.mode === "light" ? theme.palette.grey[50] : "transparent",
-  backgroundImage: `linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0) 21%,
-    ${theme.palette.grey[100]} 100%)`,
+  backgroundImage: 
+    theme.palette.mode === "light" ? 
+      `linear-gradient(0deg, rgba(255, 255, 255, 1) 25%, ${theme.palette.grey[100]} 100%)`
+      : `linear-gradient(0deg, rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, 0.25) 100%)`,
 }))
 
 const IconHeroItem = styled("div", {
   name: "MuiIconHero",
   slot: "wrapper",
 })(({ theme }) => ({
-  backgroundColor: theme.palette.grey[50],
+  backgroundColor: theme.palette.mode === "light" ? theme.palette.grey[50] : theme.palette.grey[100],
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
