@@ -30,6 +30,9 @@ export const getSelects = (theme: Theme): ComponentStyles => {
             display: "flex",
             alignItems: "center",
             paddingRight: theme.spacing(10) + "!important",
+            "> span": {
+              color: palette.grey?.[400],
+            },
           },
           ".MuiSelect-select:focus": {
             backgroundColor: "transparent",
