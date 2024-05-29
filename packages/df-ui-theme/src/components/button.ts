@@ -143,6 +143,12 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             backgroundColor: `${palette.secondary?.[900]}`,
             opacity: 0.4,
           },
+          "::after": {
+            background:
+              isLightMode
+               ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
+               : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)" ,
+          },
         },
         outlinedSecondary: {
           boxShadow: getShadow(palette.mode).xs.base,

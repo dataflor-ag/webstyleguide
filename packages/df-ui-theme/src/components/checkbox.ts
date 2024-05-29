@@ -49,11 +49,12 @@ export const getCheckboxes = (theme: Theme): ComponentStyles => {
                 content: '""',
                 position: "absolute",
                 borderRadius: "inherit",
-                opacity: isLightMode ? "1" : "0",
                 inset: "0px",
                 transition: "all 0.2s ease-in-out",
                 background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
+                  isLightMode
+                    ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
+                    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)" ,
                 PointerEvent: "none",
               },
               svg: {
