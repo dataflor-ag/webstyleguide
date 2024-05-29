@@ -5,19 +5,13 @@ import { radius } from "../tokens/shape"
 
 export const getSnackbar= (theme: Theme): ComponentStyles => {
   const { palette } = theme
-  // const isLightMode = palette.mode === "light"
-  
-
+  const isLightMode = palette.mode === "light"
 
   return {
     MuiSnackbar: {
-      defaultProps: {
-        
-      },
+      defaultProps: {},
       styleOverrides: {
-        root: () => ({
-          // backgroundColor: "purple"
-        })
+        root: () => ({})
       }
     },
     MuiSnackbarContent: {
@@ -25,9 +19,11 @@ export const getSnackbar= (theme: Theme): ComponentStyles => {
       },
       styleOverrides: {
         root: () => ({
-          backgroundColor: theme.palette.surface[0],
+          backgroundColor: isLightMode
+              ? palette.surface[0]
+              : palette.surface[100],
           color: theme.palette.surface[900],
-          boxShadow: getShadow(palette.mode).xs.base,
+          boxShadow: getShadow(palette.mode).lg.base,
           borderRadius: radius.xl
         })
       }
