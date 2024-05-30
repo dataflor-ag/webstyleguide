@@ -1,5 +1,3 @@
-// src/components/CustomFadeScale.tsx
-
 import React, { ReactElement, useRef, useEffect } from 'react'
 import { TransitionProps } from '@mui/material/transitions'
 import { Fade } from '@mui/material'
