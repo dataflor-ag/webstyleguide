@@ -144,10 +144,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: 0.4,
           },
           "::after": {
-            background:
-              isLightMode
-               ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
-               : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)" ,
+            background: isLightMode ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)" : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)" ,
           },
         },
         outlinedSecondary: {
@@ -158,7 +155,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           backdropFilter: isLightMode ? "none" : "blur(4px)",
           ":hover": {
             backgroundColor: isLightMode
-              ? "rgba(0,0,0,0.03)"
+              ? "rgba(0,0,0,0.04)"
               : "rgba(255,255,255,0.06)",
             boxShadow: getShadow(palette.mode).xs.base,
             border: "none",
@@ -173,8 +170,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: "0.4",
           },
           ":after": {
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%)",
+            background: isLightMode ? "linear-gradient(rgba(19, 19, 22, 0) 50%, rgba(19, 19, 22, 0.02))" : "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%)",
           },
           ".MuiButton-icon": {
             color: `${palette.grey?.[600]}`,
@@ -275,7 +271,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             },
             "&:hover": {
               backgroundColor: isLightMode
-                ? "rgba(0,0,0,0.03)"
+                ? "rgba(0,0,0,0.02)"
                 : "rgba(255,255,255,0.06)",
             },
             ":focus": {
