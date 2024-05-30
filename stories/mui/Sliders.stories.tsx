@@ -22,7 +22,7 @@ export function Sliders() {
   return (
     <Box width={400}>
       <Typography variant="h2" mb={4} mt={8}>
-        Buttons
+        Sliders
       </Typography>
 
       <Typography variant="h3" mb={4} mt={8}>
