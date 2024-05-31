@@ -58,12 +58,6 @@ export function Inputs() {
           placeholder="0000 0000 0000 0000"
         />
         <TextField
-          id="filled-number"
-          label="Number"
-          type="number"
-          placeholder="0000 0000 0000 0000"
-        />
-        <TextField
           error
           id="filled-helperText"
           label="Helper text"
