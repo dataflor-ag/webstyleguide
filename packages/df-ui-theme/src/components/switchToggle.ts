@@ -33,7 +33,7 @@ export const getSwitchToggle = (theme: Theme): ComponentStyles => {
             width: "1rem",
             height: "1rem",
             backgroundColor: palette.surface[0],
-            boxShadow: "0 1px 2px 0 rgba(0,0,0,0.03)",
+            boxShadow: "0 1px 2px 0 rgba(0,0,0,0.1)",
             position: "relative",
             display: "flex",
             justifyContent: "center",
