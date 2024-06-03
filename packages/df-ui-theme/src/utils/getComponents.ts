@@ -28,6 +28,7 @@ import {
   getContainer,
   getTreeView,
   getSliders,
+  getSnackbar
 } from "../components/index"
 
 export const getComponents = (theme: Theme) => {
@@ -60,7 +61,8 @@ export const getComponents = (theme: Theme) => {
       ...getDataGrid(theme),
       ...getContainer(),
       ...getTreeView(theme),
-      ...getSliders(theme)
+      ...getSliders(theme),
+      ...getSnackbar(theme)
     },
   }
 }
