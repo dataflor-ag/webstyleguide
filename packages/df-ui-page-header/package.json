@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-page-header",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Page headers provide content and actions related to the current screen.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
@@ -25,11 +25,11 @@
     }
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.14"
+    "@mui/material": "^5.15.14",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
