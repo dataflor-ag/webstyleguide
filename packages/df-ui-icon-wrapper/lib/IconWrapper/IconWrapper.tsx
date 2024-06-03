@@ -94,7 +94,7 @@ export const IconWrapper = React.forwardRef<HTMLDivElement, IconWrapperProps>(
     }
 
     return (
-      <IconWrapperComponent ref={ref}>{props.children}</IconWrapperComponent>
+      <IconWrapperComponent className="MuiIconWrapper-root" ref={ref}>{props.children}</IconWrapperComponent>
     )
   }
 )

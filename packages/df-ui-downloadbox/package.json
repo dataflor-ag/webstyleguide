@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-downloadbox",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A versatile component for handling MIME content download, supporting various file types and formats.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
@@ -31,11 +31,11 @@
     "mime": "^4.0.3"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.15"
+    "@mui/material": "^5.15.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

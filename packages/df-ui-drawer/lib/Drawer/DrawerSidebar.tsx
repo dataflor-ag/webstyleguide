@@ -11,7 +11,7 @@ const DrawerSidebarRoot = styled("div", {
 })(({ theme }) => ({
   display: "flex",
   justifyContent: "flex-start",
-  backgroundColor: theme.palette.grey[50],
+  backgroundColor: theme.palette.mode === "light" ? theme.palette.grey[50] : theme.palette.grey[100],
   position: "absolute",
   top: 0,
   bottom: 0,

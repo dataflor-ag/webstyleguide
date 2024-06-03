@@ -52,7 +52,7 @@ const DownloadboxIcon = styled("div", {
   lineHeight: 0,
   width: "2.5rem",
   height: "2.5rem",
-  stroke: `${theme.palette.grey[300]}`,
+  stroke: `${theme.palette.grey[200]}`,
 }))
 
 const DownloadboxIconText = styled("div", {
@@ -67,7 +67,7 @@ const DownloadboxIconText = styled("div", {
   borderRadius: "0.25rem",
   textAlign: "center",
   position: "absolute",
-  letterSpacing: "-1px",
+  letterSpacing: "-0.1px",
   left: 0,
   height: "1rem",
   lineHeight: "1rem",
