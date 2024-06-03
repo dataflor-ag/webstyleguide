@@ -38,6 +38,16 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
           minWidth: "2.25rem",
           transition: "all 0.2s ease-in-out",
           fontSize: "0.875rem",
+          "&:after": {
+            content: '""',
+            position: "absolute",
+            borderRadius: "inherit",
+            opacity: "0",
+            inset: "0px",
+            transition: "all 0.2s ease-in-out",
+            background: isLightMode ? "linear-gradient(rgba(19, 19, 22, 0) 50%, rgba(19, 19, 22, 0.02))" : "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%)",
+            PointerEvent: "none",
+          },
           "&:hover": {
             backgroundColor: isLightMode
               ? "rgba(0, 0, 0, 0.03)"
@@ -50,6 +60,9 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
             boxShadow: getShadow(palette.mode).xs.base,
             "&:hover": {
               backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
+            },
+            "&:after": {
+              opacity: 1,
             },
           },
         }),

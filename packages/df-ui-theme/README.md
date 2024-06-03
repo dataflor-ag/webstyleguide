@@ -12,7 +12,7 @@ import { getTheme } from "@dataflor-ag/df-ui-theme"
 export default function App() {
   return (
     <ThemeProvider theme={getTheme("dark")}>
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       <main>This app is using the dark mode</main>
     </ThemeProvider>
   )

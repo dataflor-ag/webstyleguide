@@ -26,7 +26,10 @@ import {
   getGrid,
   getDataGrid,
   getContainer,
-  getTreeView
+  getTreeView,
+  getBreadcrumbs,
+  getSliders,
+  getSnackbar
 } from "../components/index"
 
 export const getComponents = (theme: Theme) => {
@@ -58,7 +61,10 @@ export const getComponents = (theme: Theme) => {
       ...getGrid(),
       ...getDataGrid(theme),
       ...getContainer(),
-      ...getTreeView(theme)
+      ...getTreeView(theme),
+      ...getBreadcrumbs(theme),
+      ...getSliders(theme),
+      ...getSnackbar(theme)
     },
   }
 }

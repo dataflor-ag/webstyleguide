@@ -1,6 +1,6 @@
 import React from "react"
 import { Meta } from "@storybook/react"
-import { Typography, Stack, TextField, FormControl, Divider, InputAdornment, IconButton } from "@mui/material"
+import { Typography, Stack, TextField, Divider, InputAdornment, IconButton } from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta = {
@@ -50,12 +50,6 @@ export function Inputs() {
           InputProps={{
             readOnly: true,
           }}
-        />
-        <TextField
-          id="filled-number"
-          label="Number"
-          type="number"
-          placeholder="0000 0000 0000 0000"
         />
         <TextField
           id="filled-number"

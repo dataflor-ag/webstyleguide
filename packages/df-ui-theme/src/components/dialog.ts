@@ -1,6 +1,7 @@
 import type { Theme } from "@mui/material"
 import type { ComponentStyles } from "../types/Components"
 import { radius } from "../tokens/shape"
+import CustomFadeScale from '../animations/customFadeScale'
 
 export const getDialogs = (theme: Theme): ComponentStyles => {
   const { palette } = theme
@@ -10,6 +11,7 @@ export const getDialogs = (theme: Theme): ComponentStyles => {
     MuiDialog: {
       defaultProps: {
         maxWidth: "sm",
+        TransitionComponent: CustomFadeScale,
         PaperProps: {
           elevation: 6,
         },
@@ -17,13 +19,14 @@ export const getDialogs = (theme: Theme): ComponentStyles => {
       styleOverrides: {
         root: () => ({
           ".MuiBackdrop-root": {
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            backgroundColor: isLightMode ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.2)",
+            // backdropFilter: "blur(8px)",
           },
           ".MuiDialog-paper": {
             borderRadius: radius["2xl"],
             backgroundColor: isLightMode
               ? palette.surface[0]
-              : palette.surface[100],
+              : palette.surface[50],
           },
         }),
       },

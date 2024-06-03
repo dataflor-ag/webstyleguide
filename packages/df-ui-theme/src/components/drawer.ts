@@ -24,10 +24,11 @@ export const getDrawers = (theme: Theme): ComponentStyles => {
             transformStyle: "preserve-3d",
             backgroundColor: isLightMode
               ? palette.surface[0]
-              : palette.surface[100],
+              : palette.surface[50],
           },
           ".MuiBackdrop-root": {
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            backgroundColor: isLightMode ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.2)",
+            // backdropFilter: "blur(8px)",
           },
         }),
         paperAnchorRight: () => ({

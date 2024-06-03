@@ -1,3 +1,4 @@
+import React from 'react';
 import { withThemeFromJSXProvider } from "@storybook/addon-themes"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 
@@ -22,7 +23,7 @@ const preview = {
       },
       defaultTheme: "light",
       Provider: ThemeProvider,
-      GlobalStyles: CssBaseline,
+      GlobalStyles: () => React.createElement(CssBaseline, { enableColorScheme: true }),
     }),
   ],
 }

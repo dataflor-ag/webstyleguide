@@ -46,11 +46,18 @@ export function Forms() {
           value={age}
           label="Age"
           onChange={handleChange}
-          placeholder="Select age"
+          renderValue={(selected) => {
+            if (selected.length === 0) {
+              return <span>Select age</span>;
+            }
+
+            return selected;
+          }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem disabled value="">Select age</MenuItem>
+          <MenuItem value="Ten">Ten</MenuItem>
+          <MenuItem value="Twenty">Twenty</MenuItem>
+          <MenuItem value="Thirty">Thirty</MenuItem>
         </Select>
       </FormControl>
 
