@@ -6,7 +6,7 @@ import Icon from "@dataflor-ag/df-ui-icons"
 
 type IconVariant = "default" | "primary" | "success" | "warning" | "error" | "info"
 
-interface ModalHeaderProps {
+interface DialogHeaderProps {
   title: string
   subtitle?: string
   icon?: React.ReactNode;
@@ -14,8 +14,8 @@ interface ModalHeaderProps {
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const ModalHeaderRoot = styled("div", {
-  name: "MuiModalHeader",
+const DialogHeaderRoot = styled("div", {
+  name: "MuiDialogHeader",
   slot: "root",
 })(({ theme }) => ({
   width: "100%",
@@ -30,7 +30,7 @@ const ModalHeaderRoot = styled("div", {
   }
 }))
 
-export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
+export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   (props, ref) => {
 
     const { icon, title, subtitle, onClose, iconVariant = "default" } = props
@@ -40,14 +40,14 @@ export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
     }
 
     return (
-      <ModalHeaderRoot ref={ref}>
+      <DialogHeaderRoot ref={ref}>
         {icon && <IconWrapper variant={iconVariant}>{icon}</IconWrapper>}
         <div>
           <Typography variant="h6">{title}</Typography>
           <Typography variant="body2">{subtitle}</Typography>
         </div>
         {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto", transform: "translate(8px, -8px)"}} onClick={handleClose}><Icon.close /></IconButton>}
-      </ModalHeaderRoot>
+      </DialogHeaderRoot>
     )
   }
 )

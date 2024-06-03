@@ -1,7 +1,7 @@
 {
-  "name": "@dataflor-ag/df-ui-modal-header",
+  "name": "@dataflor-ag/df-ui-dialog-header",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "Skeleton header for dialog component.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
