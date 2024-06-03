@@ -1,11 +1,11 @@
 import React from "react"
 import { Meta, StoryObj } from "@storybook/react"
-import { ModalHeader } from "../../packages/df-ui-modal-header/lib/"
+import { DialogHeader } from "../../packages/df-ui-dialog-header/lib/"
 import Icon from "../../packages/df-ui-icons/lib"
 
-const meta: Meta<typeof ModalHeader> = {
-  title: "Components/ModalHeader",
-  component: ModalHeader,
+const meta: Meta<typeof DialogHeader> = {
+  title: "Components/DialogHeader",
+  component: DialogHeader,
   // decorators: [(story) => <div style={{ padding: "3rem" }}>{story()}</div>],
   tags: ["autodocs"],
   argTypes: {
@@ -34,7 +34,7 @@ const meta: Meta<typeof ModalHeader> = {
 
 export default meta
 
-type Story = StoryObj<typeof ModalHeader>
+type Story = StoryObj<typeof DialogHeader>
 
 export const Default: Story = {
   args: {
