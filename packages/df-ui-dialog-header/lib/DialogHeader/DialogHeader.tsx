@@ -21,14 +21,20 @@ const DialogHeaderRoot = styled("div", {
   width: "100%",
   display: "flex",
   gap: theme.spacing(4),
-  alignItems: "flex-start",
+  alignItems: "center",
   padding: theme.spacing(5),
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
 
   "& .MuiTypography-body2": {
     color: theme.palette.grey[600]
+  },
+
+  "& .MuiIconWrapper-root": {
+    marginBottom: "auto"
   }
 }))
+
+
 
 export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   (props, ref) => {
@@ -44,7 +50,7 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
         {icon && <IconWrapper variant={iconVariant}>{icon}</IconWrapper>}
         <div>
           <Typography variant="h6">{title}</Typography>
-          <Typography variant="body2">{subtitle}</Typography>
+          {subtitle && <Typography variant="body2">{subtitle}</Typography>}
         </div>
         {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto", transform: "translate(8px, -8px)"}} onClick={handleClose}><Icon.close /></IconButton>}
       </DialogHeaderRoot>

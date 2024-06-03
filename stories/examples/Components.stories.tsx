@@ -8,8 +8,8 @@ import {
   DrawerSidebar,
 } from "../../packages/df-ui-drawer/lib"
 import {
-  ModalHeader,
-} from "../../packages/df-ui-modal-header"
+  DialogHeader,
+} from "../../packages/df-ui-dialog-header/lib"
 import {
   Drawer,
   Button,
@@ -23,7 +23,6 @@ import {
   DialogActions,
 } from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
-import { withIconVariant } from "../components/ModalHeader.stories"
 
 const meta: Meta = {
   title: "Examples/Components",
@@ -105,14 +104,14 @@ export function DialogExample() {
           aria-labelledby="customized-dialog-title"
           open={open}
         >
-          <ModalHeader 
+          <DialogHeader 
             icon={<Icon.trash/>}
             iconVariant="error"
             title="Delete project" 
             subtitle="Are you sure you want to delete this project? This action cannot be undone."
             onClose={handleClose}
             >
-          </ModalHeader>
+          </DialogHeader>
           <DialogActions>
             <Button variant="outlined" onClick={handleClose}>
               Cancel
