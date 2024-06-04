@@ -1,0 +1,68 @@
+{
+  "name": "@dataflor-ag/df-action-bar",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Nikolai Wicke <n.wicke@flynet.de>",
+  "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
+  "license": "UNLICENSED",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "dependencies": {
+    "mime": "^4.0.3"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@dataflor-ag"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dataflor-ag/webstyleguide.git"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "prepublishOnly": "npm run build",
+    "lint": "tsc && eslint . --ext .js,.ts,.jsx,.tsx --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/dataflor-ag/webstyleguide/issues"
+  }
+}
