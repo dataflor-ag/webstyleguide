@@ -39,10 +39,10 @@ const ActionBarItemShortcut = styled("div", {
 }))
 
 export const ActionBarItem = React.forwardRef<HTMLDivElement, ActionBarItemProps>(
-  (props, ref) => {
+  (props) => {
     const { children, shortcut } = props
     return (
-      <ActionBarItemRoot ref={ref}>
+      <ActionBarItemRoot>
         {children}
 
         {shortcut && <ActionBarItemShortcut>{shortcut}</ActionBarItemShortcut>}
