@@ -1,37 +1,35 @@
 import React from "react";
 import { Typography } from "@mui/material"
-import { LocalizationProvider, DatePicker, DateCalendar } from '@mui/x-date-pickers'
+import { LocalizationProvider, DatePicker, DateCalendar, TimePicker } from '@mui/x-date-pickers'
+// import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Meta } from "@storybook/react";
 
 const meta: Meta = {
-  title: "MUI X/DateTime",
+  title: "MUI X/DateTimePicker",
 };
 
 export default meta;
 
-export function _DatePicker() {
+export function _DateTimePicker() {
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Typography variant="h2" mb={4} mt={8}>
-          DateTime
+          DateTimePicker
+        </Typography>
+        <Typography variant="h3" mb={4} mt={8}>
+          DatePicker
         </Typography>
         <DatePicker label="Basic date picker" />
-        <DateCalendar />
-      </LocalizationProvider>
-    </div>
-  );
-}
-
-export function _DateCalender() {
-  return (
-    <div>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Typography variant="h2" mb={4} mt={8}>
-          Date Calender
+        <Typography variant="h3" mb={4} mt={8}>
+          TimePicker
         </Typography>
-        <DateCalendar />
+        <TimePicker label="Basic time picker" />
+        <Typography variant="h3" mb={4} mt={8}>
+          DateRangePicker (Pro)
+        </Typography>
+        {/* <SingleInputDateRangeField label="Select dates" /> */}
       </LocalizationProvider>
     </div>
   );

@@ -17,18 +17,20 @@ export const getDialogs = (theme: Theme): ComponentStyles => {
         },
       },
       styleOverrides: {
-        root: () => ({
+        root: {
           ".MuiBackdrop-root": {
             backgroundColor: isLightMode ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.2)",
             // backdropFilter: "blur(8px)",
           },
-          ".MuiDialog-paper": {
-            borderRadius: radius["2xl"],
-            backgroundColor: isLightMode
-              ? palette.surface[0]
-              : palette.surface[50],
-          },
-        }),
+        },
+        paper: {
+          width: "100%",
+          margin: "1.5rem",
+          borderRadius: radius["2xl"],
+          backgroundColor: isLightMode
+            ? palette.surface[0]
+            : palette.surface[50],
+        },
       },
     },
     MuiDialogTitle: {

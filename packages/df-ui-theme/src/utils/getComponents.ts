@@ -66,7 +66,7 @@ export const getComponents = (theme: Theme) => {
       ...getBreadcrumbs(theme),
       ...getSliders(theme),
       ...getSnackbar(theme),
-      ...getDateTime()
+      ...getDateTime(theme)
     },
   }
 }

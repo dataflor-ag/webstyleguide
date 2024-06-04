@@ -16,8 +16,10 @@ import headset from "./headset"
 import bell from "./bell"
 import search from "./search"
 import calendar from "./calendar"
+import chevronUp from "./chevronUp"
 import chevronDown from "./chevronDown"
 import chevronRight from "./chevronRight"
+import chevronLeft from "./chevronLeft"
 import logout from "./logout"
 import dots from "./dots"
 import star from "./star"
@@ -36,6 +38,7 @@ import cloudDownload from "./cloudDownload"
 import cloudUpload from "./cloudUpload"
 import checkSmall from "./checkSmall"
 import closeSmall from "./closeSmall"
+import clock from "./clock"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -57,8 +60,10 @@ const icons = {
   bell,
   search,
   calendar,
+  chevronUp,
   chevronDown,
   chevronRight,
+  chevronLeft,
   logout,
   dots,
   star,
@@ -77,6 +82,7 @@ const icons = {
   cloudUpload,
   checkSmall,
   closeSmall,
+  clock,
 }
 
 type IconKeys = keyof typeof icons;
