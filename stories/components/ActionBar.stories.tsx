@@ -21,7 +21,8 @@ export default meta
 export function Default() {
 
   const scEdit = "E"
-  const scDelete = Icon.bell
+  // const scDelete = `${Icon.bell}`
+  const scDelete = `D`
 
   return (
     <div>
