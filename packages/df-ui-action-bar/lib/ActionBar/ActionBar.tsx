@@ -26,20 +26,23 @@ const ActionBarRoot = styled("div", {
    ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)",
 
-  transition: theme.transitions.create(["transform", "opacity"]),
+  transition: theme.transitions.create(["all"]),
+  willChange: "transform",
   position: "fixed",
   bottom: "0",
   left: "50%",
 
   ...(show && {
     visibility: "visible",
-    transform: "translateX(-50%) translateY(0)",
+    opacity: 1,
+    transform: "translateX(-50%) translateY(0) scale(1)",
     pointerEvents: "all",
   }),
 
   ...(!show && {
+    opacity: 0,
     visibility: "hidden",
-    transform: "translateX(-50%) translateY(24px)",
+    transform: "translateX(-50%) translateY(12px) scale(0.98)",
     pointerEvents: "none",
   })
 }))
