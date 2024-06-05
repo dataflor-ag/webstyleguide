@@ -11,9 +11,9 @@ const meta: Meta<typeof ActionBar> = {
 export default meta
 
 export function Default() {
-  const scEdit = ["STRG", "SHIFT", "E"]
-  const scDelete = [<Icon.bell />, "D"]
-  const scNew = <Icon.calendar />
+  const scEdit = ["ALT", "E"]
+  const scDelete = ["ALT", "D"]
+  const scNew = ["ALT", "N"]
 
   return (
     <div>
@@ -39,7 +39,7 @@ export function Disabled() {
 
   return (
     <div>
-      <ActionBar>
+      <ActionBar label="2 selected">
         <ActionBarItem shortcut={scSettings} disabled>
           Settings
         </ActionBarItem>
