@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { Meta } from "@storybook/react"
 import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib/"
 import Icon from "../../packages/df-ui-icons/lib"
-import { Button, Stack } from "@mui/material"
+import { Button, Stack, Box} from "@mui/material"
 
 const meta: Meta<typeof ActionBar> = {
   title: "Components/ActionBar",
@@ -29,6 +29,19 @@ export function Default() {
           New
         </ActionBarItem>
       </ActionBar>
+      <Box height={200}>
+        <ActionBar label="2 selected">
+          <ActionBarItem shortcut={scEdit}>
+            Edit
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete}>
+            Delete
+          </ActionBarItem>
+          <ActionBarItem shortcut={scNew}>
+            New
+          </ActionBarItem>
+        </ActionBar>
+      </Box>
     </div>
   )
 }
@@ -51,6 +64,19 @@ export function Disabled() {
           New
         </ActionBarItem>
       </ActionBar>
+      <Box height={200}>
+        <ActionBar label="2 selected">
+          <ActionBarItem shortcut={scSettings} disabled>
+            Settings
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete} disabled>
+            Delete
+          </ActionBarItem>
+          <ActionBarItem shortcut={scNew}>
+            New
+          </ActionBarItem>
+        </ActionBar>
+      </Box>
     </div>
   )
 }
@@ -71,17 +97,19 @@ export function Toggle() {
         <div>
           <Button onClick={toggleActionBar(!show)}>Toggle action</Button>
         </div>
-        <ActionBar label="2 selected" show={show}>
-          <ActionBarItem shortcut={scSettings} disabled>
-            Settings
-          </ActionBarItem>
-          <ActionBarItem shortcut={scDelete} disabled>
-            Delete
-          </ActionBarItem>
-          <ActionBarItem shortcut={scNew}>
-            New
-          </ActionBarItem>
-        </ActionBar>
+        <Box height={200}>
+          <ActionBar label="2 selected" show={show}>
+            <ActionBarItem shortcut={scSettings} disabled>
+              Settings
+            </ActionBarItem>
+            <ActionBarItem shortcut={scDelete} disabled>
+              Delete
+            </ActionBarItem>
+            <ActionBarItem shortcut={scNew}>
+              New
+            </ActionBarItem>
+          </ActionBar>
+        </Box>
       </Stack>
     </div>
   )

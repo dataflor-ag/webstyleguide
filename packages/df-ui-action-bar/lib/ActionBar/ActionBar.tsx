@@ -27,15 +27,19 @@ const ActionBarRoot = styled("div", {
    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)",
 
   transition: theme.transitions.create(["transform", "opacity"]),
-  
+  position: "fixed",
+  bottom: "0",
+  left: "50%",
+
   ...(show && {
     visibility: "visible",
-    transform: "translate(0,0)",
+    transform: "translateX(-50%) translateY(0)",
     pointerEvents: "all",
   }),
+
   ...(!show && {
     visibility: "hidden",
-    transform: "translate(0,1rem)",
+    transform: "translateX(-50%) translateY(24px)",
     pointerEvents: "none",
   })
 }))
@@ -46,6 +50,7 @@ const ActionBarLabel = styled("div", {
 })(() => ({
   opacity: 0.6,
   marginRight: "0.5rem",
+  whiteSpace: "nowrap"
 }))
 
 export const ActionBar = React.forwardRef<HTMLDivElement, ActionBarProps>(
