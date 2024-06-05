@@ -1,6 +1,7 @@
 import React from "react"
 import { Meta } from "@storybook/react"
 import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib/"
+import Box from '@mui/material/Box';
 import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta<typeof ActionBar> = {
@@ -17,17 +18,19 @@ export function Default() {
 
   return (
     <div>
-      <ActionBar label="2 selected">
-        <ActionBarItem shortcut={scEdit}>
-          Edit
-        </ActionBarItem>
-        <ActionBarItem shortcut={scDelete}>
-          Delete
-        </ActionBarItem>
-        <ActionBarItem shortcut={scNew}>
-          New
-        </ActionBarItem>
-      </ActionBar>
+      <Box height={200}>
+        <ActionBar label="2 selected">
+          <ActionBarItem shortcut={scEdit}>
+            Edit
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete}>
+            Delete
+          </ActionBarItem>
+          <ActionBarItem shortcut={scNew}>
+            New
+          </ActionBarItem>
+        </ActionBar>
+      </Box>
     </div>
   )
 }
@@ -39,17 +42,19 @@ export function Disabled() {
 
   return (
     <div>
-      <ActionBar label="2 selected">
-        <ActionBarItem shortcut={scSettings} disabled>
-          Settings
-        </ActionBarItem>
-        <ActionBarItem shortcut={scDelete} disabled>
-          Delete
-        </ActionBarItem>
-        <ActionBarItem shortcut={scNew}>
-          New
-        </ActionBarItem>
-      </ActionBar>
+      <Box height={200}>
+        <ActionBar label="2 selected">
+          <ActionBarItem shortcut={scSettings} disabled>
+            Settings
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete} disabled>
+            Delete
+          </ActionBarItem>
+          <ActionBarItem shortcut={scNew}>
+            New
+          </ActionBarItem>
+        </ActionBar>
+      </Box>
     </div>
   )
 }

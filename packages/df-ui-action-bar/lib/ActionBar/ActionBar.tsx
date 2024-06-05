@@ -24,6 +24,10 @@ const ActionBarRoot = styled("div", {
   backgroundImage: theme.palette.mode === "light"
    ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)",
+  position: "fixed",
+  bottom: "0",
+  left: "50%",
+  transform: "translateX(-50%) translateY(-24px)",
   // "> div": {
   //   display: "flex",
   //   alignItems: "center",
@@ -53,6 +57,7 @@ const ActionBarLabel = styled("div", {
 })(() => ({
   opacity: 0.6,
   marginRight: "0.5rem",
+  whiteSpace: "nowrap"
 }))
 
 export const ActionBar = React.forwardRef<HTMLDivElement, ActionBarProps>(
