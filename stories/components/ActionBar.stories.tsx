@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from 'react';
 import { Meta } from "@storybook/react"
 import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib/"
 import Icon from "../../packages/df-ui-icons/lib"
@@ -18,19 +18,8 @@ export function Default() {
 
   return (
     <div>
-      <ActionBar label="2 selected" show={true}>
-        <ActionBarItem shortcut={scEdit}>
-          Edit
-        </ActionBarItem>
-        <ActionBarItem shortcut={scDelete}>
-          Delete
-        </ActionBarItem>
-        <ActionBarItem shortcut={scNew}>
-          New
-        </ActionBarItem>
-      </ActionBar>
       <Box height={200}>
-        <ActionBar label="2 selected">
+        <ActionBar count={2}>
           <ActionBarItem shortcut={scEdit}>
             Edit
           </ActionBarItem>
@@ -47,29 +36,18 @@ export function Default() {
 }
 
 export function Disabled() {
-  const scSettings = ["STRG", ";"]
-  const scDelete = [<Icon.cloudDownload />, "D"]
-  const scNew = <Icon.alertTriangle />
+  const scEdit = ["ALT", "E"]
+  const scDelete = ["ALT", "D"]
+  const scNew = ["ALT", "N"]
 
   return (
     <div>
-      <ActionBar label="2 selected" show={true}>
-        <ActionBarItem shortcut={scSettings} disabled>
-          Settings
-        </ActionBarItem>
-        <ActionBarItem shortcut={scDelete} disabled>
-          Delete
-        </ActionBarItem>
-        <ActionBarItem shortcut={scNew}>
-          New
-        </ActionBarItem>
-      </ActionBar>
       <Box height={200}>
-        <ActionBar label="2 selected">
-          <ActionBarItem shortcut={scSettings} disabled>
-            Settings
+        <ActionBar count={2}>
+          <ActionBarItem disabled shortcut={scEdit}>
+            Edit
           </ActionBarItem>
-          <ActionBarItem shortcut={scDelete} disabled>
+          <ActionBarItem disabled shortcut={scDelete}>
             Delete
           </ActionBarItem>
           <ActionBarItem shortcut={scNew}>
@@ -82,27 +60,27 @@ export function Disabled() {
 }
 
 export function Toggle() {
-  const scSettings = ["STRG", ";"]
-  const scDelete = [<Icon.cloudDownload />, "D"]
-  const scNew = <Icon.alertTriangle />
+  const scEdit = ["ALT", "E"]
+  const scDelete = ["ALT", "D"]
+  const scNew = ["ALT", "N"]
 
-  const [show, setShow] = React.useState(false)
-  const toggleActionBar = (value: boolean) => () => {
-    setShow(value)
-  }
+  const [count, setCount] = useState(2);
+  const increaseCount = () => setCount(prevCount => prevCount + 1)
+  const decreaseCount = () => setCount(prevCount => Math.max(0, prevCount - 1))
 
   return (
     <div>
       <Stack gap={2}>
-        <div>
-          <Button onClick={toggleActionBar(!show)}>Toggle action</Button>
-        </div>
+        <Stack direction={'row'} gap={3}>
+          <Button variant='outlined' onClick={increaseCount}>Add</Button>
+          <Button variant='outlined' color='error' onClick={decreaseCount}>Remove</Button>
+        </Stack>
         <Box height={200}>
-          <ActionBar label="2 selected" show={show}>
-            <ActionBarItem shortcut={scSettings} disabled>
-              Settings
+          <ActionBar count={count}>
+            <ActionBarItem shortcut={scEdit}>
+              Edit
             </ActionBarItem>
-            <ActionBarItem shortcut={scDelete} disabled>
+            <ActionBarItem shortcut={scDelete}>
               Delete
             </ActionBarItem>
             <ActionBarItem shortcut={scNew}>

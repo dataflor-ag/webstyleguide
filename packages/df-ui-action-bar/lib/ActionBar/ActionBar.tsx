@@ -2,14 +2,13 @@ import React from "react"
 import { styled } from "@mui/material/styles"
 
 interface ActionBarProps extends React.HTMLAttributes<HTMLDivElement> {
-  label?: string
-  show?: boolean
+  count?: number
 }
 
 const ActionBarRoot = styled("div", {
   name: "MuiActionBar",
   slot: "root",
-})<ActionBarProps>(({ theme, show }) => ({
+})<ActionBarProps>(({ theme, count }) => ({
   display: "inline-flex",
   alignItems: "center",
   backgroundColor: theme.palette.grey[900],
@@ -29,17 +28,15 @@ const ActionBarRoot = styled("div", {
   transition: theme.transitions.create(["all"]),
   willChange: "transform",
   position: "fixed",
-  bottom: "0",
+  bottom: "1.5rem",
   left: "50%",
 
-  ...(show && {
+  ...(count && count > 0 ? {
     visibility: "visible",
     opacity: 1,
     transform: "translateX(-50%) translateY(0) scale(1)",
     pointerEvents: "all",
-  }),
-
-  ...(!show && {
+  } : {
     opacity: 0,
     visibility: "hidden",
     transform: "translateX(-50%) translateY(12px) scale(0.98)",
@@ -53,16 +50,19 @@ const ActionBarLabel = styled("div", {
 })(() => ({
   opacity: 0.6,
   marginRight: "0.5rem",
-  whiteSpace: "nowrap"
+  whiteSpace: "nowrap",
+  transition: "transform 0.5s ease-in-out",
 }))
 
 export const ActionBar = React.forwardRef<HTMLDivElement, ActionBarProps>(
   (props, ref) => {
-    const { children, label, show = false } = props
+    const { children, count = 0 } = props
+
     return (
-      <ActionBarRoot ref={ref} show={show}>
-        {label && <ActionBarLabel>{label}</ActionBarLabel>}
+      <ActionBarRoot ref={ref} count={count}>
+        <ActionBarLabel>{count} selected</ActionBarLabel>
         {children}
       </ActionBarRoot>
     )
-  })
+  }
+)
