@@ -24,27 +24,6 @@ const ActionBarRoot = styled("div", {
   backgroundImage: theme.palette.mode === "light"
    ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)",
-  // "> div": {
-  //   display: "flex",
-  //   alignItems: "center",
-  // },
-
-  // "> *:not(:last-child)": {
-  //   position: "relative",
-  //   "&::after": {
-  //     content: "''",
-  //     height: theme.spacing(5),
-  //     width: "1px",
-  //     // backgroundColor: theme.palette.background.default,
-  //     backgroundColor: "pink",
-  //     // opacity: 0.1,
-  //     display: "block",
-  //     top: 0,
-  //     right: 0,
-  //     // marginLeft: theme.spacing(2),
-  //     position: "absolute"
-  //   }
-  // }
 }))
 
 const ActionBarLabel = styled("div", {
