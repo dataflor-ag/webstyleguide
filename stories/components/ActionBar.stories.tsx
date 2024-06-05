@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import { Meta } from "@storybook/react"
 import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib/"
 import Icon from "../../packages/df-ui-icons/lib"
+import { Button, Stack } from "@mui/material"
 
 const meta: Meta<typeof ActionBar> = {
   title: "Components/ActionBar",
@@ -17,7 +18,7 @@ export function Default() {
 
   return (
     <div>
-      <ActionBar label="2 selected">
+      <ActionBar label="2 selected" show={true}>
         <ActionBarItem shortcut={scEdit}>
           Edit
         </ActionBarItem>
@@ -39,7 +40,7 @@ export function Disabled() {
 
   return (
     <div>
-      <ActionBar label="2 selected">
+      <ActionBar label="2 selected" show={true}>
         <ActionBarItem shortcut={scSettings} disabled>
           Settings
         </ActionBarItem>
@@ -50,6 +51,38 @@ export function Disabled() {
           New
         </ActionBarItem>
       </ActionBar>
+    </div>
+  )
+}
+
+export function Toggle() {
+  const scSettings = ["STRG", ";"]
+  const scDelete = [<Icon.cloudDownload />, "D"]
+  const scNew = <Icon.alertTriangle />
+
+  const [show, setShow] = React.useState(false)
+  const toggleActionBar = (value: boolean) => () => {
+    setShow(value)
+  }
+
+  return (
+    <div>
+      <Stack gap={2}>
+        <div>
+          <Button onClick={toggleActionBar(!show)}>Toggle action</Button>
+        </div>
+        <ActionBar label="2 selected" show={show}>
+          <ActionBarItem shortcut={scSettings} disabled>
+            Settings
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete} disabled>
+            Delete
+          </ActionBarItem>
+          <ActionBarItem shortcut={scNew}>
+            New
+          </ActionBarItem>
+        </ActionBar>
+      </Stack>
     </div>
   )
 }

@@ -3,12 +3,13 @@ import { styled } from "@mui/material/styles"
 
 interface ActionBarProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
+  show?: boolean
 }
 
 const ActionBarRoot = styled("div", {
   name: "MuiActionBar",
   slot: "root",
-})(({ theme }) => ({
+})<ActionBarProps>(({ theme, show }) => ({
   display: "inline-flex",
   alignItems: "center",
   backgroundColor: theme.palette.grey[900],
@@ -20,10 +21,23 @@ const ActionBarRoot = styled("div", {
   height: theme.spacing(10),
   borderRadius: theme.spacing(5),
   gap: "0.5rem",
-  fontSize: ".875rem",
+  fontSize: ".875rem", 
   backgroundImage: theme.palette.mode === "light"
    ? "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)"
    : "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%)",
+
+  transition: theme.transitions.create(["transform", "opacity"]),
+  
+  ...(show && {
+    visibility: "visible",
+    transform: "translate(0,0)",
+    pointerEvents: "all",
+  }),
+  ...(!show && {
+    visibility: "hidden",
+    transform: "translate(0,1rem)",
+    pointerEvents: "none",
+  })
 }))
 
 const ActionBarLabel = styled("div", {
@@ -36,9 +50,9 @@ const ActionBarLabel = styled("div", {
 
 export const ActionBar = React.forwardRef<HTMLDivElement, ActionBarProps>(
   (props, ref) => {
-    const { children, label } = props
+    const { children, label, show = false } = props
     return (
-      <ActionBarRoot ref={ref}>
+      <ActionBarRoot ref={ref} show={show}>
         {label && <ActionBarLabel>{label}</ActionBarLabel>}
         {children}
       </ActionBarRoot>
