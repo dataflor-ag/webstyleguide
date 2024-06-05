@@ -1,7 +1,8 @@
 import React from "react";
 import { Typography } from "@mui/material"
 import { LocalizationProvider, DatePicker, DateCalendar, TimePicker } from '@mui/x-date-pickers'
-// import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Meta } from "@storybook/react";
 
@@ -29,7 +30,10 @@ export function _DateTimePicker() {
         <Typography variant="h3" mb={4} mt={8}>
           DateRangePicker (Pro)
         </Typography>
-        {/* <SingleInputDateRangeField label="Select dates" /> */}
+        <DateRangePicker
+          slots={{ field: SingleInputDateRangeField }}
+          name="allowedRange"
+        />
       </LocalizationProvider>
     </div>
   );

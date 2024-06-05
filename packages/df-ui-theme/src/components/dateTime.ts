@@ -21,9 +21,7 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
             display: "flex",
             padding: "1rem 1.25rem",
             gap: "0.75rem",
-            button: {
-              width: "50%",
-            },
+            justifyContent: "flex-end",
           },
           ".MuiTimePickerToolbar-root": {
             gridColumn: "1",
@@ -88,8 +86,10 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
                   backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
                 },
                 "&.Mui-selected": {
+                  backgroundColor: palette.grey[900],
+                  color: palette.secondary.contrastText,
                   "&:hover": {
-                    backgroundColor: palette.primary[600],
+                    backgroundColor: palette.grey[900],
                   }
                 },
               },
@@ -126,7 +126,7 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
             hidden: true,
           },
         },
-      },
+      }
     },
     // Date (Desktop)
     MuiDatePicker: {
@@ -165,8 +165,8 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
       styleOverrides: {
         root: {
           justifyContent: "center",
-          padding: "0 1.25rem",
-          marginTop: "1.25rem",
+          padding: "0 1.5rem",
+          marginTop: "1.5rem",
           marginBottom: "0.75rem",
         },
         labelContainer: {
@@ -185,7 +185,9 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
     MuiDayCalendar: {
       styleOverrides: {
         header: {
-          gap: "0.125rem",
+          // gap: "0.125rem",
+          justifyContent: "space-between",
+          padding: "0 1.5rem",
         },
         weekDayLabel: {
           fontSize: "0.75rem",
@@ -193,17 +195,18 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
           color: palette.grey[600],
           width: "2.5rem",
           height: "2.5rem",
-          margin: 0,
+          margin: "0",
         },
         weekContainer: {
-          gap: "0.125rem",
+          // gap: "0.125rem",
+          justifyContent: "space-between",
+          padding: "0 1.5rem",
           ".MuiPickersDay-root": {
             fontSize: "0.875rem",
             color: palette.grey[700],
             width: "2.5rem",
             height: "2.5rem",
-            borderRadius: "0.5rem",
-            margin: 0,
+            margin: "0",
             "&:hover": {
               backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
             },
@@ -212,12 +215,19 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
             },
             "&.Mui-selected": {
               fontWeight: "500",
-              backgroundColor: palette.primary[500] + "!important",
-              color: "white",
+              backgroundColor: palette.grey[900] + "!important",
+              color: palette.secondary.contrastText,
             },
             "&.MuiPickersDay-today": {
               borderColor: palette.grey[200],
               backgroundColor: "transparent !important",
+              "&:hover":{
+                backgroundColor: isLightMode? "rgba(0,0,0,0.06) !important" : "rgba(255,255,255,0.06) !important",
+              },
+              "&.Mui-selected": {
+                backgroundColor: palette.grey[900] + "!important",
+                color: palette.secondary.contrastText,
+              },
             }
           },
         },
@@ -234,8 +244,8 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
         root: {
           justifyContent: "space-between",
           position: "absolute",
-          left: "1.25rem",
-          right: "1.25rem",
+          left: "1.5rem",
+          right: "1.5rem",
         },
       },
     },
@@ -247,10 +257,130 @@ export const getDateTime = (theme: Theme): ComponentStyles => {
         root: {
           height: "auto",
           maxHeight: "none",
-          width: "20.5rem"
+          width: "100%",
         },
         viewTransitionContainer: {
           ".MuiPickersSlideTransition-root": {
+            minHeight: "17rem",
+          },
+        },
+      },
+    },
+    // DateRangePicker
+    MuiDateRangePicker: {
+      defaultProps: {
+        closeOnSelect: false,
+        disableHighlightToday: false,
+        slots: {
+          actionBar: datePickerActionBar,
+        },
+        slotProps: {
+          actionBar: {
+            actions: ['cancel', 'accept'],
+          },
+          toolbar: {
+            hidden: true,
+          },
+        }
+      },
+    },
+    // DateRangePickerDay
+    MuiDateRangePickerDay: {
+      styleOverrides: {
+        root: {
+          "&.MuiDateRangePickerDay-outsideCurrentMonth": {
+            backgroundColor: "transparent !important",
+            ".MuiDateRangePickerDay-rangeIntervalPreview": {
+              backgroundColor: "transparent !important",
+            },
+          },
+        },
+        // Preview when selecting dates
+        rangeIntervalDayPreview: {
+          backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
+          button:{
+            color: palette.grey[700],
+            backgroundColor: "transparent",
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          },
+        },
+        // Highlight when dates are selected
+        rangeIntervalDayHighlight: {
+          backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
+          button:{
+            color: palette.grey[700],
+            backgroundColor: "transparent",
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
+          },
+        },
+        rangeIntervalPreview: {
+          border: "0 none",
+        },
+        day: {
+          fontSize: "0.875rem",
+          color: palette.grey[700],
+          width: "2.5rem",
+          height: "2.5rem",
+          margin: 0,
+          transform: "none",
+          "&:hover": {
+            backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06) !important",
+            border: "0 none !important"
+          },
+          "&.MuiPickersDay-dayOutsideMonth": {
+            color: palette.grey[400],
+          },
+          "&.Mui-selected": {
+            fontWeight: "500",
+            backgroundColor: palette.grey[900] + "!important",
+            color: palette.secondary.contrastText,
+          },
+          "&.MuiPickersDay-today": {
+            "&:hover": {
+              color: palette.grey[700],
+              backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
+            },
+            "&.Mui-selected": {
+              backgroundColor: palette.grey[900] + "!important",
+              color: palette.secondary.contrastText,
+            },
+          },
+        },
+      },
+    },
+    // DateRangeCalendar
+    MuiDateRangeCalendar: {
+      styleOverrides: {
+        root: {
+          ".MuiPickersCalendarHeader-root": {
+            ".MuiPickersArrowSwitcher-root": {
+              position: "absolute",
+              left: "1.5rem",
+              right: "1.5rem",
+              padding: "0",
+              margin: "0",
+            }
+          },
+        },
+        monthContainer: {
+          width: "100%",
+          ".MuiPickersArrowSwitcher-root": {
+            position: "relative",
+            left: "unset",
+            right: "unset",
+            padding: "0 1.5rem",
+            marginTop: "1.5rem",
+            marginBottom: "0.75rem",
+            ".MuiTypography-root": {
+              fontWeight: 500,
+            },
+          },
+          ".MuiPickersSlideTransition-root": {
+            minWidth: "20.5rem",
             minHeight: "17rem",
           },
         },
