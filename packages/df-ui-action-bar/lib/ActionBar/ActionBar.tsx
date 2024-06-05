@@ -28,27 +28,6 @@ const ActionBarRoot = styled("div", {
   bottom: "0",
   left: "50%",
   transform: "translateX(-50%) translateY(-24px)",
-  // "> div": {
-  //   display: "flex",
-  //   alignItems: "center",
-  // },
-
-  // "> *:not(:last-child)": {
-  //   position: "relative",
-  //   "&::after": {
-  //     content: "''",
-  //     height: theme.spacing(5),
-  //     width: "1px",
-  //     // backgroundColor: theme.palette.background.default,
-  //     backgroundColor: "pink",
-  //     // opacity: 0.1,
-  //     display: "block",
-  //     top: 0,
-  //     right: 0,
-  //     // marginLeft: theme.spacing(2),
-  //     position: "absolute"
-  //   }
-  // }
 }))
 
 const ActionBarLabel = styled("div", {
