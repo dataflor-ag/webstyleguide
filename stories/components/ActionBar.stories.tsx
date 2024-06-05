@@ -5,24 +5,15 @@ import Icon from "../../packages/df-ui-icons/lib"
 
 const meta: Meta<typeof ActionBar> = {
   title: "Components/ActionBar",
-  // component: ActionBar,
   tags: ["autodocs"],
 }
 
 export default meta
 
-// type Story = StoryObj<typeof ActionBar>
-
-// export const Default: Story = {
-
-// }
-
-
 export function Default() {
-
-  const scEdit = "E"
-  // const scDelete = `${Icon.bell}`
-  const scDelete = `D`
+  const scEdit = ["STRG", "SHIFT", "E"]
+  const scDelete = [<Icon.bell />, "D"]
+  const scNew = <Icon.calendar />
 
   return (
     <div>
@@ -33,7 +24,29 @@ export function Default() {
         <ActionBarItem shortcut={scDelete}>
           Delete
         </ActionBarItem>
-        <ActionBarItem>
+        <ActionBarItem shortcut={scNew}>
+          New
+        </ActionBarItem>
+      </ActionBar>
+    </div>
+  )
+}
+
+export function Disabled() {
+  const scSettings = ["STRG", ";"]
+  const scDelete = [<Icon.cloudDownload />, "D"]
+  const scNew = <Icon.alertTriangle />
+
+  return (
+    <div>
+      <ActionBar>
+        <ActionBarItem shortcut={scSettings} disabled>
+          Settings
+        </ActionBarItem>
+        <ActionBarItem shortcut={scDelete} disabled>
+          Delete
+        </ActionBarItem>
+        <ActionBarItem shortcut={scNew}>
           New
         </ActionBarItem>
       </ActionBar>

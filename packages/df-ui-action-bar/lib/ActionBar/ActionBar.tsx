@@ -19,21 +19,25 @@ const ActionBarRoot = styled("div", {
   borderRadius: theme.spacing(5),
   gap: theme.spacing(2),
   fontSize: ".875rem",
-
+  backgroundImage: "linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.00) 100%)",
   // "> div": {
   //   display: "flex",
   //   alignItems: "center",
   // },
 
-  // "> div:not(:last-child)": {
+  // "> *:not(:last-child)": {
+  //   position: "relative",
   //   "&::after": {
   //     content: "''",
   //     height: theme.spacing(5),
   //     width: "1px",
-  //     backgroundColor: theme.palette.background.default,
-  //     opacity: 0.1,
+  //     // backgroundColor: theme.palette.background.default,
+  //     backgroundColor: "pink",
+  //     // opacity: 0.1,
   //     display: "block",
-  //     marginLeft: theme.spacing(2),
+  //     top: 0,
+  //     right: 0,
+  //     // marginLeft: theme.spacing(2),
   //     position: "absolute"
   //   }
   // }
