@@ -42,13 +42,14 @@
     "@mui/material": "^5.15.15",
     "@mui/x-data-grid": "^7.2.0",
     "@mui/x-data-grid-pro": "^6.20.0",
-    "@mui/x-tree-view": "^7.5.1",
     "@mui/x-date-pickers": "^7.6.1",
+    "@mui/x-tree-view": "^7.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
+    "@dataflor-ag/df-ui-icons": "file:../df-ui-icons",
+    "@mui/x-date-pickers-pro": "^7.6.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",
