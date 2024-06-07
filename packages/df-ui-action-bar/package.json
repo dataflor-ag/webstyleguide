@@ -1,5 +1,5 @@
 {
-  "name": "@dataflor-ag/df-action-bar",
+  "name": "@dataflor-ag/df-ui-action-bar",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
@@ -27,9 +27,6 @@
       }
     }
   },
-  "dependencies": {
-    "mime": "^4.0.3"
-  },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
@@ -48,7 +45,8 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vite-plugin-dts": "^3.7.3"
+    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-lib-inject-css": "^2.1.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@dataflor-ag"
