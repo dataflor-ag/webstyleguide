@@ -36,6 +36,7 @@ import cloudDownload from "./cloudDownload"
 import cloudUpload from "./cloudUpload"
 import checkSmall from "./checkSmall"
 import closeSmall from "./closeSmall"
+import clock from "./clock"
 import addCircle from "./addCircle"
 import attach from "./attach"
 import bill from "./bill"
@@ -84,10 +85,10 @@ const icons = {
   bell,
   search,
   calendar,
+  chevronUp,
   calendarSelectDay,
   chevronDown,
   chevronLeft,
-  chevronUp,
   chevronRight,
   logout,
   dots,
@@ -120,6 +121,7 @@ const icons = {
   cloudUpload,
   checkSmall,
   closeSmall,
+  clock,
   addCircle,
   attach,
   link,
