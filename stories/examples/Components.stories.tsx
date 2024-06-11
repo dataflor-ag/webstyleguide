@@ -21,8 +21,11 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Chip
 } from "@mui/material"
 import Icon from "../../packages/df-ui-icons/lib"
+import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib"
+import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 
 const meta: Meta = {
   title: "Examples/Components",
@@ -124,4 +127,184 @@ export function DialogExample() {
       </Stack>
     </Box>
   )
+}
+
+export function DataGridActionbarExample() {
+
+  const rows: GridRowsProp = [
+    {
+      id: 3061,
+      lastName: "Snow",
+      firstName: "Jon",
+      age: 14,
+      status: "Paid",
+    },
+    {
+      id: 3062,
+      lastName: "Lannister",
+      firstName: "Cersei",
+      age: 31,
+      status: "Cancelled",
+    },
+    {
+      id: 3063,
+      lastName: "Lannister",
+      firstName: "Jaime",
+      age: 31,
+      status: "Paid",
+    },
+    {
+      id: 3064,
+      lastName: "Stark",
+      firstName: "Arya",
+      age: 11,
+      status: "Cancelled",
+    },
+    {
+      id: 3065,
+      lastName: "Targaryen",
+      firstName: "Daenerys",
+      age: 16,
+      status: "Paid",
+    },
+    {
+      id: 3066,
+      lastName: "Melisandre",
+      firstName: "Harvey",
+      age: 172,
+      status: "Cancelled",
+    },
+    {
+      id: 3067,
+      lastName: "Clifford",
+      firstName: "Ferrara",
+      age: 44,
+      status: "Paid",
+    },
+    {
+      id: 3068,
+      lastName: "Frances",
+      firstName: "Rossini",
+      age: 36,
+      status: "Cancelled",
+    },
+    {
+      id: 3069,
+      lastName: "Roxie",
+      firstName: "Harvey",
+      age: 65,
+      status: "Paid",
+    },
+    // Additional Rows
+    {
+      id: 3070,
+      lastName: "Stark",
+      firstName: "Sansa",
+      age: 18,
+      status: "Paid",
+    },
+    {
+      id: 3071,
+      lastName: "Baratheon",
+      firstName: "Robert",
+      age: 40,
+      status: "Cancelled",
+    },
+    {
+      id: 3072,
+      lastName: "Tyrell",
+      firstName: "Margaery",
+      age: 25,
+      status: "Paid",
+    },
+  ];
+
+  const columns: GridColDef[] = [
+    { field: "id", headerName: "ID", width: 124 },
+    {
+      field: "firstName",
+      headerName: "First name",
+      width: 172,
+    },
+    {
+      field: "lastName",
+      headerName: "Last name",
+      width: 172,
+    },
+    {
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      width: 132,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      width: 172,
+      renderCell: (params) => {
+        const isRejected = params.value === "Cancelled";
+        return (
+          <Chip
+            icon={isRejected ? <Icon.closeSmall /> : <Icon.checkSmall />}
+            label={params.value}
+            color={isRejected ? "error" : "success"}
+          />
+        );
+      },
+    },
+    {
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 196,
+      valueGetter: (value, row) =>
+        `${row.firstName || ""} ${row.lastName || ""}`,
+    },
+  ];
+
+  const [selectionModel, setSelectionModel] = React.useState([]);
+
+  // Function to handle selection change
+  const handleSelectionChange = (newSelection) => {
+    setSelectionModel(newSelection);
+  };
+
+  const scEdit = ["ALT", "E"]
+  const scDelete = ["ALT", "D"]
+  const scNew = ["ALT", "N"]
+  return (
+    <Box p={4}>
+      <Typography variant="h2" mb={4} mt={8}>
+        DataGrid (MUI X)
+      </Typography>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        checkboxSelection
+        disableRowSelectionOnClick
+        rowSelectionModel={selectionModel}
+        onRowSelectionModelChange={handleSelectionChange}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 16,
+            },
+          },
+        }}
+        pageSizeOptions={[6]}
+      />
+      <ActionBar label="selected" count={selectionModel.length}>
+        <ActionBarItem shortcut={scEdit}>
+          Edit
+        </ActionBarItem>
+        <ActionBarItem shortcut={scNew}>
+          New
+        </ActionBarItem>
+        <ActionBarItem shortcut={scDelete}>
+          Delete
+        </ActionBarItem>
+      </ActionBar>
+    </Box>
+  );
 }
