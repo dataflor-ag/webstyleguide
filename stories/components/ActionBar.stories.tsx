@@ -19,15 +19,15 @@ export function Default() {
   return (
     <div>
       <Box height={200}>
-        <ActionBar count={2}>
+        <ActionBar label="selected" count={2}>
           <ActionBarItem shortcut={scEdit}>
             Edit
           </ActionBarItem>
-          <ActionBarItem shortcut={scDelete}>
-            Delete
-          </ActionBarItem>
           <ActionBarItem shortcut={scNew}>
             New
+          </ActionBarItem>
+          <ActionBarItem shortcut={scDelete}>
+            Delete
           </ActionBarItem>
         </ActionBar>
       </Box>
@@ -43,15 +43,15 @@ export function Disabled() {
   return (
     <div>
       <Box height={200}>
-        <ActionBar count={2}>
+        <ActionBar label="selected" count={2}>
           <ActionBarItem disabled shortcut={scEdit}>
             Edit
           </ActionBarItem>
-          <ActionBarItem disabled shortcut={scDelete}>
-            Delete
-          </ActionBarItem>
           <ActionBarItem shortcut={scNew}>
             New
+          </ActionBarItem>
+          <ActionBarItem disabled shortcut={scDelete}>
+            Delete
           </ActionBarItem>
         </ActionBar>
       </Box>
@@ -76,15 +76,15 @@ export function Toggle() {
           <Button variant='outlined' color='error' onClick={decreaseCount}>Remove</Button>
         </Stack>
         <Box height={200}>
-          <ActionBar count={count}>
+          <ActionBar label="selected" count={count}>
             <ActionBarItem shortcut={scEdit}>
               Edit
             </ActionBarItem>
-            <ActionBarItem shortcut={scDelete}>
-              Delete
-            </ActionBarItem>
             <ActionBarItem shortcut={scNew}>
               New
+            </ActionBarItem>
+            <ActionBarItem shortcut={scDelete}>
+              Delete
             </ActionBarItem>
           </ActionBar>
         </Box>
