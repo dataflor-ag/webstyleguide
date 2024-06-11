@@ -1,5 +1,5 @@
 {
-  "name": "@dataflor-ag/df-action-bar",
+  "name": "@dataflor-ag/df-ui-action-bar",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
@@ -26,9 +26,6 @@
         "default": "./dist/index.cjs"
       }
     }
-  },
-  "dependencies": {
-    "mime": "^4.0.3"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
