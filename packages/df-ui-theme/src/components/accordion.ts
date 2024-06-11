@@ -39,7 +39,7 @@ export const getAccordion = (theme: Theme): ComponentStyles => {
             marginTop: 0,
             marginBottom: theme.spacing(2),
             backgroundColor: isLightMode
-              ? "rgba(0,0,0,0.05)"
+              ? "rgba(0,0,0,0.03)"
               : "rgba(255,255,255,0.08)",
             boxShadow: "none",
           },
