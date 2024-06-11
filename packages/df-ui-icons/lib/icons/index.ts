@@ -16,10 +16,8 @@ import headset from "./headset"
 import bell from "./bell"
 import search from "./search"
 import calendar from "./calendar"
-import chevronUp from "./chevronUp"
 import chevronDown from "./chevronDown"
 import chevronRight from "./chevronRight"
-import chevronLeft from "./chevronLeft"
 import logout from "./logout"
 import dots from "./dots"
 import star from "./star"
@@ -39,12 +37,40 @@ import cloudUpload from "./cloudUpload"
 import checkSmall from "./checkSmall"
 import closeSmall from "./closeSmall"
 import clock from "./clock"
+import addCircle from "./addCircle"
+import attach from "./attach"
+import bill from "./bill"
+import arrowUp from "./arrowUp"
+import arrowDown from "./arrowDown"
+import arrowRight from "./arrowRight"
+import calendarSelectDay from "./calendarSelectDay"
+import chevronLeft from "./chevronLeft"
+import chevronUp from "./chevronUp"
+import circleHalfFilled from "./circleHalfFilled"
+import createNew from "./createNew"
+import databaseExport from "./databaseExport"
+import databaseImport from "./databaseImport"
+import documentEdit from "./documentEdit"
+import documentEditText from "./documentEditText"
+import file from "./file"
+import fileRename from "./fileRename"
+import filesCopy from "./filesCopy"
+import folderEmpty from "./folderEmpty"
+import imageSymbol from "./imageSymbol"
+import imageMultiple from "./imageMultiple"
+import link from "./link"
+import locationMarker from "./locationMarker"
+import share from "./share"
+import symbolEmail from "./symbolEmail"
+import tag from "./tag"
+import tagMultiple from "./tagMultiple"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
 const icons = {
   home,
   mail,
+  symbolEmail,
   close,
   user,
   lock,
@@ -53,7 +79,6 @@ const icons = {
   eye,
   eyeOff,
   check,
-  arrowLeft,
   plus,
   settings,
   headset,
@@ -61,28 +86,53 @@ const icons = {
   search,
   calendar,
   chevronUp,
+  calendarSelectDay,
   chevronDown,
-  chevronRight,
   chevronLeft,
+  chevronRight,
   logout,
   dots,
   star,
   starFilled,
   trash,
   pencil,
+  createNew,
   alertTriangle,
   sort,
   adjustments,
+  databaseExport,
+  databaseImport,
+  documentEdit,
+  documentEditText,
   fileText,
+  file,
+  fileRename,
+  filesCopy,
+  folderEmpty,
   circleDot,
+  circleHalfFilled,
   layoutGrid,
   list,
   map,
+  locationMarker,
+  imageSymbol,
+  imageMultiple,
   cloudDownload,
   cloudUpload,
   checkSmall,
   closeSmall,
   clock,
+  addCircle,
+  attach,
+  link,
+  share,
+  bill,
+  arrowUp,
+  arrowDown,
+  arrowRight,
+  arrowLeft,
+  tag,
+  tagMultiple
 }
 
 type IconKeys = keyof typeof icons;
