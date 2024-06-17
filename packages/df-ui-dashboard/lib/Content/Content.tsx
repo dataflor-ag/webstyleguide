@@ -10,7 +10,7 @@ const ContentRoot = styled("div", {
   name: "MuiContent",
   slot: "root",
 })<ContentProps>(( {theme, noPadding = false} ) => ({
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.common.white,
   flexGrow: "1",
   padding: noPadding ? "0" : theme.spacing(6)
 }))

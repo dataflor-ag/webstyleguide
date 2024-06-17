@@ -22,7 +22,7 @@ const SidebarRoot = styled("div", {
   flexDirection: "column",
   height: "100vh",
   width: minimize ? "100px" : "312px",
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.grey[50],
   borderRight: `1px solid ${theme.palette.grey[200]}`,
   flexShrink: 0,
 }))
@@ -52,7 +52,7 @@ const SidebarToggle = styled("button", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.common.white,
   position: "absolute",
   right: 0,
   top: "50%",

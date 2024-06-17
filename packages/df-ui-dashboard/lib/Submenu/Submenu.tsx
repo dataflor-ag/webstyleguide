@@ -14,7 +14,7 @@ const SubmenuRoot = styled("div", {
   display: "flex",
   flexDirection: "column",
   height: "100vh",
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.palette.grey[50],
   borderRight: `1px solid ${theme.palette.grey[200]}`,
   width: "264px",
   flexShrink: 0,
