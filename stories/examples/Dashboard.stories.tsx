@@ -53,7 +53,32 @@ export function _Dashboard() {
         </SidebarFooter>
       </Sidebar>
       <Submenu title="Settings" subtitle="Choose between categories.">
-        Submenu content
+        <MenuList>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.home />
+            </ListItemIcon>
+            <ListItemText>Company</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.bell />
+            </ListItemIcon>
+            <ListItemText>Notifications</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.databaseImport />
+            </ListItemIcon>
+            <ListItemText>Users</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.settings />
+            </ListItemIcon>
+            <ListItemText>Privacy & Security</ListItemText>
+          </MenuItem>
+        </MenuList>
       </Submenu>
       <Content>
         <Typography variant="h2">Hello World!</Typography>
