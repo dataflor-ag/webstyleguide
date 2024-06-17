@@ -28,7 +28,21 @@ const SidebarRoot = styled("div", {
   borderRight: `1px solid ${theme.palette.grey[200]}`,
   flexShrink: 0,
   transition: "all 0.2s ease-in-out",
-  willChange: "width"
+  willChange: "width",
+
+
+  ".MuiListItemIcon-root": {
+    margin: 0,
+    minWidth: 0,
+    
+    ".MuiSvgIcon-root": {
+      margin: 0,
+    }
+  },
+
+  ".MuiListItemText-root": {
+    display: minimize && "none"
+  }
 }))
 
 const SidebarHeader = styled("div", {
