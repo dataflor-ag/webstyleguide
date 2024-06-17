@@ -1,7 +1,8 @@
 import React from "react"
 import { Meta } from "@storybook/react"
 import { Dashboard, Sidebar, SidebarHeader, SidebarBody, SidebarFooter, Content, Submenu } from "../../packages/df-ui-dashboard/lib"
-import { Typography } from "@mui/material"
+import Icon from "../../packages/df-ui-icons/lib"
+import { Typography, MenuList, MenuItem, ListItemIcon, ListItemText } from "@mui/material"
 
 const meta: Meta = {
   title: "Examples/Dashboard",
@@ -20,7 +21,36 @@ export function _Dashboard() {
   return (
     <Dashboard>
       <Sidebar logo={logo} minimizeLogo={minimizeLogo}>
-        <p>Sidebar Body</p>
+        <MenuList>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.bell />
+            </ListItemIcon>
+            <ListItemText>Cut</ListItemText>
+            <Typography variant="body2" color="text.secondary">
+              ⌘X
+            </Typography>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.bell />
+            </ListItemIcon>
+            <ListItemText>Copy</ListItemText>
+            <Typography variant="body2" color="text.secondary">
+              ⌘C
+            </Typography>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.bell />
+            </ListItemIcon>
+            <ListItemText>Paste</ListItemText>
+            <Typography variant="body2" color="text.secondary">
+              ⌘V
+            </Typography>
+          </MenuItem>
+        </MenuList>
+        
         <SidebarFooter>
           Footer
         </SidebarFooter>
