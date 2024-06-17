@@ -18,7 +18,7 @@ interface SidebarProps extends React.HtmlHTMLAttributes<HTMLDivElement>, Sidebar
 const SidebarRoot = styled("div", {
   name: "MuiSidebar",
   slot: "root",
-})<SidebarRootsProps>(({ theme, minimize = false }) => ({
+})<SidebarRootsProps>(({ theme, minimize }) => ({
   position: "relative",
   display: "flex",
   flexDirection: "column",
@@ -30,6 +30,11 @@ const SidebarRoot = styled("div", {
   transition: "all 0.2s ease-in-out",
   willChange: "width",
 
+  ".MuiMenuItem-root": {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   ".MuiListItemIcon-root": {
     margin: 0,
@@ -92,7 +97,7 @@ const SidebarToggle = styled("button", {
 }))
 
 export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, ref) => {
-  const { children, logo, minimizeLogo,  minimize = false } = props
+  const { children, logo, minimizeLogo,  minimize = true } = props
 
   const [_minimize, setMinimize] = useState(minimize)
   function toggleMinimize() {
