@@ -33,7 +33,7 @@ const SidebarRoot = styled("div", {
 
   ".MuiListItemIcon-root": {
     margin: 0,
-    minWidth: 0,
+    minWidth: "0 !important",
     
     ".MuiSvgIcon-root": {
       margin: 0,
