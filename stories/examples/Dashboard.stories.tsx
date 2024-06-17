@@ -24,30 +24,27 @@ export function _Dashboard() {
         <MenuList>
           <MenuItem>
             <ListItemIcon>
-              <Icon.bell />
+              <Icon.home />
             </ListItemIcon>
-            <ListItemText>Cut</ListItemText>
-            <Typography variant="body2" color="text.secondary">
-              ⌘X
-            </Typography>
+            <ListItemText>Dashboard</ListItemText>
           </MenuItem>
           <MenuItem>
             <ListItemIcon>
-              <Icon.bell />
+              <Icon.folderEmpty />
             </ListItemIcon>
-            <ListItemText>Copy</ListItemText>
-            <Typography variant="body2" color="text.secondary">
-              ⌘C
-            </Typography>
+            <ListItemText>Projects</ListItemText>
           </MenuItem>
           <MenuItem>
             <ListItemIcon>
-              <Icon.bell />
+              <Icon.check />
             </ListItemIcon>
-            <ListItemText>Paste</ListItemText>
-            <Typography variant="body2" color="text.secondary">
-              ⌘V
-            </Typography>
+            <ListItemText>Tasks</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemIcon>
+              <Icon.user />
+            </ListItemIcon>
+            <ListItemText>Users</ListItemText>
           </MenuItem>
         </MenuList>
         
