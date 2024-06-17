@@ -25,6 +25,8 @@ const SidebarRoot = styled("div", {
   backgroundColor: theme.palette.grey[50],
   borderRight: `1px solid ${theme.palette.grey[200]}`,
   flexShrink: 0,
+  transition: "all 0.2s ease-in-out",
+  willChange: "width"
 }))
 
 const SidebarHeader = styled("div", {
@@ -62,6 +64,7 @@ const SidebarToggle = styled("button", {
   height: theme.spacing(6),
   width: theme.spacing(6),
   cursor: "pointer",
+  zIndex: "1",
   
   "> svg": {
     fontSize: "1rem"
