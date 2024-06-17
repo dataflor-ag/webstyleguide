@@ -6,6 +6,8 @@ interface SidebarRootsProps {
   minimize?: boolean
 }
 
+interface SidebarToggleProps extends SidebarRootsProps {}
+
 interface SidebarProps extends React.HtmlHTMLAttributes<HTMLDivElement>, SidebarRootsProps{
   logo: string
   minimizeLogo: string
@@ -50,7 +52,7 @@ const SidebarHeader = styled("div", {
 const SidebarToggle = styled("button", {
   name: "MuiSidebar",
   slot: "toggle",
-})(({ theme }) => ({
+})<SidebarToggleProps>(({ theme, minimize }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -67,7 +69,10 @@ const SidebarToggle = styled("button", {
   zIndex: "1",
   
   "> svg": {
-    fontSize: "1rem"
+    fontSize: "1rem",
+    transition: "transform .4s ease-in-out",
+    willChange: "transform",
+    transform: minimize ? "rotate(180deg)" : "rotate(0)" 
   }
   
 }))
@@ -84,7 +89,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, re
     <SidebarRoot ref={ref} minimize={_minimize}>
       <SidebarHeader>
         <img src={_minimize ? minimizeLogo: logo} />
-        <SidebarToggle onClick={toggleMinimize}>
+        <SidebarToggle onClick={toggleMinimize} minimize={_minimize}>
           <Icon.chevronRight />
         </SidebarToggle>
       </SidebarHeader>
