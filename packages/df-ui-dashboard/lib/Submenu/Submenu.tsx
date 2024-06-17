@@ -31,6 +31,12 @@ const SubmenuHeader = styled("div", {
   padding: theme.spacing(0, 6),
   height: theme.spacing(22),
 
+  "> .MuiTypography-root": {
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+  },
+
   ":after": {
     content: "''",
     display: "block",

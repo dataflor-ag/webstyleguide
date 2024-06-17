@@ -8,7 +8,7 @@ interface SidebarRootsProps {
 
 interface SidebarProps extends React.HtmlHTMLAttributes<HTMLDivElement>, SidebarRootsProps{
   logo: string
-  minimizeLogo: string,
+  minimizeLogo: string
 
   children?: React.ReactNode
 }
@@ -44,7 +44,7 @@ const SidebarHeader = styled("div", {
   "> img": {
     width: "auto",
     maxWidth: "100%"
-  }
+  },
 }))
 
 const SidebarToggle = styled("button", {
