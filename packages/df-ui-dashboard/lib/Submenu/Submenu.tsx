@@ -18,6 +18,7 @@ const SubmenuRoot = styled("div", {
   borderRight: `1px solid ${theme.palette.grey[200]}`,
   width: "264px",
   flexShrink: 0,
+  transition: "all 0.2s ease-in-out",
 }))
 
 const SubmenuHeader = styled("div", {

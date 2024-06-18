@@ -15,7 +15,8 @@ const ContentRoot = styled("div", {
   return {
     backgroundColor: isLightMode ? theme.palette.common.white : theme.palette.common.black,
     flexGrow: "1",
-    padding: noPadding ? "0" : theme.spacing(6)
+    padding: noPadding ? "0" : theme.spacing(6),
+    transition: "all 0.2s ease-in-out",
   }
 })
 
