@@ -28,7 +28,7 @@ export function _Dashboard() {
           <List>
             {[{label: "Dashboard", icon: Icon.home},{label: "Projects", icon: Icon.folderEmpty}, {label: "Tasks", icon: Icon.check}, {label: "Users", icon: Icon.user}].map((item, index) => (
               <ListItem key={index} disablePadding>
-                <ListItemButton onClick={handleClick}>
+                <ListItemButton onClick={handleClick}  selected={index === 0}>
                   <ListItemIcon>
                     { <item.icon /> }
                   </ListItemIcon>
