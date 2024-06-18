@@ -71,30 +71,33 @@ const SidebarHeader = styled("div", {
 const SidebarToggle = styled("button", {
   name: "MuiSidebar",
   slot: "toggle",
-})<SidebarToggleProps>(({ theme, minimize }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: theme.palette.common.white,
-  position: "absolute",
-  right: 0,
-  top: "50%",
-  transform: "translateX(50%) translateY(-50%)",
-  borderRadius: "9999px",
-  border: `1px solid ${theme.palette.grey[200]}`,
-  height: theme.spacing(6),
-  width: theme.spacing(6),
-  cursor: "pointer",
-  zIndex: "1",
-  
-  "> svg": {
-    fontSize: "1rem",
-    transition: "transform .4s ease-in-out",
-    willChange: "transform",
-    transform: minimize ? "rotate(180deg)" : "rotate(0)" 
+})<SidebarToggleProps>(({ theme, minimize }) => {
+  const { palette } = theme
+  const isLightMode = palette.mode === "light"
+  return {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: isLightMode ? theme.palette.common.white: theme.palette.common.black,
+    position: "absolute",
+    right: 0,
+    top: "50%",
+    transform: "translateX(50%) translateY(-50%)",
+    borderRadius: "9999px",
+    border: `1px solid ${theme.palette.grey[200]}`,
+    height: theme.spacing(6),
+    width: theme.spacing(6),
+    cursor: "pointer",
+    zIndex: "1",
+    
+    "> svg": {
+      fontSize: "1rem",
+      transition: "transform .4s ease-in-out",
+      willChange: "transform",
+      transform: minimize ? "rotate(180deg)" : "rotate(0)" 
+    }
   }
-  
-}))
+})
 
 export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, ref) => {
   const { children, logo, minimizeLogo,  minimize = true } = props

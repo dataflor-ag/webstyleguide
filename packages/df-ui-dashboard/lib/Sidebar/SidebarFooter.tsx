@@ -12,8 +12,10 @@ const SidebarFooterRoot = styled("div", {
   position: "relative",
   display: "flex",
   flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
   marginTop: "auto",
-  padding: theme.spacing(6),
+  padding: theme.spacing(10, 6, 5, 6),
 
   ":before": {
     content: "''",
@@ -21,7 +23,7 @@ const SidebarFooterRoot = styled("div", {
     position: "absolute",
     backgroundColor: theme.palette.grey[200],
     height: "1px",
-    top: 0,
+    top: theme.spacing(5),
     left: theme.spacing(6),
     right: theme.spacing(6),
   }
