@@ -64,14 +64,25 @@ import share from "./share"
 import symbolEmail from "./symbolEmail"
 import tag from "./tag"
 import tagMultiple from "./tagMultiple"
+import closeBold from "./closeBold"
+import exclamation from "./exclamationBold"
+import exclamationBold from "./exclamation"
+import fileImage from "./fileImage"
+import folderData from "./folderData"
+import plusBold from "./plusBold"
+import removeCircle from "./removeCircle"
+import folderOpen from "./folderOpen"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
 const icons = {
   home,
   mail,
+  exclamation,
+  exclamationBold,
   symbolEmail,
   close,
+  closeBold,
   user,
   lock,
   lockOpen,
@@ -80,6 +91,7 @@ const icons = {
   eyeOff,
   check,
   plus,
+  plusBold,
   settings,
   headset,
   bell,
@@ -106,9 +118,12 @@ const icons = {
   documentEditText,
   fileText,
   file,
+  fileImage,
   fileRename,
   filesCopy,
   folderEmpty,
+  folderOpen,
+  folderData,
   circleDot,
   circleHalfFilled,
   layoutGrid,
@@ -123,6 +138,7 @@ const icons = {
   closeSmall,
   clock,
   addCircle,
+  removeCircle,
   attach,
   link,
   share,
