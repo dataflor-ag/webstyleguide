@@ -30,11 +30,51 @@ const SidebarRoot = styled("div", {
   transition: "all 0.2s ease-in-out",
   willChange: "width",
 
+  ".MuiList-root": {
+    padding: 0,
+    gap: "0.25rem",
+    display: "flex",
+    flexDirection: "column"
+  },
+
+  ".MuiListItem-root": {
+    padding: theme.spacing(0, 6),
+  },
+
   ".MuiListItemButton-root": {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: "1rem"
+    gap: "0.5rem",
+    position: "relative",
+    borderRadius: "0.5rem",
+    
+
+    ".MuiListItemText-root .MuiTypography-root": {
+      fontSize: "0.875rem",
+      fontWeight: "bold",
+    },
+
+    "&.Mui-selected": {
+      backgroundColor: theme.palette.grey[100],
+
+      ".MuiSvgIcon-root": {
+        color: theme.palette.primary.main
+      },
+
+      "&:before": {
+        content: "''",
+        display: "block",
+        height: "20px",
+        width: "4px",
+        backgroundColor: theme.palette.primary.main,
+        left: theme.spacing(-6),
+        position: "absolute",
+        borderRadius: "0 4px 4px 0"
+
+        
+      }
+    }
   },
 
   ".MuiListItemIcon-root": {
@@ -102,7 +142,7 @@ const SidebarToggle = styled("button", {
 })
 
 export const Sidebar = React.forwardRef<HTMLDivElement, SidebarProps>((props, ref) => {
-  const { children, logo, minimizeLogo,  minimize = true } = props
+  const { children, logo, minimizeLogo,  minimize = false } = props
 
   const [_minimize, setMinimize] = useState(minimize)
   function toggleMinimize() {
