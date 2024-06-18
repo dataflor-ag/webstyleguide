@@ -1,6 +1,6 @@
 import React from "react"
 import { Meta } from "@storybook/react"
-import { Dashboard, Sidebar, SidebarHeader, SidebarBody, SidebarFooter, Content, Submenu } from "../../packages/df-ui-dashboard/lib"
+import { Dashboard, Sidebar, SidebarFooter, Content, Submenu } from "../../packages/df-ui-dashboard/lib"
 import Icon from "../../packages/df-ui-icons/lib"
 import { Typography, MenuList, MenuItem, ListItemIcon, ListItemText } from "@mui/material"
 
