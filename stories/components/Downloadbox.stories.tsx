@@ -2,7 +2,6 @@ import React from "react"
 
 import { Meta, StoryObj } from "@storybook/react"
 import { Downloadbox } from "../../packages/df-ui-downloadbox/lib/"
-// import { Button, Stack, Typography } from "@mui/material"
 
 const meta: Meta<typeof Downloadbox> = {
   title: "Components/Downloadbox",
