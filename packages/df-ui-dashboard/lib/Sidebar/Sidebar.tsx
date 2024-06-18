@@ -30,10 +30,11 @@ const SidebarRoot = styled("div", {
   transition: "all 0.2s ease-in-out",
   willChange: "width",
 
-  ".MuiMenuItem-root": {
+  ".MuiListItemButton-root": {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    gap: "1rem"
   },
 
   ".MuiListItemIcon-root": {
@@ -42,6 +43,7 @@ const SidebarRoot = styled("div", {
     
     ".MuiSvgIcon-root": {
       margin: 0,
+      fontSize: "1.25rem"
     }
   },
 
