@@ -1,5 +1,5 @@
 import SvgIcon, { type SvgIconProps } from "@mui/material/SvgIcon"
-import type { symbol } from "prop-types"
+// import type { symbol } from "prop-types"
 
 function symbolEmail(props: SvgIconProps) {
   return (
