@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-image-selector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A versatile component that allows you to create an radio button, each accompanied by an image. Enhance your UI with interactive image selections.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
