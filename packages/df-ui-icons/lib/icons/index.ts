@@ -72,6 +72,12 @@ import folderData from "./folderData"
 import plusBold from "./plusBold"
 import removeCircle from "./removeCircle"
 import folderOpen from "./folderOpen"
+import folderImage from "./folderImage"
+import fileData from "./fileData"
+import arrowUpRight from "./arrowUpRight"
+import arrowDownRight from "./arrowDownRight"
+import arrowDownLeft from "./arrowDownLeft"
+import arrowUpLeft from "./arrowUpLeft"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -119,11 +125,13 @@ const icons = {
   fileText,
   file,
   fileImage,
+  fileData,
   fileRename,
   filesCopy,
   folderEmpty,
   folderOpen,
   folderData,
+  folderImage,
   circleDot,
   circleHalfFilled,
   layoutGrid,
@@ -144,9 +152,13 @@ const icons = {
   share,
   bill,
   arrowUp,
-  arrowDown,
+  arrowUpRight,
   arrowRight,
+  arrowDownRight,
+  arrowDown,
+  arrowDownLeft,
   arrowLeft,
+  arrowUpLeft,
   tag,
   tagMultiple
 }
