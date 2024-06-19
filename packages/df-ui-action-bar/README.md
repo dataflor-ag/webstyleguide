@@ -1,11 +1,9 @@
-# `df-action-bar`
+# `@dataflor-ag/df-action-bar`
 
-> TODO: description
+> Action bar component for example to usage in data grid.
 
 ## Usage
 
-```
-const dfActionBar = require('df-action-bar');
-
-// TODO: DEMONSTRATE API
+```tsx
+import { ActionBar, ActionBarItem } from "@dataflor-ag/df-ui-action-bar"
 ```

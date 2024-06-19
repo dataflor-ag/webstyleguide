@@ -1,6 +1,5 @@
 import React from "react"
-import { styled } from "@mui/material/styles"
-
+import { styled } from "@mui/material"
 
 type Shortcut = string | React.ReactNode | (string | React.ReactNode)[]
 
