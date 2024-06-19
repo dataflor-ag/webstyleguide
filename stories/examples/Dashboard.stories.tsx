@@ -1,8 +1,8 @@
 import React from "react"
 import { Meta } from "@storybook/react"
-import { Dashboard, Sidebar, SidebarFooter, Content, Submenu } from "../../packages/df-ui-dashboard/lib"
+import { Dashboard, Sidebar, Content, Submenu, ContentHeader, ContentBody, SidebarBody, SidebarFooter } from "../../packages/df-ui-dashboard/lib"
 import Icon from "../../packages/df-ui-icons/lib"
-import { Typography, MenuList, MenuItem, ListItemIcon, ListItemText, Stack, Avatar, List, ListItem, ListItemButton} from "@mui/material"
+import { Typography, ListItemIcon, ListItemText, Avatar, List, ListItem, ListItemButton, Breadcrumbs, Link, Stack, Box} from "@mui/material"
 
 const meta: Meta = {
   title: "Examples/Dashboard",
@@ -22,9 +22,7 @@ export function _Dashboard() {
   return (
     <Dashboard>
       <Sidebar logo={logo} minimizeLogo={minimizeLogo}>
-
-        <Stack justifyContent={"space-between"} flexGrow={1}>
-
+        <SidebarBody>
           <List>
             {[{label: "Dashboard", icon: Icon.home},{label: "Projects", icon: Icon.folderEmpty}, {label: "Tasks", icon: Icon.check}, {label: "Users", icon: Icon.user}].map((item, index) => (
               <ListItem key={index}>
@@ -37,9 +35,10 @@ export function _Dashboard() {
               </ListItem>
             ))}
           </List>
-
+        </SidebarBody>
+        <SidebarFooter>
           <List>
-            {[{label: "Settings", icon: Icon.settings},{label: "Support", icon: Icon.headset}].map((item, index) => (
+            {[{label: "Settings", icon: Icon.settings},{label: "Help & Support", icon: Icon.headset}].map((item, index) => (
               <ListItem key={index}>
                 <ListItemButton onClick={handleClick}>
                   <ListItemIcon>
@@ -50,22 +49,45 @@ export function _Dashboard() {
               </ListItem>
             ))}
           </List>
-
-        </Stack>
-        
-        <SidebarFooter>
-          <Stack direction="row" spacing={2}>
-            <Avatar sx={{ width: 40, height: 40, fontSize: "1rem" }}>NA</Avatar>
-          </Stack>
         </SidebarFooter>
-
       </Sidebar>
-      <Submenu title="Settings" subtitle="Choose between categories.">
-        Test
+      <Submenu title="Dashboard" subtitle="Description">
+        <List>
+          {[{label: "Subpage 01", icon: Icon.bell},{label: "Subpage 02", icon: Icon.adjustments}].map((item, index) => (
+            <ListItem key={index}>
+              <ListItemButton onClick={handleClick} selected={index === 0}>
+                <ListItemIcon>
+                  { <item.icon /> }
+                </ListItemIcon>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Submenu>
       <Content>
-        <Typography variant="h2">Hello World!</Typography>
-        <Typography variant="body1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum voluptates illo voluptate commodi corrupti, voluptatum eligendi architecto at dolorem pariatur excepturi esse quas vitae? Veniam repudiandae ipsum minima hic temporibus?</Typography>
+        <ContentHeader>
+          <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
+            <Breadcrumbs separator={<Icon.chevronRight/>} aria-label="breadcrumb">
+              <Link href="/">
+                <Icon.home/>
+              </Link>
+              <Link
+                href="#"
+              >
+                Dashboard
+              </Link>
+              <Typography>Subpage 01</Typography>
+            </Breadcrumbs>
+            <Box>
+              <Avatar alt="Remy Sharp" src={"/assets/img/avatar.jpg"} />
+            </Box>
+          </Stack>
+        </ContentHeader>
+        <ContentBody>
+          <Typography variant="h2">Hello World!</Typography>
+          <Typography variant="body1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum voluptates illo voluptate commodi corrupti, voluptatum eligendi architecto at dolorem pariatur excepturi esse quas vitae? Veniam repudiandae ipsum minima hic temporibus?</Typography>
+        </ContentBody>
       </Content>
     </Dashboard>
   )
