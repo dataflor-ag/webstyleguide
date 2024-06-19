@@ -1,7 +1,7 @@
 {
   "name": "@dataflor-ag/df-ui-dashboard",
   "version": "0.0.0",
-  "description": "> TODO: description",
+  "description": "Provides various components that can be used to create a dashboard.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
