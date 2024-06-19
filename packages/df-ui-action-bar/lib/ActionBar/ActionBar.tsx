@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from "@mui/material/styles"
+import { styled } from "@mui/material"
 
 interface ActionBarProps extends React.HTMLAttributes<HTMLDivElement> {
   count?: number;

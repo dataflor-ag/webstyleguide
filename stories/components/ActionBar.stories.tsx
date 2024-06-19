@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta } from "@storybook/react"
 import { ActionBar, ActionBarItem } from "../../packages/df-ui-action-bar/lib/"
-import Icon from "../../packages/df-ui-icons/lib"
+// import Icon from "../../packages/df-ui-icons/lib"
 import { Button, Stack, Box} from "@mui/material"
 
 const meta: Meta<typeof ActionBar> = {
