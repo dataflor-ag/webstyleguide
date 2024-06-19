@@ -1,13 +1,16 @@
 {
-  "name": "@dataflor-ag/df-ui-page-header",
-  "version": "1.2.0",
-  "description": "Page headers provide content and actions related to the current screen.",
+  "name": "@dataflor-ag/df-ui-dashboard",
+  "version": "1.0.0",
+  "description": "Provides various components that can be used to create a dashboard.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
   "type": "module",
   "files": [
     "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -24,10 +27,13 @@
       }
     }
   },
+  "dependencies": {
+    "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.14",
+    "@mui/material": "^5.15.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

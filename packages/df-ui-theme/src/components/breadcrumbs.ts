@@ -23,6 +23,8 @@ export const getBreadcrumbs = (theme: Theme): ComponentStyles => {
             color: palette.grey[500],
             fontWeight: 500,
             display: "flex",
+            textDecoration: "none",
+            fontSize: "0.875rem",
             "> svg": {
               fontSize: "1.25rem",
               color: palette.grey[500],
@@ -34,6 +36,7 @@ export const getBreadcrumbs = (theme: Theme): ComponentStyles => {
           p: {
             color: palette.grey[900],
             fontWeight: 500,
+            fontSize: "0.875rem",
           },
         },
       },

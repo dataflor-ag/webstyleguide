@@ -30,7 +30,8 @@ import {
   getBreadcrumbs,
   getSliders,
   getSnackbar,
-  getDateTime
+  getDateTime,
+  getLists
 } from "../components/index"
 
 export const getComponents = (theme: Theme) => {
@@ -66,7 +67,8 @@ export const getComponents = (theme: Theme) => {
       ...getBreadcrumbs(theme),
       ...getSliders(theme),
       ...getSnackbar(theme),
-      ...getDateTime(theme)
+      ...getDateTime(theme),
+      ...getLists(theme)
     },
   }
 }
