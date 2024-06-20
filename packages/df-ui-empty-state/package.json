@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-empty-state",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The EmptyState component in React serves as a placeholder when there's no data to display. It enhances user experience by providing clear feedback. Developers can customize its appearance and behavior using props, making it adaptable for various applications.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
