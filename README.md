@@ -88,3 +88,14 @@ To install a UI component to your project, e.g. the fictional component `ui_comp
 
 ## Maintainer
 Details on how to create new components, update existing components and releasing packages are written in the [maintainer manual](./MAINTAINER.md).
+
+
+## Update a package
+1. Commit your changes
+2. `npm install`
+3. `npm ci`
+4. `npx lerna version --include-merged-tags`
+5. Create a pull request
+6. After approval merge
+7. Under Tab Actions is the LiveTicker if everything worked
+
