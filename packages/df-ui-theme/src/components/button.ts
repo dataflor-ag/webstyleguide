@@ -114,7 +114,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               : `${palette.primary?.[400]}`,
             boxShadow: getShadow(palette.mode).xs.primary,
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.primaryFocus,
           },
           ":disabled": {
@@ -134,7 +134,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             backgroundImage: "none",
             boxShadow: getShadow(palette.mode).xs.secondary,
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.secondaryFocus,
           },
           ":disabled": {
@@ -160,7 +160,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             boxShadow: getShadow(palette.mode).xs.base,
             border: "none",
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
@@ -182,7 +182,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
@@ -204,7 +204,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             backgroundImage: "none",
             boxShadow: getShadow(palette.mode).xs.error,
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.errorFocus,
           },
           ":disabled": {
@@ -225,7 +225,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             boxShadow: getShadow(palette.mode).xs.error,
             border: "none",
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.errorFocus,
           },
           ":disabled": {
@@ -308,7 +308,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
@@ -324,7 +324,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             backgroundColor: isLightMode ? "rgba(0,0,0,0.03)" : "rgba(255,255,255,0.06)",
             color: palette.grey[900],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: getShadow(palette.mode).xs.focus,
           },
           ":disabled": {
@@ -337,7 +337,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           ":hover": {
             backgroundColor: palette.primary[50],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: `0 0 0 1px ${palette.primary?.[300]}, 0 0 0 4px ${palette.primary?.[200]}`,
           },
           ":disabled": {
@@ -352,7 +352,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
               ? palette.error[50]
               : palette.error[950],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: isLightMode
               ? `0 0 0 1px ${palette.error?.[300]}, 0 0 0 4px ${palette.error?.[200]}`
               : `0 0 0 1px ${palette.error?.[800]}, 0 0 0 4px ${palette.error?.[900]}`,
@@ -366,7 +366,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           ":hover": {
             backgroundColor: palette.info[50],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: isLightMode
               ? `0 0 0 1px ${palette.info?.[300]}, 0 0 0 4px ${palette.info?.[200]}`
               : `0 0 0 1px ${palette.info?.[200]}, 0 0 0 4px ${palette.info?.[50]}`,
@@ -380,7 +380,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           ":hover": {
             backgroundColor: palette.success[50],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: isLightMode
               ? `0 0 0 1px ${palette.success?.[300]}, 0 0 0 4px ${palette.success?.[200]}`
               : `0 0 0 1px ${palette.success?.[200]}, 0 0 0 4px ${palette.success?.[50]}`,
@@ -394,7 +394,7 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           ":hover": {
             backgroundColor: palette.warning[50],
           },
-          ":focus": {
+          ":focus-visible": {
             boxShadow: isLightMode
               ? `0 0 0 1px ${palette.warning?.[300]}, 0 0 0 4px ${palette.warning?.[200]}`
               : `0 0 0 1px ${palette.warning?.[200]}, 0 0 0 4px ${palette.warning?.[50]}`,
