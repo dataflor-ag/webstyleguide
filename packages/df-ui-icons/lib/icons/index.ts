@@ -64,15 +64,37 @@ import share from "./share"
 import symbolEmail from "./symbolEmail"
 import tag from "./tag"
 import tagMultiple from "./tagMultiple"
+import closeBold from "./closeBold"
+import exclamation from "./exclamationBold"
+import exclamationBold from "./exclamation"
+import fileImage from "./fileImage"
+import folderData from "./folderData"
+import plusBold from "./plusBold"
+import removeCircle from "./removeCircle"
+import folderOpen from "./folderOpen"
+import folderImage from "./folderImage"
+import fileData from "./fileData"
+import arrowUpRight from "./arrowUpRight"
+import arrowDownRight from "./arrowDownRight"
+import arrowDownLeft from "./arrowDownLeft"
+import arrowUpLeft from "./arrowUpLeft"
+import userGroup from "./userGroup"
+import pointsLine from "./pointsLine"
+import pointsLoose from "./pointsLoose"
+import pointsWeb from "./pointsWeb"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
 const icons = {
   home,
   mail,
+  exclamation,
+  exclamationBold,
   symbolEmail,
   close,
+  closeBold,
   user,
+  userGroup,
   lock,
   lockOpen,
   key,
@@ -80,6 +102,7 @@ const icons = {
   eyeOff,
   check,
   plus,
+  plusBold,
   settings,
   headset,
   bell,
@@ -106,9 +129,14 @@ const icons = {
   documentEditText,
   fileText,
   file,
+  fileImage,
+  fileData,
   fileRename,
   filesCopy,
   folderEmpty,
+  folderOpen,
+  folderData,
+  folderImage,
   circleDot,
   circleHalfFilled,
   layoutGrid,
@@ -123,16 +151,24 @@ const icons = {
   closeSmall,
   clock,
   addCircle,
+  removeCircle,
   attach,
   link,
   share,
   bill,
   arrowUp,
-  arrowDown,
+  arrowUpRight,
   arrowRight,
+  arrowDownRight,
+  arrowDown,
+  arrowDownLeft,
   arrowLeft,
+  arrowUpLeft,
   tag,
-  tagMultiple
+  tagMultiple,
+  pointsLine,
+  pointsLoose,
+  pointsWeb
 }
 
 type IconKeys = keyof typeof icons;
