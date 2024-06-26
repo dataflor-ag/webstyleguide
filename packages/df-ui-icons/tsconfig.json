@@ -8,9 +8,7 @@
       "ESNext"
     ],
     "module": "ESNext",
-    "types": [
-      "vite/client"
-    ],
+
     "noEmit": true,
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
