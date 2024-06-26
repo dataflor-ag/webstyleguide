@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: lerna publish
+    - name: lerna publish --concurrency 1
       run: npx lerna publish from-package --yes
       env:
         NODE_AUTH_TOKEN: ${{ secrets.PRIVATE_NPM_PUBLISH }}
