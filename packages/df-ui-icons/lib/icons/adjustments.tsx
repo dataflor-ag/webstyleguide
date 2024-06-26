@@ -7,5 +7,4 @@ function adjustments(props: SvgIconProps) {
     </SvgIcon>
   )
 }
-
 export default adjustments

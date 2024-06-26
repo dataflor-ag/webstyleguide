@@ -38,6 +38,7 @@
   },
   "include": [
     "./lib/**/*.ts",
-    "./lib/**/*.tsx"
+    "./lib/**/*.tsx",
+    "vite.config.ts"
   ],
 }
