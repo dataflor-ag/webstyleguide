@@ -17,12 +17,12 @@ jobs:
         node-version: '20.9.0' 
         registry-url: 'https://npm.pkg.github.com'
         scope: '@dataflor-ag' 
-
-    - name: Build Icons
-      run: cd packages/df-ui-icons && npm run build && cd ../..
-
+  
     - name: Install dependencies
       run: npm ci
+        
+    - name: Build Icons
+      run: cd packages/df-ui-icons && npm run build && cd ../..
 
     - name: lerna publish --concurrency 1
       run: npx lerna publish from-package --yes
