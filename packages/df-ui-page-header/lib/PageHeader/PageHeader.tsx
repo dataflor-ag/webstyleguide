@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles"
 
 interface PageHeaderProps {
   title: string
-  description?: string
+  description?: string | JSX.Element
   children?: React.ReactNode
 }
 
