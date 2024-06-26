@@ -20,7 +20,7 @@ jobs:
         scope: '@dataflor-ag' 
 
     - name: Install dependencies
-      run: npm ci
+      run: npm ci --include=optional
 
     - name: lerna publish
       run: npx lerna publish from-package --yes
