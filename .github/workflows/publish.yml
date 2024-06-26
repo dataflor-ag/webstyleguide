@@ -3,7 +3,7 @@ name: Publish NPM Packages
 on:
   push:
     branches:
-      - ActionFix 
+      - main 
 
 jobs:
   publish:
