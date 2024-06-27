@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-icon-wrapper",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Wrapper component offers fixed styling with various color variants. Encapsulate icons effortlessly within predefined boxes, each with its unique color scheme.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",

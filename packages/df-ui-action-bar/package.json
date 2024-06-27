@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-action-bar",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Action bar component for example to usage in data grid.",
   "author": "Nikolai Wicke <n.wicke@flynet.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
