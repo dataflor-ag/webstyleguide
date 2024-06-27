@@ -82,6 +82,10 @@ import userGroup from "./userGroup"
 import pointsLine from "./pointsLine"
 import pointsLoose from "./pointsLoose"
 import pointsWeb from "./pointsWeb"
+import mobile from "./mobile"
+import mobileAppOk from "./mobileAppOk"
+import mobileText from "./mobileText"
+import imageEdit from "./imageEdit"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -145,6 +149,7 @@ const icons = {
   locationMarker,
   imageSymbol,
   imageMultiple,
+  imageEdit,
   cloudDownload,
   cloudUpload,
   checkSmall,
@@ -168,7 +173,10 @@ const icons = {
   tagMultiple,
   pointsLine,
   pointsLoose,
-  pointsWeb
+  pointsWeb,
+  mobile,
+  mobileAppOk,
+  mobileText
 }
 
 type IconKeys = keyof typeof icons;
