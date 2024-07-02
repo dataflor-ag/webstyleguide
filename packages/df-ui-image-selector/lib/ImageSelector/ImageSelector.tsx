@@ -132,7 +132,7 @@ export const ImageSelector = React.forwardRef<HTMLDivElement, ImageSelectorProps
         <ImageSelectorImageWrapper checked={checked}>
           <ImageSelectorImage src={image} alt={label} />
           <ImageSelectorIcon checked={checked}>
-            <Icon.checkSmall/>
+            <Icon.check/>
           </ImageSelectorIcon>
         </ImageSelectorImageWrapper>
         <Typography variant="button">{label}</Typography>
