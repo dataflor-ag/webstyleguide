@@ -1,6 +1,6 @@
 # `@dataflor-ag/df-ui-dialog-header`
 
-> Skeleton header for dialog component.
+> dialog for creating or editing data
 
 ## Usage
 
