@@ -91,11 +91,12 @@ Details on how to create new components, update existing components and releasin
 
 
 ## Update a package
-1. Commit your changes
-2. `npm install`
-3. `npm ci`
+1. `npm install`
+2. Commit your changes
+3. Create a pull request
 4. `npx lerna version --include-merged-tags`
-5. Create a pull request
-6. After approval merge
-7. Under Tab Actions is the LiveTicker if everything worked
+5. `npm install`
+6. Commit the changed package- and package-lock files
+7. After approval merge
+8. Under Tab Actions is the LiveTicker if everything worked
 
