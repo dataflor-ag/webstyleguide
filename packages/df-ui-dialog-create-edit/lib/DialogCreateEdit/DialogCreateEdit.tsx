@@ -1,19 +1,17 @@
 import React from "react"
 import { styled } from "@mui/material/styles"
-import { Typography, IconButton, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, type Breakpoint} from "@mui/material"
-import Icon from "@dataflor-ag/df-ui-icons"
+import { Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, type Breakpoint} from "@mui/material"
 
-type IconVariant = "default" | "primary" | "success" | "warning" | "error" | "info"
 
 interface DialogProps {
   title: string
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   open: boolean;
   children?: React.ReactNode;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onSave?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  buttonTextClose?: string,
-  buttonTextSave?: string,
+  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onSave: (event: React.MouseEvent<HTMLButtonElement>) => void
+  buttonTextClose: string,
+  buttonTextSave: string,
   maxWidth?: Breakpoint,
   saveDisabled?: boolean
 }

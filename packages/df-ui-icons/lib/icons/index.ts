@@ -86,11 +86,25 @@ import imageEdit from "./imageEdit"
 import mobile from "./mobile"
 import mobileAppOk from "./mobileAppOk"
 import mobileText from "./mobileText"
+import pointsCircle from "./pointsCircle"
+import userTeam from "./userTeam"
+import userCloud from "./userCloud"
+import employee from "./employee"
+import employeeGroup from "./employeeGroup"
+import userOnline from "./userOnline"
+import measure from "./measure"
+import folderAttach from "./folderAttach"
+import fileAttach from "./fileAttach"
+import creditcard from "./creditcard"
+import company from "./company"
+import checkCircle from "./checkCircle"
+import appSecurity from "./appSecurity"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
 const icons = {
   home,
+  company,
   mail,
   exclamation,
   exclamationBold,
@@ -98,7 +112,12 @@ const icons = {
   close,
   closeBold,
   user,
+  userCloud,
+  userOnline,
   userGroup,
+  userTeam,
+  employee,
+  employeeGroup,
   lock,
   lockOpen,
   key,
@@ -137,11 +156,13 @@ const icons = {
   fileImage,
   fileData,
   fileRename,
+  fileAttach,
   filesCopy,
   folderEmpty,
   folderOpen,
   folderData,
   folderImage,
+  folderAttach,
   circleDot,
   circleHalfFilled,
   layoutGrid,
@@ -157,6 +178,7 @@ const icons = {
   clock,
   addCircle,
   removeCircle,
+  checkCircle,
   attach,
   link,
   share,
@@ -174,9 +196,13 @@ const icons = {
   pointsLine,
   pointsLoose,
   pointsWeb,
+  pointsCircle,
   mobile,
   mobileAppOk,
-  mobileText
+  mobileText,
+  appSecurity,
+  measure,
+  creditcard
 }
 
 type IconKeys = keyof typeof icons;
