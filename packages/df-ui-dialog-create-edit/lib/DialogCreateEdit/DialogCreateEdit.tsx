@@ -17,7 +17,8 @@ interface DialogProps {
   onEdit?: (event: React.MouseEvent<HTMLButtonElement>) => void
   buttonTextClose?: string,
   buttonTextSave?: string,
-  maxWidth?: Breakpoint
+  maxWidth?: Breakpoint,
+  saveDisabled?: boolean
 }
 
 const DialogCreateEditRoot = styled("div", {
@@ -37,11 +38,7 @@ const DialogCreateEditRoot = styled("div", {
 export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogProps>(
   (props, ref) => {
 
-    const { icon, title, onClose, onSave, open, children, buttonTextClose, buttonTextSave, maxWidth} = props
-    const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation()
-      if(onClose) onClose(e)
-    }
+    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, maxWidth} = props
 
     return (
       <DialogCreateEditRoot ref={ref}>
@@ -64,7 +61,7 @@ export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogProps>(
           <DialogActions>
           <Button color="secondary" variant="outlined" onClick={onClose}>{buttonTextClose}
           </Button>
-            <Button color="primary" onClick={onSave}>{buttonTextSave}
+            <Button color="primary" disabled={saveDisabled} onClick={onSave}>{buttonTextSave}
             </Button>
           </DialogActions>  
         </Dialog>
