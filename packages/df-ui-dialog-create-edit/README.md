@@ -1,11 +1,11 @@
-# `@dataflor-ag/df-ui-dialog-header`
+# `@dataflor-ag/df-ui-dialog-create-add`
 
 > dialog for creating or editing data
 
 ## Usage
 
 ```tsx
-import { DialogCreateEdit } from "@dataflor-ag/df-ui-dialog-header"
+import { DialogCreateEdit } from "@dataflor-ag/df-ui-dialog-create-add"
 ```
 
 The component provides the following props:
