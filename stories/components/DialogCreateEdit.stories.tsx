@@ -12,10 +12,6 @@ const meta: Meta<typeof DialogCreateEdit> = {
     title: {
       type: "string",
     },
-    subtitle: {
-      type: "string",
-    },
-   
   },
 }
 

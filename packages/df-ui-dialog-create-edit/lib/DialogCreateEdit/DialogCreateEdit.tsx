@@ -7,14 +7,11 @@ type IconVariant = "default" | "primary" | "success" | "warning" | "error" | "in
 
 interface DialogProps {
   title: string
-  subtitle?: string
   icon?: React.ReactNode;
   open: boolean;
   children?: React.ReactNode;
-  content?: React.ReactNode
   onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
   onSave?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onEdit?: (event: React.MouseEvent<HTMLButtonElement>) => void
   buttonTextClose?: string,
   buttonTextSave?: string,
   maxWidth?: Breakpoint,
