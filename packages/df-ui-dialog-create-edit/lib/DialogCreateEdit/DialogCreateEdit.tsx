@@ -1,21 +1,19 @@
 import React from "react"
 import { styled } from "@mui/material/styles"
-import { Typography, IconButton, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, type Breakpoint} from "@mui/material"
-import Icon from "@dataflor-ag/df-ui-icons"
+import { Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, type Breakpoint} from "@mui/material"
+import { type DialogProps } from "@mui/material"
 
-type IconVariant = "default" | "primary" | "success" | "warning" | "error" | "info"
-
-interface DialogProps {
+interface DialogCreateEditProps extends DialogProps {
   title: string
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   open: boolean;
   children?: React.ReactNode;
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  onSave?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  buttonTextClose?: string,
-  buttonTextSave?: string,
-  maxWidth?: Breakpoint,
-  saveDisabled?: boolean
+  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onSave: (event: React.MouseEvent<HTMLButtonElement>) => void
+  buttonTextClose: string,
+  buttonTextSave: string,
+  saveDisabled?: boolean,
+  DialogProps?: DialogProps
 }
 
 const DialogCreateEditRoot = styled("div", {
@@ -32,14 +30,14 @@ const DialogCreateEditRoot = styled("div", {
 
 
 
-export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogProps>(
+export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogCreateEditProps>(
   (props, ref) => {
 
-    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, maxWidth} = props
+    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, ...DialogProps} = props
 
     return (
       <DialogCreateEditRoot ref={ref}>
-        <Dialog open={open} maxWidth={maxWidth ? maxWidth : "xs"}>
+        <Dialog open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
           <DialogTitle>
             <Box
             display={"flex"}
