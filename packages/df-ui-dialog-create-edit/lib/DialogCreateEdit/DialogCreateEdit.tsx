@@ -1,9 +1,9 @@
 import React from "react"
 import { styled } from "@mui/material/styles"
 import { Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, type Breakpoint} from "@mui/material"
+import { type DialogProps } from "@mui/material"
 
-
-interface DialogProps {
+interface DialogCreateEditProps extends DialogProps {
   title: string
   icon: React.ReactNode;
   open: boolean;
@@ -12,8 +12,8 @@ interface DialogProps {
   onSave: (event: React.MouseEvent<HTMLButtonElement>) => void
   buttonTextClose: string,
   buttonTextSave: string,
-  maxWidth?: Breakpoint,
-  saveDisabled?: boolean
+  saveDisabled?: boolean,
+  DialogProps?: DialogProps
 }
 
 const DialogCreateEditRoot = styled("div", {
@@ -30,14 +30,14 @@ const DialogCreateEditRoot = styled("div", {
 
 
 
-export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogProps>(
+export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogCreateEditProps>(
   (props, ref) => {
 
-    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, maxWidth} = props
+    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, ...DialogProps} = props
 
     return (
       <DialogCreateEditRoot ref={ref}>
-        <Dialog open={open} maxWidth={maxWidth ? maxWidth : "xs"}>
+        <Dialog open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
           <DialogTitle>
             <Box
             display={"flex"}
