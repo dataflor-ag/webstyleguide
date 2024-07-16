@@ -16,28 +16,11 @@ interface DialogCreateEditProps extends DialogProps {
   DialogProps?: DialogProps
 }
 
-const DialogCreateEditRoot = styled("div", {
-  name: "MuiDialog",
-  slot: "root",
-})(({ theme, }) => ({
-  width: "100%",
-  display: "flex",
-  gap: theme.spacing(4),
-  alignItems: "center",
-  padding: theme.spacing(5),
-  borderBottom: `1px solid ${theme.palette.grey[200]}`,
-}))
-
-
-
 export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogCreateEditProps>(
   (props, ref) => {
-
     const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, ...DialogProps} = props
-
     return (
-      <DialogCreateEditRoot ref={ref}>
-        <Dialog open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
+        <Dialog ref={ref} open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
           <DialogTitle>
             <Box
             display={"flex"}
@@ -60,7 +43,6 @@ export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogCreateEdi
             </Button>
           </DialogActions>  
         </Dialog>
-      </DialogCreateEditRoot>
     )
   }
 )
