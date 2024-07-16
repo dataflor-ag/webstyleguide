@@ -31,12 +31,14 @@ export const getPagination = (theme: Theme): ComponentStyles => {
         root: () => ({
           borderRadius: radius.md,
           margin: 0,
-          fontWeight: "600",
+          fontWeight: "500",
           fontSize: "0.875rem",
           "&.Mui-selected": {
+            fontWeight: "600",
             backgroundColor: isLightMode
               ? "rgba(0,0,0,0.05)"
               : "rgba(255,255,255,00.05)",
+              border: `0.5px solid ${theme.palette.divider}`,
             "&:hover": {
               backgroundColor: isLightMode
                 ? "rgba(0,0,0,0.05)"
