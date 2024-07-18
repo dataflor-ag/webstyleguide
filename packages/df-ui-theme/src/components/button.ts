@@ -124,6 +124,35 @@ export const getButtons = (theme: Theme): ComponentStyles => {
             opacity: 0.4,
           },
         }),
+        outlinedPrimary: {
+          boxShadow: getShadow(palette.mode).xs.base,
+          border: "none",
+          color: palette.primary?.[500],
+          backgroundColor: isLightMode ? palette.surface[0] : "rgba(255,255,255,0.04)",
+          backdropFilter: isLightMode ? "none" : "blur(4px)",
+          ":hover": {
+            backgroundColor: isLightMode
+              ? "rgba(0,0,0,0.04)"
+              : "rgba(255,255,255,0.06)",
+            boxShadow: getShadow(palette.mode).xs.base,
+            border: "none",
+          },
+          ":focus-visible": {
+            boxShadow: getShadow(palette.mode).xs.focus,
+          },
+          ":disabled": {
+            boxShadow: getShadow(palette.mode).xs.base,
+            color: palette.primary?.[500],
+            border: "none",
+            opacity: "0.4",
+          },
+          ":after": {
+            background: isLightMode ? "linear-gradient(rgba(19, 19, 22, 0) 50%, rgba(19, 19, 22, 0.02))" : "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.00) 100%)",
+          },
+          ".MuiButton-icon": {
+            color: `${palette.primary?.[500]}`,
+          },
+        },
         containedSecondary: {
           color: palette.secondary.contrastText,
           boxShadow: getShadow(palette.mode).xs.secondary,
@@ -174,6 +203,48 @@ export const getButtons = (theme: Theme): ComponentStyles => {
           },
           ".MuiButton-icon": {
             color: `${palette.grey?.[600]}`,
+          },
+        },
+        textPrimary: {
+          color: `${palette.primary?.[500]}`,
+          ":hover": {
+            backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
+            ".MuiButton-icon": {
+            },
+          },
+          ":focus-visible": {
+            boxShadow: getShadow(palette.mode).xs.focus,
+          },
+          ":disabled": {
+            color: `${palette.primary?.[500]}`,
+            opacity: "0.4",
+          },
+          ":after": {
+            background: "none",
+          },
+          ".MuiButton-icon": {
+            color: `${palette.primary?.[600]}`,
+          },
+        },
+        textError: {
+          color: `${palette.error?.[600]}`,
+          ":hover": {
+            backgroundColor: isLightMode? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)",
+            ".MuiButton-icon": {
+            },
+          },
+          ":focus-visible": {
+            boxShadow: getShadow(palette.mode).xs.focus,
+          },
+          ":disabled": {
+            color: `${palette.error?.[600]}`,
+            opacity: "0.4",
+          },
+          ":after": {
+            background: "none",
+          },
+          ".MuiButton-icon": {
+            color: `${palette.error?.[600]}`,
           },
         },
         textSecondary: {

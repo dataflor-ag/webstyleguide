@@ -29,10 +29,10 @@ export const getChips = (theme: Theme): ComponentStyles => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: "0 0.25rem 0 -0.5rem",
+            margin: "0 0.25rem 0 -0.4rem",
             transition: "all 0.2s ease-in-out",
             ".MuiSvgIcon-root": {
-              fontSize: "1rem",
+              fontSize: "0.8rem",
             },
           },
           "&.MuiChip-clickable:active": {

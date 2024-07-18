@@ -33,6 +33,8 @@ export function Buttons() {
         <Button color="primary" disabled>
           Primary
         </Button>
+        <Button color="primary" variant="outlined">Primary</Button>
+        <Button color="primary" variant="outlined" disabled>Primary</Button>
       </Stack>
 
       <Typography variant="h3" mb={4} mt={8}>
@@ -71,6 +73,10 @@ export function Buttons() {
         <Button variant="text" disabled>
           Ghost
         </Button>
+        <Button variant="text" color="primary">Ghost</Button>
+        <Button variant="text" color="primary" disabled>Ghost</Button>
+        <Button variant="text" color="error">Ghost</Button>
+        <Button variant="text" color="error" disabled>Ghost</Button>
       </Stack>
 
       <Divider />
@@ -94,6 +100,10 @@ export function Buttons() {
       <Stack direction="row" spacing={2} mb={4}>
         <Button startIcon={<Icon.plus />} color="primary">Primary</Button>
         <Button startIcon={<Icon.plus />} color="primary" disabled>
+          Primary
+        </Button>
+        <Button startIcon={<Icon.plus />} color="primary" variant="outlined">Primary</Button>
+        <Button startIcon={<Icon.plus />} color="primary" variant="outlined" disabled>
           Primary
         </Button>
       </Stack>
@@ -132,6 +142,14 @@ export function Buttons() {
       <Stack direction="row" spacing={2} mb={4}>
         <Button startIcon={<Icon.plus />} variant="text">Ghost</Button>
         <Button startIcon={<Icon.plus />} variant="text" disabled>
+          Ghost
+        </Button>
+        <Button startIcon={<Icon.plus />} variant="text" color="primary" >Ghost</Button>
+        <Button startIcon={<Icon.plus />} variant="text" color="primary" disabled>
+          Ghost
+        </Button>
+        <Button startIcon={<Icon.plus />} variant="text" color="error" >Ghost</Button>
+        <Button startIcon={<Icon.plus />} variant="text" color="error" disabled>
           Ghost
         </Button>
       </Stack>
