@@ -52,7 +52,7 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
           <Typography variant="h6">{title}</Typography>
           {subtitle && <Typography variant="body2">{subtitle}</Typography>}
         </div>
-        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto", transform: "translate(8px, -8px)"}} onClick={handleClose}><Icon.close /></IconButton>}
+        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto"}} onClick={handleClose}><Icon.close /></IconButton>}
       </DialogHeaderRoot>
     )
   }

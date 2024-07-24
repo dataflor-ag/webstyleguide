@@ -1,7 +1,8 @@
 import React from "react"
-import { styled } from "@mui/material/styles"
+import { styled, type SxProps } from "@mui/material/styles"
 
 interface IconWrapperProps {
+  sx?: SxProps,
   children?: React.ReactNode;
   variant?: "default" | "primary" | "success" | "warning" | "error" | "info";
 }
@@ -94,7 +95,7 @@ export const IconWrapper = React.forwardRef<HTMLDivElement, IconWrapperProps>(
     }
 
     return (
-      <IconWrapperComponent className="MuiIconWrapper-root" ref={ref}>{props.children}</IconWrapperComponent>
+      <IconWrapperComponent className="MuiIconWrapper-root" ref={ref} sx={{...props.sx}}>{props.children}</IconWrapperComponent>
     )
   }
 )
