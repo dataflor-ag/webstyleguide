@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { DialogDelete } from "../../packages/df-ui-dialog-delete";
+import { DialogDelete } from "../../packages/df-ui-dialog-delete/lib";
 import { Box, Button, Typography } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 
