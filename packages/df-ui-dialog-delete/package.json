@@ -1,8 +1,8 @@
 {
-  "name": "@dataflor-ag/df-ui-dialog-header",
-  "version": "1.3.0",
-  "description": "Skeleton header for dialog component.",
-  "author": "Nikolai Wicke <n.wicke@flynet.de>",
+  "name": "@dataflor-ag/df-ui-dialog-delete",
+  "version": "1.0.0",
+  "description": "Dialog modal for creating and editing.",
+  "author": "Wiebken Nagel <nagel@dataflor.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
   "type": "module",
@@ -35,7 +35,6 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@dataflor-ag/df-ui-icon-wrapper": "file:../df-ui-icon-wrapper",
     "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
   },
   "devDependencies": {
