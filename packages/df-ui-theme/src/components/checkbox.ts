@@ -11,6 +11,7 @@ export const getCheckboxes = (theme: Theme): ComponentStyles => {
   return {
     MuiCheckbox: {
       defaultProps: {
+        color: "secondary",
         size: "small",
         disableRipple: true,
         icon: checkboxIcon,
@@ -94,6 +95,14 @@ export const getCheckboxes = (theme: Theme): ComponentStyles => {
             color: `${palette.secondary?.[900]}`,
           },
         }),
+        colorPrimary: () => ({
+          "&.Mui-checked": {
+              ".checkbox-icon": {
+                backgroundColor: `${palette.primary?.[500]}`,
+                boxShadow: getShadow(palette.mode).xs.primary,   
+            }
+          }
+          }),
         sizeSmall: () => ({
           "+ .MuiTypography-root": {
             fontSize: "0.875rem",
