@@ -24,6 +24,7 @@ export const getMenus = (theme: Theme): ComponentStyles => {
             "&.select-dropdown": {
               ".MuiMenuItem-root": {
                 fontSize: "1rem",
+                minHeight: "0px !important"
               },
             },
           },
@@ -45,6 +46,7 @@ export const getMenus = (theme: Theme): ComponentStyles => {
           color: palette.grey[900],
           transition: "all 0.2s ease-in-out",
           padding: theme.spacing(0, 2),
+          minHeight: "0px !important",
           height: "2.5rem",
           ".MuiSvgIcon-root": {
             fontSize: "1.25rem",

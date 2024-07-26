@@ -17,6 +17,9 @@ const meta: Meta<typeof PageHeader> = {
     children: {
       type: "function",
     },
+    tabMenu: {
+      type: "function",
+    }
   },
 }
 
@@ -39,6 +42,23 @@ export const Content: Story = {
 }
  
 export function WithChildren() {
+
+  return (
+    <>
+    <PageHeader
+      title="Welcome back, Peter"
+      description="Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+    >
+      <Stack gap={4} direction={"row"}>
+        <Button variant="outlined">Import</Button>
+        <Button color="primary">Add</Button>
+      </Stack>
+    </PageHeader>
+  </>
+  )
+}
+
+export function WithTabMenu() {
   const [value, setValue] = React.useState(0);
   const handleChangeTabs = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -54,26 +74,15 @@ export function WithChildren() {
 
   return (
     <>
-    
     <PageHeader
       title="Welcome back, Peter"
-      description="Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem."
+      tabMenu={tabs}
     >
       <Stack gap={4} direction={"row"}>
         <Button variant="outlined">Import</Button>
         <Button color="primary">Add</Button>
       </Stack>
     </PageHeader>
-    <PageHeader
-      title="Page Header with Tabs in description"
-      description={tabs}
-    >
-      <Stack gap={4} direction={"row"}>
-        <Button variant="outlined">Import</Button>
-        <Button color="primary">Add</Button>
-      </Stack>
-    </PageHeader>
-
-    </>
+  </>
   )
 }

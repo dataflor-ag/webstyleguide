@@ -1,7 +1,7 @@
 {
   "name": "@dataflor-ag/df-ui-dialog-delete",
-  "version": "1.0.0",
-  "description": "Dialog modal for creating and editing.",
+  "version": "1.0.1",
+  "description": "Dialog modal for delete notifications and delete actions.",
   "author": "Wiebken Nagel <nagel@dataflor.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
@@ -35,6 +35,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@dataflor-ag/df-ui-icon-wrapper": "file: ../df-ui-icon-wrapper",
     "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
   },
   "devDependencies": {
