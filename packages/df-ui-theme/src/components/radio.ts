@@ -11,7 +11,7 @@ export const getRadios = (theme: Theme): ComponentStyles => {
     MuiRadio: {
       defaultProps: {
         size: "small",
-        color: "secondary",
+        color: "primary",
         disableRipple: true,
         icon: radioButtonIcon,
         checkedIcon: radioButtonIcon,
@@ -109,7 +109,7 @@ export const getRadios = (theme: Theme): ComponentStyles => {
         colorSecondary: () => ({
           "&.Mui-checked": {
             ".radio-button-icon": {
-              backgroundColor: `${palette.secondary?.[900]}`,
+              backgroundColor: `${palette.secondary?.[800]}`,
               boxShadow: getShadow(palette.mode).xs.secondary,
             
             },
