@@ -109,7 +109,7 @@ export function Forms() {
       <FormGroup>
       <FormControlLabel
           control={<Checkbox color="primary" defaultChecked />}
-          label="Checked"
+          label="Checked primary"
         />
         <FormControlLabel
           control={<Checkbox defaultChecked />}
@@ -236,7 +236,7 @@ export function Forms() {
               value="a"
             />
           }
-          label="Checked"
+          label="Checked primary"
         />
         <FormControlLabel
           control={
