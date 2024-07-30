@@ -26,7 +26,7 @@ const PageHeaderRoot = styled("div", {
 export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
   (props, ref) => (
     <PageHeaderRoot ref={ref}>
-      <Stack gap={2} paddingBottom={props.tabMenu ? 0 : "2rem"}>
+      <Stack gap={2} paddingBottom={props.tabMenu ? 0 : "2rem"} paddingTop={"1.5rem"}>
         <Typography variant="h2">{props.title}</Typography>
         {props.description && (
           <Typography variant="body1">{props.description}</Typography>
@@ -35,7 +35,7 @@ export const PageHeader = React.forwardRef<HTMLDivElement, PageHeaderProps>(
         {props.tabMenu}
         </div>}
       </Stack>
-      {props.children && <Stack gap={2}>{props.children}</Stack>}
+      {props.children && <Stack gap={2} paddingTop={"1.5rem"}>{props.children}</Stack>}
     </PageHeaderRoot>
   )
 )

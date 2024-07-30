@@ -69,9 +69,9 @@ export function Forms() {
         Small
       </Typography>
       <Stack direction={"row"}>
-        <Checkbox color="primary"/>
-        <Checkbox color="primary" defaultChecked />
-        <Checkbox color="primary" indeterminate defaultChecked />
+        <Checkbox color="secondary"/>
+        <Checkbox color="secondary" defaultChecked />
+        <Checkbox color="secondary" indeterminate defaultChecked />
       </Stack>
       <Stack direction={"row"}>
         <Checkbox />
@@ -88,9 +88,9 @@ export function Forms() {
         Medium
       </Typography>
       <Stack direction={"row"}>
-        <Checkbox size="medium" color="primary"/>
-        <Checkbox size="medium" color="primary" defaultChecked />
-        <Checkbox size="medium" color="primary" indeterminate defaultChecked />
+        <Checkbox size="medium" color="secondary"/>
+        <Checkbox size="medium" color="secondary" defaultChecked />
+        <Checkbox size="medium" color="secondary" indeterminate defaultChecked />
       </Stack>
       <Stack direction={"row"}>
         <Checkbox size="medium" />
@@ -108,8 +108,8 @@ export function Forms() {
       </Typography>
       <FormGroup>
       <FormControlLabel
-          control={<Checkbox color="primary" defaultChecked />}
-          label="Checked primary"
+          control={<Checkbox color="secondary" defaultChecked />}
+          label="Checked secondary"
         />
         <FormControlLabel
           control={<Checkbox defaultChecked />}
@@ -130,7 +130,7 @@ export function Forms() {
           checked={selectedValue === "a"}
           onChange={handleRadioChange}
           value="a"
-          color="primary"
+          color="secondary"
           name="radio-buttons"
           inputProps={{ "aria-label": "A" }}
         />
@@ -165,7 +165,7 @@ export function Forms() {
           inputProps={{ "aria-label": "D" }}
         />
         <Radio
-          color="primary"
+          color="secondary"
           value="f"
           disabled
           defaultChecked
@@ -182,7 +182,7 @@ export function Forms() {
           checked={selectedValue === "a"}
           onChange={handleRadioChange}
           value="a"
-          color="primary"
+          color="secondary"
           name="radio-buttons"
           size="medium"
           inputProps={{ "aria-label": "A" }}
@@ -228,7 +228,7 @@ export function Forms() {
         <FormControlLabel
           control={
             <Radio
-              color="primary"
+              color="secondary"
               defaultChecked
               name="radio-buttons"
               checked={selectedValue === "a"}
@@ -236,7 +236,7 @@ export function Forms() {
               value="a"
             />
           }
-          label="Checked primary"
+          label="Checked secondary"
         />
         <FormControlLabel
           control={

@@ -10,6 +10,7 @@ export const getSwitchToggle = (theme: Theme): ComponentStyles => {
     MuiSwitch: {
       defaultProps: {
         size: "small",
+        color: "primary"
       },
       styleOverrides: {
         root: () => ({
@@ -88,13 +89,13 @@ export const getSwitchToggle = (theme: Theme): ComponentStyles => {
             },
             ".MuiSwitch-thumb": {
               "&:after": {
-                backgroundColor: theme.palette.grey?.[900],
+                backgroundColor: theme.palette.primary?.[500],
               },
             },
             "+ .MuiSwitch-track": {
-              backgroundColor: `${palette.secondary?.[900]}` + "!important",
+              backgroundColor: `${palette.primary?.[500]}` ,
               opacity: "1 !important",
-              boxShadow: getShadow(palette.mode).xs.secondary,
+              boxShadow: getShadow(palette.mode).xs.primary,
               "::after": {
                 content: '""',
                 position: "absolute",
@@ -130,6 +131,7 @@ export const getSwitchToggle = (theme: Theme): ComponentStyles => {
             fontSize: "0.875rem",
           },
         }),
+        
       },
     },
   }
