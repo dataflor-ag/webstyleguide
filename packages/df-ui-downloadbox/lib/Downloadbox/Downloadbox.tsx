@@ -1,6 +1,6 @@
 import React from "react"
-import { Stack, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { Stack, Tooltip, Typography } from "@mui/material"
+import { styled, type SxProps } from "@mui/material/styles"
 import { Mime } from "mime"
 import colorMapping from "./ColorMapping"
 
@@ -18,9 +18,11 @@ interface DownloadboxProps {
   title: string;
   mime: string;
   size: string;
-
   link?: string;
   download?: boolean;
+  sx?: SxProps
+  maxWidthTitle?: string,
+  tooltip?: boolean
 }
 
 const DownloadboxRoot = styled("div", {
@@ -97,7 +99,7 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
     const extType = mime.getExtension(mimeType!)
 
     return (
-      <DownloadboxRoot ref={ref}>
+      <DownloadboxRoot sx={{...props.sx}} ref={ref}>
         <DownloadboxIcon>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="40">
             <g fill="none" fillRule="evenodd">
@@ -115,7 +117,8 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
           )}
         </DownloadboxIcon>
         <Stack gap={0}>
-          <Typography variant="subtitle2">{props.title}</Typography>
+          {props.tooltip ? <Tooltip title={props.title}><Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography></Tooltip> :           <Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography>
+        }
           <Typography variant="body2">{props.size}</Typography>
         </Stack>
         {props.link && (

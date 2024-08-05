@@ -37,6 +37,12 @@ const meta: Meta<typeof Downloadbox> = {
     download: {
       type: "boolean",
     },
+    tooltip : {
+      type: "boolean"
+    },
+    maxWidthTitle : {
+      type: "string"
+    }
   },
 }
 
@@ -144,4 +150,11 @@ export const ZIP: Story = {
     title: "archive.zip",
     size: "3.1 GB",
   },
+}
+
+
+export function DownloadBoxWithLongTitledFile() {
+  return(
+    <Downloadbox tooltip maxWidthTitle={"10rem"} mime="jpg" title="design-with-a-very-long-file-title-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.jpg" size="1 GB"/>
+  )
 }
