@@ -99,6 +99,14 @@ import creditcard from "./creditcard"
 import company from "./company"
 import checkCircle from "./checkCircle"
 import appSecurity from "./appSecurity"
+import filePaper from "./filePaper"
+import gears from "./gears"
+import invoice from "./invoice"
+import pin from "./pin"
+import refresh from "./refresh"
+import status from "./status"
+import task from "./task"
+import update from "./update"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -156,6 +164,7 @@ const icons = {
   fileImage,
   fileData,
   fileRename,
+  filePaper,
   fileAttach,
   filesCopy,
   folderEmpty,
@@ -183,6 +192,7 @@ const icons = {
   link,
   share,
   bill,
+  invoice,
   arrowUp,
   arrowUpRight,
   arrowRight,
@@ -202,7 +212,13 @@ const icons = {
   mobileText,
   appSecurity,
   measure,
-  creditcard
+  creditcard,
+  gears,
+  pin,
+  refresh,
+  update,
+  status,
+  task,
 }
 
 type IconKeys = keyof typeof icons;
