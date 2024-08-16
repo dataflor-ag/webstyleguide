@@ -24,9 +24,12 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
           gap: "0.25rem",
           padding: "0 0.125rem",
         }),
-      },
+      },     
     },
     MuiToggleButton: {
+      defaultProps: {
+        color: "secondary"
+      },
       styleOverrides: {
         root: () => ({
           height: "2.25rem",
@@ -67,6 +70,32 @@ export const getToggleButtons = (theme: Theme): ComponentStyles => {
           },
         }),
       },
+    variants: [ {
+      props: {
+        color: "primary",
+      }, style: {
+        "&.Mui-selected": {
+          color: palette.primary.contrastText,
+          boxShadow: getShadow(palette.mode).xs.primary,
+          backgroundColor: palette.primary[500],
+          ":hover": {
+            backgroundImage: "none",
+            backgroundColor: palette.primary[500],
+            boxShadow: getShadow(palette.mode).xs.primary,
+          },
+          ":focus-visible": {
+            boxShadow: getShadow(palette.mode).xs.primaryFocus,
+          },
+          ":disabled": {
+            boxShadow: getShadow(palette.mode).xs.primary,
+            color: palette.primary.contrastText,
+            backgroundColor: palette.primary[500],
+            opacity: 0.4,
+          },
+        },
+      }
+
+    },]
     },
   }
 }
