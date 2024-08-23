@@ -14,8 +14,12 @@ import {
   MenuItem,
   Avatar,
   type AppBarProps,
+  ThemeProvider,
+  CssBaseline,
   } from "@mui/material"
 import Icon from "@dataflor-ag/df-ui-icons"
+import { getTheme } from "@dataflor-ag/df-ui-theme";
+
 
 interface CustomAppBarProps extends AppBarProps{
   logoImageUrl?: string,
@@ -66,6 +70,8 @@ export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
   (props, ref) => {
     const {  ...CustomAppBarProps} = props
 
+    const theme = getTheme(props.isDarkMode ? "dark" : "light")
+
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
     const isMenuOpen = Boolean(anchorEl);
@@ -110,7 +116,9 @@ export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
     }
   
     return (
-          <AppBar ref={ref} >
+      <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme />
+      <AppBar ref={ref} >
             <Container>
               <Toolbar disableGutters>
                 <ButtonBase onClick={props.onLogoClick}>
@@ -247,6 +255,7 @@ export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
             </Toolbar>
           </Container>   
         </AppBar>
+      </ThemeProvider>          
     )
   }
 )

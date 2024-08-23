@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Meta, StoryObj } from "@storybook/react"
 import CustomAppBar from '../../packages/df-ui-custom-app-bar/lib/CustomAppBar/CustomAppBar';
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
+import { Button, Stack } from '@mui/material';
 
 const meta: Meta<typeof CustomAppBar> = {
     title: "Components/CustomAppBar",
@@ -124,6 +125,24 @@ const meta: Meta<typeof CustomAppBar> = {
 export default meta
 
 type Story = StoryObj<typeof CustomAppBar>
+
+
+export function CustomAppBarBlankDarkMode(): JSX.Element {
+
+    return (
+    <Stack>
+        <CustomAppBar isDarkMode/>
+    </Stack>
+    )
+}
+export function CustomAppBarBlankLightMode(): JSX.Element {
+
+    return (
+    <Stack>
+        <CustomAppBar />
+    </Stack>
+    )
+}
 
 export function CustomAppBarExample(): JSX.Element {
 
