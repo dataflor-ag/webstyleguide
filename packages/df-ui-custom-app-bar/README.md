@@ -1,11 +1,11 @@
 # `@dataflor-ag/df-ui-custom-app-bar`
 
-> TODO: description
+> TODO: custom appbar component with optional content
 
 ## Usage
 
-```
-const dfUiCustomAppBar = require('@dataflor-ag/df-ui-custom-app-bar');
 
-// TODO: DEMONSTRATE API
+```tsx
+import { CustomAppBar } from "@dataflor-ag/df-ui-custom-app-bar"
+
 ```

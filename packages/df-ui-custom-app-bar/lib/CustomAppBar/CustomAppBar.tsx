@@ -1,7 +1,7 @@
 import React from "react"
-import { Typography,
+import {
+  Typography,
   Box,
-  type AppBarProps,
   AppBar,
   ButtonBase,
   Container,
@@ -12,7 +12,8 @@ import { Typography,
   Tooltip,
   Menu,
   MenuItem,
-  Avatar
+  Avatar,
+  type AppBarProps,
   } from "@mui/material"
 import Icon from "@dataflor-ag/df-ui-icons"
 
@@ -28,8 +29,8 @@ interface CustomAppBarProps extends AppBarProps{
   onBankingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTeamManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  onBillingClick? (event: React.MouseEvent<HTMLElement>): void;
-  onLogoutClick? (event: React.MouseEvent<HTMLElement>):  void;
+  onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
   isRendered?: {
     buttonTasks?: boolean,
     buttonSettings?: boolean,
@@ -126,7 +127,7 @@ export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
                     {props.isRendered?.buttonSettings !== undefined &&
                     <Tooltip title={props.componentText?.settings ? props.componentText.settings : "Einstellungen"}>
                       <IconButton onClick={props.onSettingsClick}>
-                        <Icon.task/>
+                        <Icon.settings/>
                       </IconButton>
                     </Tooltip>
                     }
@@ -232,7 +233,7 @@ export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
                     <MenuItem onClick={props.onBillingClick}>
                       <Icon.invoice />
                       {props.componentText?.billing ? props.componentText.billing : "Abrechnungen"}
-                    </MenuItem>
+                    </MenuItem>        
                     <Divider />
                     </>}
                     {props.isRendered?.avatarMenuLogout && <>
