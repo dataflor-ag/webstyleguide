@@ -27,7 +27,7 @@ jobs:
     - name: Build Icons
       run: cd packages/df-ui-icon-wrapper && npm run build && cd ../..
 
-    - name: Build Icons
+    - name: Build Theme
       run: cd packages/df-ui-theme && npm run build && cd ../..
 
     - name: lerna publish --concurrency 1
