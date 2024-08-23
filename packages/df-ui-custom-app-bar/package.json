@@ -35,7 +35,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@dataflor-ag/df-u-theme": "file: ../df-ui-theme",
+    "@dataflor-ag/df-ui-theme": "file:../df-ui-theme",
     "@dataflor-ag/df-ui-icons": "file:../df-ui-icons"
   },
   "devDependencies": {
