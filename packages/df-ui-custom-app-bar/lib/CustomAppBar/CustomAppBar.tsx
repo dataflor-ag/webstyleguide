@@ -59,9 +59,9 @@ export interface CustomAppBarProps extends AppBarProps{
   },
   isDarkMode?: boolean,
   userData?: {
-    FirstName?: string,
-    LastName?: string,
-    Email?: string,
+    firstName?: string,
+    lastName?: string,
+    email?: string,
     avatarImageUrl?: string
   }
 }
@@ -109,8 +109,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     function UserAvatar(): JSX.Element {
       if(props.userData?.avatarImageUrl !== undefined) {
         return <Avatar src={props.userData.avatarImageUrl} />
-      } else if (props.userData?.FirstName !== undefined && props.userData.LastName !== undefined) {
-        const userInitials = [props.userData?.FirstName?.charAt(0), props.userData?.LastName?.charAt(0)].join(" ")
+      } else if (props.userData?.firstName !== undefined && props.userData.lastName !== undefined) {
+        const userInitials = [props.userData?.firstName?.charAt(0), props.userData?.lastName?.charAt(0)].join(" ")
         return <Avatar>{userInitials}</Avatar>
       } else return <Avatar/>
     }
@@ -189,7 +189,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           variant="subtitle2"
                           style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
                         >
-                          {props.userData?.FirstName} {props.userData?.LastName}
+                          {props.userData?.firstName} {props.userData?.lastName}
                         </Typography>
                         <Typography
                           variant="subtitle2"
@@ -198,7 +198,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                             lineHeight: "0.7rem",
                           }}
                         >
-                          {props.userData?.Email}
+                          {props.userData?.email}
                         </Typography>
                       </Box>
                     </Box>

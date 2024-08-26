@@ -36,7 +36,10 @@ const wrapInInterop = (assemblyName: string, functionName: string) => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-export const renderAppBar = (containerId: string, props: InteropCustomAppBarProps) => {
+export const renderAppBar = (containerId: string, props: InteropCustomAppBarProps, logConfig: boolean) => {
+  if(logConfig)
+    console.log(JSON.stringify(props))
+  
   const container = document.getElementById(containerId)
   if (!container) {
     return
