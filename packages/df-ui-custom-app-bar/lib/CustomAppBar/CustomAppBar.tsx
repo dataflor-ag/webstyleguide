@@ -21,7 +21,7 @@ import Icon from "@dataflor-ag/df-ui-icons"
 import { getTheme } from "@dataflor-ag/df-ui-theme";
 
 
-interface CustomAppBarProps extends AppBarProps{
+export interface CustomAppBarProps extends AppBarProps{
   logoImageUrl?: string,
   onLogoClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTasksClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -66,7 +66,7 @@ interface CustomAppBarProps extends AppBarProps{
   }
 }
 
-export const CustomAppBar = React.forwardRef<HTMLDivElement, CustomAppBarProps>(
+export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
   (props, ref) => {
     const {  ...CustomAppBarProps} = props
 
