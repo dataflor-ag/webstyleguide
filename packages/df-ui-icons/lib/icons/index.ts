@@ -107,6 +107,8 @@ import refresh from "./refresh"
 import status from "./status"
 import task from "./task"
 import update from "./update"
+import bulletPoint from "./bulletPoint"
+import addressBook from "./addressBook"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -219,6 +221,8 @@ const icons = {
   update,
   status,
   task,
+  bulletPoint,
+  addressBook
 }
 
 type IconKeys = keyof typeof icons;
