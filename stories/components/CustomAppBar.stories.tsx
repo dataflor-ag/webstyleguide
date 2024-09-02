@@ -104,13 +104,13 @@ const meta: Meta<typeof CustomAppBar> = {
             },
         },
         userData: {
-            FirstName: {
+            firstName: {
                 type: "string",
             },
-            LastName: {
+            lastName: {
                 type: "string",
             },
-            Email: {
+            email: {
                 type: "string",
             },
             avatarImageUrl: {
@@ -135,6 +135,7 @@ export function CustomAppBarBlankDarkMode(): JSX.Element {
     </Stack>
     )
 }
+
 export function CustomAppBarBlankLightMode(): JSX.Element {
 
     return (
@@ -172,7 +173,7 @@ export function CustomAppBarExample(): JSX.Element {
     onTasksClick={() => {handleOpenToast("tasks clicked")}}
     onSettingsClick={() => {handleOpenToast("settings clicked")}}
     onPersonalDataClick={() => {handleOpenToast("personal data clicked")}}
-    userData={{avatarImageUrl: "https://picsum.photos/200/200", FirstName: "John", LastName: "Doe", Email: "john@doe.mail" }}
+    userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
     isRendered={{
         buttonTasks: true,
         buttonSettings: true,
@@ -188,4 +189,37 @@ export function CustomAppBarExample(): JSX.Element {
         message={toastMessage}
       />
     </>)
+}
+
+
+export function CustomAppBarWithCustomText(): JSX.Element {
+
+    return (
+    <Stack>
+        <CustomAppBar
+              userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
+      
+        componentText={{   
+            tasks: "custom tasks",
+            settings: "custom settings ",
+            personalData: "custom personal data ",
+            security: "custom security",
+            accountSettings: "custom account settings",
+            companyData: "custom company data",
+            banking: "custom banking",
+            teamManagement: "custom team management",
+            roleManagement: "custom role management",
+            billing: "custom billing",
+            logout: "custom logout",
+        }}
+        isRendered={{
+            buttonTasks: true,
+            buttonSettings: true,
+            avatarMenuPersonal: true,
+            avatarMenuCompany: true,
+            avatarMenuBilling: true,
+            avatarMenuLogout: true
+        }}/>
+    </Stack>
+    )
 }

@@ -55,7 +55,6 @@ export interface CustomAppBarProps extends AppBarProps{
     roleManagement?: string,
     billing?: string,
     logout?: string,
-
   },
   isDarkMode?: boolean,
   userData?: {
@@ -196,6 +195,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           style={{
                             fontSize: "0.7rem",
                             lineHeight: "0.7rem",
+                            color: theme.palette.grey[500],
                           }}
                         >
                           {props.userData?.email}
@@ -206,7 +206,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     <>
                     <MenuItem onClick={props.onPersonalDataClick}>
                       <Icon.user />
-                      {props.componentText?.tasks ? props.componentText.tasks : "Persönliche Daten"}
+                      {props.componentText?.personalData ? props.componentText.personalData : "Persönliche Daten"}
                     </MenuItem>
                     <MenuItem onClick={props.onSecurityClick}>
                       <Icon.lock />
