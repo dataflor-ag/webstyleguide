@@ -28,6 +28,7 @@ interface DialogDeleteProps extends DialogProps {
   text?: string;
   secondaryText?: string;
   warningBoxText?: string;
+  id?: string;
 }
 
 const DialogContentBox = styled("div", {
@@ -76,6 +77,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
       text,
       secondaryText,
       warningBoxText,
+      id,
       ...DialogProps
     } = props;
 
@@ -86,6 +88,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
 
     return (
       <Dialog
+        id={id}
         ref={ref}
         open={open}
         {...DialogProps}
@@ -125,7 +128,6 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
           </Box>
         </DialogTitle>
         <DialogContentBox>
-          {children}
           {text && (
             <Typography marginBottom={secondaryText || warningBoxText ? "0.75rem" : 0} variant="subtitle2">
               {text}
@@ -136,6 +138,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
               {secondaryText}
             </Typography>
           )}
+          {children}
           {warningBoxText && (
             <DialogWarningBox>
               <Box>
