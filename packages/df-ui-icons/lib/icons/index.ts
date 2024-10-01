@@ -109,6 +109,10 @@ import task from "./task"
 import update from "./update"
 import bulletPoint from "./bulletPoint"
 import addressBook from "./addressBook"
+import locationCircle from "./locationCircle"
+import locationMap from "./locationMap"
+import digger from "./digger"
+import diggerEdit from "./diggerEdit"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -180,6 +184,8 @@ const icons = {
   list,
   map,
   locationMarker,
+  locationCircle,
+  locationMap,
   imageSymbol,
   imageMultiple,
   imageEdit,
@@ -222,7 +228,9 @@ const icons = {
   status,
   task,
   bulletPoint,
-  addressBook
+  addressBook,
+  digger,
+  diggerEdit
 }
 
 type IconKeys = keyof typeof icons;

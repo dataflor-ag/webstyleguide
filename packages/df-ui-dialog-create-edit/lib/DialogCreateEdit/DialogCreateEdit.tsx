@@ -13,14 +13,15 @@ interface DialogCreateEditProps extends DialogProps {
   buttonTextClose: string,
   buttonTextSave: string,
   saveDisabled?: boolean,
+  id?: string,
   DialogProps?: DialogProps
 }
 
 export const DialogCreateEdit = React.forwardRef<HTMLDivElement, DialogCreateEditProps>(
   (props, ref) => {
-    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, ...DialogProps} = props
+    const { icon, title, onClose, onSave, open, saveDisabled, children, buttonTextClose, buttonTextSave, id, ...DialogProps} = props
     return (
-        <Dialog ref={ref} open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
+        <Dialog id={id} ref={ref} open={open} {...DialogProps} maxWidth={DialogProps.maxWidth ? DialogProps.maxWidth : "xs"} >
           <DialogTitle>
             <Box
             display={"flex"}
