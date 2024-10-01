@@ -113,6 +113,7 @@ import locationCircle from "./locationCircle"
 import locationMap from "./locationMap"
 import digger from "./digger"
 import diggerEdit from "./diggerEdit"
+import filter from "./filter"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -230,7 +231,8 @@ const icons = {
   bulletPoint,
   addressBook,
   digger,
-  diggerEdit
+  diggerEdit,
+  filter
 }
 
 type IconKeys = keyof typeof icons;

@@ -42,6 +42,7 @@ export interface CustomAppBarProps extends AppBarProps{
     avatarMenuCompany?: boolean,
     avatarMenuBilling?: boolean,
     avatarMenuLogout?: boolean,
+    slotInfo?: boolean,
   }
   componentText?: {
     tasks?: string,
@@ -62,7 +63,9 @@ export interface CustomAppBarProps extends AppBarProps{
     lastName?: string,
     email?: string,
     avatarImageUrl?: string
-  }
+  },
+  currentEnvironment?: "dev" | "beta"| "preprod" | "prod",
+  slotInfoFont?: string,
 }
 
 export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
@@ -75,6 +78,17 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
 
     const isMenuOpen = Boolean(anchorEl);
 
+    const environmentOptions = {
+      "dev": "1: Development",
+      "beta": "2: Beta",
+      "preprod": "3: PreProd",
+      "prod": "4: Prod"
+    }
+
+    const slotInfoText = props.currentEnvironment !== undefined ? environmentOptions[props.currentEnvironment] : ""
+
+    const isSlotInfoShown = props.isRendered?.slotInfo !== undefined && props.currentEnvironment !== "prod"
+    
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
       setAnchorEl(event.currentTarget);
     };
@@ -123,6 +137,19 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                 <ButtonBase onClick={props.onLogoClick}>
                   {props.logoImageUrl ? <img src={props.logoImageUrl} /> : <DataflorLogo/> }
                 </ButtonBase>
+                {isSlotInfoShown &&
+                <Tooltip title={"You are currently on slot " + slotInfoText}><Box sx={{
+                  padding: "0.7rem 0.8rem",
+                  borderRadius: "10px",
+                  marginLeft: "1.5rem",
+                  marginRight: "auto",
+                  boxShadow: "0 0 2px 1px " + theme.palette.info[300],
+                  backgroundColor: theme.palette.info[100],
+                  color: theme.palette.info[700]
+                }}>
+                  <Typography sx={{ fontWeight: "500",fontFamily: props.slotInfoFont !== undefined ? props.slotInfoFont : "monospace"}}>{slotInfoText}</Typography>
+                </Box>
+                </Tooltip>}
                 <Stack direction="row" gap={1}>
                     {props.isRendered?.buttonTasks !== undefined &&
                     <Tooltip title={props.componentText?.tasks ? props.componentText.tasks : "Aufgaben"}>
