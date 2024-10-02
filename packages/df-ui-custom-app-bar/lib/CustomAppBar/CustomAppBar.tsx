@@ -38,6 +38,7 @@ export interface CustomAppBarProps extends AppBarProps{
   isRendered?: {
     buttonTasks?: boolean,
     buttonSettings?: boolean,
+    avatarMenu?: boolean,
     avatarMenuPersonal?: boolean,
     avatarMenuCompany?: boolean,
     avatarMenuBilling?: boolean,
@@ -97,6 +98,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       setAnchorEl(null);
     };
 
+    const handleMenuItemClick = (_event: React.MouseEvent<HTMLElement>, navigateTo: ((event: React.MouseEvent<HTMLElement>) => void ) | undefined): void => {
+      handleClose()
+      if(navigateTo !== undefined)
+      return navigateTo(_event)
+    }
+
     function DataflorLogo(): JSX.Element {
       return (<>
       <svg
@@ -131,10 +138,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     return (
       <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
-      <AppBar ref={ref} >
+      <AppBar position="static" ref={ref} id="main-app-bar">
             <Container>
               <Toolbar disableGutters>
-                <ButtonBase onClick={props.onLogoClick}>
+                <ButtonBase onClick={props.onLogoClick} id="button-back-to-dashboard">
                   {props.logoImageUrl ? <img src={props.logoImageUrl} /> : <DataflorLogo/> }
                 </ButtonBase>
                 {isSlotInfoShown &&
@@ -153,131 +160,145 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                 <Stack direction="row" gap={1}>
                     {props.isRendered?.buttonTasks !== undefined &&
                     <Tooltip title={props.componentText?.tasks ? props.componentText.tasks : "Aufgaben"}>
-                      <IconButton onClick={props.onTasksClick}>
+                      <IconButton onClick={props.onTasksClick} id="button-open-task-overview">
                         <Icon.task/>
                       </IconButton>
                     </Tooltip>
                     }
                     {props.isRendered?.buttonSettings !== undefined &&
                     <Tooltip title={props.componentText?.settings ? props.componentText.settings : "Einstellungen"}>
-                      <IconButton onClick={props.onSettingsClick}>
+                      <IconButton onClick={props.onSettingsClick} id="button-open-settings-page">
                         <Icon.settings/>
                       </IconButton>
                     </Tooltip>
                     }
-                    {props.isRendered?.buttonSettings || props.isRendered?.buttonTasks ?
-                    <Divider
-                    orientation="vertical"
-                    flexItem
-                    sx={{ marginRight: 5, marginLeft: 3 }}
-                    /> : <></>}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        textAlign: "center",
-                      }}
-                    >
-                    <Tooltip title={props.componentText?.accountSettings? props.componentText.accountSettings: "Account Einstellungen"}>
-                      <IconButton onClick={handleMenuClick}>
-                        <UserAvatar />
-                      </IconButton>
-                    </Tooltip>
-                  </Box>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={isMenuOpen}
-                    onClose={handleClose}
-                    transformOrigin={{ horizontal: "right", vertical: "top" }}
-                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        gap: "0.25rem",
-                        alignItems: "center",
-                        my: "5px",
-                        paddingInline: "0.5rem",
-                        pr: "1rem",
-                      }}
-                      id="account-menu-user-info-element"
-                      >
-                      <UserAvatar />
+                    {props.isRendered?.avatarMenu &&
+                    <>
+                      {props.isRendered?.buttonSettings || props.isRendered?.buttonTasks ?
+                      <Divider
+                      orientation="vertical"
+                      flexItem
+                      sx={{ marginRight: 5, marginLeft: 3 }}
+                      /> : <></>}
                       <Box
-                        style={{
+                        sx={{
                           display: "flex",
-                          flexDirection: "column",
-                          gap: "0.25rem",
-                          paddingLeft: "0.5rem",
+                          alignItems: "center",
+                          textAlign: "center",
                         }}
                       >
-                        <Typography
-                          variant="subtitle2"
-                          style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
+                      <Tooltip title={props.componentText?.accountSettings? props.componentText.accountSettings: "Account Einstellungen"}
+                        id="account-menu-toggle-menu-state">
+                        <IconButton size="small" onClick={handleMenuClick}>
+                          <UserAvatar />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                    <Menu
+                      anchorEl={anchorEl}
+                      open={isMenuOpen}
+                      onClose={handleClose}
+                      transformOrigin={{ horizontal: "right", vertical: "top" }}
+                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                      id="account-menu"
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          gap: "0.25rem",
+                          alignItems: "center",
+                          my: "5px",
+                          paddingInline: "0.5rem",
+                          pr: "1rem",
+                        }}
+                        id="account-menu-user-info-element"
                         >
-                          {props.userData?.firstName} {props.userData?.lastName}
-                        </Typography>
-                        <Typography
-                          variant="subtitle2"
+                        <UserAvatar />
+                        <Box
                           style={{
-                            fontSize: "0.7rem",
-                            lineHeight: "0.7rem",
-                            color: theme.palette.grey[500],
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.25rem",
+                            paddingLeft: "0.5rem",
                           }}
                         >
-                          {props.userData?.email}
-                        </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
+                          >
+                            {props.userData?.firstName} {props.userData?.lastName}
+                          </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            style={{
+                              fontSize: "0.7rem",
+                              lineHeight: "0.7rem",
+                              color: theme.palette.grey[500],
+                            }}
+                          >
+                            {props.userData?.email}
+                          </Typography>
+                        </Box>
                       </Box>
-                    </Box>
-                    {props.isRendered?.avatarMenuPersonal &&
-                    <>
-                    <MenuItem onClick={props.onPersonalDataClick}>
-                      <Icon.user />
-                      {props.componentText?.personalData ? props.componentText.personalData : "Persönliche Daten"}
-                    </MenuItem>
-                    <MenuItem onClick={props.onSecurityClick}>
-                      <Icon.lock />
-                      {props.componentText?.security ? props.componentText.security : "Sicherheit"}
-                    </MenuItem>
-                    <MenuItem onClick={props.onAccountSettingsClick}>
-                      <Icon.adjustments />
-                      {props.componentText?.accountSettings ? props.componentText.accountSettings : "Kontoeinstellungen"}
-                    </MenuItem>
-                    <Divider />
-                    </>}
-                    {props.isRendered?.avatarMenuCompany && <>
-                    <MenuItem onClick={props.onCompanyDataClick}>
-                      <Icon.company />            
-                      {props.componentText?.companyData ? props.componentText.companyData : "Firmendaten"}
-                    </MenuItem>
-                    <MenuItem onClick={props.onBankingClick}>
-                      <Icon.creditcard />
-                      {props.componentText?.banking ? props.componentText.banking : "Bankdaten"}
-                    </MenuItem>
-                    <MenuItem onClick={props.onTeamManagementClick}>
-                      <Icon.userTeam />
-                      {props.componentText?.teamManagement ? props.componentText.teamManagement : "Teamverwaltung"}
-                    </MenuItem>
-                    <MenuItem onClick={props.onRoleManagementClick}>
-                      <Icon.employee />
-                      {props.componentText?.roleManagement ? props.componentText.roleManagement : "Rollenverwaltung"}
-                    </MenuItem>
-                    <Divider />
-                    </>}
-                    {props.isRendered?.avatarMenuBilling && <>
-                    <MenuItem onClick={props.onBillingClick}>
-                      <Icon.invoice />
-                      {props.componentText?.billing ? props.componentText.billing : "Abrechnungen"}
-                    </MenuItem>        
-                    <Divider />
-                    </>}
-                    {props.isRendered?.avatarMenuLogout && <>
-                    <MenuItem onClick={props.onLogoutClick}>
-                      <Icon.logout />
-                      {props.componentText?.logout ? props.componentText.logout : "Abmelden"}
-                    </MenuItem>
-                    </>}
-                </Menu>
+                      {props.isRendered?.avatarMenuPersonal &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onPersonalDataClick)}
+                        id="account-menu-button-personal-data">
+                        <Icon.user />
+                        {props.componentText?.personalData ? props.componentText.personalData : "Persönliche Daten"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuPersonal &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onSecurityClick)}
+                        id="account-menu-button-security">
+                        <Icon.lock />
+                        {props.componentText?.security ? props.componentText.security : "Sicherheit"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuPersonal &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onAccountSettingsClick)}
+                        id="account-menu-button-account-settings">
+                        <Icon.adjustments />
+                        {props.componentText?.accountSettings ? props.componentText.accountSettings : "Kontoeinstellungen"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuPersonal && <Divider />}
+                      {props.isRendered?.avatarMenuCompany && 
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, () => props.onCompanyDataClick)}
+                        id="account-menu-button-company">
+                        <Icon.company />            
+                        {props.componentText?.companyData ? props.componentText.companyData : "Firmendaten"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuCompany &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onBankingClick)}
+                        id="account-menu-button-banking">
+                        <Icon.creditcard />
+                        {props.componentText?.banking ? props.componentText.banking : "Bankdaten"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuCompany &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onTeamManagementClick)}
+                        id="account-menu-button-team">
+                        <Icon.userTeam />
+                        {props.componentText?.teamManagement ? props.componentText.teamManagement : "Teamverwaltung"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuCompany &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onRoleManagementClick)}
+                        id="account-menu-button-role">
+                        <Icon.employee />
+                        {props.componentText?.roleManagement ? props.componentText.roleManagement : "Rollenverwaltung"}
+                      </MenuItem>}
+                      {props.isRendered?.avatarMenuCompany && <Divider />}
+                      {props.isRendered?.avatarMenuBilling &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onBillingClick)}
+                      id="account-menu-button-billing">
+                        <Icon.invoice />
+                        {props.componentText?.billing ? props.componentText.billing : "Abrechnungen"}
+                      </MenuItem>}    
+                      {props.isRendered?.avatarMenuBilling && <Divider />}
+                      {props.isRendered?.avatarMenuLogout &&
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onLogoutClick)}
+                        id="account-menu-button-logout">
+                        <Icon.logout />
+                        {props.componentText?.logout ? props.componentText.logout : "Abmelden"}
+                      </MenuItem>}
+                  </Menu>
+                </>}
               </Stack>
             </Toolbar>
           </Container>   

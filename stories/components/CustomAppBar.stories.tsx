@@ -55,6 +55,9 @@ const meta: Meta<typeof CustomAppBar> = {
             buttonSettings: {
                 type: "boolean",
             },
+            avatarMenu: {
+                type: "boolean",
+            },
             avatarMenuPersonal: {
                 type: "boolean",
             },
@@ -65,6 +68,9 @@ const meta: Meta<typeof CustomAppBar> = {
                 type: "boolean",
             },
             avatarMenuLogout: {
+                type: "boolean",
+            },
+            slotInfo: {
                 type: "boolean",
             },
         },
@@ -117,7 +123,12 @@ const meta: Meta<typeof CustomAppBar> = {
                 type: "string",
             },
         },
-        
+        currentEnvironment: {
+            type: "string",
+        },
+        slotInfoFont: {
+            type: "string",
+        },
     },
 }
 
@@ -177,6 +188,7 @@ export function CustomAppBarExample(): JSX.Element {
     isRendered={{
         buttonTasks: true,
         buttonSettings: true,
+        avatarMenu: true,
         avatarMenuPersonal: true,
         avatarMenuCompany: true,
         avatarMenuBilling: true,
@@ -215,6 +227,7 @@ export function CustomAppBarWithCustomText(): JSX.Element {
         isRendered={{
             buttonTasks: true,
             buttonSettings: true,
+            avatarMenu: true,
             avatarMenuPersonal: true,
             avatarMenuCompany: true,
             avatarMenuBilling: true,
@@ -256,6 +269,7 @@ export function CustomAppBarWithSlotInfo(): JSX.Element {
     isRendered={{
         buttonTasks: true,
         buttonSettings: true,
+        avatarMenu: true,
         avatarMenuPersonal: true,
         avatarMenuCompany: true,
         avatarMenuBilling: true,
@@ -305,6 +319,7 @@ export function CustomAppBarWithSlotInfoDarkMode(): JSX.Element {
     isRendered={{
         buttonTasks: true,
         buttonSettings: true,
+        avatarMenu: true,
         avatarMenuPersonal: true,
         avatarMenuCompany: true,
         avatarMenuBilling: true,
@@ -356,6 +371,7 @@ export function CustomAppBarWithSlotInfoPreprod(): JSX.Element {
     isRendered={{
         buttonTasks: true,
         buttonSettings: true,
+        avatarMenu: true,
         avatarMenuPersonal: true,
         avatarMenuCompany: true,
         avatarMenuBilling: true,
