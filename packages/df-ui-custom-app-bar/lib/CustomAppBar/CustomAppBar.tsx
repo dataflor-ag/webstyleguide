@@ -24,6 +24,7 @@ import { getTheme } from "@dataflor-ag/df-ui-theme";
 export interface CustomAppBarProps extends AppBarProps{
   logoImageUrl?: string,
   onLogoClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onDarkmodeClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTasksClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onSettingsClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onPersonalDataClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -36,6 +37,7 @@ export interface CustomAppBarProps extends AppBarProps{
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
   isRendered?: {
+    buttonDarkMode?: boolean,
     buttonTasks?: boolean,
     buttonSettings?: boolean,
     avatarMenu?: boolean,
@@ -46,6 +48,8 @@ export interface CustomAppBarProps extends AppBarProps{
     slotInfo?: boolean,
   }
   componentText?: {
+    slotInfo: string,
+    darkMode?: string,
     tasks?: string,
     settings?: string,
     personalData?: string,
@@ -145,7 +149,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   {props.logoImageUrl ? <img src={props.logoImageUrl} /> : <DataflorLogo/> }
                 </ButtonBase>
                 {isSlotInfoShown &&
-                <Tooltip title={"You are currently on slot " + slotInfoText}><Box sx={{
+                <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText: "Sie befinden sich derzeit auf Slot " +  slotInfoText }>
+                  <Box sx={{
                   padding: "0.7rem 0.8rem",
                   borderRadius: "10px",
                   marginLeft: "1.5rem",
@@ -158,6 +163,13 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                 </Box>
                 </Tooltip>}
                 <Stack direction="row" gap={1}>
+                {props.isRendered?.buttonDarkMode !== undefined &&
+                    <Tooltip title={props.componentText?.darkMode ? props.componentText.darkMode : "Ansichtsmodus"}>
+                      <IconButton onClick={props.onDarkmodeClick} id="button-toggle-darkmode">
+                        {props.isDarkMode ?  <Icon.sun/> : <Icon.sunFilled  /> }
+                      </IconButton>
+                    </Tooltip>
+                    }
                     {props.isRendered?.buttonTasks !== undefined &&
                     <Tooltip title={props.componentText?.tasks ? props.componentText.tasks : "Aufgaben"}>
                       <IconButton onClick={props.onTasksClick} id="button-open-task-overview">

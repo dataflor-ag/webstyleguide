@@ -114,6 +114,11 @@ import locationMap from "./locationMap"
 import digger from "./digger"
 import diggerEdit from "./diggerEdit"
 import filter from "./filter"
+import sun from "./sun"
+import listMoreItems from "./listMoreItems"
+import circleFilled from "./circleFilled"
+import sunFilled from "./sunFilled"
+import circle from "./circle"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -183,6 +188,7 @@ const icons = {
   circleHalfFilled,
   layoutGrid,
   list,
+  listMoreItems,
   map,
   locationMarker,
   locationCircle,
@@ -232,7 +238,11 @@ const icons = {
   addressBook,
   digger,
   diggerEdit,
-  filter
+  filter,
+  sun,
+  sunFilled,
+  circle,
+  circleFilled
 }
 
 type IconKeys = keyof typeof icons;

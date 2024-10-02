@@ -186,6 +186,7 @@ export function CustomAppBarExample(): JSX.Element {
     onPersonalDataClick={() => {handleOpenToast("personal data clicked")}}
     userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
     isRendered={{
+        buttonDarkMode: true, 
         buttonTasks: true,
         buttonSettings: true,
         avatarMenu: true,
@@ -209,7 +210,7 @@ export function CustomAppBarWithCustomText(): JSX.Element {
     return (
     <Stack>
         <CustomAppBar
-              userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
+        userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
       
         componentText={{   
             tasks: "custom tasks",
@@ -267,6 +268,7 @@ export function CustomAppBarWithSlotInfo(): JSX.Element {
     onPersonalDataClick={() => {handleOpenToast("personal data clicked")}}
     userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
     isRendered={{
+        buttonDarkMode: true, 
         buttonTasks: true,
         buttonSettings: true,
         avatarMenu: true,
@@ -317,6 +319,7 @@ export function CustomAppBarWithSlotInfoDarkMode(): JSX.Element {
     onPersonalDataClick={() => {handleOpenToast("personal data clicked")}}
     userData={{avatarImageUrl: "https://picsum.photos/200/200", firstName: "John", lastName: "Doe", email: "john@doe.mail" }}
     isRendered={{
+        buttonDarkMode: true, 
         buttonTasks: true,
         buttonSettings: true,
         avatarMenu: true,
