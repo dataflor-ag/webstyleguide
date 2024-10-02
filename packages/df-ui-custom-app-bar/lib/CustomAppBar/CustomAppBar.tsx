@@ -48,7 +48,7 @@ export interface CustomAppBarProps extends AppBarProps{
     slotInfo?: boolean,
   }
   componentText?: {
-    slotInfo: string,
+    slotInfo?: string,
     darkMode?: string,
     tasks?: string,
     settings?: string,
