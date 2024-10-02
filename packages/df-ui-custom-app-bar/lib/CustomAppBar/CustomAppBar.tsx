@@ -105,7 +105,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const handleMenuItemClick = (_event: React.MouseEvent<HTMLElement>, navigateTo: ((event: React.MouseEvent<HTMLElement>) => void ) | undefined): void => {
       handleClose()
       if(navigateTo !== undefined)
-      return navigateTo(_event)
+      navigateTo(_event)
     }
 
     function DataflorLogo(): JSX.Element {
