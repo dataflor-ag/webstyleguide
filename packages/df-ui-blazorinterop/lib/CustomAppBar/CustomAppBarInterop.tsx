@@ -2,7 +2,9 @@ import React, { StrictMode } from "react"
 import { createRoot } from 'react-dom/client'
 import { CustomAppBar, type CustomAppBarProps } from "@dataflor-ag/df-ui-custom-app-bar"
 
-export type InteropCustomAppBarProps = Omit<CustomAppBarProps, "onLogoClick" |
+export type InteropCustomAppBarProps = Omit<CustomAppBarProps,
+  "onDarkmodeClick" |
+  "onLogoClick" |
   "onTasksClick" |
   "onSettingsClick" |
   "onPersonalDataClick" |
@@ -17,6 +19,7 @@ export type InteropCustomAppBarProps = Omit<CustomAppBarProps, "onLogoClick" |
   > & {
   assemblyName: string,
   onLogoClick?: string,
+  onDarkmodeClick?: string,
   onTasksClick?: string,
   onSettingsClick?: string,
   onPersonalDataClick?: string,
@@ -45,10 +48,11 @@ export const renderAppBar = (containerId: string, props: InteropCustomAppBarProp
     return
   }
 
-  const { assemblyName, onLogoClick, onTasksClick, onSettingsClick, onPersonalDataClick, onSecurityClick, onAccountSettingsClick, onCompanyDataClick, onBankingClick, onTeamManagementClick, onRoleManagementClick, onBillingClick, onLogoutClick, ...rest } = props
+  const { assemblyName, onLogoClick, onDarkmodeClick, onTasksClick, onSettingsClick, onPersonalDataClick, onSecurityClick, onAccountSettingsClick, onCompanyDataClick, onBankingClick, onTeamManagementClick, onRoleManagementClick, onBillingClick, onLogoutClick, ...rest } = props
 
   const customAppBarProps: CustomAppBarProps = {
     ...rest,
+    onDarkmodeClick: onDarkmodeClick ? wrapInInterop(assemblyName, onDarkmodeClick) : undefined,
     onLogoClick: onLogoClick ? wrapInInterop(assemblyName, onLogoClick) : undefined,
     onTasksClick: onTasksClick ? wrapInInterop(assemblyName, onTasksClick) : undefined,
     onSettingsClick: onSettingsClick ? wrapInInterop(assemblyName, onSettingsClick) : undefined,
