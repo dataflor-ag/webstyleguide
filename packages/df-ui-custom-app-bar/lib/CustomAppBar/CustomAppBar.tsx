@@ -151,13 +151,14 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                 {isSlotInfoShown &&
                 <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText: "Sie befinden sich derzeit auf Slot " +  slotInfoText }>
                   <Box sx={{
-                  padding: "0.7rem 0.8rem",
-                  borderRadius: "10px",
+                  padding: "0.5rem 0.8rem",
+                  borderRadius: "9px",
                   marginLeft: "1.5rem",
                   marginRight: "auto",
-                  boxShadow: "0 0 2px 1px " + theme.palette.info[300],
+                  boxShadow: "0 0 2px 0" + theme.palette.info[200],
+                  border: "1px solid " + theme.palette.info[300],
                   backgroundColor: theme.palette.info[100],
-                  color: theme.palette.info[700]
+                  color: theme.palette.info[800]
                 }}>
                   <Typography sx={{ fontWeight: "500",fontFamily: props.slotInfoFont !== undefined ? props.slotInfoFont : "monospace"}}>{slotInfoText}</Typography>
                 </Box>
@@ -272,7 +273,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       </MenuItem>}
                       {props.isRendered?.avatarMenuPersonal && <Divider />}
                       {props.isRendered?.avatarMenuCompany && 
-                      <MenuItem onClick={(e) => handleMenuItemClick(e, () => props.onCompanyDataClick)}
+                      <MenuItem onClick={(e) => handleMenuItemClick(e, props.onCompanyDataClick)}
                         id="account-menu-button-company">
                         <Icon.company />            
                         {props.componentText?.companyData ? props.componentText.companyData : "Firmendaten"}
