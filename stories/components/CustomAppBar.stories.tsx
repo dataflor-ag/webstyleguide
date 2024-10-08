@@ -81,6 +81,9 @@ const meta: Meta<typeof CustomAppBar> = {
             settings: {
                 type: "string",
             },
+            accountMenu: {
+                type: "string",
+            },
             personalData: {
                 type: "string",
             },
@@ -108,6 +111,9 @@ const meta: Meta<typeof CustomAppBar> = {
             logout: {
                 type: "string",
             },
+            slotInfo: {
+                type: "string"
+            }
         },
         userData: {
             firstName: {

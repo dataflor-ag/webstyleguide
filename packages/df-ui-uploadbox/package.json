@@ -1,8 +1,8 @@
 {
-  "name": "@dataflor-ag/df-ui-custom-app-bar",
-  "version": "1.7.0",
-  "description": "This is a styled app bar component",
-  "author": "wiebken-d-df <nagel@dataflor.de>",
+  "name": "@dataflor-ag/df-ui-uploadbox",
+  "version": "1.0.0",
+  "description": "A versatile component for handling MIME content upload, supporting various file types and formats.",
+  "author": "Wiebken Nagel",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
   "license": "UNLICENSED",
   "type": "module",
@@ -27,16 +27,15 @@
       }
     }
   },
+  "dependencies": {
+    "mime": "^4.0.3"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "dependencies": {
-    "@dataflor-ag/df-ui-icons": "file:../df-ui-icons",
-    "@dataflor-ag/df-ui-theme": "file:../df-ui-theme"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
@@ -49,7 +48,8 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vite-plugin-dts": "^3.7.3"
+    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-lib-inject-css": "^2.0.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@dataflor-ag"
