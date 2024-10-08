@@ -52,6 +52,7 @@ export interface CustomAppBarProps extends AppBarProps{
     darkMode?: string,
     tasks?: string,
     settings?: string,
+    accountMenu?: string,
     personalData?: string,
     security?: string,
     accountSettings?: string,
@@ -149,7 +150,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   {props.logoImageUrl ? <img src={props.logoImageUrl} /> : <DataflorLogo/> }
                 </ButtonBase>
                 {isSlotInfoShown &&
-                <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText : "Sie befinden sich derzeit auf Slot " +  slotInfoText }>
+                <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText : "You are currently on slot " +  slotInfoText }>
                   <Box sx={{
                   padding: "0.5rem 0.8rem",
                   borderRadius: "9px",
@@ -165,21 +166,21 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                 </Tooltip>}
                 <Stack direction="row" gap={1}>
                 {props.isRendered?.buttonDarkMode !== undefined &&
-                    <Tooltip title={props.componentText?.darkMode ? props.componentText.darkMode : "Ansichtsmodus"}>
+                    <Tooltip title={props.componentText?.darkMode ? props.componentText.darkMode : "Change Theme"}>
                       <IconButton onClick={props.onDarkmodeClick} id="button-toggle-darkmode">
                         {props.isDarkMode ?  <Icon.sun/> : <Icon.sunFilled  /> }
                       </IconButton>
                     </Tooltip>
                     }
                     {props.isRendered?.buttonTasks !== undefined &&
-                    <Tooltip title={props.componentText?.tasks ? props.componentText.tasks : "Aufgaben"}>
+                    <Tooltip title={props.componentText?.tasks ? props.componentText.tasks : "Task Overview"}>
                       <IconButton onClick={props.onTasksClick} id="button-open-task-overview">
                         <Icon.task/>
                       </IconButton>
                     </Tooltip>
                     }
                     {props.isRendered?.buttonSettings !== undefined &&
-                    <Tooltip title={props.componentText?.settings ? props.componentText.settings : "Einstellungen"}>
+                    <Tooltip title={props.componentText?.settings ? props.componentText.settings : "Settings"}>
                       <IconButton onClick={props.onSettingsClick} id="button-open-settings-page">
                         <Icon.settings/>
                       </IconButton>
@@ -200,7 +201,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           textAlign: "center",
                         }}
                       >
-                      <Tooltip title={props.componentText?.accountSettings ? props.componentText.accountSettings : "Account Einstellungen"}>
+                      <Tooltip title={props.componentText?.accountMenu ? props.componentText.accountMenu : "Account Menu"}>
                         <IconButton size="small" onClick={handleMenuClick}  id="button-account-menu">
                           <UserAvatar />
                         </IconButton>
@@ -256,58 +257,58 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onPersonalDataClick)}
                         id="account-menu-button-personal-data">
                         <Icon.user />
-                        {props.componentText?.personalData ? props.componentText.personalData : "Persönliche Daten"}
+                        {props.componentText?.personalData ? props.componentText.personalData : "Personal Data"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuPersonal &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onSecurityClick)}
                         id="account-menu-button-security">
                         <Icon.lock />
-                        {props.componentText?.security ? props.componentText.security : "Sicherheit"}
+                        {props.componentText?.security ? props.componentText.security : "Security"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuPersonal &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onAccountSettingsClick)}
                         id="account-menu-button-account-settings">
                         <Icon.adjustments />
-                        {props.componentText?.accountSettings ? props.componentText.accountSettings : "Kontoeinstellungen"}
+                        {props.componentText?.accountSettings ? props.componentText.accountSettings : "Account Settings"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuPersonal && <Divider />}
                       {props.isRendered?.avatarMenuCompany && 
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onCompanyDataClick)}
                         id="account-menu-button-company">
                         <Icon.company />            
-                        {props.componentText?.companyData ? props.componentText.companyData : "Firmendaten"}
+                        {props.componentText?.companyData ? props.componentText.companyData : "Company Data"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuCompany &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onBankingClick)}
                         id="account-menu-button-banking">
                         <Icon.creditcard />
-                        {props.componentText?.banking ? props.componentText.banking : "Bankdaten"}
+                        {props.componentText?.banking ? props.componentText.banking : "Banking Information"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuCompany &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onTeamManagementClick)}
                         id="account-menu-button-team">
                         <Icon.userTeam />
-                        {props.componentText?.teamManagement ? props.componentText.teamManagement : "Teamverwaltung"}
+                        {props.componentText?.teamManagement ? props.componentText.teamManagement : "Team Management"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuCompany &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onRoleManagementClick)}
                         id="account-menu-button-role">
                         <Icon.employee />
-                        {props.componentText?.roleManagement ? props.componentText.roleManagement : "Rollenverwaltung"}
+                        {props.componentText?.roleManagement ? props.componentText.roleManagement : "Role Management"}
                       </MenuItem>}
                       {props.isRendered?.avatarMenuCompany && <Divider />}
                       {props.isRendered?.avatarMenuBilling &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onBillingClick)}
                       id="account-menu-button-billing">
                         <Icon.invoice />
-                        {props.componentText?.billing ? props.componentText.billing : "Abrechnungen"}
+                        {props.componentText?.billing ? props.componentText.billing : "Billing"}
                       </MenuItem>}    
                       {props.isRendered?.avatarMenuBilling && <Divider />}
                       {props.isRendered?.avatarMenuLogout &&
                       <MenuItem onClick={(e) => handleMenuItemClick(e, props.onLogoutClick)}
                         id="account-menu-button-logout">
                         <Icon.logout />
-                        {props.componentText?.logout ? props.componentText.logout : "Abmelden"}
+                        {props.componentText?.logout ? props.componentText.logout : "Logout"}
                       </MenuItem>}
                   </Menu>
                 </>}
