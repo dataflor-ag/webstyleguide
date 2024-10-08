@@ -149,7 +149,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   {props.logoImageUrl ? <img src={props.logoImageUrl} /> : <DataflorLogo/> }
                 </ButtonBase>
                 {isSlotInfoShown &&
-                <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText: "Sie befinden sich derzeit auf Slot " +  slotInfoText }>
+                <Tooltip title={props.componentText?.slotInfo ? props.componentText?.slotInfo + slotInfoText : "Sie befinden sich derzeit auf Slot " +  slotInfoText }>
                   <Box sx={{
                   padding: "0.5rem 0.8rem",
                   borderRadius: "9px",
@@ -200,9 +200,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           textAlign: "center",
                         }}
                       >
-                      <Tooltip title={props.componentText?.accountSettings? props.componentText.accountSettings: "Account Einstellungen"}
-                        id="account-menu-toggle-menu-state">
-                        <IconButton size="small" onClick={handleMenuClick}>
+                      <Tooltip title={props.componentText?.accountSettings ? props.componentText.accountSettings : "Account Einstellungen"}>
+                        <IconButton size="small" onClick={handleMenuClick}  id="button-account-menu">
                           <UserAvatar />
                         </IconButton>
                       </Tooltip>
