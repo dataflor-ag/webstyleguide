@@ -169,3 +169,17 @@ export function UploadBoxOnlyProgressWith0Progress() {
     />
   )
 }
+
+export function UploadBoxNoMimeType() {
+  return(
+    <Uploadbox
+    uploadedDataSize={"0 MB"}
+    uploadPercentage={ (0 / 30 * 100)}
+    tooltip
+    mime=""
+    title="some-picture.jpg"
+    filesize="30 MB"
+    boxWidth="20rem"
+    />
+  )
+}
