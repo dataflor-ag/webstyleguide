@@ -155,3 +155,17 @@ export function UploadBoxOnlyProgressHiddenPercentage() {
     />
   )
 }
+
+export function UploadBoxOnlyProgressWith0Progress() {
+  return(
+    <Uploadbox
+    uploadedDataSize={"0 MB"}
+    uploadPercentage={ (0 / 30 * 100)}
+    tooltip
+    mime="jpg"
+    title="some-picture.jpg"
+    filesize="30 MB"
+    boxWidth="20rem"
+    />
+  )
+}

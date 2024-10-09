@@ -121,7 +121,7 @@ export const Uploadbox = React.forwardRef<HTMLDivElement, UploadboxProps>(
               {props.hideDataSize ? <></> : <Typography sx={{marginRight: "auto", fontSize: "0.8rem"}} variant="body2">{props.uploadedDataSize + " / " + props.filesize}</Typography>}
               {props.hidePercentage ? <></> : <Typography sx={{marginLeft: "auto", fontSize: "0.8rem"}} variant="body2">{props.uploadPercentage.toFixed(0) + "%"}</Typography>}
           </Box>
-          <LinearProgress variant="determinate" value={props.uploadPercentage}/>
+          <LinearProgress variant={props.uploadPercentage === 0 ? "buffer" : "determinate"} value={props.uploadPercentage} valueBuffer={0}/>
         </Stack>
       </UploadboxRoot>
     )
