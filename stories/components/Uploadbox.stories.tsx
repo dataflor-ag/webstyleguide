@@ -48,6 +48,12 @@ const meta: Meta<typeof Uploadbox> = {
     },
     maxWidthTitle : {
       type: "string"
+    },
+    hideDataSize: {
+      type: "boolean"
+    },
+    hidePercentage: {
+      type: "boolean"
     }
   },
 }
@@ -112,8 +118,40 @@ export function UploadBoxOnlyProgress() {
     mime="jpg"
     title="some-picture.jpg"
     filesize="30 MB"
-    onlyProgress={false}
+    onlyProgress
     boxWidth="20rem"
+    />
+  )
+}
+
+export function UploadBoxOnlyProgressHiddenDataSize() {
+  return(
+    <Uploadbox
+    uploadedDataSize={ "5 MB"}
+    uploadPercentage={ (5 / 30 * 100)}
+    tooltip
+    mime="jpg"
+    title="some-picture.jpg"
+    filesize="30 MB"
+    onlyProgress
+    boxWidth="20rem"
+    hideDataSize
+    />
+  )
+}
+
+export function UploadBoxOnlyProgressHiddenPercentage() {
+  return(
+    <Uploadbox
+    uploadedDataSize={ "5 MB"}
+    uploadPercentage={ (5 / 30 * 100)}
+    tooltip
+    mime="jpg"
+    title="some-picture.jpg"
+    filesize="30 MB"
+    onlyProgress
+    boxWidth="20rem"
+    hidePercentage
     />
   )
 }

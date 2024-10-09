@@ -25,6 +25,8 @@ interface UploadboxProps {
   tooltip?: boolean,
   onlyProgress?: boolean,
   boxWidth?: string,
+  hideDataSize?: boolean,
+  hidePercentage?: boolean,
 }
 
 const UploadboxRoot = styled("div", {
@@ -90,7 +92,8 @@ export const Uploadbox = React.forwardRef<HTMLDivElement, UploadboxProps>(
 
     return (
       <UploadboxRoot sx={{...props.sx, width: props.boxWidth ? props.boxWidth : "auto"}} ref={ref}>
-       {!props.onlyProgress || props.onlyProgress === undefined ? <UploadboxIcon>
+      {!props.onlyProgress || props.onlyProgress === undefined ?
+      <UploadboxIcon>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="40">
             <g fill="none" fillRule="evenodd">
               <path
@@ -105,13 +108,18 @@ export const Uploadbox = React.forwardRef<HTMLDivElement, UploadboxProps>(
               {extType}
             </UploadboxIconText>
           )}
-        </UploadboxIcon> : <></> }
+        </UploadboxIcon>
+        : <></> }
         <Stack gap={0} width={"100%"}>
-          {!props.onlyProgress || props.onlyProgress === undefined ? <>{props.tooltip ? <Tooltip title={props.title}><Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography></Tooltip> :           <Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography>
-        }</> : <></>}
+          {!props.onlyProgress || props.onlyProgress === undefined ? 
+            <> {props.tooltip ?
+                <Tooltip title={props.title}><Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography></Tooltip>
+                  : <Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography>
+            }</>
+          : <></>}
           <Box display={"flex"} flexDirection={"row"} justifyContent={"space-between"} >
-            <Typography variant="body2">{props.uploadedDataSize + " / " + props.filesize}</Typography>
-            <Typography variant="body2">{props.uploadPercentage.toFixed(0) + "%"}</Typography>
+              {props.hideDataSize ? <></> : <Typography sx={{marginRight: "auto"}}variant="body2">{props.uploadedDataSize + " / " + props.filesize}</Typography>}
+              {props.hidePercentage ? <></> : <Typography sx={{marginLeft: "auto"}} variant="body2">{props.uploadPercentage.toFixed(0) + "%"}</Typography>}
           </Box>
           <LinearProgress variant="determinate" value={props.uploadPercentage}/>
         </Stack>
