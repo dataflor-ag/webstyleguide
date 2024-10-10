@@ -227,7 +227,7 @@ export function UploadBoxListItemTest() {
                 uploadPercentage={(5 / 30) * 100}
                 tooltip
                 mime="jpg"
-                title="long-named-fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.jpg"
+                title="this-file-has-a-long-name-which-will-be-abbreaviated-with-an-ellipse-at-the-end-of-the-box-so-that-it-does-not-overflow-it.jpg"
                 filesize="30 MB"
                 boxWidth={"100%"}
               />
