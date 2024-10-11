@@ -1,4 +1,4 @@
-# `@dataflor-ag/df-ui-downloadbox`
+# `@dataflor-ag/df-ui-uploadbox`
 
 > A versatile component for handling MIME content upload, supporting various file types and formats.
 
