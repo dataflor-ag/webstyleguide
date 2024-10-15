@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-uploadbox",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A versatile component for handling MIME content upload, supporting various file types and formats.",
   "author": "Wiebken Nagel",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
