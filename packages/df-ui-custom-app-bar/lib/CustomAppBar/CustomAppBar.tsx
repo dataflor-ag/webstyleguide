@@ -410,19 +410,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                             : "Team Management"}
                         </MenuItem>
                       )}
-                      {props.isRendered?.avatarMenuCompany && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onRoleManagementClick)
-                          }
-                          id="account-menu-button-role"
-                        >
-                          <Icon.employee />
-                          {props.componentText?.roleManagement
-                            ? props.componentText.roleManagement
-                            : "Role Management"}
-                        </MenuItem>
-                      )}
                       {props.isRendered?.avatarMenuCompany && <Divider />}
                       {props.isRendered?.avatarMenuBilling && (
                         <MenuItem
