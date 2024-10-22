@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import CustomAppBar from "../../packages/df-ui-custom-app-bar/lib/CustomAppBar/CustomAppBar";
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
 const meta: Meta<typeof CustomAppBar> = {
   title: "Components/CustomAppBar",
@@ -507,6 +507,89 @@ export function CustomAppBarWithSlotInfoBetaDark(): JSX.Element {
           slotInfo: "Some info text about the slot",
         }}
         currentEnvironment={"beta"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+
+export function CustomAppBarWithCompanyMenu(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      name: "def",
+      email: "abc@mail.de,",
+      logoUrl: "https://picsum.photos/200/200",
+      onCompanyClick: () => console.log("abc clicked"),
+    },
+    {
+      name: "def",
+      email: "def@mail.de,",
+      logoUrl: "https://picsum.photos/200/200",
+      onCompanyClick: () => console.log("def clicked"),
+    },
+  ];
+  return (
+    <>
+      <CustomAppBar
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "https://picsum.photos/200/200",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          name: "Random Ltd.",
+          email: "random@mail.de",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          buttonTasks: true,
+          buttonSettings: true,
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+        }}
+        componentText={{}}
+        companyList={companyList}
+        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}

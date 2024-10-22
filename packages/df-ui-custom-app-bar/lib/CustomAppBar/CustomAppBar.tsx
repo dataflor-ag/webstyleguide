@@ -39,6 +39,7 @@ export interface CustomAppBarProps extends AppBarProps {
     buttonDarkMode?: boolean;
     buttonTasks?: boolean;
     buttonSettings?: boolean;
+    companyMenu?: boolean;
     avatarMenu?: boolean;
     avatarMenuPersonal?: boolean;
     avatarMenuCompany?: boolean;
@@ -52,6 +53,7 @@ export interface CustomAppBarProps extends AppBarProps {
     tasks?: string;
     settings?: string;
     accountMenu?: string;
+    companyMenu?: string;
     personalData?: string;
     security?: string;
     accountSettings?: string;
@@ -69,6 +71,17 @@ export interface CustomAppBarProps extends AppBarProps {
     email?: string;
     avatarImageUrl?: string;
   };
+  companyData?: {
+    name?: string;
+    email?: string;
+    logoUrl?: string;
+  };
+  companyList?: {
+    name?: string;
+    email?: string;
+    logoUrl?: string;
+    onCompanyClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
 }
@@ -80,8 +93,11 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const theme = getTheme(props.isDarkMode ? "dark" : "light");
 
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+    const [anchorElCompany, setAnchorElCompany] =
+      React.useState<HTMLElement | null>(null);
 
     const isMenuOpen = Boolean(anchorEl);
+    const isCompanyMenuOpen = Boolean(anchorElCompany);
 
     const environmentOptions = {
       dev: "1: Development",
@@ -102,9 +118,18 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
       setAnchorEl(event.currentTarget);
     };
+    const handleCompanyMenuClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      setAnchorElCompany(event.currentTarget);
+    };
 
     const handleClose = (): void => {
       setAnchorEl(null);
+    };
+
+    const handleCompanyClose = (): void => {
+      setAnchorElCompany(null);
     };
 
     const handleMenuItemClick = (
@@ -153,6 +178,23 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         ].join(" ");
         return <Avatar>{userInitials}</Avatar>;
       } else return <Avatar />;
+    }
+
+    function CompanyLogo(props: {
+      imageUrl?: string | undefined;
+      companyName?: string | undefined;
+    }): JSX.Element {
+      if (props.imageUrl !== undefined) {
+        return <Avatar src={props.imageUrl} />;
+      } else if (props.companyName !== undefined) {
+        const companyInitial = props.companyName.charAt(0);
+        return <Avatar>{companyInitial}</Avatar>;
+      } else
+        return (
+          <Avatar>
+            <Icon.company />
+          </Avatar>
+        );
     }
 
     return (
@@ -248,6 +290,128 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       <Icon.settings />
                     </IconButton>
                   </Tooltip>
+                )}
+                {props.isRendered?.companyMenu && (
+                  <>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Tooltip
+                        title={
+                          props.componentText?.companyMenu
+                            ? props.componentText.companyMenu
+                            : "Company account menu"
+                        }
+                      >
+                        <IconButton
+                          size="small"
+                          onClick={handleCompanyMenuClick}
+                          id="button-company-menu"
+                        >
+                          <CompanyLogo
+                            imageUrl={props.companyData?.logoUrl}
+                            companyName={props.companyData?.name}
+                          />
+                        </IconButton>
+                      </Tooltip>
+                    </Box>
+                    <Menu
+                      anchorEl={anchorElCompany}
+                      open={isCompanyMenuOpen}
+                      onClose={handleCompanyClose}
+                      transformOrigin={{ horizontal: "right", vertical: "top" }}
+                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                      id="company-account-menu"
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          gap: "0.25rem",
+                          alignItems: "center",
+                          my: "5px",
+                          paddingInline: "0.5rem",
+                          pr: "1rem",
+                        }}
+                        id="company-menu-info-element"
+                      >
+                        <UserAvatar />
+                        <Box
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.25rem",
+                            paddingLeft: "0.5rem",
+                          }}
+                        >
+                          <Typography
+                            variant="subtitle2"
+                            style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
+                          >
+                            {props.companyData?.name}
+                          </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            style={{
+                              fontSize: "0.7rem",
+                              lineHeight: "0.7rem",
+                              color: theme.palette.grey[500],
+                            }}
+                          >
+                            {props.companyData?.email}
+                          </Typography>
+                        </Box>
+                      </Box>
+                      {props.companyList !== undefined &&
+                        props.companyList.length > 0 && <Divider />}
+                      {props.companyList?.map((company) => (
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: "0.25rem",
+                            alignItems: "center",
+                            my: "5px",
+                            paddingInline: "0.5rem",
+                            pr: "1rem",
+                          }}
+                          id="company-menu-info-element"
+                        >
+                          <UserAvatar />
+                          <Box
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.25rem",
+                              paddingLeft: "0.5rem",
+                            }}
+                          >
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.8rem",
+                                lineHeight: "0.8rem",
+                              }}
+                            >
+                              {company.name}
+                            </Typography>
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.7rem",
+                                lineHeight: "0.7rem",
+                                color: theme.palette.grey[500],
+                              }}
+                            >
+                              {company.email}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      ))}
+                    </Menu>
+                  </>
                 )}
                 {props.isRendered?.avatarMenu && (
                   <>
