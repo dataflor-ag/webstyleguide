@@ -1,12 +1,12 @@
-import React from "react"
-import { Typography, Stack, Avatar, AvatarGroup } from "@mui/material"
-import { Meta } from "@storybook/react"
+import React from "react";
+import { Typography, Stack, Avatar, AvatarGroup } from "@mui/material";
+import { Meta } from "@storybook/react";
 
 const meta: Meta = {
   title: "MUI/Avatar",
-}
+};
 
-export default meta
+export default meta;
 
 export function _Avatar() {
   return (
@@ -24,6 +24,9 @@ export function _Avatar() {
         <Avatar sx={{ width: 72, height: 72, fontSize: "1.5rem" }}>NA</Avatar>
         <Avatar sx={{ width: 80, height: 80, fontSize: "1.5rem" }}>NA</Avatar>
       </Stack>
+      <Stack>
+        <Avatar variant="rounded" />
+      </Stack>
 
       <Typography variant="h2" mb={4} mt={8}>
         Avatar group
@@ -37,5 +40,5 @@ export function _Avatar() {
         </AvatarGroup>
       </Stack>
     </>
-  )
+  );
 }
