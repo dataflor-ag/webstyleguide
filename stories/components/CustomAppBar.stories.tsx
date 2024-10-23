@@ -730,3 +730,71 @@ export function CustomAppBarWithCompanyMenuDark(): JSX.Element {
     </>
   );
 }
+
+export function CustomAppBarWithCompanyMenuJustOneCompany(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <CustomAppBar
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "https://picsum.photos/200/200",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          buttonTasks: true,
+          buttonSettings: true,
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+        }}
+        componentText={{}}
+        currentEnvironment={"preprod"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
