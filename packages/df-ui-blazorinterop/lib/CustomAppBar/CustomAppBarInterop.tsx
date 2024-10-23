@@ -40,12 +40,10 @@ export type InteropCustomAppBarProps = Omit<
 };
 
 const wrapInInterop = (assemblyName: string, functionName: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return () =>
     (globalThis as any).DotNet.invokeMethodAsync(assemblyName, functionName);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
 export const renderAppBar = (
   containerId: string,
   props: InteropCustomAppBarProps,
