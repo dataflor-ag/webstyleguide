@@ -1,74 +1,131 @@
-import React, { StrictMode } from "react"
-import { createRoot } from 'react-dom/client'
-import { CustomAppBar, type CustomAppBarProps } from "@dataflor-ag/df-ui-custom-app-bar"
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import {
+  CustomAppBar,
+  type CustomAppBarProps,
+} from "@dataflor-ag/df-ui-custom-app-bar";
 
-export type InteropCustomAppBarProps = Omit<CustomAppBarProps,
-  "onDarkmodeClick" |
-  "onLogoClick" |
-  "onTasksClick" |
-  "onSettingsClick" |
-  "onPersonalDataClick" |
-  "onSecurityClick" |
-  "onAccountSettingsClick" |
-  "onCompanyDataClick" |
-  "onBankingClick" |
-  "onTeamManagementClick" |
-  "onRoleManagementClick" |
-  "onBillingClick" |
-  "onLogoutClick"
-  > & {
-  assemblyName: string,
-  onLogoClick?: string,
-  onDarkmodeClick?: string,
-  onTasksClick?: string,
-  onSettingsClick?: string,
-  onPersonalDataClick?: string,
-  onSecurityClick?: string,
-  onAccountSettingsClick?: string,
-  onCompanyDataClick?: string,
-  onBankingClick?: string,
-  onTeamManagementClick?: string,
-  onRoleManagementClick?: string,
-  onBillingClick?: string,
-  onLogoutClick?: string,
-  }
+export type InteropCustomAppBarProps = Omit<
+  CustomAppBarProps,
+  | "onDarkmodeClick"
+  | "onLogoClick"
+  | "onTasksClick"
+  | "onSettingsClick"
+  | "onChangeCompanyClick"
+  | "onPersonalDataClick"
+  | "onSecurityClick"
+  | "onAccountSettingsClick"
+  | "onCompanyDataClick"
+  | "onBankingClick"
+  | "onTeamManagementClick"
+  | "onRoleManagementClick"
+  | "onBillingClick"
+  | "onLogoutClick"
+> & {
+  assemblyName: string;
+  onLogoClick?: string;
+  onDarkmodeClick?: string;
+  onTasksClick?: string;
+  onSettingsClick?: string;
+  onChangeCompanyClick?: string;
+  onPersonalDataClick?: string;
+  onSecurityClick?: string;
+  onAccountSettingsClick?: string;
+  onCompanyDataClick?: string;
+  onBankingClick?: string;
+  onTeamManagementClick?: string;
+  onRoleManagementClick?: string;
+  onBillingClick?: string;
+  onLogoutClick?: string;
+};
 
 const wrapInInterop = (assemblyName: string, functionName: string) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return () => (globalThis as any).DotNet.invokeMethodAsync(assemblyName, functionName)
-}
+  return () =>
+    (globalThis as any).DotNet.invokeMethodAsync(assemblyName, functionName);
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
-export const renderAppBar = (containerId: string, props: InteropCustomAppBarProps, logConfig: boolean) => {
-  if(logConfig)
-    console.log(JSON.stringify(props))
-  
-  const container = document.getElementById(containerId)
+export const renderAppBar = (
+  containerId: string,
+  props: InteropCustomAppBarProps,
+  logConfig: boolean,
+) => {
+  if (logConfig) console.log(JSON.stringify(props));
+
+  const container = document.getElementById(containerId);
   if (!container) {
-    return
+    return;
   }
 
-  const { assemblyName, onLogoClick, onDarkmodeClick, onTasksClick, onSettingsClick, onPersonalDataClick, onSecurityClick, onAccountSettingsClick, onCompanyDataClick, onBankingClick, onTeamManagementClick, onRoleManagementClick, onBillingClick, onLogoutClick, ...rest } = props
+  const {
+    assemblyName,
+    onLogoClick,
+    onDarkmodeClick,
+    onTasksClick,
+    onSettingsClick,
+    onChangeCompanyClick,
+    onPersonalDataClick,
+    onSecurityClick,
+    onAccountSettingsClick,
+    onCompanyDataClick,
+    onBankingClick,
+    onTeamManagementClick,
+    onRoleManagementClick,
+    onBillingClick,
+    onLogoutClick,
+    ...rest
+  } = props;
 
   const customAppBarProps: CustomAppBarProps = {
     ...rest,
-    onDarkmodeClick: onDarkmodeClick ? wrapInInterop(assemblyName, onDarkmodeClick) : undefined,
-    onLogoClick: onLogoClick ? wrapInInterop(assemblyName, onLogoClick) : undefined,
-    onTasksClick: onTasksClick ? wrapInInterop(assemblyName, onTasksClick) : undefined,
-    onSettingsClick: onSettingsClick ? wrapInInterop(assemblyName, onSettingsClick) : undefined,
-    onPersonalDataClick: onPersonalDataClick ? wrapInInterop(assemblyName, onPersonalDataClick) : undefined,
-    onSecurityClick: onSecurityClick ? wrapInInterop(assemblyName, onSecurityClick) : undefined,
-    onAccountSettingsClick: onAccountSettingsClick ? wrapInInterop(assemblyName, onAccountSettingsClick) : undefined,
-    onCompanyDataClick: onCompanyDataClick ? wrapInInterop(assemblyName, onCompanyDataClick) : undefined,
-    onBankingClick: onBankingClick ? wrapInInterop(assemblyName, onBankingClick) : undefined,
-    onTeamManagementClick: onTeamManagementClick ? wrapInInterop(assemblyName, onTeamManagementClick) : undefined,
-    onRoleManagementClick: onRoleManagementClick ? wrapInInterop(assemblyName, onRoleManagementClick) : undefined,
-    onBillingClick: onBillingClick ? wrapInInterop(assemblyName, onBillingClick) : undefined,
-    onLogoutClick: onLogoutClick ? wrapInInterop(assemblyName, onLogoutClick) : undefined,
-  }
+    onDarkmodeClick: onDarkmodeClick
+      ? wrapInInterop(assemblyName, onDarkmodeClick)
+      : undefined,
+    onLogoClick: onLogoClick
+      ? wrapInInterop(assemblyName, onLogoClick)
+      : undefined,
+    onTasksClick: onTasksClick
+      ? wrapInInterop(assemblyName, onTasksClick)
+      : undefined,
+    onSettingsClick: onSettingsClick
+      ? wrapInInterop(assemblyName, onSettingsClick)
+      : undefined,
+    onChangeCompanyClick: onChangeCompanyClick
+      ? wrapInInterop(assemblyName, onChangeCompanyClick)
+      : undefined,
+    onPersonalDataClick: onPersonalDataClick
+      ? wrapInInterop(assemblyName, onPersonalDataClick)
+      : undefined,
+    onSecurityClick: onSecurityClick
+      ? wrapInInterop(assemblyName, onSecurityClick)
+      : undefined,
+    onAccountSettingsClick: onAccountSettingsClick
+      ? wrapInInterop(assemblyName, onAccountSettingsClick)
+      : undefined,
+    onCompanyDataClick: onCompanyDataClick
+      ? wrapInInterop(assemblyName, onCompanyDataClick)
+      : undefined,
+    onBankingClick: onBankingClick
+      ? wrapInInterop(assemblyName, onBankingClick)
+      : undefined,
+    onTeamManagementClick: onTeamManagementClick
+      ? wrapInInterop(assemblyName, onTeamManagementClick)
+      : undefined,
+    onRoleManagementClick: onRoleManagementClick
+      ? wrapInInterop(assemblyName, onRoleManagementClick)
+      : undefined,
+    onBillingClick: onBillingClick
+      ? wrapInInterop(assemblyName, onBillingClick)
+      : undefined,
+    onLogoutClick: onLogoutClick
+      ? wrapInInterop(assemblyName, onLogoutClick)
+      : undefined,
+  };
 
-  createRoot(container).render(<StrictMode>
-        <CustomAppBar {...customAppBarProps}/>
-        </StrictMode>)
-
-}
+  createRoot(container).render(
+    <StrictMode>
+      <CustomAppBar {...customAppBarProps} />
+    </StrictMode>,
+  );
+};

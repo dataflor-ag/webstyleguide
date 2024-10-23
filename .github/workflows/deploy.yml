@@ -17,8 +17,11 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-      with:
-        path: storybook-static # build artifact will be pushed to Github Pages, no files are checked in, to keep repo clean
-        build_command: lerna run build; npm run build-storybook
+      - name: Install Dependencies
+        run: npm install
+
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          path: storybook-static # build artifact will be pushed to Github Pages, no files are checked in, to keep repo clean
+          build_command: lerna run build; npm run build-storybook

@@ -16,6 +16,7 @@ import {
   type AppBarProps,
   ThemeProvider,
   CssBaseline,
+  type SxProps,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
@@ -35,6 +36,10 @@ export interface CustomAppBarProps extends AppBarProps {
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onChangeCompanyClick?: (
+    event: React.MouseEvent<HTMLElement>,
+    companyId: string,
+  ) => void;
   isRendered?: {
     buttonDarkMode?: boolean;
     buttonTasks?: boolean;
@@ -72,15 +77,15 @@ export interface CustomAppBarProps extends AppBarProps {
     avatarImageUrl?: string;
   };
   companyData?: {
-    name?: string;
-    email?: string;
+    companyName?: string;
+    location?: string;
     logoUrl?: string;
   };
   companyList?: {
-    name?: string;
-    email?: string;
+    companyName?: string;
+    location?: string;
     logoUrl?: string;
-    onCompanyClick?: (event: React.MouseEvent<HTMLElement>) => void;
+    id: string;
   }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
@@ -183,15 +188,33 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     function CompanyLogo(props: {
       imageUrl?: string | undefined;
       companyName?: string | undefined;
+      variant?: "square" | "rounded" | "circular";
+      sx?: SxProps;
     }): JSX.Element {
       if (props.imageUrl !== undefined) {
-        return <Avatar src={props.imageUrl} />;
+        return (
+          <Avatar
+            sx={{ ...props.sx }}
+            src={props.imageUrl}
+            variant={props?.variant ? props.variant : "rounded"}
+          />
+        );
       } else if (props.companyName !== undefined) {
         const companyInitial = props.companyName.charAt(0);
-        return <Avatar>{companyInitial}</Avatar>;
+        return (
+          <Avatar
+            sx={{ ...props.sx }}
+            variant={props?.variant ? props.variant : "rounded"}
+          >
+            {companyInitial}
+          </Avatar>
+        );
       } else
         return (
-          <Avatar>
+          <Avatar
+            sx={{ ...props.sx }}
+            variant={props?.variant ? props.variant : "rounded"}
+          >
             <Icon.company />
           </Avatar>
         );
@@ -295,6 +318,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   <>
                     <Box
                       sx={{
+                        marginLeft: 3.5,
                         display: "flex",
                         alignItems: "center",
                         textAlign: "center",
@@ -304,7 +328,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         title={
                           props.componentText?.companyMenu
                             ? props.componentText.companyMenu
-                            : "Company account menu"
+                            : "Company Account Menu"
                         }
                       >
                         <IconButton
@@ -314,7 +338,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         >
                           <CompanyLogo
                             imageUrl={props.companyData?.logoUrl}
-                            companyName={props.companyData?.name}
+                            companyName={props.companyData?.companyName}
+                            variant="rounded"
                           />
                         </IconButton>
                       </Tooltip>
@@ -335,10 +360,15 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           my: "5px",
                           paddingInline: "0.5rem",
                           pr: "1rem",
+                          backgroundColor: theme.palette.background.paper,
                         }}
                         id="company-menu-info-element"
                       >
-                        <UserAvatar />
+                        <CompanyLogo
+                          imageUrl={props.companyData?.logoUrl}
+                          companyName={props.companyData?.companyName}
+                          variant="rounded"
+                        />
                         <Box
                           style={{
                             display: "flex",
@@ -351,7 +381,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                             variant="subtitle2"
                             style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
                           >
-                            {props.companyData?.name}
+                            {props.companyData?.companyName}
                           </Typography>
                           <Typography
                             variant="subtitle2"
@@ -361,54 +391,78 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                               color: theme.palette.grey[500],
                             }}
                           >
-                            {props.companyData?.email}
+                            {props.companyData?.location}
                           </Typography>
                         </Box>
                       </Box>
                       {props.companyList !== undefined &&
-                        props.companyList.length > 0 && <Divider />}
-                      {props.companyList?.map((company) => (
-                        <Box
-                          sx={{
-                            display: "flex",
-                            gap: "0.25rem",
-                            alignItems: "center",
-                            my: "5px",
-                            paddingInline: "0.5rem",
-                            pr: "1rem",
-                          }}
-                          id="company-menu-info-element"
-                        >
-                          <UserAvatar />
-                          <Box
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: "0.25rem",
-                              paddingLeft: "0.5rem",
+                        props.companyList.length > 0 && (
+                          <Divider
+                            sx={{
+                              marginBlock: "0.125rem",
                             }}
+                          />
+                        )}
+                      {props.companyList?.map((company) => (
+                        <MenuItem
+                          onClick={(e) => {
+                            if (props.onChangeCompanyClick && company.id) {
+                              props.onChangeCompanyClick(e, company.id);
+                            }
+                            handleCompanyClose();
+                          }}
+                          sx={{
+                            height: "3.25rem",
+                          }}
+                        >
+                          <Box
+                            sx={{
+                              display: "flex",
+                              gap: "0.25rem",
+                              alignItems: "center",
+                              pr: "1rem",
+                            }}
+                            id="company-menu-info-element"
                           >
-                            <Typography
-                              variant="subtitle2"
+                            <CompanyLogo
+                              sx={{
+                                opacity: 0.65,
+                                transition: "all 200ms ease-in-out",
+                                ":hover": { opacity: 0.75 },
+                              }}
+                              companyName={company.companyName}
+                              imageUrl={company.logoUrl}
+                            />
+                            <Box
                               style={{
-                                fontSize: "0.8rem",
-                                lineHeight: "0.8rem",
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "0.25rem",
+                                paddingLeft: "0.5rem",
                               }}
                             >
-                              {company.name}
-                            </Typography>
-                            <Typography
-                              variant="subtitle2"
-                              style={{
-                                fontSize: "0.7rem",
-                                lineHeight: "0.7rem",
-                                color: theme.palette.grey[500],
-                              }}
-                            >
-                              {company.email}
-                            </Typography>
+                              <Typography
+                                variant="subtitle2"
+                                style={{
+                                  fontSize: "0.8rem",
+                                  lineHeight: "0.8rem",
+                                }}
+                              >
+                                {company.companyName}
+                              </Typography>
+                              <Typography
+                                variant="subtitle2"
+                                style={{
+                                  fontSize: "0.7rem",
+                                  lineHeight: "0.7rem",
+                                  color: theme.palette.grey[500],
+                                }}
+                              >
+                                {company.location}
+                              </Typography>
+                            </Box>
                           </Box>
-                        </Box>
+                        </MenuItem>
                       ))}
                     </Menu>
                   </>
@@ -420,7 +474,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       <Divider
                         orientation="vertical"
                         flexItem
-                        sx={{ marginRight: 5, marginLeft: 3 }}
+                        sx={{
+                          marginRight: props.isRendered.companyMenu ? 3 : 5,
+                          marginLeft: props.isRendered.companyMenu ? 3.5 : 3,
+                        }}
                       />
                     ) : (
                       <></>
@@ -467,7 +524,15 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         }}
                         id="account-menu-user-info-element"
                       >
-                        <UserAvatar />
+                        <Avatar
+                          alt={
+                            props.userData?.firstName +
+                            " " +
+                            props.userData?.lastName
+                          }
+                          src={props.userData?.avatarImageUrl}
+                          variant="circular"
+                        />
                         <Box
                           style={{
                             display: "flex",
@@ -496,17 +561,24 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         </Box>
                       </Box>
                       {props.isRendered?.avatarMenuPersonal && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onPersonalDataClick)
-                          }
-                          id="account-menu-button-personal-data"
-                        >
-                          <Icon.user />
-                          {props.componentText?.personalData
-                            ? props.componentText.personalData
-                            : "Personal Data"}
-                        </MenuItem>
+                        <>
+                          <Divider
+                            sx={{
+                              marginBlock: "0.125rem",
+                            }}
+                          />
+                          <MenuItem
+                            onClick={(e) =>
+                              handleMenuItemClick(e, props.onPersonalDataClick)
+                            }
+                            id="account-menu-button-personal-data"
+                          >
+                            <Icon.user />
+                            {props.componentText?.personalData
+                              ? props.componentText.personalData
+                              : "Personal Data"}
+                          </MenuItem>
+                        </>
                       )}
                       {props.isRendered?.avatarMenuPersonal && (
                         <MenuItem
