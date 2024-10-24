@@ -405,6 +405,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         )}
                       {props.companyList?.map((company) => (
                         <MenuItem
+                          key={company.id}
+                          id={"button-change-company-" + company?.companyName}
                           onClick={(e) => {
                             if (props.onChangeCompanyClick && company.id) {
                               props.onChangeCompanyClick(e, company.id);
@@ -561,24 +563,24 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         </Box>
                       </Box>
                       {props.isRendered?.avatarMenuPersonal && (
-                        <>
-                          <Divider
-                            sx={{
-                              marginBlock: "0.125rem",
-                            }}
-                          />
-                          <MenuItem
-                            onClick={(e) =>
-                              handleMenuItemClick(e, props.onPersonalDataClick)
-                            }
-                            id="account-menu-button-personal-data"
-                          >
-                            <Icon.user />
-                            {props.componentText?.personalData
-                              ? props.componentText.personalData
-                              : "Personal Data"}
-                          </MenuItem>
-                        </>
+                        <Divider
+                          sx={{
+                            marginBlock: "0.125rem",
+                          }}
+                        />
+                      )}
+                      {props.isRendered?.avatarMenuPersonal && (
+                        <MenuItem
+                          onClick={(e) =>
+                            handleMenuItemClick(e, props.onPersonalDataClick)
+                          }
+                          id="account-menu-button-personal-data"
+                        >
+                          <Icon.user />
+                          {props.componentText?.personalData
+                            ? props.componentText.personalData
+                            : "Personal Data"}
+                        </MenuItem>
                       )}
                       {props.isRendered?.avatarMenuPersonal && (
                         <MenuItem
