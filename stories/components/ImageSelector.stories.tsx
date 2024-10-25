@@ -23,6 +23,9 @@ const meta: Meta<typeof ImageSelector> = {
     checked: {
       type: "boolean",
     },
+    onDelete: {
+      type: "function",
+    },
   },
 };
 
