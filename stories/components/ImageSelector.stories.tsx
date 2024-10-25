@@ -84,3 +84,14 @@ export const WithDeleteButtonAndGreyPlaceholder: Story = {
     },
   },
 };
+
+export const WithDeleteButtonNoLabel: Story = {
+  args: {
+    value: "light",
+    image: "https://via.placeholder.com/200x140",
+    checked: true,
+    onDelete: (e) => {
+      console.log("delete clicked");
+    },
+  },
+};

@@ -8,7 +8,7 @@ interface ImageSelectorRootProps {
 }
 
 interface ImageSelectorProps extends ImageSelectorRootProps {
-  label: string;
+  label?: string;
   image: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -162,12 +162,12 @@ export const ImageSelector = React.forwardRef<
             <Icon.trash />
           </IconButton>
         )}
-        <ImageSelectorImage src={image} alt={label} />
+        <ImageSelectorImage src={image} alt={label ?? ""} />
         <ImageSelectorIcon checked={checked}>
           <Icon.check />
         </ImageSelectorIcon>
       </ImageSelectorImageWrapper>
-      <Typography variant="button">{label}</Typography>
+      {props.label && <Typography variant="button">{label}</Typography>}
     </ImageSelectorRoot>
   );
 });
