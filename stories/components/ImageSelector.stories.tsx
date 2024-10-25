@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
-import { Meta, StoryObj } from "@storybook/react"
-import { ImageSelector } from "../../packages/df-ui-image-selector/lib/"
+import { Meta, StoryObj } from "@storybook/react";
+import { ImageSelector } from "../../packages/df-ui-image-selector/lib/";
 
 const meta: Meta<typeof ImageSelector> = {
   title: "Components/ImageSelector",
@@ -15,29 +15,29 @@ const meta: Meta<typeof ImageSelector> = {
       type: "string",
     },
     image: {
-      type: "string"
+      type: "string",
     },
     onChange: {
-      type: "function"
+      type: "function",
     },
     checked: {
-      type: "boolean"
-    }
+      type: "boolean",
+    },
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof ImageSelector>
+type Story = StoryObj<typeof ImageSelector>;
 
 export const Checked: Story = {
   args: {
     label: "Light",
     value: "light",
     image: "https://via.placeholder.com/200x140",
-    checked: true
+    checked: true,
   },
-}
+};
 
 export const Unchecked: Story = {
   args: {
@@ -45,4 +45,28 @@ export const Unchecked: Story = {
     value: "dark",
     image: "https://via.placeholder.com/200x140",
   },
-}
+};
+
+export const WithDeleteButton: Story = {
+  args: {
+    label: "Light",
+    value: "light",
+    image: "https://picsum.photos/200/300",
+    checked: true,
+    onDelete: (e) => {
+      console.log("delete clicked");
+    },
+  },
+};
+
+export const WithDeleteButtonAndGreyPlaceholder: Story = {
+  args: {
+    label: "Light",
+    value: "light",
+    image: "https://via.placeholder.com/200x140",
+    checked: true,
+    onDelete: (e) => {
+      console.log("delete clicked");
+    },
+  },
+};
