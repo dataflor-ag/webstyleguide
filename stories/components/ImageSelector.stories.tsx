@@ -47,12 +47,23 @@ export const Unchecked: Story = {
   },
 };
 
-export const WithDeleteButton: Story = {
+export const CheckedWithDeleteButton: Story = {
   args: {
     label: "Light",
     value: "light",
     image: "https://picsum.photos/200/300",
     checked: true,
+    onDelete: (e) => {
+      console.log("delete clicked");
+    },
+  },
+};
+export const UncheckedWithDeleteButton: Story = {
+  args: {
+    label: "Light",
+    value: "light",
+    image: "https://picsum.photos/200/300",
+    checked: false,
     onDelete: (e) => {
       console.log("delete clicked");
     },
