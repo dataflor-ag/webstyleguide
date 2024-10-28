@@ -191,7 +191,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       variant?: "square" | "rounded" | "circular";
       sx?: SxProps;
     }): JSX.Element {
-      if (props.imageUrl !== undefined) {
+      if (props.imageUrl !== undefined && props.imageUrl !== "") {
         return (
           <Avatar
             sx={{ ...props.sx }}
@@ -199,7 +199,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
             variant={props?.variant ? props.variant : "rounded"}
           />
         );
-      } else if (props.companyName !== undefined) {
+      } else if (props.companyName !== undefined && props.companyName !== "") {
         const companyInitial = props.companyName.charAt(0);
         return (
           <Avatar
