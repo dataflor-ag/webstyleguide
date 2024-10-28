@@ -171,11 +171,16 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     }
 
     function UserAvatar(): JSX.Element {
-      if (props.userData?.avatarImageUrl !== undefined) {
+      if (
+        props.userData?.avatarImageUrl !== undefined &&
+        props.userData?.avatarImageUrl !== ""
+      ) {
         return <Avatar src={props.userData.avatarImageUrl} />;
       } else if (
         props.userData?.firstName !== undefined &&
-        props.userData.lastName !== undefined
+        props.userData.lastName !== undefined &&
+        props.userData?.firstName !== "" &&
+        props.userData.lastName !== ""
       ) {
         const userInitials = [
           props.userData?.firstName?.charAt(0),
