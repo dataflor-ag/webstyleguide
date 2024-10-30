@@ -124,6 +124,9 @@ import account from "./account";
 import questionCircle from "./questionCircle";
 import customerGroup from "./customerGroup";
 import shieldSafe from "./shieldSafe";
+import rotateClockwise from "./rotateClockwise";
+import imageCrop from "./imageCrop";
+import imageScale from "./imageScale";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -202,6 +205,8 @@ const icons = {
   imageSymbol,
   imageMultiple,
   imageEdit,
+  imageCrop,
+  imageScale,
   cloudDownload,
   cloudUpload,
   closeSmall,
@@ -253,6 +258,7 @@ const icons = {
   account,
   questionCircle,
   shieldSafe,
+  rotateClockwise,
 };
 
 type IconKeys = keyof typeof icons;
