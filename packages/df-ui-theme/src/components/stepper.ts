@@ -1,5 +1,5 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
 
 // TODO: Own icon
 // TODO: Cant use custom icon
@@ -7,7 +7,7 @@ import type { ComponentStyles } from "../types/Components"
 // import { checkboxIcon } from "../utils/checkbox"
 
 export const getStepper = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
+  const { palette } = theme;
   // const isLightMode = palette.mode === "light";
 
   return {
@@ -63,7 +63,7 @@ export const getStepper = (theme: Theme): ComponentStyles => {
             },
           },
           "&.Mui-completed": {
-            color: `${palette.success?.[500]}`,
+            color: `${palette.primary?.[500]}`,
             borderColor: "transparent",
           },
         }),
@@ -79,5 +79,5 @@ export const getStepper = (theme: Theme): ComponentStyles => {
         }),
       },
     },
-  }
-}
+  };
+};
