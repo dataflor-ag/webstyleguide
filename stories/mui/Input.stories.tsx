@@ -76,8 +76,8 @@ export function Inputs() {
           size="small"
           required
           id="filled-required"
-          label="Small input"
-          placeholder="small input with smaller font"
+          label="Small sized input"
+          placeholder="Compact input with smaller font"
         />
       </Stack>
 
