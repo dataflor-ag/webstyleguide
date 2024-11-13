@@ -1,13 +1,21 @@
-import React from "react"
-import { Meta } from "@storybook/react"
-import { Typography, Stack, TextField, Divider, InputAdornment, IconButton } from "@mui/material"
-import Icon from "../../packages/df-ui-icons/lib"
+import React from "react";
+import { Meta } from "@storybook/react";
+import {
+  Typography,
+  Stack,
+  TextField,
+  Divider,
+  InputAdornment,
+  IconButton,
+  Select,
+} from "@mui/material";
+import Icon from "../../packages/df-ui-icons/lib";
 
 const meta: Meta = {
   title: "MUI/Inputs",
-}
+};
 
-export default meta
+export default meta;
 
 export function Inputs() {
   return (
@@ -64,9 +72,16 @@ export function Inputs() {
           defaultValue="Default Value"
           helperText="Some important text"
         />
+        <TextField
+          size="small"
+          required
+          id="filled-required"
+          label="Small sized input"
+          placeholder="Compact input with smaller font"
+        />
       </Stack>
-      
-      <Divider/>
+
+      <Divider />
 
       <Typography variant="h2" mb={4} mt={8}>
         Input fields with icon
@@ -106,9 +121,9 @@ export function Inputs() {
           ),
         }}
       />
-      <TextField 
-        id="filled-search" 
-        label="Search field" 
+      <TextField
+        id="filled-search"
+        label="Search field"
         type="search"
         placeholder="Search"
         InputProps={{
@@ -120,5 +135,5 @@ export function Inputs() {
         }}
       />
     </>
-  )
+  );
 }

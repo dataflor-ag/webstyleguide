@@ -1,11 +1,11 @@
-import type { Theme } from "@mui/material"
-import type { ComponentStyles } from "../types/Components"
-import { radius } from "../tokens/shape"
-import { getShadow } from "../utils/getShadows"
+import type { Theme } from "@mui/material";
+import type { ComponentStyles } from "../types/Components";
+import { radius } from "../tokens/shape";
+import { getShadow } from "../utils/getShadows";
 
 export const getForms = (theme: Theme): ComponentStyles => {
-  const { palette } = theme
-  const isLightMode = palette.mode === "light"
+  const { palette } = theme;
+  const isLightMode = palette.mode === "light";
 
   return {
     MuiFormControl: {
@@ -178,7 +178,15 @@ export const getForms = (theme: Theme): ComponentStyles => {
             },
           },
         }),
+        sizeSmall: {
+          fontSize: "0.9rem",
+          fontWeight: "400",
+          borderRadius: radius.md,
+          padding: theme.spacing(0, 2),
+          height: "1.95rem",
+          letterSpacing: "-0.125px",
+        },
       },
     },
-  }
-}
+  };
+};
