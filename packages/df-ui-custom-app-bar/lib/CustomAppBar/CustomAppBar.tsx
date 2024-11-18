@@ -176,23 +176,11 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         props.userData?.avatarImageUrl !== ""
       ) {
         return <Avatar src={props.userData.avatarImageUrl} />;
-      } else if (
-        props.userData?.firstName !== undefined &&
-        props.userData.lastName !== undefined &&
-        props.userData?.firstName !== "" &&
-        props.userData.lastName !== ""
-      ) {
-        const userInitials = [
-          props.userData?.firstName?.charAt(0),
-          props.userData?.lastName?.charAt(0),
-        ].join(" ");
-        return <Avatar>{userInitials}</Avatar>;
       } else return <Avatar />;
     }
 
     function CompanyLogo(props: {
       imageUrl?: string | undefined;
-      companyName?: string | undefined;
       variant?: "square" | "rounded" | "circular";
       sx?: SxProps;
     }): JSX.Element {
@@ -203,16 +191,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
             src={props.imageUrl}
             variant={props?.variant ? props.variant : "rounded"}
           />
-        );
-      } else if (props.companyName !== undefined && props.companyName !== "") {
-        const companyInitial = props.companyName.charAt(0);
-        return (
-          <Avatar
-            sx={{ ...props.sx }}
-            variant={props?.variant ? props.variant : "rounded"}
-          >
-            {companyInitial}
-          </Avatar>
         );
       } else
         return (
@@ -343,7 +321,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         >
                           <CompanyLogo
                             imageUrl={props.companyData?.logoUrl}
-                            companyName={props.companyData?.companyName}
                             variant="rounded"
                           />
                         </IconButton>
@@ -371,7 +348,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       >
                         <CompanyLogo
                           imageUrl={props.companyData?.logoUrl}
-                          companyName={props.companyData?.companyName}
                           variant="rounded"
                         />
                         <Box
@@ -437,7 +413,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                                 transition: "all 200ms ease-in-out",
                                 ":hover": { opacity: 0.75 },
                               }}
-                              companyName={company.companyName}
                               imageUrl={company.logoUrl}
                             />
                             <Box
