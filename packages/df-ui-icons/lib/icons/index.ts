@@ -127,6 +127,7 @@ import shieldSafe from "./shieldSafe";
 import rotateClockwise from "./rotateClockwise";
 import imageCrop from "./imageCrop";
 import imageScale from "./imageScale";
+import shoppingCart from "./shoppingCart";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -259,6 +260,7 @@ const icons = {
   questionCircle,
   shieldSafe,
   rotateClockwise,
+  shoppingCart,
 };
 
 type IconKeys = keyof typeof icons;
