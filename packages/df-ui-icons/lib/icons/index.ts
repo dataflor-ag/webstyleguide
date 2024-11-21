@@ -128,6 +128,10 @@ import rotateClockwise from "./rotateClockwise";
 import imageCrop from "./imageCrop";
 import imageScale from "./imageScale";
 import shoppingCart from "./shoppingCart";
+import connect from "./connect";
+import connectCloud from "./connectCloud";
+import revert from "./revert";
+import save from "./save";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -261,6 +265,10 @@ const icons = {
   shieldSafe,
   rotateClockwise,
   shoppingCart,
+  connect,
+  connectCloud,
+  revert,
+  save,
 };
 
 type IconKeys = keyof typeof icons;
