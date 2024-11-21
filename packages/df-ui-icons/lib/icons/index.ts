@@ -113,6 +113,10 @@ import locationCircle from "./locationCircle"
 import locationMap from "./locationMap"
 import digger from "./digger"
 import diggerEdit from "./diggerEdit"
+import save from "./save"
+import connectCloud from "./connectCloud"
+import revert from "./revert"
+import connect from "./connect"
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -230,7 +234,12 @@ const icons = {
   bulletPoint,
   addressBook,
   digger,
-  diggerEdit
+  diggerEdit,
+  save,
+  connectCloud,
+  revert,
+  connect,
+  
 }
 
 type IconKeys = keyof typeof icons;
