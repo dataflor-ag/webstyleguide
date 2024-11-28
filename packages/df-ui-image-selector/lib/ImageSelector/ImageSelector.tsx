@@ -12,7 +12,7 @@ interface ImageSelectorProps extends ImageSelectorRootProps {
   image: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onButtonClick?: (event: React.MouseEvent) => void;
+  onButtonClick?: (event: React.MouseEvent<HTMLElement>) => void;
   renderButton?: boolean;
   buttonIcon?: JSX.Element;
 }
