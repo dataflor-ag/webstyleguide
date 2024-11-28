@@ -12,7 +12,9 @@ interface ImageSelectorProps extends ImageSelectorRootProps {
   image: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onDelete?: (event: React.MouseEvent) => void;
+  onButtonClick?: (event: React.MouseEvent) => void;
+  renderButton?: boolean;
+  buttonIcon?: JSX.Element;
 }
 
 const ImageSelectorRoot = styled("div", {
@@ -134,10 +136,12 @@ export const ImageSelector = React.forwardRef<
         checked={checked}
         sx={{ position: "relative" }}
       >
-        {props.onDelete !== undefined && (
+        {props.renderButton === true && (
           <IconButton
             onClick={(e) => {
-              if (props.onDelete !== undefined) props.onDelete(e);
+              if (props.onButtonClick !== undefined) {
+                props.onButtonClick(e);
+              }
             }}
             size="small"
             color="secondary"
@@ -159,7 +163,7 @@ export const ImageSelector = React.forwardRef<
               },
             }}
           >
-            <Icon.trash />
+            {props.buttonIcon ? props.buttonIcon : <Icon.dots />}
           </IconButton>
         )}
         <ImageSelectorImage src={image} alt={label ?? ""} />

@@ -2,6 +2,7 @@ import React from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 import { ImageSelector } from "../../packages/df-ui-image-selector/lib/";
+import Icon from "@dataflor-ag/df-ui-icons";
 
 const meta: Meta<typeof ImageSelector> = {
   title: "Components/ImageSelector",
@@ -23,7 +24,13 @@ const meta: Meta<typeof ImageSelector> = {
     checked: {
       type: "boolean",
     },
-    onDelete: {
+    renderButton: {
+      type: "boolean",
+    },
+    onButtonClick: {
+      type: "function",
+    },
+    buttonIcon: {
       type: "function",
     },
   },
@@ -56,9 +63,11 @@ export const CheckedWithDeleteButton: Story = {
     value: "light",
     image: "https://picsum.photos/200/300",
     checked: true,
-    onDelete: (e) => {
+    onButtonClick: (e) => {
       console.log("delete clicked");
     },
+    renderButton: true,
+    buttonIcon: <Icon.trash />,
   },
 };
 export const UncheckedWithDeleteButton: Story = {
@@ -67,9 +76,11 @@ export const UncheckedWithDeleteButton: Story = {
     value: "light",
     image: "https://picsum.photos/200/300",
     checked: false,
-    onDelete: (e) => {
+    onButtonClick: (e) => {
       console.log("delete clicked");
     },
+    renderButton: true,
+    buttonIcon: <Icon.trash />,
   },
 };
 
@@ -79,9 +90,11 @@ export const WithDeleteButtonAndGreyPlaceholder: Story = {
     value: "light",
     image: "https://via.placeholder.com/200x140",
     checked: true,
-    onDelete: (e) => {
+    onButtonClick: (e) => {
       console.log("delete clicked");
     },
+    renderButton: true,
+    buttonIcon: <Icon.trash />,
   },
 };
 
@@ -90,8 +103,23 @@ export const WithDeleteButtonNoLabel: Story = {
     value: "light",
     image: "https://via.placeholder.com/200x140",
     checked: true,
-    onDelete: (e) => {
+    onButtonClick: (e) => {
       console.log("delete clicked");
     },
+    renderButton: true,
+    buttonIcon: <Icon.trash />,
+  },
+};
+
+export const WithMenuButtonNoLabel: Story = {
+  args: {
+    value: "light",
+    image: "https://via.placeholder.com/200x140",
+    checked: true,
+    onButtonClick: (e) => {
+      console.log("delete clicked");
+    },
+    renderButton: true,
+    buttonIcon: <Icon.dots />,
   },
 };
