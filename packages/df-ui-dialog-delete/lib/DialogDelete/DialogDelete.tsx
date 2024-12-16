@@ -129,12 +129,18 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
         </DialogTitle>
         <DialogContentBox>
           {text && (
-            <Typography marginBottom={secondaryText || warningBoxText ? "0.75rem" : 0} variant="subtitle2">
+            <Typography
+              marginBottom={secondaryText || warningBoxText ? "0.75rem" : 0}
+              variant="subtitle2"
+            >
               {text}
             </Typography>
           )}
-             {secondaryText && (
-            <Typography marginBottom={warningBoxText ? "0.5rem" : 0} variant="subtitle2">
+          {secondaryText && (
+            <Typography
+              marginBottom={warningBoxText ? "0.5rem" : 0}
+              variant="subtitle2"
+            >
               {secondaryText}
             </Typography>
           )}
@@ -152,10 +158,20 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
         </DialogContentBox>
         <Divider />
         <DialogActions sx={{ paddingRight: "1.78rem" }}>
-          <Button color="secondary" variant="outlined" onClick={onClose}>
+          <Button
+            color="secondary"
+            variant="outlined"
+            startIcon={<Icon.close />}
+            onClick={onClose}
+          >
             {buttonTextClose}
           </Button>
-          <Button color="error" disabled={deleteDisabled} onClick={onDelete}>
+          <Button
+            color="error"
+            disabled={deleteDisabled}
+            startIcon={<Icon.trash />}
+            onClick={onDelete}
+          >
             {buttonTextDelete}
           </Button>
         </DialogActions>
