@@ -17,6 +17,7 @@ import Icon from "@dataflor-ag/df-ui-icons";
 interface DialogDeleteProps extends DialogProps {
   title: string;
   icon?: React.ReactNode;
+  deleteIcon?: React.ReactNode;
   open: boolean;
   children?: React.ReactNode;
   onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -70,6 +71,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
       onClose,
       onDelete,
       open,
+      deleteIcon = <Icon.trash />,
       deleteDisabled,
       children,
       buttonTextClose,
@@ -169,7 +171,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
           <Button
             color="error"
             disabled={deleteDisabled}
-            startIcon={<Icon.trash />}
+            startIcon={deleteIcon}
             onClick={onDelete}
           >
             {buttonTextDelete}
