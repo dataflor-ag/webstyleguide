@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-dialog-delete",
-  "version": "1.1.8",
+  "version": "1.1.10",
   "description": "Dialog modal for delete notifications and delete actions.",
   "author": "Wiebken Nagel <nagel@dataflor.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
