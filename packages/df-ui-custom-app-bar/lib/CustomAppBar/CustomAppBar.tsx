@@ -27,6 +27,7 @@ export interface CustomAppBarProps extends AppBarProps {
   onDarkmodeClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTasksClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onSettingsClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onContactsClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onPersonalDataClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onSecurityClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onAccountSettingsClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -44,6 +45,7 @@ export interface CustomAppBarProps extends AppBarProps {
     buttonDarkMode?: boolean;
     buttonTasks?: boolean;
     buttonSettings?: boolean;
+    buttonContacts?: boolean;
     companyMenu?: boolean;
     avatarMenu?: boolean;
     avatarMenuPersonal?: boolean;
@@ -57,6 +59,7 @@ export interface CustomAppBarProps extends AppBarProps {
     darkMode?: string;
     tasks?: string;
     settings?: string;
+    contacts?: string;
     accountMenu?: string;
     companyMenu?: string;
     personalData?: string;
@@ -278,6 +281,22 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       id="button-open-task-overview"
                     >
                       <Icon.task />
+                    </IconButton>
+                  </Tooltip>
+                )}
+                {props.isRendered?.buttonContacts !== undefined && (
+                  <Tooltip
+                    title={
+                      props.componentText?.contacts
+                        ? props.componentText.contacts
+                        : "Contacts"
+                    }
+                  >
+                    <IconButton
+                      onClick={props.onContactsClick}
+                      id="button-open-contacts-page"
+                    >
+                      <Icon.userTeam />
                     </IconButton>
                   </Tooltip>
                 )}
