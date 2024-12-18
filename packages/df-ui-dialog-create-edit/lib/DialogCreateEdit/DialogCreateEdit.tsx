@@ -22,6 +22,7 @@ interface DialogCreateEditProps extends DialogProps {
   onSave: (event: React.MouseEvent<HTMLButtonElement>) => void;
   buttonTextClose: string;
   buttonTextSave: string;
+  saveIcon?: React.ReactNode;
   saveDisabled?: boolean;
   id?: string;
   DialogProps?: DialogProps;
@@ -37,6 +38,7 @@ export const DialogCreateEdit = React.forwardRef<
     onClose,
     onSave,
     open,
+    saveIcon = <Icon.save />,
     saveDisabled,
     children,
     buttonTextClose,
@@ -44,6 +46,7 @@ export const DialogCreateEdit = React.forwardRef<
     id,
     ...DialogProps
   } = props;
+
   return (
     <Dialog
       id={id}
@@ -79,7 +82,7 @@ export const DialogCreateEdit = React.forwardRef<
         </Button>
         <Button
           color="primary"
-          startIcon={<Icon.save />}
+          startIcon={saveIcon}
           disabled={saveDisabled}
           onClick={onSave}
         >
