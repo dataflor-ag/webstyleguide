@@ -212,7 +212,15 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline enableColorScheme />
-        <AppBar position="static" ref={ref} id="main-app-bar">
+        <AppBar
+          position="static"
+          ref={ref}
+          id="main-app-bar"
+          sx={{
+            paddingLeft: "1.5rem !important",
+            paddingRight: "1.5rem !important",
+          }}
+        >
           <Toolbar disableGutters>
             <ButtonBase
               sx={{ marginRight: "0.5rem" }}
