@@ -985,3 +985,93 @@ export function CustomAppBarWithUserAnCompanyNameButNoLogo(): JSX.Element {
     </>
   );
 }
+
+export function CustomAppBarWithCompanyMenuAndSlotInfo(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "002",
+    },
+  ];
+  return (
+    <>
+      <CustomAppBar
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "https://picsum.photos/200/200",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          buttonTasks: true,
+          buttonSettings: true,
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+          slotInfo: true,
+        }}
+        componentText={{}}
+        companyList={companyList}
+        currentEnvironment={"dev"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
