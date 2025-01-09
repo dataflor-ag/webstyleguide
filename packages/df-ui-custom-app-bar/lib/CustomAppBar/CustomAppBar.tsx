@@ -4,7 +4,6 @@ import {
   Box,
   AppBar,
   ButtonBase,
-  Container,
   Divider,
   IconButton,
   Stack,
@@ -17,7 +16,7 @@ import {
   ThemeProvider,
   CssBaseline,
   type SxProps,
-  Chip,
+  useMediaQuery,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
@@ -100,6 +99,9 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const { ...CustomAppBarProps } = props;
 
     const theme = getTheme(props.isDarkMode ? "dark" : "light");
+
+    const hasMediumScreen = useMediaQuery("(max-width:900px)");
+    const hasSmallScreen = useMediaQuery("(max-width:700px)");
 
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
     const [anchorElCompany, setAnchorElCompany] =
@@ -211,477 +213,493 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       <ThemeProvider theme={theme}>
         <CssBaseline enableColorScheme />
         <AppBar position="static" ref={ref} id="main-app-bar">
-          <Container>
-            <Toolbar disableGutters>
-              <ButtonBase
-                sx={{ marginRight: "0.5rem" }}
-                onClick={props.onLogoClick}
-                id="button-back-to-dashboard"
-              >
-                {props.logoImageUrl ? (
-                  <img src={props.logoImageUrl} />
-                ) : (
-                  <DataflorLogo />
-                )}
-              </ButtonBase>
-              {isSlotInfoShown && (
-                <>
-                  <Tooltip
-                    title={
-                      props.componentText?.slotInfo &&
-                      props.componentText.slotInfo + " " + slotInfoText
-                    }
-                  >
-                    <Chip
-                      sx={{ padding: "0.95rem 0.25rem" }}
-                      color="primary"
-                      label={
-                        <Typography
-                          noWrap
-                          sx={{
-                            fontSize: "0.85rem",
-                            fontWeight: "600",
-                          }}
-                        >
-                          {props.componentText?.slotInfo &&
-                            props.componentText.slotInfo}{" "}
-                          {slotInfoText}
-                        </Typography>
-                      }
-                    ></Chip>
-                  </Tooltip>
-                </>
+          <Toolbar disableGutters>
+            <ButtonBase
+              sx={{ marginRight: "0.5rem" }}
+              onClick={props.onLogoClick}
+              id="button-back-to-dashboard"
+            >
+              {props.logoImageUrl ? (
+                <img src={props.logoImageUrl} />
+              ) : (
+                <DataflorLogo />
               )}
-              <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
-                {props.isRendered?.buttonDarkMode !== undefined && (
-                  <Tooltip
-                    title={
-                      props.componentText?.darkMode
-                        ? props.componentText.darkMode
-                        : "Change Theme"
-                    }
+            </ButtonBase>
+            {isSlotInfoShown && (
+              <>
+                <Tooltip
+                  title={
+                    props.componentText?.slotInfo
+                      ? props.componentText.slotInfo + " " + slotInfoText
+                      : "You are currently on test slot" + " " + slotInfoText
+                  }
+                >
+                  <Box
+                    sx={{
+                      maxWidth: hasSmallScreen
+                        ? "7rem"
+                        : hasMediumScreen
+                          ? "14rem"
+                          : "inital",
+                      padding: "0.25rem 1rem",
+                      borderRadius: "30px",
+                      marginInline: "auto",
+                      boxShadow: "0 0 2px 0" + theme.palette.primary[100],
+                      border: "1px solid " + theme.palette.primary[200],
+                      backgroundColor: theme.palette.primary[50],
+                      color: theme.palette.primary[600],
+                    }}
                   >
-                    <IconButton
-                      onClick={props.onDarkmodeClick}
-                      id="button-toggle-darkmode"
-                    >
-                      {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
-                    </IconButton>
-                  </Tooltip>
-                )}
-                {props.isRendered?.buttonTasks !== undefined && (
-                  <Tooltip
-                    title={
-                      props.componentText?.tasks
-                        ? props.componentText.tasks
-                        : "Task Overview"
-                    }
-                  >
-                    <IconButton
-                      onClick={props.onTasksClick}
-                      id="button-open-task-overview"
-                    >
-                      <Icon.task />
-                    </IconButton>
-                  </Tooltip>
-                )}
-                {props.isRendered?.buttonContacts !== undefined && (
-                  <Tooltip
-                    title={
-                      props.componentText?.contacts
-                        ? props.componentText.contacts
-                        : "Contacts"
-                    }
-                  >
-                    <IconButton
-                      onClick={props.onContactsClick}
-                      id="button-open-contacts-page"
-                    >
-                      <Icon.userTeam />
-                    </IconButton>
-                  </Tooltip>
-                )}
-                {props.isRendered?.buttonSettings !== undefined && (
-                  <Tooltip
-                    title={
-                      props.componentText?.settings
-                        ? props.componentText.settings
-                        : "Settings"
-                    }
-                  >
-                    <IconButton
-                      onClick={props.onSettingsClick}
-                      id="button-open-settings-page"
-                    >
-                      <Icon.settings />
-                    </IconButton>
-                  </Tooltip>
-                )}
-                {props.isRendered?.companyMenu && (
-                  <>
-                    <Box
+                    <Typography
+                      noWrap
                       sx={{
-                        marginLeft: 3.5,
-                        display: "flex",
-                        alignItems: "center",
+                        fontSize: "0.85rem",
+                        fontWeight: "600",
+                        margin: 0,
                         textAlign: "center",
                       }}
                     >
-                      <Tooltip
-                        title={
-                          props.componentText?.companyMenu
-                            ? props.componentText.companyMenu
-                            : "Company Account Menu"
-                        }
-                      >
-                        <IconButton
-                          size="small"
-                          onClick={handleCompanyMenuClick}
-                          id="button-company-menu"
-                        >
-                          <CompanyLogo
-                            imageUrl={props.companyData?.logoUrl}
-                            variant="rounded"
-                          />
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                    <Menu
-                      anchorEl={anchorElCompany}
-                      open={isCompanyMenuOpen}
-                      onClose={handleCompanyClose}
-                      transformOrigin={{ horizontal: "right", vertical: "top" }}
-                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                      id="company-account-menu"
+                      {hasMediumScreen
+                        ? slotInfoText
+                        : props.componentText?.slotInfo &&
+                            props.componentText?.slotInfo
+                          ? props.componentText.slotInfo + " " + slotInfoText
+                          : "You are currently on test slot" +
+                            " " +
+                            slotInfoText}
+                    </Typography>
+                  </Box>
+                </Tooltip>
+              </>
+            )}
+            <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
+              {props.isRendered?.buttonDarkMode !== undefined && (
+                <Tooltip
+                  title={
+                    props.componentText?.darkMode
+                      ? props.componentText.darkMode
+                      : "Change Theme"
+                  }
+                >
+                  <IconButton
+                    onClick={props.onDarkmodeClick}
+                    id="button-toggle-darkmode"
+                  >
+                    {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
+                  </IconButton>
+                </Tooltip>
+              )}
+              {props.isRendered?.buttonTasks !== undefined && (
+                <Tooltip
+                  title={
+                    props.componentText?.tasks
+                      ? props.componentText.tasks
+                      : "Task Overview"
+                  }
+                >
+                  <IconButton
+                    onClick={props.onTasksClick}
+                    id="button-open-task-overview"
+                  >
+                    <Icon.task />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {props.isRendered?.buttonContacts !== undefined && (
+                <Tooltip
+                  title={
+                    props.componentText?.contacts
+                      ? props.componentText.contacts
+                      : "Contacts"
+                  }
+                >
+                  <IconButton
+                    onClick={props.onContactsClick}
+                    id="button-open-contacts-page"
+                  >
+                    <Icon.userTeam />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {props.isRendered?.buttonSettings !== undefined && (
+                <Tooltip
+                  title={
+                    props.componentText?.settings
+                      ? props.componentText.settings
+                      : "Settings"
+                  }
+                >
+                  <IconButton
+                    onClick={props.onSettingsClick}
+                    id="button-open-settings-page"
+                  >
+                    <Icon.settings />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {props.isRendered?.companyMenu && (
+                <>
+                  <Box
+                    sx={{
+                      marginLeft: 3.5,
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.companyMenu
+                          ? props.componentText.companyMenu
+                          : "Company Account Menu"
+                      }
                     >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          gap: "0.25rem",
-                          alignItems: "center",
-                          my: "5px",
-                          paddingInline: "0.5rem",
-                          pr: "1rem",
-                          backgroundColor: theme.palette.background.paper,
-                        }}
-                        id="company-menu-info-element"
+                      <IconButton
+                        size="small"
+                        onClick={handleCompanyMenuClick}
+                        id="button-company-menu"
                       >
                         <CompanyLogo
                           imageUrl={props.companyData?.logoUrl}
                           variant="rounded"
                         />
-                        <Box
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.25rem",
-                            paddingLeft: "0.5rem",
-                          }}
-                        >
-                          <Typography
-                            variant="subtitle2"
-                            style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
-                          >
-                            {props.companyData?.companyName}
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            style={{
-                              fontSize: "0.7rem",
-                              lineHeight: "0.7rem",
-                              color: theme.palette.grey[500],
-                            }}
-                          >
-                            {props.companyData?.location}
-                          </Typography>
-                        </Box>
-                      </Box>
-                      {props.companyList !== undefined &&
-                        props.companyList.length > 0 && (
-                          <Divider
-                            sx={{
-                              marginBlock: "0.125rem",
-                            }}
-                          />
-                        )}
-                      {props.companyList?.map((company) => (
-                        <MenuItem
-                          key={company.id}
-                          id={"button-change-company-" + company?.companyName}
-                          onClick={(e) => {
-                            if (props.onChangeCompanyClick && company.id) {
-                              props.onChangeCompanyClick(e, company.id);
-                            }
-                            handleCompanyClose();
-                          }}
-                          sx={{
-                            height: "3.25rem",
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              display: "flex",
-                              gap: "0.25rem",
-                              alignItems: "center",
-                              pr: "1rem",
-                            }}
-                            id="company-menu-info-element"
-                          >
-                            <CompanyLogo
-                              sx={{
-                                opacity: 0.65,
-                                transition: "all 200ms ease-in-out",
-                                ":hover": { opacity: 0.75 },
-                              }}
-                              imageUrl={company.logoUrl}
-                            />
-                            <Box
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "0.25rem",
-                                paddingLeft: "0.5rem",
-                              }}
-                            >
-                              <Typography
-                                variant="subtitle2"
-                                style={{
-                                  fontSize: "0.8rem",
-                                  lineHeight: "0.8rem",
-                                }}
-                              >
-                                {company.companyName}
-                              </Typography>
-                              <Typography
-                                variant="subtitle2"
-                                style={{
-                                  fontSize: "0.7rem",
-                                  lineHeight: "0.7rem",
-                                  color: theme.palette.grey[500],
-                                }}
-                              >
-                                {company.location}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </MenuItem>
-                      ))}
-                    </Menu>
-                  </>
-                )}
-                {props.isRendered?.avatarMenu && (
-                  <>
-                    {props.isRendered?.buttonSettings ||
-                    props.isRendered?.buttonTasks ? (
-                      <Divider
-                        orientation="vertical"
-                        flexItem
-                        sx={{
-                          marginRight: props.isRendered.companyMenu ? 3 : 5,
-                          marginLeft: props.isRendered.companyMenu ? 3.5 : 3,
-                        }}
-                      />
-                    ) : (
-                      <></>
-                    )}
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorElCompany}
+                    open={isCompanyMenuOpen}
+                    onClose={handleCompanyClose}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    id="company-account-menu"
+                  >
                     <Box
                       sx={{
                         display: "flex",
+                        gap: "0.25rem",
                         alignItems: "center",
-                        textAlign: "center",
+                        my: "5px",
+                        paddingInline: "0.5rem",
+                        pr: "1rem",
+                        backgroundColor: theme.palette.background.paper,
                       }}
+                      id="company-menu-info-element"
                     >
-                      <Tooltip
-                        title={
-                          props.componentText?.accountMenu
-                            ? props.componentText.accountMenu
-                            : "Account Menu"
-                        }
-                      >
-                        <IconButton
-                          size="small"
-                          onClick={handleMenuClick}
-                          id="button-account-menu"
-                        >
-                          <UserAvatar />
-                        </IconButton>
-                      </Tooltip>
-                    </Box>
-                    <Menu
-                      anchorEl={anchorEl}
-                      open={isMenuOpen}
-                      onClose={handleClose}
-                      transformOrigin={{ horizontal: "right", vertical: "top" }}
-                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                      id="account-menu"
-                    >
+                      <CompanyLogo
+                        imageUrl={props.companyData?.logoUrl}
+                        variant="rounded"
+                      />
                       <Box
-                        sx={{
+                        style={{
                           display: "flex",
+                          flexDirection: "column",
                           gap: "0.25rem",
-                          alignItems: "center",
-                          my: "5px",
-                          paddingInline: "0.5rem",
-                          pr: "1rem",
+                          paddingLeft: "0.5rem",
                         }}
-                        id="account-menu-user-info-element"
                       >
-                        <Avatar
-                          alt={
-                            props.userData?.firstName +
-                            " " +
-                            props.userData?.lastName
-                          }
-                          src={props.userData?.avatarImageUrl}
-                          variant="circular"
-                        />
-                        <Box
+                        <Typography
+                          variant="subtitle2"
+                          style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
+                        >
+                          {props.companyData?.companyName}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
                           style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.25rem",
-                            paddingLeft: "0.5rem",
+                            fontSize: "0.7rem",
+                            lineHeight: "0.7rem",
+                            color: theme.palette.grey[500],
                           }}
                         >
-                          <Typography
-                            variant="subtitle2"
-                            style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
-                          >
-                            {props.userData?.firstName}{" "}
-                            {props.userData?.lastName}
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            style={{
-                              fontSize: "0.7rem",
-                              lineHeight: "0.7rem",
-                              color: theme.palette.grey[500],
-                            }}
-                          >
-                            {props.userData?.email}
-                          </Typography>
-                        </Box>
+                          {props.companyData?.location}
+                        </Typography>
                       </Box>
-                      {props.isRendered?.avatarMenuPersonal && (
+                    </Box>
+                    {props.companyList !== undefined &&
+                      props.companyList.length > 0 && (
                         <Divider
                           sx={{
                             marginBlock: "0.125rem",
                           }}
                         />
                       )}
-                      {props.isRendered?.avatarMenuPersonal && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onPersonalDataClick)
+                    {props.companyList?.map((company) => (
+                      <MenuItem
+                        key={company.id}
+                        id={"button-change-company-" + company?.companyName}
+                        onClick={(e) => {
+                          if (props.onChangeCompanyClick && company.id) {
+                            props.onChangeCompanyClick(e, company.id);
                           }
-                          id="account-menu-button-personal-data"
+                          handleCompanyClose();
+                        }}
+                        sx={{
+                          height: "3.25rem",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: "0.25rem",
+                            alignItems: "center",
+                            pr: "1rem",
+                          }}
+                          id="company-menu-info-element"
                         >
-                          <Icon.user />
-                          {props.componentText?.personalData
-                            ? props.componentText.personalData
-                            : "Personal Data"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuPersonal && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onSecurityClick)
-                          }
-                          id="account-menu-button-security"
+                          <CompanyLogo
+                            sx={{
+                              opacity: 0.65,
+                              transition: "all 200ms ease-in-out",
+                              ":hover": { opacity: 0.75 },
+                            }}
+                            imageUrl={company.logoUrl}
+                          />
+                          <Box
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.25rem",
+                              paddingLeft: "0.5rem",
+                            }}
+                          >
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.8rem",
+                                lineHeight: "0.8rem",
+                              }}
+                            >
+                              {company.companyName}
+                            </Typography>
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.7rem",
+                                lineHeight: "0.7rem",
+                                color: theme.palette.grey[500],
+                              }}
+                            >
+                              {company.location}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </>
+              )}
+              {props.isRendered?.avatarMenu && (
+                <>
+                  {props.isRendered?.buttonSettings ||
+                  props.isRendered?.buttonTasks ? (
+                    <Divider
+                      orientation="vertical"
+                      flexItem
+                      sx={{
+                        marginRight: props.isRendered.companyMenu ? 3 : 5,
+                        marginLeft: props.isRendered.companyMenu ? 3.5 : 3,
+                      }}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.accountMenu
+                          ? props.componentText.accountMenu
+                          : "Account Menu"
+                      }
+                    >
+                      <IconButton
+                        size="small"
+                        onClick={handleMenuClick}
+                        id="button-account-menu"
+                      >
+                        <UserAvatar />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={isMenuOpen}
+                    onClose={handleClose}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    id="account-menu"
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        gap: "0.25rem",
+                        alignItems: "center",
+                        my: "5px",
+                        paddingInline: "0.5rem",
+                        pr: "1rem",
+                      }}
+                      id="account-menu-user-info-element"
+                    >
+                      <Avatar
+                        alt={
+                          props.userData?.firstName +
+                          " " +
+                          props.userData?.lastName
+                        }
+                        src={props.userData?.avatarImageUrl}
+                        variant="circular"
+                      />
+                      <Box
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "0.25rem",
+                          paddingLeft: "0.5rem",
+                        }}
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          style={{ fontSize: "0.8rem", lineHeight: "0.8rem" }}
                         >
-                          <Icon.lock />
-                          {props.componentText?.security
-                            ? props.componentText.security
-                            : "Security"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuPersonal && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onAccountSettingsClick)
-                          }
-                          id="account-menu-button-account-settings"
+                          {props.userData?.firstName} {props.userData?.lastName}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          style={{
+                            fontSize: "0.7rem",
+                            lineHeight: "0.7rem",
+                            color: theme.palette.grey[500],
+                          }}
                         >
-                          <Icon.adjustments />
-                          {props.componentText?.accountSettings
-                            ? props.componentText.accountSettings
-                            : "Account Settings"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuPersonal && <Divider />}
-                      {props.isRendered?.avatarMenuCompany && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onCompanyDataClick)
-                          }
-                          id="account-menu-button-company"
-                        >
-                          <Icon.company />
-                          {props.componentText?.companyData
-                            ? props.componentText.companyData
-                            : "Company Data"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuCompany && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onBankingClick)
-                          }
-                          id="account-menu-button-banking"
-                        >
-                          <Icon.creditcard />
-                          {props.componentText?.banking
-                            ? props.componentText.banking
-                            : "Banking Information"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuCompany && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onTeamManagementClick)
-                          }
-                          id="account-menu-button-team"
-                        >
-                          <Icon.userTeam />
-                          {props.componentText?.teamManagement
-                            ? props.componentText.teamManagement
-                            : "Team Management"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuCompany && <Divider />}
-                      {props.isRendered?.avatarMenuBilling && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onBillingClick)
-                          }
-                          id="account-menu-button-billing"
-                        >
-                          <Icon.invoice />
-                          {props.componentText?.billing
-                            ? props.componentText.billing
-                            : "Billing"}
-                        </MenuItem>
-                      )}
-                      {props.isRendered?.avatarMenuBilling && <Divider />}
-                      {props.isRendered?.avatarMenuLogout && (
-                        <MenuItem
-                          onClick={(e) =>
-                            handleMenuItemClick(e, props.onLogoutClick)
-                          }
-                          id="account-menu-button-logout"
-                        >
-                          <Icon.logout />
-                          {props.componentText?.logout
-                            ? props.componentText.logout
-                            : "Logout"}
-                        </MenuItem>
-                      )}
-                    </Menu>
-                  </>
-                )}
-              </Stack>
-            </Toolbar>
-          </Container>
+                          {props.userData?.email}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    {props.isRendered?.avatarMenuPersonal && (
+                      <Divider
+                        sx={{
+                          marginBlock: "0.125rem",
+                        }}
+                      />
+                    )}
+                    {props.isRendered?.avatarMenuPersonal && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onPersonalDataClick)
+                        }
+                        id="account-menu-button-personal-data"
+                      >
+                        <Icon.user />
+                        {props.componentText?.personalData
+                          ? props.componentText.personalData
+                          : "Personal Data"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuPersonal && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onSecurityClick)
+                        }
+                        id="account-menu-button-security"
+                      >
+                        <Icon.lock />
+                        {props.componentText?.security
+                          ? props.componentText.security
+                          : "Security"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuPersonal && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onAccountSettingsClick)
+                        }
+                        id="account-menu-button-account-settings"
+                      >
+                        <Icon.adjustments />
+                        {props.componentText?.accountSettings
+                          ? props.componentText.accountSettings
+                          : "Account Settings"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuPersonal && <Divider />}
+                    {props.isRendered?.avatarMenuCompany && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onCompanyDataClick)
+                        }
+                        id="account-menu-button-company"
+                      >
+                        <Icon.company />
+                        {props.componentText?.companyData
+                          ? props.componentText.companyData
+                          : "Company Data"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuCompany && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onBankingClick)
+                        }
+                        id="account-menu-button-banking"
+                      >
+                        <Icon.creditcard />
+                        {props.componentText?.banking
+                          ? props.componentText.banking
+                          : "Banking Information"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuCompany && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onTeamManagementClick)
+                        }
+                        id="account-menu-button-team"
+                      >
+                        <Icon.userTeam />
+                        {props.componentText?.teamManagement
+                          ? props.componentText.teamManagement
+                          : "Team Management"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuCompany && <Divider />}
+                    {props.isRendered?.avatarMenuBilling && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onBillingClick)
+                        }
+                        id="account-menu-button-billing"
+                      >
+                        <Icon.invoice />
+                        {props.componentText?.billing
+                          ? props.componentText.billing
+                          : "Billing"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuBilling && <Divider />}
+                    {props.isRendered?.avatarMenuLogout && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onLogoutClick)
+                        }
+                        id="account-menu-button-logout"
+                      >
+                        <Icon.logout />
+                        {props.componentText?.logout
+                          ? props.componentText.logout
+                          : "Logout"}
+                      </MenuItem>
+                    )}
+                  </Menu>
+                </>
+              )}
+            </Stack>
+          </Toolbar>
         </AppBar>
       </ThemeProvider>
     );
