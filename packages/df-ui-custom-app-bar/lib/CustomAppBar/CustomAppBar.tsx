@@ -17,6 +17,7 @@ import {
   ThemeProvider,
   CssBaseline,
   type SxProps,
+  Chip,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
@@ -225,30 +226,30 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               </ButtonBase>
               {isSlotInfoShown && (
                 <>
-                  <Box
-                    sx={{
-                      padding: "0.25rem 1rem",
-                      borderRadius: "30px",
-                      marginInline: "auto",
-                      boxShadow: "0 0 2px 0" + theme.palette.primary[100],
-                      border: "1px solid " + theme.palette.primary[200],
-                      backgroundColor: theme.palette.primary[50],
-                      color: theme.palette.primary[600],
-                    }}
+                  <Tooltip
+                    title={
+                      props.componentText?.slotInfo &&
+                      props.componentText.slotInfo + " " + slotInfoText
+                    }
                   >
-                    <Typography
-                      sx={{
-                        fontSize: "0.85rem",
-                        fontWeight: "600",
-                        margin: 0,
-                        textAlign: "center",
-                      }}
-                    >
-                      {props.componentText?.slotInfo &&
-                        props.componentText.slotInfo}{" "}
-                      {slotInfoText}
-                    </Typography>
-                  </Box>
+                    <Chip
+                      sx={{ padding: "0.95rem 0.25rem" }}
+                      color="primary"
+                      label={
+                        <Typography
+                          noWrap
+                          sx={{
+                            fontSize: "0.85rem",
+                            fontWeight: "600",
+                          }}
+                        >
+                          {props.componentText?.slotInfo &&
+                            props.componentText.slotInfo}{" "}
+                          {slotInfoText}
+                        </Typography>
+                      }
+                    ></Chip>
+                  </Tooltip>
                 </>
               )}
               <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>

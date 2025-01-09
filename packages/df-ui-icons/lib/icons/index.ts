@@ -132,6 +132,8 @@ import connect from "./connect";
 import connectCloud from "./connectCloud";
 import revert from "./revert";
 import save from "./save";
+import phone from "./phone";
+import globe from "./globe";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -269,6 +271,8 @@ const icons = {
   connectCloud,
   revert,
   save,
+  phone,
+  globe,
 };
 
 type IconKeys = keyof typeof icons;
