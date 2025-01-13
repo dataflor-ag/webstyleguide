@@ -500,7 +500,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               {props.isRendered?.avatarMenu && (
                 <>
                   {props.isRendered?.buttonSettings ||
-                  props.isRendered?.buttonTasks ? (
+                  props.isRendered?.buttonTasks ||
+                  props.isRendered?.buttonContacts ||
+                  props.isRendered?.buttonDarkMode ||
+                  props.isRendered?.companyMenu ? (
                     <Divider
                       orientation="vertical"
                       flexItem
