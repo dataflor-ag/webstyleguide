@@ -219,6 +219,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
           sx={{
             paddingLeft: "1.5rem !important",
             paddingRight: "1.5rem !important",
+            [theme.breakpoints.down("xxl")]: {
+              paddingLeft: "2rem !important",
+              paddingRight: "2rem !important",
+            },
           }}
         >
           <Toolbar disableGutters>
