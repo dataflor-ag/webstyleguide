@@ -1,5 +1,4 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
 import {
   Typography,
   Button,
@@ -8,7 +7,6 @@ import {
   DialogContent,
   DialogTitle,
   Box,
-  type Breakpoint,
 } from "@mui/material";
 import { type DialogProps } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
@@ -62,7 +60,7 @@ export const DialogCreateEdit = React.forwardRef<
           gap={3}
           sx={{
             "& .MuiSvgIcon-fontSizeMedium": {
-              fontSize: "20px",
+              fontSize: "1.25rem",
             },
           }}
         >
@@ -81,6 +79,7 @@ export const DialogCreateEdit = React.forwardRef<
           {buttonTextClose}
         </Button>
         <Button
+          variant="contained"
           color="primary"
           startIcon={saveIcon}
           disabled={saveDisabled}

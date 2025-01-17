@@ -118,6 +118,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
             </IconWrapper>
             <Typography variant="h6">{title}</Typography>
             <IconButton
+              color="inherit"
               sx={{
                 marginLeft: "auto",
                 marginBottom: "auto",
@@ -169,6 +170,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
             {buttonTextClose}
           </Button>
           <Button
+            variant="contained"
             color="error"
             disabled={deleteDisabled}
             startIcon={deleteIcon}

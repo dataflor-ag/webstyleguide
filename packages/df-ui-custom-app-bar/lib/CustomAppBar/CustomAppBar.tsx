@@ -294,6 +294,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   }
                 >
                   <IconButton
+                    color="inherit"
                     onClick={props.onDarkmodeClick}
                     id="button-toggle-darkmode"
                   >
@@ -310,6 +311,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   }
                 >
                   <IconButton
+                    color="inherit"
                     onClick={props.onTasksClick}
                     id="button-open-task-overview"
                   >
@@ -326,6 +328,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   }
                 >
                   <IconButton
+                    color="inherit"
                     onClick={props.onContactsClick}
                     id="button-open-contacts-page"
                   >
@@ -342,6 +345,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   }
                 >
                   <IconButton
+                    color="inherit"
                     onClick={props.onSettingsClick}
                     id="button-open-settings-page"
                   >
@@ -367,6 +371,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       }
                     >
                       <IconButton
+                        color="inherit"
                         size="small"
                         onClick={handleCompanyMenuClick}
                         id="button-company-menu"
@@ -534,6 +539,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       }
                     >
                       <IconButton
+                        color="inherit"
                         size="small"
                         onClick={handleMenuClick}
                         id="button-account-menu"
