@@ -1,17 +1,23 @@
-import React from "react"
-import { styled } from "@mui/material/styles"
-import { Typography, IconButton } from "@mui/material"
-import { IconWrapper } from "@dataflor-ag/df-ui-icon-wrapper"
-import Icon from "@dataflor-ag/df-ui-icons"
+import React from "react";
+import { styled } from "@mui/material/styles";
+import { Typography, IconButton } from "@mui/material";
+import { IconWrapper } from "@dataflor-ag/df-ui-icon-wrapper";
+import Icon from "@dataflor-ag/df-ui-icons";
 
-type IconVariant = "default" | "primary" | "success" | "warning" | "error" | "info"
+type IconVariant =
+  | "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "error"
+  | "info";
 
 interface DialogHeaderProps {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
   icon?: React.ReactNode;
-  iconVariant?: IconVariant
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  iconVariant?: IconVariant;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const DialogHeaderRoot = styled("div", {
@@ -26,24 +32,21 @@ const DialogHeaderRoot = styled("div", {
   borderBottom: `1px solid ${theme.palette.grey[200]}`,
 
   "& .MuiTypography-body2": {
-    color: theme.palette.grey[600]
+    color: theme.palette.grey[600],
   },
 
   "& .MuiIconWrapper-root": {
-    marginBottom: "auto"
-  }
-}))
-
-
+    marginBottom: "auto",
+  },
+}));
 
 export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   (props, ref) => {
-
-    const { icon, title, subtitle, onClose, iconVariant = "default" } = props
+    const { icon, title, subtitle, onClose, iconVariant = "default" } = props;
     const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation()
-      if(onClose) onClose(e)
-    }
+      e.stopPropagation();
+      if (onClose) onClose(e);
+    };
 
     return (
       <DialogHeaderRoot ref={ref}>
@@ -52,8 +55,20 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
           <Typography variant="h6">{title}</Typography>
           {subtitle && <Typography variant="body2">{subtitle}</Typography>}
         </div>
-        {onClose && <IconButton sx={{marginLeft: "auto", marginBottom: "auto",  transform: "translate(8px, -8px)"}} onClick={handleClose}><Icon.close /></IconButton>}
+        {onClose && (
+          <IconButton
+            color="inherit"
+            sx={{
+              marginLeft: "auto",
+              marginBottom: "auto",
+              transform: "translate(8px, -8px)",
+            }}
+            onClick={handleClose}
+          >
+            <Icon.close />
+          </IconButton>
+        )}
       </DialogHeaderRoot>
-    )
-  }
-)
+    );
+  },
+);

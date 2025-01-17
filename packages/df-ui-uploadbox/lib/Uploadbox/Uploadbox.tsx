@@ -191,6 +191,7 @@ export const Uploadbox = React.forwardRef<HTMLDivElement, UploadboxProps>(
           </Box>
 
           <LinearProgress
+            color="primary"
             variant={props.uploadPercentage === 0 ? "buffer" : "determinate"}
             value={props.uploadPercentage}
             valueBuffer={0}
