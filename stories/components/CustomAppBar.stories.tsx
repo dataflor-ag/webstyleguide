@@ -1213,7 +1213,7 @@ export function CustomAppBarWithLanguageMenuAndSlotInfo(): JSX.Element {
         isDarkMode
         componentText={{}}
         currentEnvironment={"dev"}
-        onChangeLanguageMenuClick={handleLanguageChange}
+        onLanguageMenuClick={handleLanguageChange}
       />
       <Snackbar
         open={open}

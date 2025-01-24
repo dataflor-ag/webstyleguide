@@ -39,7 +39,7 @@ export interface CustomAppBarProps extends AppBarProps {
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  onChangeLanguageMenuClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLanguageMenuClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
     companyId: string,
@@ -762,7 +762,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     id="language-menu"
                   >
                     <MenuItem
-                      onClick={props.onChangeLanguageMenuClick}
+                      onClick={props.onLanguageMenuClick}
                       id="menu-item-change-language-to-nl"
                     >
                       <ListItemIcon>
@@ -778,7 +778,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         : "Dutch"}
                     </MenuItem>
                     <MenuItem
-                      onClick={props.onChangeLanguageMenuClick}
+                      onClick={props.onLanguageMenuClick}
                       id="menu-item-change-language-to-de"
                     >
                       <ListItemIcon>
@@ -794,7 +794,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         : "German"}
                     </MenuItem>
                     <MenuItem
-                      onClick={props.onChangeLanguageMenuClick}
+                      onClick={props.onLanguageMenuClick}
                       id="menu-item-change-language-to-it"
                     >
                       <ListItemIcon>
@@ -810,7 +810,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         : "Italian"}
                     </MenuItem>
                     <MenuItem
-                      onClick={props.onChangeLanguageMenuClick}
+                      onClick={props.onLanguageMenuClick}
                       id="menu-item-change-language-to-en"
                     >
                       <ListItemIcon>
