@@ -17,9 +17,11 @@ import {
   CssBaseline,
   type SxProps,
   useMediaQuery,
+  ListItemIcon,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
+import { DE, GB, IT, NL } from "country-flag-icons/react/3x2";
 
 export interface CustomAppBarProps extends AppBarProps {
   logoImageUrl?: string;
@@ -37,6 +39,18 @@ export interface CustomAppBarProps extends AppBarProps {
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onChangeLanguageMenuClickDutch?: (
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  onChangeLanguageMenuClickGerman?: (
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  onChangeLanguageMenuClickItalian?: (
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
+  onChangeLanguageMenuClickEnglish?: (
+    event: React.MouseEvent<HTMLElement>,
+  ) => void;
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
     companyId: string,
@@ -52,6 +66,7 @@ export interface CustomAppBarProps extends AppBarProps {
     avatarMenuCompany?: boolean;
     avatarMenuBilling?: boolean;
     avatarMenuLogout?: boolean;
+    languageMenu?: boolean;
     slotInfo?: boolean;
   };
   componentText?: {
@@ -70,6 +85,11 @@ export interface CustomAppBarProps extends AppBarProps {
     teamManagement?: string;
     roleManagement?: string;
     billing?: string;
+    languageMenu?: string;
+    languageMenuDutch?: string;
+    languageMenuEnglish?: string;
+    languageMenuGerman?: string;
+    languageMenuItalian?: string;
     logout?: string;
   };
   isDarkMode?: boolean;
@@ -716,6 +736,106 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Logout"}
                       </MenuItem>
                     )}
+                  </Menu>
+                </>
+              )}
+              {props.isRendered?.languageMenu && (
+                <>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.languageMenu
+                          ? props.componentText.languageMenu
+                          : "Change Language"
+                      }
+                    >
+                      <IconButton
+                        color="inherit"
+                        onClick={handleMenuClick}
+                        id="button-language-menu"
+                      >
+                        <Icon.globe />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={isMenuOpen}
+                    onClose={handleClose}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    id="language-menu"
+                  >
+                    <MenuItem
+                      onClick={props.onChangeLanguageMenuClickDutch}
+                      id="menu-item-change-language-to-nl"
+                    >
+                      <ListItemIcon>
+                        <NL
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuDutch
+                        ? props.componentText.languageMenuDutch
+                        : "Dutch"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={props.onChangeLanguageMenuClickGerman}
+                      id="menu-item-change-language-to-de"
+                    >
+                      <ListItemIcon>
+                        <DE
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuGerman
+                        ? props.componentText.languageMenuGerman
+                        : "German"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={props.onChangeLanguageMenuClickItalian}
+                      id="menu-item-change-language-to-it"
+                    >
+                      <ListItemIcon>
+                        <IT
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuItalian
+                        ? props.componentText.languageMenuItalian
+                        : "Italian"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={props.onChangeLanguageMenuClickEnglish}
+                      id="menu-item-change-language-to-en"
+                    >
+                      <ListItemIcon>
+                        <GB
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuEnglish
+                        ? props.componentText.languageMenuEnglish
+                        : "English"}
+                    </MenuItem>
                   </Menu>
                 </>
               )}

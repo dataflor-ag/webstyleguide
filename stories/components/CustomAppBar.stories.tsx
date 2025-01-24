@@ -1163,3 +1163,56 @@ export function CustomAppBarWithCompanyMenuAndNoOtherButtons(): JSX.Element {
     </>
   );
 }
+
+export function CustomAppBarWithLanguageMenuAndSlotInfo(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <CustomAppBar
+        isRendered={{
+          slotInfo: true,
+          languageMenu: true,
+          buttonDarkMode: true,
+        }}
+        isDarkMode
+        componentText={{}}
+        currentEnvironment={"dev"}
+        onChangeLanguageMenuClickDutch={() => {
+          handleOpenToast("change to Dutch");
+        }}
+        onChangeLanguageMenuClickEnglish={() => {
+          handleOpenToast("change to English");
+        }}
+        onChangeLanguageMenuClickItalian={() => {
+          handleOpenToast("change to Italian");
+        }}
+        onChangeLanguageMenuClickGerman={() => {
+          handleOpenToast("change to German");
+        }}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
