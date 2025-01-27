@@ -39,7 +39,11 @@ export interface CustomAppBarProps extends AppBarProps {
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  onLanguageMenuClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLanguageMenuClickDE?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLanguageMenuClickEN?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLanguageMenuClickNL?: (event: React.MouseEvent<HTMLElement>) => void;
+  onLanguageMenuClickIT?: (event: React.MouseEvent<HTMLElement>) => void;
+
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
     companyId: string,
@@ -115,9 +119,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
     const [anchorElCompany, setAnchorElCompany] =
       React.useState<HTMLElement | null>(null);
+    const [anchorElLanguage, setAnchorElLanguage] =
+      React.useState<HTMLElement | null>(null);
 
     const isMenuOpen = Boolean(anchorEl);
     const isCompanyMenuOpen = Boolean(anchorElCompany);
+    const isLanguageMenuOpen = Boolean(anchorElLanguage);
 
     const environmentOptions = {
       dev: "1: Development",
@@ -138,10 +145,17 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
       setAnchorEl(event.currentTarget);
     };
+
     const handleCompanyMenuClick = (
       event: React.MouseEvent<HTMLElement>,
     ): void => {
       setAnchorElCompany(event.currentTarget);
+    };
+
+    const handleLanguageMenuClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      setAnchorElLanguage(event.currentTarget);
     };
 
     const handleClose = (): void => {
@@ -158,6 +172,21 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     ): void => {
       handleClose();
       if (navigateTo !== undefined) navigateTo(_event);
+    };
+
+    const handleLanguageMenuItemClick = (
+      event: React.MouseEvent<HTMLElement>,
+      language: "DE" | "EN" | "NL" | "IT",
+    ): void => {
+      if (language === "DE" && props.onLanguageMenuClickDE !== undefined)
+        props.onLanguageMenuClickDE(event);
+      if (language === "EN" && props.onLanguageMenuClickEN !== undefined)
+        props.onLanguageMenuClickEN(event);
+      if (language === "NL" && props.onLanguageMenuClickNL !== undefined)
+        props.onLanguageMenuClickNL(event);
+      if (language === "IT" && props.onLanguageMenuClickIT !== undefined)
+        props.onLanguageMenuClickIT(event);
+      setAnchorElLanguage(null);
     };
 
     function DataflorLogo(): JSX.Element {
@@ -310,6 +339,114 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
                   </IconButton>
                 </Tooltip>
+              )}
+              {props.isRendered?.languageMenu && (
+                <>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.languageMenu
+                          ? props.componentText.languageMenu
+                          : "Change Language"
+                      }
+                    >
+                      <IconButton
+                        color="inherit"
+                        onClick={handleLanguageMenuClick}
+                        id="button-language-menu"
+                      >
+                        <Icon.globe />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorElLanguage}
+                    open={isLanguageMenuOpen}
+                    onClose={handleClose}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    id="language-menu"
+                  >
+                    <MenuItem
+                      onClick={(e) => {
+                        handleLanguageMenuItemClick(e, "DE");
+                      }}
+                      id="menu-item-change-language-to-de"
+                    >
+                      <ListItemIcon>
+                        <DE
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuGerman
+                        ? props.componentText.languageMenuGerman
+                        : "German"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        handleLanguageMenuItemClick(e, "NL");
+                      }}
+                      id="menu-item-change-language-to-nl"
+                    >
+                      <ListItemIcon>
+                        <NL
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuDutch
+                        ? props.componentText.languageMenuDutch
+                        : "Dutch"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        handleLanguageMenuItemClick(e, "EN");
+                      }}
+                      id="menu-item-change-language-to-en"
+                    >
+                      <ListItemIcon>
+                        <GB
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuEnglish
+                        ? props.componentText.languageMenuEnglish
+                        : "English"}
+                    </MenuItem>
+                    <MenuItem
+                      onClick={(e) => {
+                        handleLanguageMenuItemClick(e, "IT");
+                      }}
+                      id="menu-item-change-language-to-it"
+                    >
+                      <ListItemIcon>
+                        <IT
+                          style={{
+                            width: "25px",
+                            marginRight: 14,
+                          }}
+                        />
+                      </ListItemIcon>
+                      {props.componentText?.languageMenuItalian
+                        ? props.componentText.languageMenuItalian
+                        : "Italian"}
+                    </MenuItem>
+                  </Menu>
+                </>
               )}
               {props.isRendered?.buttonTasks !== undefined && (
                 <Tooltip
@@ -725,106 +862,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Logout"}
                       </MenuItem>
                     )}
-                  </Menu>
-                </>
-              )}
-              {props.isRendered?.languageMenu && (
-                <>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      textAlign: "center",
-                    }}
-                  >
-                    <Tooltip
-                      title={
-                        props.componentText?.languageMenu
-                          ? props.componentText.languageMenu
-                          : "Change Language"
-                      }
-                    >
-                      <IconButton
-                        color="inherit"
-                        onClick={handleMenuClick}
-                        id="button-language-menu"
-                      >
-                        <Icon.globe />
-                      </IconButton>
-                    </Tooltip>
-                  </Box>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={isMenuOpen}
-                    onClose={handleClose}
-                    transformOrigin={{ horizontal: "right", vertical: "top" }}
-                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                    id="language-menu"
-                  >
-                    <MenuItem
-                      onClick={props.onLanguageMenuClick}
-                      id="menu-item-change-language-to-nl"
-                    >
-                      <ListItemIcon>
-                        <NL
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
-                      {props.componentText?.languageMenuDutch
-                        ? props.componentText.languageMenuDutch
-                        : "Dutch"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={props.onLanguageMenuClick}
-                      id="menu-item-change-language-to-de"
-                    >
-                      <ListItemIcon>
-                        <DE
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
-                      {props.componentText?.languageMenuGerman
-                        ? props.componentText.languageMenuGerman
-                        : "German"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={props.onLanguageMenuClick}
-                      id="menu-item-change-language-to-it"
-                    >
-                      <ListItemIcon>
-                        <IT
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
-                      {props.componentText?.languageMenuItalian
-                        ? props.componentText.languageMenuItalian
-                        : "Italian"}
-                    </MenuItem>
-                    <MenuItem
-                      onClick={props.onLanguageMenuClick}
-                      id="menu-item-change-language-to-en"
-                    >
-                      <ListItemIcon>
-                        <GB
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
-                      {props.componentText?.languageMenuEnglish
-                        ? props.componentText.languageMenuEnglish
-                        : "English"}
-                    </MenuItem>
                   </Menu>
                 </>
               )}

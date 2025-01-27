@@ -1164,32 +1164,13 @@ export function CustomAppBarWithCompanyMenuAndNoOtherButtons(): JSX.Element {
   );
 }
 
-export function CustomAppBarWithLanguageMenuAndSlotInfo(): JSX.Element {
+export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const [toastMessage, setToastMessage] = React.useState("");
 
   const handleOpenToast = (message: string) => {
     setOpen(true);
     setToastMessage(message);
-  };
-
-  const handleLanguageChange = (event: React.MouseEvent<HTMLElement>) => {
-    const { id } = event.currentTarget;
-    switch (id) {
-      case "menu-item-change-language-to-nl":
-        handleOpenToast("Change to Dutch");
-        break;
-      case "menu-item-change-language-to-de":
-        handleOpenToast("Change to German");
-        break;
-      case "menu-item-change-language-to-it":
-        handleOpenToast("Change to Italian");
-        break;
-
-      case "menu-item-change-language-to-en":
-        handleOpenToast("Change to English");
-        break;
-    }
   };
 
   const handleClose = (
@@ -1209,11 +1190,24 @@ export function CustomAppBarWithLanguageMenuAndSlotInfo(): JSX.Element {
           slotInfo: true,
           languageMenu: true,
           buttonDarkMode: true,
+          avatarMenu: true,
+          avatarMenuPersonal: true,
         }}
         isDarkMode
         componentText={{}}
         currentEnvironment={"dev"}
-        onLanguageMenuClick={handleLanguageChange}
+        onLanguageMenuClickDE={() => {
+          handleOpenToast("Change to German");
+        }}
+        onLanguageMenuClickNL={() => {
+          handleOpenToast("Change to Dutch");
+        }}
+        onLanguageMenuClickEN={() => {
+          handleOpenToast("Change to English");
+        }}
+        onLanguageMenuClickIT={() => {
+          handleOpenToast("Change to Italian");
+        }}
       />
       <Snackbar
         open={open}
