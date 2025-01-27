@@ -21,6 +21,10 @@ export type InteropCustomAppBarProps = Omit<
   | "onRoleManagementClick"
   | "onBillingClick"
   | "onLogoutClick"
+  | "onLanguageMenuClickDE"
+  | "onLanguageMenuClickEN"
+  | "onLanguageMenuClickNL"
+  | "onLanguageMenuClickIT"
 > & {
   assemblyName: string;
   onLogoClick?: string;
@@ -37,6 +41,10 @@ export type InteropCustomAppBarProps = Omit<
   onRoleManagementClick?: string;
   onBillingClick?: string;
   onLogoutClick?: string;
+  onLanguageMenuClickDE?: string;
+  onLanguageMenuClickEN?: string;
+  onLanguageMenuClickNL?: string;
+  onLanguageMenuClickIT?: string;
 };
 
 const wrapInInterop = (assemblyName: string, functionName: string) => {
@@ -72,6 +80,10 @@ export const renderAppBar = (
     onRoleManagementClick,
     onBillingClick,
     onLogoutClick,
+    onLanguageMenuClickDE,
+    onLanguageMenuClickEN,
+    onLanguageMenuClickNL,
+    onLanguageMenuClickIT,
     ...rest
   } = props;
 
@@ -118,6 +130,18 @@ export const renderAppBar = (
       : undefined,
     onLogoutClick: onLogoutClick
       ? wrapInInterop(assemblyName, onLogoutClick)
+      : undefined,
+    onLanguageMenuClickDE: onLanguageMenuClickDE
+      ? wrapInInterop(assemblyName, onLanguageMenuClickDE)
+      : undefined,
+    onLanguageMenuClickEN: onLanguageMenuClickEN
+      ? wrapInInterop(assemblyName, onLanguageMenuClickEN)
+      : undefined,
+    onLanguageMenuClickNL: onLanguageMenuClickNL
+      ? wrapInInterop(assemblyName, onLanguageMenuClickNL)
+      : undefined,
+    onLanguageMenuClickIT: onLanguageMenuClickIT
+      ? wrapInInterop(assemblyName, onLanguageMenuClickIT)
       : undefined,
   };
 
