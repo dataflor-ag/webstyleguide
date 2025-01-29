@@ -37,7 +37,8 @@
   "dependencies": {
     "@dataflor-ag/df-ui-icons": "file:../df-ui-icons",
     "@dataflor-ag/df-ui-theme": "file:../df-ui-theme",
-    "country-flag-icons": "^1.5.11"
+    "country-flag-icons": "^1.5.11",
+    "react-circle-flags": "^0.0.23"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
