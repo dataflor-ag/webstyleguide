@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import CustomAppBar from "../../packages/df-ui-custom-app-bar/lib/CustomAppBar/CustomAppBar";
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
@@ -1164,7 +1164,7 @@ export function CustomAppBarWithCompanyMenuAndNoOtherButtons(): JSX.Element {
   );
 }
 
-export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element {
+export function CustomAppBarWithLanguageMenuNoLanguageSelectedAndAvatarMenuAndSlotInfo(): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const [toastMessage, setToastMessage] = React.useState("");
 
@@ -1207,6 +1207,68 @@ export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element 
         }}
         onLanguageMenuClickIT={() => {
           handleOpenToast("Change to Italian");
+        }}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+
+export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const [language, setLanguage] = useState<"de" | "en" | "it" | "nl">("de");
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <CustomAppBar
+        isRendered={{
+          slotInfo: true,
+          languageMenu: true,
+          buttonDarkMode: true,
+          avatarMenu: true,
+          avatarMenuPersonal: true,
+        }}
+        isDarkMode
+        componentText={{}}
+        currentLanguage={language}
+        currentEnvironment={"dev"}
+        onLanguageMenuClickDE={() => {
+          handleOpenToast("Change to German");
+          setLanguage("de");
+        }}
+        onLanguageMenuClickNL={() => {
+          handleOpenToast("Change to Dutch");
+          setLanguage("nl");
+        }}
+        onLanguageMenuClickEN={() => {
+          handleOpenToast("Change to English");
+          setLanguage("en");
+        }}
+        onLanguageMenuClickIT={() => {
+          handleOpenToast("Change to Italian");
+          setLanguage("it");
         }}
       />
       <Snackbar

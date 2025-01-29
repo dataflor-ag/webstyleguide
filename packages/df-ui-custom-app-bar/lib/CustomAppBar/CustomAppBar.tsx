@@ -22,6 +22,7 @@ import {
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
 import { DE, GB, IT, NL } from "country-flag-icons/react/3x2";
+import { CircleFlag, CircleFlagLanguage } from "react-circle-flags";
 
 export interface CustomAppBarProps extends AppBarProps {
   logoImageUrl?: string;
@@ -105,6 +106,7 @@ export interface CustomAppBarProps extends AppBarProps {
   }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
+  currentLanguage?: "de" | "it" | "nl" | "en";
 }
 
 export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
@@ -166,6 +168,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       setAnchorElCompany(null);
     };
 
+    const handleLanguageMenuClose = (): void => {
+      setAnchorElLanguage(null);
+    };
+
     const handleMenuItemClick = (
       _event: React.MouseEvent<HTMLElement>,
       navigateTo: ((event: React.MouseEvent<HTMLElement>) => void) | undefined,
@@ -187,6 +193,24 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       if (language === "IT" && props.onLanguageMenuClickIT !== undefined)
         props.onLanguageMenuClickIT(event);
       setAnchorElLanguage(null);
+    };
+
+    const languageSelectorIcon = (): JSX.Element => {
+      if (props.currentLanguage !== undefined)
+        return (
+          <>
+            {props.currentLanguage === "de" ? (
+              <CircleFlagLanguage languageCode="de" height="20" />
+            ) : props.currentLanguage === "en" ? (
+              <CircleFlagLanguage languageCode="en" height="20" />
+            ) : props.currentLanguage === "nl" ? (
+              <CircleFlagLanguage languageCode="nl" height="20" />
+            ) : (
+              <CircleFlagLanguage languageCode="it" height="20" />
+            )}
+          </>
+        );
+      else return <Icon.globe />;
     };
 
     function DataflorLogo(): JSX.Element {
@@ -361,14 +385,14 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         onClick={handleLanguageMenuClick}
                         id="button-language-menu"
                       >
-                        <Icon.globe />
+                        {languageSelectorIcon()}
                       </IconButton>
                     </Tooltip>
                   </Box>
                   <Menu
                     anchorEl={anchorElLanguage}
                     open={isLanguageMenuOpen}
-                    onClose={handleClose}
+                    onClose={handleLanguageMenuClose}
                     transformOrigin={{ horizontal: "right", vertical: "top" }}
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                     id="language-menu"
