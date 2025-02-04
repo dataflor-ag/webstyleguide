@@ -49,6 +49,10 @@ export interface CustomAppBarProps extends AppBarProps {
     event: React.MouseEvent<HTMLElement>,
     companyId: string,
   ) => void;
+  onCompanyInviteClick?: (
+    event: React.MouseEvent<HTMLElement>,
+    inviteId: string,
+  ) => void;
   isRendered?: {
     buttonDarkMode?: boolean;
     buttonTasks?: boolean;
@@ -85,6 +89,7 @@ export interface CustomAppBarProps extends AppBarProps {
     languageMenuGerman?: string;
     languageMenuItalian?: string;
     logout?: string;
+    invitations?: string;
   };
   isDarkMode?: boolean;
   userData?: {
@@ -103,6 +108,12 @@ export interface CustomAppBarProps extends AppBarProps {
     location?: string;
     logoUrl?: string;
     id: string;
+  }[];
+  companyInvitesList?: {
+    companyName?: string;
+    invitingUser?: string;
+    logoUrl?: string;
+    inviteId: string;
   }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
@@ -244,7 +255,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         props.userData?.avatarImageUrl !== ""
       ) {
         return <Avatar src={props.userData.avatarImageUrl} />;
-      } else return <Avatar />;
+      } else return <Avatar style={{ margin: 0 }} />;
     }
 
     function CompanyLogo(props: {
@@ -266,7 +277,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
             sx={{ ...props.sx }}
             variant={props?.variant ? props.variant : "rounded"}
           >
-            <Icon.company />
+            <Icon.company style={{ margin: 0 }} />
           </Avatar>
         );
     }
@@ -545,7 +556,36 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         size="small"
                         onClick={handleCompanyMenuClick}
                         id="button-company-menu"
+                        sx={{ position: "relative" }}
                       >
+                        {props.companyInvitesList !== undefined &&
+                          props.companyInvitesList.length > 0 && (
+                            <Box
+                              position={"absolute"}
+                              sx={{
+                                top: -8,
+                                right: -8,
+                                height: "1.125rem",
+                                width: "1.125rem",
+                                backgroundColor: theme.palette.primary[500],
+                                boxShadow: theme.shadows[6],
+                                borderRadius: "20rem",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                zIndex: 4,
+                              }}
+                            >
+                              <Typography
+                                variant="body2"
+                                fontSize={"0.75rem"}
+                                color={"#FFFFFF"}
+                                fontWeight={550}
+                              >
+                                {props.companyInvitesList.length}
+                              </Typography>
+                            </Box>
+                          )}
                         <CompanyLogo
                           imageUrl={props.companyData?.logoUrl}
                           variant="rounded"
@@ -668,6 +708,94 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                               }}
                             >
                               {company.location}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </MenuItem>
+                    ))}
+                    {props.companyInvitesList !== undefined &&
+                      props.companyInvitesList.length > 0 && (
+                        <>
+                          <Divider />
+                          <Box
+                            display={"flex"}
+                            flexDirection={"row"}
+                            gap={"0.4rem"}
+                            marginLeft={"0.5rem"}
+                            alignItems={"center"}
+                          >
+                            <Typography
+                              variant="subtitle2"
+                              sx={{
+                                color: theme.palette.text.secondary,
+                                fontSize: "0.8rem",
+                                fontWeight: 500,
+                              }}
+                            >
+                              {props.componentText?.invitations !== undefined
+                                ? props.componentText.invitations
+                                : "Invitations"}
+                            </Typography>
+                          </Box>
+                        </>
+                      )}
+                    {props.companyInvitesList?.map((invite) => (
+                      <MenuItem
+                        key={invite.inviteId}
+                        id={"button-show-invite" + invite.companyName}
+                        onClick={(e) => {
+                          if (props.onCompanyInviteClick && invite.inviteId) {
+                            props.onCompanyInviteClick(e, invite.inviteId);
+                          }
+                          handleCompanyClose();
+                        }}
+                        sx={{
+                          height: "3.25rem",
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            display: "flex",
+                            gap: "0.25rem",
+                            alignItems: "center",
+                            pr: "1rem",
+                          }}
+                          id="company-invite-menu-info-element"
+                        >
+                          <CompanyLogo
+                            sx={{
+                              opacity: 0.65,
+                              transition: "all 200ms ease-in-out",
+                              ":hover": { opacity: 0.75 },
+                            }}
+                            imageUrl={invite.logoUrl}
+                          />
+                          <Box
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.25rem",
+                              paddingLeft: "0.5rem",
+                            }}
+                          >
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.8rem",
+                                lineHeight: "0.8rem",
+                              }}
+                            >
+                              {invite.companyName}
+                            </Typography>
+                            <Typography
+                              variant="subtitle2"
+                              style={{
+                                fontSize: "0.7rem",
+                                lineHeight: "0.7rem",
+                                color: theme.palette.grey[500],
+                              }}
+                            >
+                              {invite.invitingUser}
                             </Typography>
                           </Box>
                         </Box>
