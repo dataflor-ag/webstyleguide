@@ -134,6 +134,8 @@ import revert from "./revert";
 import save from "./save";
 import phone from "./phone";
 import globe from "./globe";
+import received from "./received";
+import send from "./send";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -273,6 +275,8 @@ const icons = {
   save,
   phone,
   globe,
+  received,
+  send,
 };
 
 type IconKeys = keyof typeof icons;

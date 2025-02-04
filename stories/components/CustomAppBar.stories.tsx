@@ -1280,3 +1280,220 @@ export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element 
     </>
   );
 }
+
+export function CustomAppBarWithCompanyMenuAndInvites(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "",
+      id: "002",
+    },
+  ];
+
+  const inviteList = [
+    {
+      companyName: "Inviting Corp.",
+      invitingUser: "Ingrid Invitee",
+      logoUrl: "https://picsum.photos/200/200",
+      inviteId: "i001",
+    },
+    {
+      companyName: "Another Corp.",
+      invitingUser: "John Doe",
+      logoUrl: "",
+      inviteId: "i002",
+    },
+  ];
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  return (
+    <>
+      <CustomAppBar
+        onDarkmodeClick={() => {
+          setIsDarkMode(!isDarkMode);
+        }}
+        isDarkMode={isDarkMode}
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onCompanyInviteClick={(e, id) => {
+          handleOpenToast(
+            "Invite from " +
+              inviteList.find((invite) => invite.inviteId === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+          buttonDarkMode: true,
+        }}
+        componentText={{}}
+        companyList={companyList}
+        companyInvitesList={inviteList}
+        currentEnvironment={"preprod"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+
+export function CustomAppBarWithCompanyMenuAndEmptyInviteList(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "",
+      id: "002",
+    },
+  ];
+
+  const inviteList = [];
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  return (
+    <>
+      <CustomAppBar
+        onDarkmodeClick={() => {
+          setIsDarkMode(!isDarkMode);
+        }}
+        isDarkMode={isDarkMode}
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onCompanyInviteClick={(e, id) => {
+          handleOpenToast("no invite available");
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+          buttonDarkMode: true,
+        }}
+        componentText={{}}
+        companyList={companyList}
+        companyInvitesList={inviteList}
+        currentEnvironment={"preprod"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
