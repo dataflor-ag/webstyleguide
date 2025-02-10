@@ -124,6 +124,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
                 marginBottom: "auto",
                 transform: "translate(8px, -4px)",
               }}
+              id={"delete-dialog-header-close-button"}
               onClick={handleClose}
             >
               <Icon.close />
@@ -164,6 +165,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
           <Button
             color="secondary"
             variant="outlined"
+            id={"delete-dialog-close-button"}
             startIcon={<Icon.close />}
             onClick={onClose}
           >
@@ -172,6 +174,7 @@ export const DialogDelete = React.forwardRef<HTMLDivElement, DialogDeleteProps>(
           <Button
             variant="contained"
             color="error"
+            id={"delete-dialog-delete-button"}
             disabled={deleteDisabled}
             startIcon={deleteIcon}
             onClick={onDelete}

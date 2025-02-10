@@ -58,6 +58,7 @@ export const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
         {onClose && (
           <IconButton
             color="inherit"
+            id="dialog-header-close-button"
             sx={{
               marginLeft: "auto",
               marginBottom: "auto",
