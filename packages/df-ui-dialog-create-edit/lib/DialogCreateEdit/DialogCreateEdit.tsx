@@ -73,6 +73,7 @@ export const DialogCreateEdit = React.forwardRef<
         <Button
           color="secondary"
           variant="outlined"
+          id="dialog-close-button"
           startIcon={<Icon.close />}
           onClick={onClose}
         >
@@ -81,6 +82,7 @@ export const DialogCreateEdit = React.forwardRef<
         <Button
           variant="contained"
           color="primary"
+          id="dialog-save-button"
           startIcon={saveIcon}
           disabled={saveDisabled}
           onClick={onSave}

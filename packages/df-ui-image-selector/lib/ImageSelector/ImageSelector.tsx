@@ -131,7 +131,12 @@ export const ImageSelector = React.forwardRef<
   };
 
   return (
-    <ImageSelectorRoot ref={ref} onClick={handleClick} checked={checked}>
+    <ImageSelectorRoot
+      ref={ref}
+      onClick={handleClick}
+      checked={checked}
+      id={props.image + "-image-selector"}
+    >
       <ImageSelectorImageWrapper
         checked={checked}
         sx={{ position: "relative" }}
@@ -143,6 +148,7 @@ export const ImageSelector = React.forwardRef<
                 props.onButtonClick(e);
               }
             }}
+            id={props.image + "-image-selector-button"}
             size="small"
             color="secondary"
             sx={{
@@ -167,11 +173,18 @@ export const ImageSelector = React.forwardRef<
           </IconButton>
         )}
         <ImageSelectorImage src={image} alt={label ?? ""} />
-        <ImageSelectorIcon checked={checked}>
+        <ImageSelectorIcon
+          checked={checked}
+          id={props.image + "-image-selector-checked-info"}
+        >
           <Icon.check />
         </ImageSelectorIcon>
       </ImageSelectorImageWrapper>
-      {props.label && <Typography variant="button">{label}</Typography>}
+      {props.label && (
+        <Typography variant="button" id={props.image + "-image-label"}>
+          {label}
+        </Typography>
+      )}
     </ImageSelectorRoot>
   );
 });

@@ -1,14 +1,14 @@
-import React from "react"
-import { Stack, Tooltip, Typography } from "@mui/material"
-import { styled, type SxProps } from "@mui/material/styles"
-import { Mime } from "mime"
-import colorMapping from "./ColorMapping"
+import React from "react";
+import { Stack, Tooltip, Typography } from "@mui/material";
+import { styled, type SxProps } from "@mui/material/styles";
+import { Mime } from "mime";
+import colorMapping from "./ColorMapping";
 
-import standardTypes from "mime/types/standard.js"
-import otherTypes from "mime/types/other.js"
+import standardTypes from "mime/types/standard.js";
+import otherTypes from "mime/types/other.js";
 
-const mime = new Mime(standardTypes, otherTypes)
-mime.define({ "application/las": ["las"] })
+const mime = new Mime(standardTypes, otherTypes);
+mime.define({ "application/las": ["las"] });
 
 type DownloadboxIconTextProps = {
   mimeType: string;
@@ -20,9 +20,9 @@ interface DownloadboxProps {
   size: string;
   link?: string;
   download?: boolean;
-  sx?: SxProps
-  maxWidthTitle?: string,
-  tooltip?: boolean
+  sx?: SxProps;
+  maxWidthTitle?: string;
+  tooltip?: boolean;
 }
 
 const DownloadboxRoot = styled("div", {
@@ -41,7 +41,7 @@ const DownloadboxRoot = styled("div", {
   ".MuiTypography-body2": {
     color: `${theme.palette.grey[500]}`,
   },
-}))
+}));
 
 const DownloadboxIcon = styled("div", {
   name: "MuiDownloadbox",
@@ -55,7 +55,7 @@ const DownloadboxIcon = styled("div", {
   width: "2.5rem",
   height: "2.5rem",
   stroke: `${theme.palette.grey[200]}`,
-}))
+}));
 
 const DownloadboxIconText = styled("div", {
   name: "MuiDownloadbox",
@@ -78,7 +78,7 @@ const DownloadboxIconText = styled("div", {
     color: colorMapping(mimeType).color,
     backgroundColor: colorMapping(mimeType).backgroundColor,
   }),
-}))
+}));
 
 const DownloadboxLink = styled("a", {
   name: "MuiDownloadbox",
@@ -91,15 +91,15 @@ const DownloadboxLink = styled("a", {
   bottom: 0,
   left: 0,
   zIndex: 1,
-}))
+}));
 
 export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
   (props, ref) => {
-    const mimeType = mime.getType(props.mime)
-    const extType = mime.getExtension(mimeType!)
+    const mimeType = mime.getType(props.mime);
+    const extType = mime.getExtension(mimeType!);
 
     return (
-      <DownloadboxRoot sx={{...props.sx}} ref={ref}>
+      <DownloadboxRoot sx={{ ...props.sx }} ref={ref}>
         <DownloadboxIcon>
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="40">
             <g fill="none" fillRule="evenodd">
@@ -117,16 +117,37 @@ export const Downloadbox = React.forwardRef<HTMLDivElement, DownloadboxProps>(
           )}
         </DownloadboxIcon>
         <Stack gap={0}>
-          {props.tooltip ? <Tooltip title={props.title}><Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography></Tooltip> :           <Typography variant="subtitle2" noWrap maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}>{props.title}</Typography>
-        }
+          {props.tooltip ? (
+            <Tooltip title={props.title}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}
+              >
+                {props.title}
+              </Typography>
+            </Tooltip>
+          ) : (
+            <Typography
+              variant="subtitle2"
+              noWrap
+              maxWidth={props.maxWidthTitle ? props.maxWidthTitle : "auto"}
+            >
+              {props.title}
+            </Typography>
+          )}
           <Typography variant="body2">{props.size}</Typography>
         </Stack>
         {props.link && (
-          <DownloadboxLink href={props.link} download={props.download} />
+          <DownloadboxLink
+            id={props.title + "-downloadbox-link"}
+            href={props.link}
+            download={props.download}
+          />
         )}
       </DownloadboxRoot>
-    )
-  }
-)
+    );
+  },
+);
 
-export default Downloadbox
+export default Downloadbox;

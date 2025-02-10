@@ -254,18 +254,31 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         props.userData?.avatarImageUrl !== undefined &&
         props.userData?.avatarImageUrl !== ""
       ) {
-        return <Avatar src={props.userData.avatarImageUrl} />;
-      } else return <Avatar style={{ margin: 0 }} />;
+        return (
+          <Avatar
+            src={props.userData.avatarImageUrl}
+            id={props.userData?.email + "user-avatar"}
+          />
+        );
+      } else
+        return (
+          <Avatar
+            style={{ margin: 0 }}
+            id={props.userData?.email + "user-avatar"}
+          />
+        );
     }
 
     function CompanyLogo(props: {
       imageUrl?: string | undefined;
       variant?: "square" | "rounded" | "circular";
       sx?: SxProps;
+      id?: string;
     }): JSX.Element {
       if (props.imageUrl !== undefined && props.imageUrl !== "") {
         return (
           <Avatar
+            id={props.id !== undefined ? props.id : "company-logo"}
             sx={{ ...props.sx }}
             src={props.imageUrl}
             variant={props?.variant ? props.variant : "rounded"}
@@ -274,6 +287,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       } else
         return (
           <Avatar
+            id={props.id !== undefined ? props.id : "company-logo"}
             sx={{ ...props.sx }}
             variant={props?.variant ? props.variant : "rounded"}
           >
@@ -561,6 +575,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         {props.companyInvitesList !== undefined &&
                           props.companyInvitesList.length > 0 && (
                             <Box
+                              id="active-invites-info-bubble"
                               position={"absolute"}
                               sx={{
                                 top: -8,
@@ -587,6 +602,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                             </Box>
                           )}
                         <CompanyLogo
+                          id={props.companyData?.companyName + "-company-logo"}
                           imageUrl={props.companyData?.logoUrl}
                           variant="rounded"
                         />
@@ -614,6 +630,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       id="company-menu-info-element"
                     >
                       <CompanyLogo
+                        id={props.companyData?.companyName + "-company-logo"}
                         imageUrl={props.companyData?.logoUrl}
                         variant="rounded"
                       />
@@ -675,6 +692,9 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           id="company-menu-info-element"
                         >
                           <CompanyLogo
+                            id={
+                              props.companyData?.companyName + "-company-logo"
+                            }
                             sx={{
                               opacity: 0.65,
                               transition: "all 200ms ease-in-out",
@@ -763,6 +783,9 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           id="company-invite-menu-info-element"
                         >
                           <CompanyLogo
+                            id={
+                              props.companyData?.companyName + "-company-logo"
+                            }
                             sx={{
                               opacity: 0.65,
                               transition: "all 200ms ease-in-out",
@@ -866,6 +889,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       id="account-menu-user-info-element"
                     >
                       <Avatar
+                        id={props.userData?.email + "-user-info-element-avatar"}
                         alt={
                           props.userData?.firstName +
                           " " +
