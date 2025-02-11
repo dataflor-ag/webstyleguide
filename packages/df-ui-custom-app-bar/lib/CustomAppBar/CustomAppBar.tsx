@@ -17,12 +17,10 @@ import {
   CssBaseline,
   type SxProps,
   useMediaQuery,
-  ListItemIcon,
+  Button,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
-import { DE, GB, IT, NL } from "country-flag-icons/react/3x2";
-import { CircleFlag, CircleFlagLanguage } from "react-circle-flags";
 
 export interface CustomAppBarProps extends AppBarProps {
   logoImageUrl?: string;
@@ -206,22 +204,28 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       setAnchorElLanguage(null);
     };
 
-    const languageSelectorIcon = (): JSX.Element => {
-      if (props.currentLanguage !== undefined)
-        return (
-          <>
-            {props.currentLanguage === "de" ? (
-              <CircleFlagLanguage languageCode="de" height="20" />
-            ) : props.currentLanguage === "en" ? (
-              <CircleFlagLanguage languageCode="en" height="20" />
-            ) : props.currentLanguage === "nl" ? (
-              <CircleFlagLanguage languageCode="nl" height="20" />
-            ) : (
-              <CircleFlagLanguage languageCode="it" height="20" />
-            )}
-          </>
-        );
-      else return <Icon.globe />;
+    const languageSelectorButton = (): JSX.Element => {
+      const currentLanguage =
+        props.currentLanguage === "de"
+          ? "Deutsch"
+          : props.currentLanguage === "en"
+            ? "English"
+            : props.currentLanguage === "nl"
+              ? "Nederlands"
+              : props.currentLanguage === "it"
+                ? "Italiano"
+                : "Sprache auswählen";
+      return (
+        <Button
+          variant="outlined"
+          onClick={handleLanguageMenuClick}
+          id="button-language-menu"
+          startIcon={<Icon.globe />}
+          sx={{ paddingLeft: "0." }}
+        >
+          {currentLanguage}
+        </Button>
+      );
     };
 
     function DataflorLogo(): JSX.Element {
@@ -372,23 +376,26 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               </>
             )}
             <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
-              {props.isRendered?.buttonDarkMode !== undefined && (
-                <Tooltip
-                  title={
-                    props.componentText?.darkMode
-                      ? props.componentText.darkMode
-                      : "Change Theme"
-                  }
-                >
-                  <IconButton
-                    color="inherit"
-                    onClick={props.onDarkmodeClick}
-                    id="button-toggle-darkmode"
+              {props.isRendered?.buttonDarkMode !== undefined &&
+                props.currentEnvironment !== undefined &&
+                props.currentEnvironment !== "preprod" &&
+                props.currentEnvironment !== "prod" && (
+                  <Tooltip
+                    title={
+                      props.componentText?.darkMode
+                        ? props.componentText.darkMode
+                        : "Change Theme"
+                    }
                   >
-                    {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
-                  </IconButton>
-                </Tooltip>
-              )}
+                    <IconButton
+                      color="inherit"
+                      onClick={props.onDarkmodeClick}
+                      id="button-toggle-darkmode"
+                    >
+                      {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
+                    </IconButton>
+                  </Tooltip>
+                )}
               {props.isRendered?.languageMenu && (
                 <>
                   <Box
@@ -405,13 +412,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Change Language"
                       }
                     >
-                      <IconButton
-                        color="inherit"
-                        onClick={handleLanguageMenuClick}
-                        id="button-language-menu"
-                      >
-                        {languageSelectorIcon()}
-                      </IconButton>
+                      {languageSelectorButton()}
                     </Tooltip>
                   </Box>
                   <Menu
@@ -421,57 +422,39 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     transformOrigin={{ horizontal: "right", vertical: "top" }}
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                     id="language-menu"
+                    slotProps={{
+                      paper: { sx: { minWidth: "8rem !important" } },
+                    }}
                   >
                     <MenuItem
                       onClick={(e) => {
                         handleLanguageMenuItemClick(e, "DE");
                       }}
                       id="menu-item-change-language-to-de"
+                      sx={{ paddingLeft: "0.55rem" }}
                     >
-                      <ListItemIcon>
-                        <DE
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
                       {props.componentText?.languageMenuGerman
                         ? props.componentText.languageMenuGerman
-                        : "German"}
+                        : "Deutsch"}
                     </MenuItem>
                     <MenuItem
                       onClick={(e) => {
                         handleLanguageMenuItemClick(e, "NL");
                       }}
                       id="menu-item-change-language-to-nl"
+                      sx={{ paddingLeft: "0.55rem" }}
                     >
-                      <ListItemIcon>
-                        <NL
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
                       {props.componentText?.languageMenuDutch
                         ? props.componentText.languageMenuDutch
-                        : "Dutch"}
+                        : "Nederlands"}
                     </MenuItem>
                     <MenuItem
                       onClick={(e) => {
                         handleLanguageMenuItemClick(e, "EN");
                       }}
                       id="menu-item-change-language-to-en"
+                      sx={{ paddingLeft: "0.55rem" }}
                     >
-                      <ListItemIcon>
-                        <GB
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
                       {props.componentText?.languageMenuEnglish
                         ? props.componentText.languageMenuEnglish
                         : "English"}
@@ -481,18 +464,11 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         handleLanguageMenuItemClick(e, "IT");
                       }}
                       id="menu-item-change-language-to-it"
+                      sx={{ paddingLeft: "0.55rem" }}
                     >
-                      <ListItemIcon>
-                        <IT
-                          style={{
-                            width: "25px",
-                            marginRight: 14,
-                          }}
-                        />
-                      </ListItemIcon>
                       {props.componentText?.languageMenuItalian
                         ? props.componentText.languageMenuItalian
-                        : "Italian"}
+                        : "Italiano"}
                     </MenuItem>
                   </Menu>
                 </>

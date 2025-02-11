@@ -1280,7 +1280,64 @@ export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element 
     </>
   );
 }
+export function CustomAppBarWithLanguageMenuOnPreprod(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
 
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const [language, setLanguage] = useState<"de" | "en" | "it" | "nl">("de");
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <>
+      <CustomAppBar
+        isRendered={{
+          languageMenu: true,
+          buttonDarkMode: true,
+        }}
+        isDarkMode
+        componentText={{}}
+        currentLanguage={language}
+        currentEnvironment={"preprod"}
+        onLanguageMenuClickDE={() => {
+          handleOpenToast("Change to German");
+          setLanguage("de");
+        }}
+        onLanguageMenuClickNL={() => {
+          handleOpenToast("Change to Dutch");
+          setLanguage("nl");
+        }}
+        onLanguageMenuClickEN={() => {
+          handleOpenToast("Change to English");
+          setLanguage("en");
+        }}
+        onLanguageMenuClickIT={() => {
+          handleOpenToast("Change to Italian");
+          setLanguage("it");
+        }}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
 export function CustomAppBarWithCompanyMenuAndInvites(): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const [toastMessage, setToastMessage] = React.useState("");
