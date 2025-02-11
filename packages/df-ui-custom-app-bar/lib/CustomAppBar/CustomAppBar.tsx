@@ -17,13 +17,10 @@ import {
   CssBaseline,
   type SxProps,
   useMediaQuery,
-  ListItemIcon,
   Button,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
-import { DE, GB, IT, NL } from "country-flag-icons/react/3x2";
-import { CircleFlag, CircleFlagLanguage } from "react-circle-flags";
 
 export interface CustomAppBarProps extends AppBarProps {
   logoImageUrl?: string;
