@@ -18,6 +18,7 @@ export type InteropCustomAppBarProps = Omit<
   | "onCompanyDataClick"
   | "onBankingClick"
   | "onTeamManagementClick"
+  | "onDeviceManagementClick"
   | "onRoleManagementClick"
   | "onBillingClick"
   | "onLogoutClick"
@@ -39,6 +40,7 @@ export type InteropCustomAppBarProps = Omit<
   onCompanyDataClick?: string;
   onBankingClick?: string;
   onTeamManagementClick?: string;
+  onDeviceManagementClick?: string;
   onRoleManagementClick?: string;
   onBillingClick?: string;
   onLogoutClick?: string;
@@ -79,6 +81,7 @@ export const renderAppBar = (
     onCompanyDataClick,
     onBankingClick,
     onTeamManagementClick,
+    onDeviceManagementClick,
     onRoleManagementClick,
     onBillingClick,
     onLogoutClick,
@@ -124,6 +127,9 @@ export const renderAppBar = (
       : undefined,
     onTeamManagementClick: onTeamManagementClick
       ? wrapInInterop(assemblyName, onTeamManagementClick)
+      : undefined,
+    onDeviceManagementClick: onDeviceManagementClick
+      ? wrapInInterop(assemblyName, onDeviceManagementClick)
       : undefined,
     onRoleManagementClick: onRoleManagementClick
       ? wrapInInterop(assemblyName, onRoleManagementClick)

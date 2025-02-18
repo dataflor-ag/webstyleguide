@@ -35,6 +35,7 @@ export interface CustomAppBarProps extends AppBarProps {
   onCompanyDataClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBankingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTeamManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onDeviceManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onBillingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onLogoutClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -79,6 +80,7 @@ export interface CustomAppBarProps extends AppBarProps {
     companyData?: string;
     banking?: string;
     teamManagement?: string;
+    deviceManagement?: string;
     roleManagement?: string;
     billing?: string;
     languageMenu?: string;
@@ -984,6 +986,19 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         {props.componentText?.teamManagement
                           ? props.componentText.teamManagement
                           : "Team Management"}
+                      </MenuItem>
+                    )}
+                    {props.isRendered?.avatarMenuCompany && (
+                      <MenuItem
+                        onClick={(e) =>
+                          handleMenuItemClick(e, props.onDeviceManagementClick)
+                        }
+                        id="account-menu-button-device-management"
+                      >
+                        <Icon.digger />
+                        {props.componentText?.deviceManagement
+                          ? props.componentText.deviceManagement
+                          : "Device Management"}
                       </MenuItem>
                     )}
                     {props.isRendered?.avatarMenuCompany && <Divider />}
