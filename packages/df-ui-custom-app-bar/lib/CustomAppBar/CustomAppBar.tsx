@@ -43,7 +43,9 @@ export interface CustomAppBarProps extends AppBarProps {
   onLanguageMenuClickEN?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickNL?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickIT?: (event: React.MouseEvent<HTMLElement>) => void;
-  onFirstHelpClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onTutorialClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onWikiClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onSupportClick?: (event: React.MouseEvent<HTMLElement>) => void;
 
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
@@ -91,7 +93,9 @@ export interface CustomAppBarProps extends AppBarProps {
     languageMenuGerman?: string;
     languageMenuItalian?: string;
     helpMenu?: string;
-    helpMenuFirstStep?: string;
+    helpMenuTutorial?: string;
+    helpMenuWiki?: string;
+    helpMenuSupport?: string;
     logout?: string;
     invitations?: string;
   };
@@ -122,6 +126,7 @@ export interface CustomAppBarProps extends AppBarProps {
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
   currentLanguage?: "de" | "it" | "nl" | "en";
+  helpMenuLinks?: JSX.Element;
 }
 
 export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
@@ -138,10 +143,14 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       React.useState<HTMLElement | null>(null);
     const [anchorElLanguage, setAnchorElLanguage] =
       React.useState<HTMLElement | null>(null);
+    const [anchorElHelp, setAnchorElHelp] = React.useState<HTMLElement | null>(
+      null,
+    );
 
     const isMenuOpen = Boolean(anchorEl);
     const isCompanyMenuOpen = Boolean(anchorElCompany);
     const isLanguageMenuOpen = Boolean(anchorElLanguage);
+    const isHelpMenuOpen = Boolean(anchorElHelp);
 
     const environmentOptions = {
       dev: "1: Development",
@@ -169,6 +178,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       setAnchorElCompany(event.currentTarget);
     };
 
+    const handleHelpMenuClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      setAnchorElHelp(event.currentTarget);
+    };
+
     const handleLanguageMenuClick = (
       event: React.MouseEvent<HTMLElement>,
     ): void => {
@@ -185,6 +200,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
 
     const handleLanguageMenuClose = (): void => {
       setAnchorElLanguage(null);
+    };
+
+    const handleHelpMenuCLose = (): void => {
+      setAnchorElHelp(null);
     };
 
     const handleMenuItemClick = (
@@ -208,6 +227,22 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       if (language === "IT" && props.onLanguageMenuClickIT !== undefined)
         props.onLanguageMenuClickIT(event);
       setAnchorElLanguage(null);
+    };
+
+    const handleTutorialClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      handleHelpMenuCLose();
+      if (props.onTutorialClick) props.onTutorialClick(event);
+    };
+
+    const handleWikiClick = (event: React.MouseEvent<HTMLElement>): void => {
+      handleHelpMenuCLose();
+      if (props.onWikiClick) props.onWikiClick(event);
+    };
+    const handleSupportClick = (event: React.MouseEvent<HTMLElement>): void => {
+      handleHelpMenuCLose();
+      if (props.onSupportClick) props.onSupportClick(event);
     };
 
     const languageSelectorButton = (): JSX.Element => {
@@ -542,21 +577,80 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   >
                     <Tooltip
                       title={
-                        props.componentText?.companyMenu
-                          ? props.componentText.companyMenu
-                          : "Company Account Menu"
+                        props.componentText?.helpMenu
+                          ? props.componentText.helpMenu
+                          : "Help"
                       }
                     >
                       <IconButton
                         color="inherit"
-                        size="small"
-                        onClick={handleCompanyMenuClick}
-                        id="button-company-menu"
-                        sx={{ position: "relative" }}
+                        size="medium"
+                        onClick={handleHelpMenuClick}
+                        id="button-help-menu"
+                        sx={{
+                          position: "relative",
+                          borderRadius: "50%",
+                          opacity: 0.9,
+                        }}
                       >
-                        <Icon.info />
+                        <Icon.info
+                          sx={{ height: "1.55rem", width: "1.55rem" }}
+                        />
                       </IconButton>
                     </Tooltip>
+                    <Menu
+                      open={isHelpMenuOpen}
+                      anchorEl={anchorElHelp}
+                      onClose={handleHelpMenuCLose}
+                    >
+                      <Box display={"flex"} justifyContent={"center"}>
+                        <Typography variant="subtitle2">
+                          {props.componentText?.helpMenu
+                            ? props.componentText?.helpMenu
+                            : "Help"}
+                        </Typography>
+                      </Box>
+                      <Divider
+                        sx={{
+                          marginBlock: "0.125rem",
+                        }}
+                      />
+                      {props.helpMenuLinks && (
+                        <Box onClick={handleHelpMenuCLose}>
+                          <Box
+                            sx={{
+                              paddingInline: "0.55rem",
+                              paddingBlock: "0.35rem",
+                            }}
+                          >
+                            {props.helpMenuLinks}
+                          </Box>
+                          <Divider
+                            sx={{
+                              marginBlock: "0.125rem",
+                            }}
+                          />
+                        </Box>
+                      )}
+                      <MenuItem onClick={handleTutorialClick}>
+                        <Icon.questionCircle />
+                        {props.componentText?.helpMenuTutorial
+                          ? props.componentText?.helpMenuTutorial
+                          : "First Step Tutorial"}
+                      </MenuItem>
+                      <MenuItem onClick={handleWikiClick}>
+                        <Icon.info />
+                        {props.componentText?.helpMenuWiki
+                          ? props.componentText?.helpMenuWiki
+                          : "Wiki"}
+                      </MenuItem>
+                      <MenuItem onClick={handleSupportClick}>
+                        <Icon.headset />
+                        {props.componentText?.helpMenuSupport
+                          ? props.componentText?.helpMenuSupport
+                          : "Support"}
+                      </MenuItem>
+                    </Menu>
                   </Box>
                 </>
               )}
