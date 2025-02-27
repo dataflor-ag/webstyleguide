@@ -43,6 +43,7 @@ export interface CustomAppBarProps extends AppBarProps {
   onLanguageMenuClickEN?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickNL?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickIT?: (event: React.MouseEvent<HTMLElement>) => void;
+  onFirstHelpClick?: (event: React.MouseEvent<HTMLElement>) => void;
 
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
@@ -64,6 +65,7 @@ export interface CustomAppBarProps extends AppBarProps {
     avatarMenuBilling?: boolean;
     avatarMenuLogout?: boolean;
     languageMenu?: boolean;
+    helpMenu?: boolean;
     slotInfo?: boolean;
   };
   componentText?: {
@@ -88,6 +90,8 @@ export interface CustomAppBarProps extends AppBarProps {
     languageMenuEnglish?: string;
     languageMenuGerman?: string;
     languageMenuItalian?: string;
+    helpMenu?: string;
+    helpMenuFirstStep?: string;
     logout?: string;
     invitations?: string;
   };
@@ -152,7 +156,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         : "";
 
     const isSlotInfoShown =
-      props.isRendered?.slotInfo !== undefined &&
+      props.isRendered?.slotInfo === true &&
       props.currentEnvironment !== "prod";
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
@@ -378,7 +382,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               </>
             )}
             <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
-              {props.isRendered?.buttonDarkMode !== undefined &&
+              {props.isRendered?.buttonDarkMode === true &&
                 props.currentEnvironment !== undefined &&
                 props.currentEnvironment !== "preprod" &&
                 props.currentEnvironment !== "prod" && (
@@ -398,7 +402,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     </IconButton>
                   </Tooltip>
                 )}
-              {props.isRendered?.languageMenu && (
+              {props.isRendered?.languageMenu === true && (
                 <>
                   <Box
                     sx={{
@@ -475,7 +479,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </Menu>
                 </>
               )}
-              {props.isRendered?.buttonTasks !== undefined && (
+              {props.isRendered?.buttonTasks === true && (
                 <Tooltip
                   title={
                     props.componentText?.tasks
@@ -492,7 +496,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.buttonContacts !== undefined && (
+              {props.isRendered?.buttonContacts === true && (
                 <Tooltip
                   title={
                     props.componentText?.contacts
@@ -509,7 +513,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.buttonSettings !== undefined && (
+              {props.isRendered?.buttonSettings === true && (
                 <Tooltip
                   title={
                     props.componentText?.settings
@@ -526,7 +530,37 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.companyMenu && (
+              {props.isRendered?.helpMenu === true && (
+                <>
+                  <Box
+                    sx={{
+                      marginLeft: 3.5,
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.companyMenu
+                          ? props.componentText.companyMenu
+                          : "Company Account Menu"
+                      }
+                    >
+                      <IconButton
+                        color="inherit"
+                        size="small"
+                        onClick={handleCompanyMenuClick}
+                        id="button-company-menu"
+                        sx={{ position: "relative" }}
+                      >
+                        <Icon.info />
+                      </IconButton>
+                    </Tooltip>
+                  </Box>
+                </>
+              )}
+              {props.isRendered?.companyMenu === true && (
                 <>
                   <Box
                     sx={{
@@ -805,19 +839,21 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </Menu>
                 </>
               )}
-              {props.isRendered?.avatarMenu && (
+              {props.isRendered?.avatarMenu === true && (
                 <>
-                  {props.isRendered?.buttonSettings ||
-                  props.isRendered?.buttonTasks ||
-                  props.isRendered?.buttonContacts ||
-                  props.isRendered?.buttonDarkMode ||
-                  props.isRendered?.companyMenu ? (
+                  {props.isRendered?.buttonSettings === true ||
+                  props.isRendered?.buttonTasks === true ||
+                  props.isRendered?.buttonContacts === true ||
+                  props.isRendered?.buttonDarkMode === true ||
+                  props.isRendered?.companyMenu === true ? (
                     <Divider
                       orientation="vertical"
                       flexItem
                       sx={{
-                        marginRight: props.isRendered.companyMenu ? 3 : 5,
-                        marginLeft: props.isRendered.companyMenu ? 3.5 : 3,
+                        marginRight:
+                          props.isRendered.companyMenu === true ? 3 : 5,
+                        marginLeft:
+                          props.isRendered.companyMenu === true ? 3.5 : 3,
                       }}
                     />
                   ) : (
@@ -902,14 +938,14 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         </Typography>
                       </Box>
                     </Box>
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <Divider
                         sx={{
                           marginBlock: "0.125rem",
                         }}
                       />
                     )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onPersonalDataClick)
@@ -922,7 +958,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Personal Data"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onSecurityClick)
@@ -935,7 +971,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Security"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onAccountSettingsClick)
@@ -948,8 +984,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Account Settings"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && <Divider />}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
+                      <Divider />
+                    )}
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onCompanyDataClick)
@@ -962,7 +1000,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Company Data"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onBankingClick)
@@ -975,7 +1013,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Banking Information"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onTeamManagementClick)
@@ -988,7 +1026,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Team Management"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onDeviceManagementClick)
@@ -1001,8 +1039,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Device Management"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && <Divider />}
-                    {props.isRendered?.avatarMenuBilling && (
+                    {props.isRendered?.avatarMenuCompany === true && (
+                      <Divider />
+                    )}
+                    {props.isRendered?.avatarMenuBilling === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onBillingClick)
@@ -1015,8 +1055,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Billing"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuBilling && <Divider />}
-                    {props.isRendered?.avatarMenuLogout && (
+                    {props.isRendered?.avatarMenuBilling === true && (
+                      <Divider />
+                    )}
+                    {props.isRendered?.avatarMenuLogout === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onLogoutClick)
