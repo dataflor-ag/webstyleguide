@@ -167,6 +167,12 @@ export const renderAppBar = (
     onTutorialClick: onTutorialClick
       ? wrapInInterop(assemblyName, onTutorialClick)
       : undefined,
+    onWikiClick: onWikiClick
+      ? wrapInInterop(assemblyName, onWikiClick)
+      : undefined,
+    onSupportClick: onSupportClick
+      ? wrapInInterop(assemblyName, onSupportClick)
+      : undefined,
   };
 
   createRoot(container).render(
