@@ -123,10 +123,14 @@ export interface CustomAppBarProps extends AppBarProps {
     logoUrl?: string;
     inviteId: string;
   }[];
+  helpMenuLinks?: {
+    title?: string;
+    description?: string;
+    onLinkClick?: () => void;
+  }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
   currentLanguage?: "de" | "it" | "nl" | "en";
-  helpMenuLinks?: JSX.Element;
 }
 
 export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
@@ -619,11 +623,70 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         <Box onClick={handleHelpMenuCLose}>
                           <Box
                             sx={{
-                              paddingInline: "0.55rem",
-                              paddingBlock: "0.35rem",
+                              paddingBlock: "0.125rem",
                             }}
                           >
-                            {props.helpMenuLinks}
+                            <Stack width={"16rem"} gap="0.125rem">
+                              {props.helpMenuLinks !== undefined &&
+                                props.helpMenuLinks?.map((link) => (
+                                  <ButtonBase
+                                    key={link.title}
+                                    id={link.title}
+                                    onClick={link.onLinkClick}
+                                    sx={{
+                                      paddingBlock: "0.25rem",
+                                      paddingLeft: "0.8rem",
+                                      paddingRight: "0.5rem",
+                                      borderRadius: "0.375rem",
+                                      "&:hover": {
+                                        backgroundColor: theme.palette.grey[50],
+                                      },
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                      }}
+                                    >
+                                      <Box
+                                        display={"flex"}
+                                        flexDirection={"row"}
+                                        alignItems={"center"}
+                                        gap="0.25rem"
+                                      >
+                                        <Icon.info
+                                          sx={{
+                                            marginLeft: "-0.125rem",
+                                            fontSize: "0.9rem",
+                                            opacity: "0.75",
+                                          }}
+                                        />
+                                        <Tooltip title={link.title}>
+                                          <Typography
+                                            variant="subtitle2"
+                                            fontSize={"0.8rem"}
+                                            fontWeight={"600"}
+                                            noWrap
+                                            maxWidth={"13rem"}
+                                          >
+                                            {link.title}
+                                          </Typography>
+                                        </Tooltip>
+                                      </Box>
+                                      <Typography
+                                        variant="subtitle2"
+                                        fontSize={"0.75rem"}
+                                        fontWeight={400}
+                                        sx={{ textAlign: "left" }}
+                                        color={theme.palette.text.secondary}
+                                      >
+                                        {link.description}
+                                      </Typography>
+                                    </Box>
+                                  </ButtonBase>
+                                ))}
+                            </Stack>
                           </Box>
                           <Divider
                             sx={{

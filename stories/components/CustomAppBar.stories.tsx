@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import CustomAppBar from "../../packages/df-ui-custom-app-bar/lib/CustomAppBar/CustomAppBar";
 import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 
 const meta: Meta<typeof CustomAppBar> = {
   title: "Components/CustomAppBar",
@@ -1589,6 +1589,34 @@ export function CustomAppbarWithHelpMenu(): JSX.Element {
     },
   ];
 
+  const helpMenuLinkList = [
+    {
+      title: "Help Link One",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link One clicked");
+      },
+    },
+    {
+      title: "Help Link Two",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link Two clicked");
+      },
+    },
+    {
+      title:
+        "Help Link Three is a link which leads to a page with a lot of info on how to do stuff",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link Three clicked");
+      },
+    },
+  ];
+
   const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <>
@@ -1636,67 +1664,12 @@ export function CustomAppbarWithHelpMenu(): JSX.Element {
           avatarMenuCompany: true,
           avatarMenuBilling: true,
           avatarMenuLogout: true,
-          // buttonDarkMode: true,
           helpMenu: true,
         }}
         componentText={{}}
         companyList={companyList}
         currentEnvironment={"dev"}
-        helpMenuLinks={
-          <Stack maxWidth={"15rem"} gap="0.5rem">
-            <Box>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.8rem"}
-                fontWeight={"600"}
-              >
-                Help link number one
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.75rem"}
-                fontWeight={400}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                feugiat elit eget ullamcorper ultricies.
-              </Typography>
-            </Box>
-            <Box>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.8rem"}
-                fontWeight={"600"}
-              >
-                Help link number two
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.75rem"}
-                fontWeight={400}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                feugiat elit eget ullamcorper ultricies.
-              </Typography>
-            </Box>
-            <Box>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.8rem"}
-                fontWeight={"600"}
-              >
-                Help link number three
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                fontSize={"0.75rem"}
-                fontWeight={400}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                feugiat elit eget ullamcorper ultricies.
-              </Typography>
-            </Box>
-          </Stack>
-        }
+        helpMenuLinks={helpMenuLinkList}
       />
       <Snackbar
         open={open}
