@@ -18,6 +18,7 @@ import {
   type SxProps,
   useMediaQuery,
   Button,
+  Link,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
@@ -64,6 +65,7 @@ export interface CustomAppBarProps extends AppBarProps {
     avatarMenu?: boolean;
     avatarMenuPersonal?: boolean;
     avatarMenuCompany?: boolean;
+    avatarMenuCompanyDeviceManagement?: boolean;
     avatarMenuBilling?: boolean;
     avatarMenuLogout?: boolean;
     languageMenu?: boolean;
@@ -98,6 +100,10 @@ export interface CustomAppBarProps extends AppBarProps {
     helpMenuSupport?: string;
     logout?: string;
     invitations?: string;
+    imprint?: string;
+    privacyPolicy?: string;
+    mandatoryDataProtectionInformation?: string;
+    termsAndConditions?: string;
   };
   isDarkMode?: boolean;
   userData?: {
@@ -127,6 +133,10 @@ export interface CustomAppBarProps extends AppBarProps {
     title?: string;
     description?: string;
     onLinkClick?: () => void;
+  }[];
+  legalInfoLinks?: {
+    title?: string;
+    linkUrl?: string;
   }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
@@ -606,6 +616,13 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       open={isHelpMenuOpen}
                       anchorEl={anchorElHelp}
                       onClose={handleHelpMenuCLose}
+                      sx={{
+                        "& .MuiMenu-list": {
+                          maxWidth: "20rem",
+                          position: "relative",
+                          justifyContent: "center",
+                        },
+                      }}
                     >
                       <Box display={"flex"} justifyContent={"center"}>
                         <Typography variant="subtitle2">
@@ -713,6 +730,44 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           ? props.componentText?.helpMenuSupport
                           : "Support"}
                       </MenuItem>
+
+                      {props.legalInfoLinks !== undefined && (
+                        <Box>
+                          <Divider />
+                          <Box
+                            paddingInline={"0.55rem"}
+                            paddingBlock={"0.75rem"}
+                            sx={{
+                              marginTop: "0.2rem",
+                              display: "flex",
+                              flexDirection: "row",
+                              flexWrap: "wrap",
+                              width: "100%",
+                              justifyContent: "center",
+                              textAlign: "center",
+                              backgroundColor: theme.palette.grey[100],
+                              borderRadius: "0.375rem",
+                            }}
+                            rowGap="0.75rem"
+                            columnGap={"0.5rem"}
+                          >
+                            {props.legalInfoLinks.map((link) => (
+                              <Link
+                                key={link.title}
+                                href={link.linkUrl}
+                                target="_blank"
+                                underline="none"
+                                fontSize={"0.8rem"}
+                                lineHeight={"0.85rem"}
+                                sx={{ color: theme.palette.grey[600] }}
+                                fontWeight={600}
+                              >
+                                {link.title}
+                              </Link>
+                            ))}
+                          </Box>
+                        </Box>
+                      )}
                     </Menu>
                   </Box>
                 </>
@@ -764,7 +819,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                                 variant="body2"
                                 fontSize={"0.75rem"}
                                 color={"#FFFFFF"}
-                                fontWeight={550}
+                                fontWeight={600}
                               >
                                 {props.companyInvitesList.length}
                               </Typography>
@@ -904,7 +959,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     ))}
                     {props.companyInvitesList !== undefined &&
                       props.companyInvitesList.length > 0 && (
-                        <>
+                        <Box>
                           <Divider />
                           <Box
                             display={"flex"}
@@ -926,7 +981,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                                 : "Invitations"}
                             </Typography>
                           </Box>
-                        </>
+                        </Box>
                       )}
                     {props.companyInvitesList?.map((invite) => (
                       <MenuItem
@@ -1095,13 +1150,11 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         </Typography>
                       </Box>
                     </Box>
-                    {props.isRendered?.avatarMenuPersonal === true && (
-                      <Divider
-                        sx={{
-                          marginBlock: "0.125rem",
-                        }}
-                      />
-                    )}
+                    <Divider
+                      sx={{
+                        marginBlock: "0.125rem",
+                      }}
+                    />
                     {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
@@ -1183,7 +1236,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Team Management"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany === true && (
+                    {props.isRendered?.avatarMenuCompany === true ||
+                    props.isRendered?.avatarMenuCompanyDeviceManagement ? (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onDeviceManagementClick)
@@ -1195,10 +1249,11 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           ? props.componentText.deviceManagement
                           : "Device Management"}
                       </MenuItem>
-                    )}
-                    {props.isRendered?.avatarMenuCompany === true && (
+                    ) : null}
+                    {props.isRendered?.avatarMenuCompany === true ||
+                    props.isRendered?.avatarMenuCompanyDeviceManagement ? (
                       <Divider />
-                    )}
+                    ) : null}
                     {props.isRendered?.avatarMenuBilling === true && (
                       <MenuItem
                         onClick={(e) =>

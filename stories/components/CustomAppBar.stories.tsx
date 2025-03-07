@@ -1555,7 +1555,7 @@ export function CustomAppBarWithCompanyMenuAndEmptyInviteList(): JSX.Element {
   );
 }
 
-export function CustomAppbarWithHelpMenu(): JSX.Element {
+export function CustomAppbarWithHelpMenuWithWikiLinks(): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const [toastMessage, setToastMessage] = React.useState("");
 
@@ -1670,6 +1670,356 @@ export function CustomAppbarWithHelpMenu(): JSX.Element {
         companyList={companyList}
         currentEnvironment={"dev"}
         helpMenuLinks={helpMenuLinkList}
+        legalInfoLinks={[
+          { title: "Imprint", linkUrl: "https://www.google.com" },
+          { title: "Privacy Policy", linkUrl: "https://www.google.com" },
+          {
+            title: "Mandatory data protection information",
+            linkUrl: "https://www.google.com",
+          },
+          { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
+        ]}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+
+export function CustomAppbarWithHelpMenuWithWikiLinksDArk(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "",
+      id: "002",
+    },
+  ];
+
+  const helpMenuLinkList = [
+    {
+      title: "Help Link One",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link One clicked");
+      },
+    },
+    {
+      title: "Help Link Two",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link Two clicked");
+      },
+    },
+    {
+      title:
+        "Help Link Three is a link which leads to a page with a lot of info on how to do stuff",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat elit eget ullamcorper ultricies.",
+      onLinkClick: () => {
+        console.log("Help Link Three clicked");
+      },
+    },
+  ];
+
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  return (
+    <>
+      <CustomAppBar
+        onDarkmodeClick={() => {
+          setIsDarkMode(!isDarkMode);
+        }}
+        isDarkMode={isDarkMode}
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onCompanyInviteClick={(e, id) => {
+          handleOpenToast("no invite available");
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+          helpMenu: true,
+        }}
+        componentText={{}}
+        companyList={companyList}
+        currentEnvironment={"dev"}
+        helpMenuLinks={helpMenuLinkList}
+        legalInfoLinks={[
+          { title: "Imprint", linkUrl: "https://www.google.com" },
+          { title: "Privacy Policy", linkUrl: "https://www.google.com" },
+          {
+            title: "Mandatory data protection information",
+            linkUrl: "https://www.google.com",
+          },
+          { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
+        ]}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+export function CustomAppbarWithHelpMenu(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "",
+      id: "002",
+    },
+  ];
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  return (
+    <>
+      <CustomAppBar
+        onDarkmodeClick={() => {
+          setIsDarkMode(!isDarkMode);
+        }}
+        isDarkMode={isDarkMode}
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onCompanyInviteClick={(e, id) => {
+          handleOpenToast("no invite available");
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          avatarMenu: true,
+          companyMenu: true,
+          avatarMenuPersonal: true,
+          avatarMenuCompany: true,
+          avatarMenuBilling: true,
+          avatarMenuLogout: true,
+          helpMenu: true,
+        }}
+        legalInfoLinks={[
+          { title: "Imprint", linkUrl: "https://www.google.com" },
+          { title: "Privacy Policy", linkUrl: "https://www.google.com" },
+          {
+            title: "Mandatory data protection information",
+            linkUrl: "https://www.google.com",
+          },
+          { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
+        ]}
+        companyList={companyList}
+        currentEnvironment={"dev"}
+      />
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={toastMessage}
+      />
+    </>
+  );
+}
+
+export function CustomAppbarOnlyDeviceManagement(): JSX.Element {
+  const [open, setOpen] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState("");
+
+  const handleOpenToast = (message: string) => {
+    setOpen(true);
+    setToastMessage(message);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const companyList = [
+    {
+      companyName: "ABC AG",
+      location: "Tokyo",
+      logoUrl: "https://picsum.photos/200/200",
+      id: "001",
+    },
+    {
+      companyName: "DEF Corp",
+      location: "Las Vegas",
+      logoUrl: "",
+      id: "002",
+    },
+  ];
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  return (
+    <>
+      <CustomAppBar
+        onDarkmodeClick={() => {
+          setIsDarkMode(!isDarkMode);
+        }}
+        isDarkMode={isDarkMode}
+        onChangeCompanyClick={(e, id) => {
+          handleOpenToast(
+            companyList.find((company) => company.id === id)?.companyName +
+              " has been clicked",
+          );
+        }}
+        onCompanyInviteClick={(e, id) => {
+          handleOpenToast("no invite available");
+        }}
+        onLogoClick={() => {
+          handleOpenToast("logo clicked");
+        }}
+        onTasksClick={() => {
+          handleOpenToast("tasks clicked");
+        }}
+        onSettingsClick={() => {
+          handleOpenToast("settings clicked");
+        }}
+        onPersonalDataClick={() => {
+          handleOpenToast("personal data clicked");
+        }}
+        userData={{
+          avatarImageUrl: "",
+          firstName: "John",
+          lastName: "Doe",
+          email: "john@doe.mail",
+        }}
+        companyData={{
+          companyName: "Random Ltd.",
+          location: "New York",
+          logoUrl: "https://picsum.photos/200/200",
+        }}
+        isRendered={{
+          companyMenu: true,
+          avatarMenu: true,
+          avatarMenuCompanyDeviceManagement: true,
+          avatarMenuLogout: true,
+        }}
+        legalInfoLinks={[
+          { title: "Imprint", linkUrl: "https://www.google.com" },
+          { title: "Privacy Policy", linkUrl: "https://www.google.com" },
+          {
+            title: "Mandatory data protection information",
+            linkUrl: "https://www.google.com",
+          },
+          { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
+        ]}
+        companyList={companyList}
+        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
