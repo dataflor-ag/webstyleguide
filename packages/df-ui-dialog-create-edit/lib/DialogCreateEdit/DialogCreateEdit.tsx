@@ -24,6 +24,8 @@ interface DialogCreateEditProps extends DialogProps {
   saveDisabled?: boolean;
   id?: string;
   DialogProps?: DialogProps;
+  hideCloseButton?: boolean;
+  hideSaveButton?: boolean;
 }
 
 export const DialogCreateEdit = React.forwardRef<
@@ -41,6 +43,8 @@ export const DialogCreateEdit = React.forwardRef<
     children,
     buttonTextClose,
     buttonTextSave,
+    hideCloseButton,
+    hideSaveButton,
     id,
     ...DialogProps
   } = props;
@@ -70,25 +74,29 @@ export const DialogCreateEdit = React.forwardRef<
       </DialogTitle>
       <DialogContent dividers>{children}</DialogContent>
       <DialogActions>
-        <Button
-          color="secondary"
-          variant="outlined"
-          id="dialog-close-button"
-          startIcon={<Icon.close />}
-          onClick={onClose}
-        >
-          {buttonTextClose}
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          id="dialog-save-button"
-          startIcon={saveIcon}
-          disabled={saveDisabled}
-          onClick={onSave}
-        >
-          {buttonTextSave}
-        </Button>
+        {hideCloseButton === false || hideCloseButton === undefined ? (
+          <Button
+            color="secondary"
+            variant="outlined"
+            id="dialog-close-button"
+            startIcon={<Icon.close />}
+            onClick={onClose}
+          >
+            {buttonTextClose}
+          </Button>
+        ) : null}
+        {hideSaveButton === false || hideSaveButton === undefined ? (
+          <Button
+            variant="contained"
+            color="primary"
+            id="dialog-save-button"
+            startIcon={saveIcon}
+            disabled={saveDisabled}
+            onClick={onSave}
+          >
+            {buttonTextSave}
+          </Button>
+        ) : null}
       </DialogActions>
     </Dialog>
   );
