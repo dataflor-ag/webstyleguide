@@ -36,9 +36,6 @@ const meta: Meta<typeof CustomAppBar> = {
     onCompanyDataClick: {
       type: "function",
     },
-    onBankingClick: {
-      type: "function",
-    },
     onTeamManagementClick: {
       type: "function",
     },
@@ -103,9 +100,6 @@ const meta: Meta<typeof CustomAppBar> = {
         type: "string",
       },
       companyData: {
-        type: "string",
-      },
-      banking: {
         type: "string",
       },
       teamManagement: {
@@ -324,7 +318,6 @@ export function CustomAppBarWithCustomText(): JSX.Element {
           security: "custom security",
           accountSettings: "custom account settings",
           companyData: "custom company data",
-          banking: "custom banking",
           teamManagement: "custom team management",
           roleManagement: "custom role management",
           billing: "custom billing",

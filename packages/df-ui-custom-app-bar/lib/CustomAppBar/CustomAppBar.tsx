@@ -34,7 +34,6 @@ export interface CustomAppBarProps extends AppBarProps {
   onSecurityClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onAccountSettingsClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onCompanyDataClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  onBankingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTeamManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onDeviceManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -84,7 +83,6 @@ export interface CustomAppBarProps extends AppBarProps {
     security?: string;
     accountSettings?: string;
     companyData?: string;
-    banking?: string;
     teamManagement?: string;
     deviceManagement?: string;
     roleManagement?: string;
@@ -1208,19 +1206,6 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         {props.componentText?.companyData
                           ? props.componentText.companyData
                           : "Company Data"}
-                      </MenuItem>
-                    )}
-                    {props.isRendered?.avatarMenuCompany === true && (
-                      <MenuItem
-                        onClick={(e) =>
-                          handleMenuItemClick(e, props.onBankingClick)
-                        }
-                        id="account-menu-button-banking"
-                      >
-                        <Icon.creditcard />
-                        {props.componentText?.banking
-                          ? props.componentText.banking
-                          : "Banking Information"}
                       </MenuItem>
                     )}
                     {props.isRendered?.avatarMenuCompany === true && (
