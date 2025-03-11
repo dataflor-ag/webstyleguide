@@ -16,7 +16,6 @@ export type InteropCustomAppBarProps = Omit<
   | "onSecurityClick"
   | "onAccountSettingsClick"
   | "onCompanyDataClick"
-  | "onBankingClick"
   | "onTeamManagementClick"
   | "onDeviceManagementClick"
   | "onRoleManagementClick"
@@ -27,6 +26,9 @@ export type InteropCustomAppBarProps = Omit<
   | "onLanguageMenuClickNL"
   | "onLanguageMenuClickIT"
   | "onCompanyInviteClick"
+  | "onTutorialClick"
+  | "onWikiClick"
+  | "onSupportClick"
 > & {
   assemblyName: string;
   onLogoClick?: string;
@@ -38,7 +40,6 @@ export type InteropCustomAppBarProps = Omit<
   onSecurityClick?: string;
   onAccountSettingsClick?: string;
   onCompanyDataClick?: string;
-  onBankingClick?: string;
   onTeamManagementClick?: string;
   onDeviceManagementClick?: string;
   onRoleManagementClick?: string;
@@ -49,6 +50,9 @@ export type InteropCustomAppBarProps = Omit<
   onLanguageMenuClickNL?: string;
   onLanguageMenuClickIT?: string;
   onCompanyInviteClick?: string;
+  onTutorialClick?: string;
+  onWikiClick?: string;
+  onSupportClick?: string;
 };
 
 const wrapInInterop = (assemblyName: string, functionName: string) => {
@@ -79,7 +83,6 @@ export const renderAppBar = (
     onSecurityClick,
     onAccountSettingsClick,
     onCompanyDataClick,
-    onBankingClick,
     onTeamManagementClick,
     onDeviceManagementClick,
     onRoleManagementClick,
@@ -90,6 +93,9 @@ export const renderAppBar = (
     onLanguageMenuClickNL,
     onLanguageMenuClickIT,
     onCompanyInviteClick,
+    onTutorialClick,
+    onWikiClick,
+    onSupportClick,
     ...rest
   } = props;
 
@@ -122,9 +128,6 @@ export const renderAppBar = (
     onCompanyDataClick: onCompanyDataClick
       ? wrapInInterop(assemblyName, onCompanyDataClick)
       : undefined,
-    onBankingClick: onBankingClick
-      ? wrapInInterop(assemblyName, onBankingClick)
-      : undefined,
     onTeamManagementClick: onTeamManagementClick
       ? wrapInInterop(assemblyName, onTeamManagementClick)
       : undefined,
@@ -154,6 +157,15 @@ export const renderAppBar = (
       : undefined,
     onCompanyInviteClick: onCompanyInviteClick
       ? wrapInInterop(assemblyName, onCompanyInviteClick)
+      : undefined,
+    onTutorialClick: onTutorialClick
+      ? wrapInInterop(assemblyName, onTutorialClick)
+      : undefined,
+    onWikiClick: onWikiClick
+      ? wrapInInterop(assemblyName, onWikiClick)
+      : undefined,
+    onSupportClick: onSupportClick
+      ? wrapInInterop(assemblyName, onSupportClick)
       : undefined,
   };
 

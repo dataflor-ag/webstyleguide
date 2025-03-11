@@ -136,6 +136,7 @@ import phone from "./phone";
 import globe from "./globe";
 import received from "./received";
 import send from "./send";
+import linkAlt from "./linkAlt";
 
 type IconElement = (props: SvgIconProps) => JSX.Element;
 
@@ -225,6 +226,7 @@ const icons = {
   checkCircle,
   attach,
   link,
+  linkAlt,
   share,
   bill,
   invoice,

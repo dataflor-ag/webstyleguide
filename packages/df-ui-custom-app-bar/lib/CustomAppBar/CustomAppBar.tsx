@@ -18,6 +18,7 @@ import {
   type SxProps,
   useMediaQuery,
   Button,
+  Link,
 } from "@mui/material";
 import Icon from "@dataflor-ag/df-ui-icons";
 import { getTheme } from "@dataflor-ag/df-ui-theme";
@@ -33,7 +34,6 @@ export interface CustomAppBarProps extends AppBarProps {
   onSecurityClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onAccountSettingsClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onCompanyDataClick?: (event: React.MouseEvent<HTMLElement>) => void;
-  onBankingClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onTeamManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onDeviceManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
   onRoleManagementClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -43,6 +43,9 @@ export interface CustomAppBarProps extends AppBarProps {
   onLanguageMenuClickEN?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickNL?: (event: React.MouseEvent<HTMLElement>) => void;
   onLanguageMenuClickIT?: (event: React.MouseEvent<HTMLElement>) => void;
+  onTutorialClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onWikiClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  onSupportClick?: (event: React.MouseEvent<HTMLElement>) => void;
 
   onChangeCompanyClick?: (
     event: React.MouseEvent<HTMLElement>,
@@ -61,9 +64,11 @@ export interface CustomAppBarProps extends AppBarProps {
     avatarMenu?: boolean;
     avatarMenuPersonal?: boolean;
     avatarMenuCompany?: boolean;
+    avatarMenuCompanyDeviceManagement?: boolean;
     avatarMenuBilling?: boolean;
     avatarMenuLogout?: boolean;
     languageMenu?: boolean;
+    helpMenu?: boolean;
     slotInfo?: boolean;
   };
   componentText?: {
@@ -78,7 +83,6 @@ export interface CustomAppBarProps extends AppBarProps {
     security?: string;
     accountSettings?: string;
     companyData?: string;
-    banking?: string;
     teamManagement?: string;
     deviceManagement?: string;
     roleManagement?: string;
@@ -88,8 +92,16 @@ export interface CustomAppBarProps extends AppBarProps {
     languageMenuEnglish?: string;
     languageMenuGerman?: string;
     languageMenuItalian?: string;
+    helpMenu?: string;
+    helpMenuTutorial?: string;
+    helpMenuWiki?: string;
+    helpMenuSupport?: string;
     logout?: string;
     invitations?: string;
+    imprint?: string;
+    privacyPolicy?: string;
+    mandatoryDataProtectionInformation?: string;
+    termsAndConditions?: string;
   };
   isDarkMode?: boolean;
   userData?: {
@@ -115,6 +127,15 @@ export interface CustomAppBarProps extends AppBarProps {
     logoUrl?: string;
     inviteId: string;
   }[];
+  helpMenuLinks?: {
+    title?: string;
+    description?: string;
+    onLinkClick?: () => void;
+  }[];
+  legalInfoLinks?: {
+    title?: string;
+    linkUrl?: string;
+  }[];
   currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
   slotInfoFont?: string;
   currentLanguage?: "de" | "it" | "nl" | "en";
@@ -134,10 +155,14 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       React.useState<HTMLElement | null>(null);
     const [anchorElLanguage, setAnchorElLanguage] =
       React.useState<HTMLElement | null>(null);
+    const [anchorElHelp, setAnchorElHelp] = React.useState<HTMLElement | null>(
+      null,
+    );
 
     const isMenuOpen = Boolean(anchorEl);
     const isCompanyMenuOpen = Boolean(anchorElCompany);
     const isLanguageMenuOpen = Boolean(anchorElLanguage);
+    const isHelpMenuOpen = Boolean(anchorElHelp);
 
     const environmentOptions = {
       dev: "1: Development",
@@ -152,7 +177,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
         : "";
 
     const isSlotInfoShown =
-      props.isRendered?.slotInfo !== undefined &&
+      props.isRendered?.slotInfo === true &&
       props.currentEnvironment !== "prod";
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
@@ -163,6 +188,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       event: React.MouseEvent<HTMLElement>,
     ): void => {
       setAnchorElCompany(event.currentTarget);
+    };
+
+    const handleHelpMenuClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      setAnchorElHelp(event.currentTarget);
     };
 
     const handleLanguageMenuClick = (
@@ -181,6 +212,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
 
     const handleLanguageMenuClose = (): void => {
       setAnchorElLanguage(null);
+    };
+
+    const handleHelpMenuCLose = (): void => {
+      setAnchorElHelp(null);
     };
 
     const handleMenuItemClick = (
@@ -204,6 +239,22 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
       if (language === "IT" && props.onLanguageMenuClickIT !== undefined)
         props.onLanguageMenuClickIT(event);
       setAnchorElLanguage(null);
+    };
+
+    const handleTutorialClick = (
+      event: React.MouseEvent<HTMLElement>,
+    ): void => {
+      handleHelpMenuCLose();
+      if (props.onTutorialClick) props.onTutorialClick(event);
+    };
+
+    const handleWikiClick = (event: React.MouseEvent<HTMLElement>): void => {
+      handleHelpMenuCLose();
+      if (props.onWikiClick) props.onWikiClick(event);
+    };
+    const handleSupportClick = (event: React.MouseEvent<HTMLElement>): void => {
+      handleHelpMenuCLose();
+      if (props.onSupportClick) props.onSupportClick(event);
     };
 
     const languageSelectorButton = (): JSX.Element => {
@@ -378,7 +429,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               </>
             )}
             <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
-              {props.isRendered?.buttonDarkMode !== undefined &&
+              {props.isRendered?.buttonDarkMode === true &&
                 props.currentEnvironment !== undefined &&
                 props.currentEnvironment !== "preprod" &&
                 props.currentEnvironment !== "prod" && (
@@ -398,7 +449,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     </IconButton>
                   </Tooltip>
                 )}
-              {props.isRendered?.languageMenu && (
+              {props.isRendered?.languageMenu === true && (
                 <>
                   <Box
                     sx={{
@@ -475,7 +526,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </Menu>
                 </>
               )}
-              {props.isRendered?.buttonTasks !== undefined && (
+              {props.isRendered?.buttonTasks === true && (
                 <Tooltip
                   title={
                     props.componentText?.tasks
@@ -492,7 +543,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.buttonContacts !== undefined && (
+              {props.isRendered?.buttonContacts === true && (
                 <Tooltip
                   title={
                     props.componentText?.contacts
@@ -509,7 +560,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.buttonSettings !== undefined && (
+              {props.isRendered?.buttonSettings === true && (
                 <Tooltip
                   title={
                     props.componentText?.settings
@@ -526,7 +577,200 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </IconButton>
                 </Tooltip>
               )}
-              {props.isRendered?.companyMenu && (
+              {props.isRendered?.helpMenu === true && (
+                <>
+                  <Box
+                    sx={{
+                      marginLeft: 3.5,
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Tooltip
+                      title={
+                        props.componentText?.helpMenu
+                          ? props.componentText.helpMenu
+                          : "Help"
+                      }
+                    >
+                      <IconButton
+                        color="inherit"
+                        size="medium"
+                        onClick={handleHelpMenuClick}
+                        id="button-help-menu"
+                        sx={{
+                          position: "relative",
+                          borderRadius: "50%",
+                          opacity: 0.9,
+                        }}
+                      >
+                        <Icon.info
+                          sx={{ height: "1.55rem", width: "1.55rem" }}
+                        />
+                      </IconButton>
+                    </Tooltip>
+                    <Menu
+                      open={isHelpMenuOpen}
+                      anchorEl={anchorElHelp}
+                      onClose={handleHelpMenuCLose}
+                      sx={{
+                        "& .MuiMenu-list": {
+                          maxWidth: "20rem",
+                          position: "relative",
+                          justifyContent: "center",
+                        },
+                      }}
+                    >
+                      <Box display={"flex"} justifyContent={"center"}>
+                        <Typography variant="subtitle2">
+                          {props.componentText?.helpMenu
+                            ? props.componentText?.helpMenu
+                            : "Help"}
+                        </Typography>
+                      </Box>
+                      <Divider
+                        sx={{
+                          marginBlock: "0.125rem",
+                        }}
+                      />
+                      {props.helpMenuLinks && (
+                        <Box onClick={handleHelpMenuCLose}>
+                          <Box
+                            sx={{
+                              paddingBlock: "0.125rem",
+                            }}
+                          >
+                            <Stack width={"16rem"} gap="0.125rem">
+                              {props.helpMenuLinks !== undefined &&
+                                props.helpMenuLinks?.map((link) => (
+                                  <ButtonBase
+                                    key={link.title}
+                                    id={link.title}
+                                    onClick={link.onLinkClick}
+                                    sx={{
+                                      paddingBlock: "0.25rem",
+                                      paddingLeft: "0.8rem",
+                                      paddingRight: "0.5rem",
+                                      borderRadius: "0.375rem",
+                                      "&:hover": {
+                                        backgroundColor: theme.palette.grey[50],
+                                      },
+                                    }}
+                                  >
+                                    <Box
+                                      sx={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                      }}
+                                    >
+                                      <Box
+                                        display={"flex"}
+                                        flexDirection={"row"}
+                                        alignItems={"center"}
+                                        gap="0.25rem"
+                                      >
+                                        <Icon.info
+                                          sx={{
+                                            marginLeft: "-0.125rem",
+                                            fontSize: "0.9rem",
+                                            opacity: "0.75",
+                                          }}
+                                        />
+                                        <Tooltip title={link.title}>
+                                          <Typography
+                                            variant="subtitle2"
+                                            fontSize={"0.8rem"}
+                                            fontWeight={"600"}
+                                            noWrap
+                                            maxWidth={"13rem"}
+                                          >
+                                            {link.title}
+                                          </Typography>
+                                        </Tooltip>
+                                      </Box>
+                                      <Typography
+                                        variant="subtitle2"
+                                        fontSize={"0.75rem"}
+                                        fontWeight={400}
+                                        sx={{ textAlign: "left" }}
+                                        color={theme.palette.text.secondary}
+                                      >
+                                        {link.description}
+                                      </Typography>
+                                    </Box>
+                                  </ButtonBase>
+                                ))}
+                            </Stack>
+                          </Box>
+                          <Divider
+                            sx={{
+                              marginBlock: "0.125rem",
+                            }}
+                          />
+                        </Box>
+                      )}
+                      <MenuItem onClick={handleTutorialClick}>
+                        <Icon.questionCircle />
+                        {props.componentText?.helpMenuTutorial
+                          ? props.componentText?.helpMenuTutorial
+                          : "First Step Tutorial"}
+                      </MenuItem>
+                      <MenuItem onClick={handleWikiClick}>
+                        <Icon.info />
+                        {props.componentText?.helpMenuWiki
+                          ? props.componentText?.helpMenuWiki
+                          : "Wiki"}
+                      </MenuItem>
+                      <MenuItem onClick={handleSupportClick}>
+                        <Icon.headset />
+                        {props.componentText?.helpMenuSupport
+                          ? props.componentText?.helpMenuSupport
+                          : "Support"}
+                      </MenuItem>
+
+                      {props.legalInfoLinks !== undefined && (
+                        <Box>
+                          <Divider />
+                          <Box
+                            paddingInline={"0.55rem"}
+                            paddingBlock={"0.75rem"}
+                            sx={{
+                              marginTop: "0.2rem",
+                              display: "flex",
+                              flexDirection: "row",
+                              flexWrap: "wrap",
+                              width: "100%",
+                              justifyContent: "center",
+                              textAlign: "center",
+                              backgroundColor: theme.palette.grey[100],
+                              borderRadius: "0.375rem",
+                            }}
+                            rowGap="0.75rem"
+                            columnGap={"0.5rem"}
+                          >
+                            {props.legalInfoLinks.map((link) => (
+                              <Link
+                                key={link.title}
+                                href={link.linkUrl}
+                                target="_blank"
+                                underline="none"
+                                fontSize={"0.8rem"}
+                                lineHeight={"0.85rem"}
+                                sx={{ color: theme.palette.grey[600] }}
+                                fontWeight={600}
+                              >
+                                {link.title}
+                              </Link>
+                            ))}
+                          </Box>
+                        </Box>
+                      )}
+                    </Menu>
+                  </Box>
+                </>
+              )}
+              {props.isRendered?.companyMenu === true && (
                 <>
                   <Box
                     sx={{
@@ -573,7 +817,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                                 variant="body2"
                                 fontSize={"0.75rem"}
                                 color={"#FFFFFF"}
-                                fontWeight={550}
+                                fontWeight={600}
                               >
                                 {props.companyInvitesList.length}
                               </Typography>
@@ -713,7 +957,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                     ))}
                     {props.companyInvitesList !== undefined &&
                       props.companyInvitesList.length > 0 && (
-                        <>
+                        <Box>
                           <Divider />
                           <Box
                             display={"flex"}
@@ -735,7 +979,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                                 : "Invitations"}
                             </Typography>
                           </Box>
-                        </>
+                        </Box>
                       )}
                     {props.companyInvitesList?.map((invite) => (
                       <MenuItem
@@ -805,19 +1049,21 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                   </Menu>
                 </>
               )}
-              {props.isRendered?.avatarMenu && (
+              {props.isRendered?.avatarMenu === true && (
                 <>
-                  {props.isRendered?.buttonSettings ||
-                  props.isRendered?.buttonTasks ||
-                  props.isRendered?.buttonContacts ||
-                  props.isRendered?.buttonDarkMode ||
-                  props.isRendered?.companyMenu ? (
+                  {props.isRendered?.buttonSettings === true ||
+                  props.isRendered?.buttonTasks === true ||
+                  props.isRendered?.buttonContacts === true ||
+                  props.isRendered?.buttonDarkMode === true ||
+                  props.isRendered?.companyMenu === true ? (
                     <Divider
                       orientation="vertical"
                       flexItem
                       sx={{
-                        marginRight: props.isRendered.companyMenu ? 3 : 5,
-                        marginLeft: props.isRendered.companyMenu ? 3.5 : 3,
+                        marginRight:
+                          props.isRendered.companyMenu === true ? 3 : 5,
+                        marginLeft:
+                          props.isRendered.companyMenu === true ? 3.5 : 3,
                       }}
                     />
                   ) : (
@@ -902,14 +1148,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                         </Typography>
                       </Box>
                     </Box>
-                    {props.isRendered?.avatarMenuPersonal && (
-                      <Divider
-                        sx={{
-                          marginBlock: "0.125rem",
-                        }}
-                      />
-                    )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    <Divider
+                      sx={{
+                        marginBlock: "0.125rem",
+                      }}
+                    />
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onPersonalDataClick)
@@ -922,7 +1166,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Personal Data"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onSecurityClick)
@@ -935,7 +1179,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Security"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onAccountSettingsClick)
@@ -948,8 +1192,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Account Settings"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuPersonal && <Divider />}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuPersonal === true && (
+                      <Divider />
+                    )}
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onCompanyDataClick)
@@ -962,20 +1208,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Company Data"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && (
-                      <MenuItem
-                        onClick={(e) =>
-                          handleMenuItemClick(e, props.onBankingClick)
-                        }
-                        id="account-menu-button-banking"
-                      >
-                        <Icon.creditcard />
-                        {props.componentText?.banking
-                          ? props.componentText.banking
-                          : "Banking Information"}
-                      </MenuItem>
-                    )}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuCompany === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onTeamManagementClick)
@@ -988,7 +1221,8 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Team Management"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuCompany && (
+                    {props.isRendered?.avatarMenuCompany === true ||
+                    props.isRendered?.avatarMenuCompanyDeviceManagement ? (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onDeviceManagementClick)
@@ -1000,9 +1234,12 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           ? props.componentText.deviceManagement
                           : "Device Management"}
                       </MenuItem>
-                    )}
-                    {props.isRendered?.avatarMenuCompany && <Divider />}
-                    {props.isRendered?.avatarMenuBilling && (
+                    ) : null}
+                    {props.isRendered?.avatarMenuCompany === true ||
+                    props.isRendered?.avatarMenuCompanyDeviceManagement ? (
+                      <Divider />
+                    ) : null}
+                    {props.isRendered?.avatarMenuBilling === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onBillingClick)
@@ -1015,8 +1252,10 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                           : "Billing"}
                       </MenuItem>
                     )}
-                    {props.isRendered?.avatarMenuBilling && <Divider />}
-                    {props.isRendered?.avatarMenuLogout && (
+                    {props.isRendered?.avatarMenuBilling === true && (
+                      <Divider />
+                    )}
+                    {props.isRendered?.avatarMenuLogout === true && (
                       <MenuItem
                         onClick={(e) =>
                           handleMenuItemClick(e, props.onLogoutClick)

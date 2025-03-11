@@ -1,9 +1,9 @@
-import { join, resolve } from "node:path"
-import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react-swc"
-import dts from "vite-plugin-dts"
+import { join, resolve } from "node:path";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import dts from "vite-plugin-dts";
 
-import { peerDependencies } from "./package.json"
+import { peerDependencies } from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,4 +19,4 @@ export default defineConfig({
       external: ["react/jsx-runtime", ...Object.keys(peerDependencies)],
     },
   },
-})
+});

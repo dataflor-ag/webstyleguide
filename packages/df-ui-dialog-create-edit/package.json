@@ -1,6 +1,6 @@
 {
   "name": "@dataflor-ag/df-ui-dialog-create-edit",
-  "version": "1.5.0",
+  "version": "1.6.1",
   "description": "Dialog modal for creating and editing.",
   "author": "Wiebken Nagel <nagel@dataflor.de>",
   "homepage": "https://github.com/dataflor-ag/webstyleguide#readme",
