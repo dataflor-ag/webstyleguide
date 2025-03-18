@@ -73,6 +73,7 @@ export interface CustomAppBarProps extends AppBarProps {
   };
   componentText?: {
     slotInfo?: string;
+    slotInfoLong?: string;
     darkMode?: string;
     tasks?: string;
     settings?: string;
@@ -136,8 +137,6 @@ export interface CustomAppBarProps extends AppBarProps {
     title?: string;
     linkUrl?: string;
   }[];
-  currentEnvironment?: "dev" | "beta" | "preprod" | "prod";
-  slotInfoFont?: string;
   currentLanguage?: "de" | "it" | "nl" | "en";
 }
 
@@ -164,21 +163,7 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
     const isLanguageMenuOpen = Boolean(anchorElLanguage);
     const isHelpMenuOpen = Boolean(anchorElHelp);
 
-    const environmentOptions = {
-      dev: "1: Development",
-      beta: "2: Beta",
-      preprod: "3: PreProd",
-      prod: "4: Prod",
-    };
-
-    const slotInfoText =
-      props.currentEnvironment !== undefined
-        ? environmentOptions[props.currentEnvironment]
-        : "";
-
-    const isSlotInfoShown =
-      props.isRendered?.slotInfo === true &&
-      props.currentEnvironment !== "prod";
+    const isSlotInfoShown = props.isRendered?.slotInfo === true;
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>): void => {
       setAnchorEl(event.currentTarget);
@@ -385,9 +370,9 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
               <>
                 <Tooltip
                   title={
-                    props.componentText?.slotInfo
-                      ? props.componentText.slotInfo + " " + slotInfoText
-                      : "You are currently on test slot" + " " + slotInfoText
+                    props.componentText?.slotInfoLong
+                      ? props.componentText.slotInfoLong
+                      : "You are currently on a test slot"
                   }
                 >
                   <Box
@@ -416,39 +401,35 @@ export const CustomAppBar = React.forwardRef<HTMLElement, CustomAppBarProps>(
                       }}
                     >
                       {hasMediumScreen
-                        ? slotInfoText
-                        : props.componentText?.slotInfo &&
-                            props.componentText?.slotInfo
-                          ? props.componentText.slotInfo + " " + slotInfoText
-                          : "You are currently on test slot" +
-                            " " +
-                            slotInfoText}
+                        ? props.componentText?.slotInfo !== undefined
+                          ? props.componentText?.slotInfo
+                          : "Test slot"
+                        : props.componentText?.slotInfoLong !== undefined
+                          ? props.componentText.slotInfoLong
+                          : "You are currently on a test slot"}
                     </Typography>
                   </Box>
                 </Tooltip>
               </>
             )}
             <Stack direction="row" gap={1} sx={{ marginLeft: "0.5rem" }}>
-              {props.isRendered?.buttonDarkMode === true &&
-                props.currentEnvironment !== undefined &&
-                props.currentEnvironment !== "preprod" &&
-                props.currentEnvironment !== "prod" && (
-                  <Tooltip
-                    title={
-                      props.componentText?.darkMode
-                        ? props.componentText.darkMode
-                        : "Change Theme"
-                    }
+              {props.isRendered?.buttonDarkMode === true && (
+                <Tooltip
+                  title={
+                    props.componentText?.darkMode
+                      ? props.componentText.darkMode
+                      : "Change Theme"
+                  }
+                >
+                  <IconButton
+                    color="inherit"
+                    onClick={props.onDarkmodeClick}
+                    id="button-toggle-darkmode"
                   >
-                    <IconButton
-                      color="inherit"
-                      onClick={props.onDarkmodeClick}
-                      id="button-toggle-darkmode"
-                    >
-                      {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
-                    </IconButton>
-                  </Tooltip>
-                )}
+                    {props.isDarkMode ? <Icon.sun /> : <Icon.sunFilled />}
+                  </IconButton>
+                </Tooltip>
+              )}
               {props.isRendered?.languageMenu === true && (
                 <>
                   <Box
