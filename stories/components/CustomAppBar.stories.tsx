@@ -117,7 +117,7 @@ const meta: Meta<typeof CustomAppBar> = {
       slotInfo: {
         type: "string",
       },
-      testEnvironmentInfo: {
+      slotInfoLong: {
         type: "string",
       },
     },
@@ -159,12 +159,6 @@ const meta: Meta<typeof CustomAppBar> = {
       id: {
         type: "string",
       },
-    },
-    currentEnvironment: {
-      type: "string",
-    },
-    slotInfoFont: {
-      type: "string",
     },
   },
 };
@@ -388,7 +382,6 @@ export function CustomAppBarWithSlotInfo(): JSX.Element {
           avatarMenuLogout: true,
           slotInfo: true,
         }}
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
@@ -453,7 +446,6 @@ export function CustomAppBarWithSlotInfoDarkMode(): JSX.Element {
           slotInfo: true,
         }}
         isDarkMode
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
@@ -516,9 +508,9 @@ export function CustomAppBarWithSlotInfoPreprod(): JSX.Element {
           slotInfo: true,
         }}
         componentText={{
-          slotInfo: "You are currently on test environment",
+          slotInfo: "3: Preprod",
+          slotInfoLong: "You are currently on test slot 3: Preprod",
         }}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -582,9 +574,9 @@ export function CustomAppBarWithSlotInfoBetaDark(): JSX.Element {
           slotInfo: true,
         }}
         componentText={{
-          slotInfo: "Some info text about the slot",
+          slotInfo: "2: Beta",
+          slotInfoLong: "You are currently on test slot 2: Beta",
         }}
-        currentEnvironment={"beta"}
       />
       <Snackbar
         open={open}
@@ -673,7 +665,6 @@ export function CustomAppBarWithCompanyMenu(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -763,7 +754,6 @@ export function CustomAppBarWithCompanyMenuDark(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -831,7 +821,6 @@ export function CustomAppBarWithCompanyMenuJustOneCompany(): JSX.Element {
           avatarMenuLogout: true,
         }}
         componentText={{}}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -899,7 +888,6 @@ export function CustomAppBarWithCompanyMenuNoCompanyLogo(): JSX.Element {
           avatarMenuLogout: true,
         }}
         componentText={{}}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -967,7 +955,6 @@ export function CustomAppBarWithUserAnCompanyNameButNoLogo(): JSX.Element {
           avatarMenuLogout: true,
         }}
         componentText={{}}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -1057,7 +1044,6 @@ export function CustomAppBarWithCompanyMenuAndSlotInfo(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
@@ -1145,7 +1131,6 @@ export function CustomAppBarWithCompanyMenuAndNoOtherButtons(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
@@ -1188,7 +1173,6 @@ export function CustomAppBarWithLanguageMenuNoLanguageSelectedAndAvatarMenuAndSl
         }}
         isDarkMode
         componentText={{}}
-        currentEnvironment={"dev"}
         onLanguageMenuClickDE={() => {
           handleOpenToast("Change to German");
         }}
@@ -1246,7 +1230,6 @@ export function CustomAppBarWithLanguageAndAvatarMenuAndSlotInfo(): JSX.Element 
         isDarkMode
         componentText={{}}
         currentLanguage={language}
-        currentEnvironment={"dev"}
         onLanguageMenuClickDE={() => {
           handleOpenToast("Change to German");
           setLanguage("de");
@@ -1302,9 +1285,11 @@ export function CustomAppBarWithLanguageMenuOnPreprod(): JSX.Element {
           buttonDarkMode: true,
         }}
         isDarkMode
-        componentText={{}}
+        componentText={{
+          slotInfo: "3: Preprod",
+          slotInfoLong: "You are currently on test slot 3: Preprod",
+        }}
         currentLanguage={language}
-        currentEnvironment={"preprod"}
         onLanguageMenuClickDE={() => {
           handleOpenToast("Change to German");
           setLanguage("de");
@@ -1436,7 +1421,6 @@ export function CustomAppBarWithCompanyMenuAndInvites(): JSX.Element {
         componentText={{}}
         companyList={companyList}
         companyInvitesList={inviteList}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -1536,7 +1520,6 @@ export function CustomAppBarWithCompanyMenuAndEmptyInviteList(): JSX.Element {
         componentText={{}}
         companyList={companyList}
         companyInvitesList={inviteList}
-        currentEnvironment={"preprod"}
       />
       <Snackbar
         open={open}
@@ -1661,7 +1644,6 @@ export function CustomAppbarWithHelpMenuWithWikiLinks(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"dev"}
         helpMenuLinks={helpMenuLinkList}
         legalInfoLinks={[
           { title: "Imprint", linkUrl: "https://www.google.com" },
@@ -1796,7 +1778,6 @@ export function CustomAppbarWithHelpMenuWithWikiLinksDArk(): JSX.Element {
         }}
         componentText={{}}
         companyList={companyList}
-        currentEnvironment={"dev"}
         helpMenuLinks={helpMenuLinkList}
         legalInfoLinks={[
           { title: "Imprint", linkUrl: "https://www.google.com" },
@@ -1910,7 +1891,6 @@ export function CustomAppbarWithHelpMenu(): JSX.Element {
           { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
         ]}
         companyList={companyList}
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}
@@ -2012,7 +1992,6 @@ export function CustomAppbarOnlyDeviceManagement(): JSX.Element {
           { title: "Terms and Conditions", linkUrl: "https://www.google.com" },
         ]}
         companyList={companyList}
-        currentEnvironment={"dev"}
       />
       <Snackbar
         open={open}

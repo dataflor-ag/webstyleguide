@@ -16,16 +16,14 @@ interface DialogCreateEditProps extends DialogProps {
   icon: React.ReactNode;
   open: boolean;
   children?: React.ReactNode;
-  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onSave: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  buttonTextClose: string;
-  buttonTextSave: string;
+  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onSave?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  buttonTextClose?: string;
+  buttonTextSave?: string;
   saveIcon?: React.ReactNode;
   saveDisabled?: boolean;
   id?: string;
   DialogProps?: DialogProps;
-  hideCloseButton?: boolean;
-  hideSaveButton?: boolean;
 }
 
 export const DialogCreateEdit = React.forwardRef<
@@ -43,8 +41,6 @@ export const DialogCreateEdit = React.forwardRef<
     children,
     buttonTextClose,
     buttonTextSave,
-    hideCloseButton,
-    hideSaveButton,
     id,
     ...DialogProps
   } = props;
@@ -74,7 +70,7 @@ export const DialogCreateEdit = React.forwardRef<
       </DialogTitle>
       <DialogContent dividers>{children}</DialogContent>
       <DialogActions>
-        {hideCloseButton === false || hideCloseButton === undefined ? (
+        {onClose !== undefined ? (
           <Button
             color="secondary"
             variant="outlined"
@@ -85,7 +81,7 @@ export const DialogCreateEdit = React.forwardRef<
             {buttonTextClose}
           </Button>
         ) : null}
-        {hideSaveButton === false || hideSaveButton === undefined ? (
+        {onSave !== undefined ? (
           <Button
             variant="contained"
             color="primary"
